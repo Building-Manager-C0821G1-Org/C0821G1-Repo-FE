@@ -1,0 +1,54 @@
+/*Table list*/
+
+.content-container {
+  content: '';
+  /*clear: both;*/
+  padding-left: 220px;
+}
+
+th ,td{
+  text-align: center;
+}
+.content-container .container-fluid h2{
+  padding-top: 60px;
+}
+
+.font-google-1 {
+  font-family: 'Work Sans', cursive;
+}
+
+.font-google-2 {
+  font-family: 'Dancing Script', cursive;
+  color: #d6b915;
+  font-size: 60px
+}
+
+/*.pagination {*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*}*/
+
+/*.pagination nav ul li a {*/
+/*  color: black;*/
+/*}*/
+
+/*.add-button {*/
+/*  background-color: mediumseagreen;*/
+/*  color: white;*/
+/*  border-radius: 5px;*/
+/*}*/
+/*.content-container .container-fluid .container .row table tbody tr td .edit-button{*/
+/*  background-color: #d6b915;*/
+/*  border-radius: 5px;*/
+/*}*/
+
+/*.content-container .container-fluid .container .row table tbody tr td .delete-button{*/
+/*  background-color: #de6666;*/
+/*  border-radius: 5px;*/
+/*  color: white;*/
+/*}*/
+
+/*.text-overflow{*/
+/*  white-space: nowrap; overflow: hidden;*/
+/*}*/

@@ -1,0 +1,50 @@
+.header {
+  position: fixed;
+  width: 100%;
+  /*clear: both;*/
+
+}
+/*layout header-top*/
+.header-top{
+  background-color: #3f3836;
+  margin-bottom: 1px;
+  text-align: right;
+  color: #eeb043;
+
+}
+
+/*layout header-bottom*/
+
+.header-bottom{
+  background-color: #3f3836;
+  /*position: relative;*/
+}
+.container-fluid .header-bottom .link{
+  padding-top: 25px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.container-fluid .header-bottom .link ul li a{
+  color: black;
+}
+
+.container-fluid .header-bottom .menu{
+  padding-top: 25px;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: right;
+}
+
+.container-fluid .header-bottom .menu .link{
+  display: inline;
+  text-align: right;
+}
+
+.container-fluid .header-bottom .link a{
+  color: #eeb043;
+  text-decoration: none
+}
+.container-fluid .header-bottom .link a:hover{
+  color: #eeb043;
+}
