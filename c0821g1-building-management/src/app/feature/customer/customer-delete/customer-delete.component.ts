@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CustomerService} from '../../../service/customer/customer.service';
+import {Router} from '@angular/router';
+import {Customer} from '../../../model/customer';
 
 @Component({
   selector: 'app-customer-delete',
@@ -6,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-delete.component.css']
 })
 export class CustomerDeleteComponent implements OnInit {
+  customers: Customer[] = [];
+  idDelete: number;
 
-  constructor() { }
+  constructor(private customerService: CustomerService,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
   }
-
 }

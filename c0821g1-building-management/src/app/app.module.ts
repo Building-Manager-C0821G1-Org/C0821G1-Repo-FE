@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { BodyComponent } from './shared/body/body.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {CustomerModule} from './feature/customer/customer.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { BodyComponent } from './shared/body/body.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    CustomerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

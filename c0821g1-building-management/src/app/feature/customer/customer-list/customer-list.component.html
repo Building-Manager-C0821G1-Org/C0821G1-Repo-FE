@@ -1,1 +1,89 @@
-<p>customer-list works!</p>
+<div class="col-lg-10">
+  <!--            <div class="content-container">-->
+  <!--                <div class="container-fluid">-->
+  <h4>
+    <button type="button" class="add-button btn-lg"><i class="fa-solid fa-plus me-2"></i>Tạo mới
+    </button>
+    <button type="button" class="delete-button btn-lg">Xóa tất cả</button>
+  </h4>
+  <table class="table table-hover bg-light">
+    <thead class="text-center font-google-1 fs-5 "
+           style="background-color: #efb578; white-space: nowrap; overflow: hidden;">
+    <tr style="color: #452d14">
+      <th scope="col">STT</th>
+      <th scope="col">Mã Khách Hàng</th>
+      <th scope="col">Họ Tên</th>
+      <th scope="col">CMND</th>
+      <th scope="col">Email</th>
+      <th scope="col">Số Điện Thoại</th>
+      <th scope="col">Ngày Sinh</th>
+      <th scope="col">Địa Chỉ</th>
+      <th scope="col">Tình trạng</th>
+      <th>Chức Năng</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let customerObj of customers; index as i">
+      <th scope="row" class="text-center">{{i + 1}}</th>
+      <td>{{customerObj.customerCode}}</td>
+      <td>{{customerObj.customerName}}</td>
+      <td>{{customerObj.customerIdentifyNumber}}</td>
+      <td>{{customerObj.customerEmail}}</td>
+      <td>{{customerObj.customerPhone}}</td>
+      <td>{{customerObj.customerDateOfBirth}}</td>
+      <td>{{customerObj.customerAddress}}</td>
+      <td>{{customerObj.customerStatus}}</td>
+      <td class="text-center">
+        <a type="button" class="btn btn-light me-3 edit-button">
+          <i class="fa-solid fa-pen"></i>
+        </a>
+        <a type="button" class="btn btn-light delete-button" data-bs-toggle="modal"
+                data-bs-target="#deleteModal" (click)="delete(customerObj.customerId)">
+          <i class="fa-solid fa-trash-can"></i>
+        </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <!--PAGEABLE-->
+<!--  <nav aria-label="Page navigation example">-->
+<!--    <ul class="pagination justify-content-center">-->
+<!--      <li class="page-item">-->
+<!--        <a class="page-link"-->
+<!--           th:if="${employeePage.hasPrevious()}"-->
+<!--           th:href="@{/employee/list-page(page = ${employeePage.number - 1})}">-->
+<!--          Previous-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li class="page-item" th:each="pageNo: ${#numbers.sequence(0,employeePage.totalPages - 1)}">-->
+<!--        <a class="page-link" th:href="@{/employee/list-page(page = ${pageNo})}" th:text="${pageNo}"></a>-->
+<!--      </li>-->
+<!--      <li class="page-item">-->
+<!--        <a class="page-link"-->
+<!--           th:if="${employeePage.hasNext()}" th:href="@{/employee/list-page(page = ${employeePage.number + 1})}">-->
+<!--          Next-->
+<!--        </a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </nav>-->
+</div>
+<!--DELETE MODAL-->
+<div class="modal" tabindex="-1" id="deleteModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Are you sure to delete</h5>
+        <!--        <h5 class="text-danger modal-title ms-1" id="name-delete"></h5>-->
+        <!--        <h5 class="modal-title ms-1">from list ?</h5>-->
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!--                        <p>Modal body text goes here.</p>-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a id="link-delete" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteCustomer()">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
