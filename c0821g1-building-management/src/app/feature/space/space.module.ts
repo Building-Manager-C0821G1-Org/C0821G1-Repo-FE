@@ -9,6 +9,9 @@ import { SpaceEditComponent } from './space-edit/space-edit.component';
 
 @NgModule({
   declarations: [SpaceListComponent, SpaceCreateComponent, SpaceEditComponent],
+  exports: [
+    SpaceListComponent
+  ],
   imports: [
     CommonModule,
     SpaceRoutingModule
