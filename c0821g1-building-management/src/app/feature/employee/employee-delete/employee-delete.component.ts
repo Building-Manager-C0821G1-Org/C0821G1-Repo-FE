@@ -12,7 +12,6 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 export class EmployeeDeleteComponent implements OnInit {
   employee: Employee;
   private subscription: Subscription;
-
   constructor(
     private employeeService : EmployeeService,
     public dialogRef: MatDialogRef<EmployeeDeleteComponent>,
@@ -26,7 +25,9 @@ export class EmployeeDeleteComponent implements OnInit {
   deleteEmployee() {
     this.subscription = this.employeeService.deleteEmployeeById(this.employee.employeeId).subscribe(data => {
       this.dialogRef.close();
+
     });
+
   }
 
   onNoClick() {
