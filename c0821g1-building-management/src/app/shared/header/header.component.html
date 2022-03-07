@@ -33,37 +33,35 @@
     </div>
     <div class="col-10 menu">
       <div class="link me-2">
-        <a href="#" >TRANG CHỦ</a>
+        <a routerLink="/floors/list" >TRANG CHỦ</a>
       </div>
       <div class=" link ">
         <a href="#" >GIỚI THIỆU</a>
       </div>
       <div class=" link">
-        <a href="#" class="dropdown-toggle dropdown-toggle-split " data-bs-toggle="dropdown"
-           aria-expanded="false">
-          KHAI THÁC–VẬN HÀNH
-        </a>
-        <ul class="dropdown-menu ">
-          <li><a class="dropdown-item " href="#">Quản lý tầng lầu</a></li>
-          <li><a class="dropdown-item " href="#">Quản lý khách hàng</a></li>
-          <li><a class="dropdown-item " href="#">Quản lý nhân viên</a></li>
-          <li><a class="dropdown-item " href="#">Quản lý dịch vụ</a></li>
-          <li><a class="dropdown-item " href="#">Quản lý báo cáo</a></li>
-        </ul>
+        <div class="dropdown">
+          <a class="dropbtn dropdown-toggle dropdown-toggle-split">KHAI THÁC-VẬN HÀNH</a>
+          <div class="dropdown-content">
+            <a class="dropdown-item" routerLink="/floors/list">Quản lý tầng lầu</a>
+            <a class="dropdown-item" routerLink="/customer/list">Quản lý khách hàng</a>
+            <a class="dropdown-item" routerLink="/employee/list">Quản lý nhân viên</a>
+            <a class="dropdown-item" routerLink="/contract/list">Quản lý hợp đồng</a>
+            <a class="dropdown-item" routerLink="/space/list">Quản lý mặt bằng</a>
+          </div>
+        </div>
       </div>
       <div class="link">
         <a href="#">TIN TỨC</a>
       </div>
       <div class=" link ">
         <!--<span style="color: red" *ngIf="user,admin có trong db"> {{Tên user}}</span>không(else) có sẽ hiện thẻ span bên dưới-->
-        <a href="#" class="dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
-           aria-expanded="false">
-          ĐĂNG NHẬP
-        </a>
-        <ul class="dropdown-menu ">
-          <li><a class="dropdown-item " href="#">Thông tin cá nhân</a></li>
-          <li><a class="dropdown-item " href="#">Đăng xuất</a></li>
-        </ul>
+        <div class="dropdown">
+          <a class="dropbtn dropdown-toggle dropdown-toggle-split">ĐĂNG NHẬP</a>
+          <div class="dropdown-content">
+            <a class="dropdown-item" href="#">Thông tin cá nhân</a>
+            <a class="dropdown-item" href="#">Đăng xuất</a>
+          </div>
+        </div>
         <!--            ảnh của user,admin sẽ ở đây-->
         <!--            <img src="#" alt=""/>-->
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"

@@ -9,6 +9,7 @@ import { BodyComponent } from './shared/body/body.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import {FloorModule} from './feature/floors/floor.module';
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,12 +19,13 @@ import {HttpClientModule} from '@angular/common/http';
     BodyComponent,
     SidebarComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FloorModule,
-    HttpClientModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FloorModule,
+        HttpClientModule,
+        FormsModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

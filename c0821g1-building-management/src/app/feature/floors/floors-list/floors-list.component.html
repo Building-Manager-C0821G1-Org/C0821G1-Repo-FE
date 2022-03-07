@@ -66,48 +66,37 @@
           </thead>
           <tbody>
 
-          <tr *ngFor="let floors of floorsList;index as i" >
+          <tr *ngFor="let floors of floorsList;index as i">
             <td>
-              <span *ngIf="floors.floorDeleteFlag === 1;">
-             {{i + 1}}
-             </span>
-              </td>
-            <td>
-              <span *ngIf="floors.floorDeleteFlag === 1;">
-             {{floors.floorName}}
-             </span>
+                {{i + 1}}
             </td>
             <td>
-               <span *ngIf="floors.floorDeleteFlag === 1;">
-             {{floors.floorCode}}
-             </span>
+                {{floors.floorName}}
             </td>
             <td>
-               <span *ngIf="floors.floorDeleteFlag === 1;">
-            {{floors.floorArea}}
-             </span>
+                {{floors.floorCode}}
             </td>
             <td>
-               <span *ngIf="floors.floorDeleteFlag === 1;">
-             {{floors.floorCapacity}}
-             </span>
+                {{floors.floorArea}}
             </td>
-            <td> <span *ngIf="floors.floorDeleteFlag === 1;">
-            {{floors.floorsStatus.floorStatusName}}
-             </span>
-              </td>
-            <td> <span *ngIf="floors.floorDeleteFlag === 1;">
-             {{floors.floorsType.floorTypeName}}
-             </span>
-              </td>
             <td>
-              <button type="button" class="btn btn-light me-3 edit-button">
-                <i class="fa-solid fa-pen"></i>
-              </button>
+                {{floors.floorCapacity}}
+            </td>
+            <td>
+                {{floors.floorsStatus.floorStatusName}}
+            </td>
+            <td>
+                {{floors.floorsType.floorTypeName}}
+            </td>
+            <td>
+                <button type="button" class="btn btn-light me-3 edit-button">
+                  <i class="fa-solid fa-pen"></i>
+                </button>
 
-              <button type="button" class="btn btn-light delete-button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="delete(floors.floorId,floors.floorName)">
-                <i class="fa-solid fa-trash-can"></i>
-              </button>
+                <button type="button" class="btn btn-light delete-button" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal" (click)="getFloors(floors.floorId,floors.floorName)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
             </td>
 
           </tr>
