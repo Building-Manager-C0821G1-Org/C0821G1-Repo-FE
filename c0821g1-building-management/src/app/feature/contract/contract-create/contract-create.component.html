@@ -78,16 +78,17 @@
               <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                 <div class="card-body p-4 p-md-5 ">
                   <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center font-google-2">Thêm mới hợp đồng</h3>
-                  <form  [formGroup]="contractsForm" (ngSubmit)="submit()">
+                  <form [formGroup]="contractsForm" (ngSubmit)="submit()">
                     <div class="row">
                       <div class="col-md-6 mb-6">
 
                         <div class="form-outline">
                           <label class="form-label" for="firstName">Mặt bằng<span
                             class="error"> (*)</span></label>
-<!--                          <input type="text" id="firstName" class="form-control form-control-lg"/>-->
-                          <select id="firstName" class="form-select" aria-label="Default select example" formControlName="spaceId" >
-<!--                            <option [ngValue]="null">&#45;&#45;Chọn&#45;&#45;</option>-->
+                          <!--                          <input type="text" id="firstName" class="form-control form-control-lg"/>-->
+                          <select id="firstName" class="form-select" aria-label="Default select example"
+                                  formControlName="spaceId">
+                            <!--                            <option [ngValue]="null">&#45;&#45;Chọn&#45;&#45;</option>-->
                             <option *ngFor="let space of spaces" [ngValue]="space.id">{{space.name}}</option>
                           </select>
                         </div>
@@ -99,7 +100,8 @@
                         <div class="form-outline">
                           <label class="form-label" for="customerName">Họ tên khách hàng<span
                             class="error"> (*)</span></label>
-                          <select id="customerName" class="form-select" aria-label="Default select example" formControlName="customerId" >
+                          <select id="customerName" class="form-select" aria-label="Default select example"
+                                  formControlName="customerId">
                             <option *ngFor="let customer of customers" [value]="customer.id">{{customer.name}}</option>
                           </select>
                           <small class="error" *ngIf="contractsForm.get('customerId').hasError('required')
@@ -107,15 +109,15 @@
 
                         </div>
                       </div>
-<!--                      <div class="col-md-4 mb-4">-->
+                      <!--                      <div class="col-md-4 mb-4">-->
 
-<!--                        <label for="select1" class="form-label select-label">Họ tên nhân viên<span-->
-<!--                          class="error"> (*)</span></label>-->
-<!--                        <br>-->
-<!--                        <select id="select1" class="form-select" aria-label="Default select example" formControlName="employeeId" >-->
-<!--                          <option *ngFor="let employee of employees" [value]="employee.id">{{employee.name}}</option>-->
-<!--                        </select>-->
-<!--                      </div>-->
+                      <!--                        <label for="select1" class="form-label select-label">Họ tên nhân viên<span-->
+                      <!--                          class="error"> (*)</span></label>-->
+                      <!--                        <br>-->
+                      <!--                        <select id="select1" class="form-select" aria-label="Default select example" formControlName="employeeId" >-->
+                      <!--                          <option *ngFor="let employee of employees" [value]="employee.id">{{employee.name}}</option>-->
+                      <!--                        </select>-->
+                      <!--                      </div>-->
                     </div>
 
                     <div class="row">
@@ -123,10 +125,14 @@
                         <div class="form-outline">
                           <label class="form-label" for="lastName2">Ngày bắt đầu thuê<span
                             class="error"> (*)</span></label>
-                          <input type="date" id="lastName2" class="form-control form-control-lg" formControlName="contractDateStart"/>
+                          <input type="date"
+                                 id="lastName2"
+                                 class="form-control form-control-lg"
+                                 formControlName="contractDateStart" [(ngModel)]="dateStart"/>
                         </div>
-                        <small class="error"  *ngIf="contractsForm.get('contractDateStart')
-                        .hasError('required')&& contractsForm.get('contractDateStart').touched">Ngày bắt đầu không được để trống</small>
+                        <small class="error" *ngIf="contractsForm.get('contractDateStart')
+                        .hasError('required')&& contractsForm.get('contractDateStart').touched">Ngày bắt đầu không được
+                          để trống</small>
 
                       </div>
 
@@ -134,11 +140,13 @@
                         <div class="form-outline">
                           <label class="form-label" for="lastName3">Ngày kết thúc thuê<span
                             class="error"> (*)</span></label>
-                          <input type="date" id="lastName3" class="form-control form-control-lg" formControlName="contractDateEnd"/>
+                          <input type="date" id="lastName3" class="form-control form-control-lg"
+                                 formControlName="contractDateEnd"
+                          />
                         </div>
-                        <small class="error"  *ngIf="contractsForm.get('contractDateEnd')
-                        .hasError('required')&& contractsForm.get('contractDateEnd').touched">Ngày kết thúc không được để trống</small>
-
+                        <small class="error" *ngIf="contractsForm.get('contractDateEnd')
+                        .hasError('required')&& contractsForm.get('contractDateEnd').touched">Ngày kết thúc không được
+                          để trống</small>
                       </div>
                     </div>
 
@@ -154,8 +162,9 @@
                             formControlName="contractExpired"
                           />
                         </div>
-                        <small class="error"  *ngIf="contractsForm.get('contractExpired')
-                        .hasError('required')&& contractsForm.get('contractExpired').touched">Kì hạn không được để trống</small>
+                        <small class="error" *ngIf="contractsForm.get('contractExpired')
+                        .hasError('required')&& contractsForm.get('contractExpired').touched">Kì hạn không được để
+                          trống</small>
 
                       </div>
 
@@ -168,7 +177,7 @@
                           <input type="text" id="emailAddress"
                                  class="form-control form-control-lg" formControlName="price"/>
                         </div>
-                        <small class="error"  *ngIf="contractsForm.get('price')
+                        <small class="error" *ngIf="contractsForm.get('price')
                         .hasError('required')&& contractsForm.get('price').touched">Giá tiền không được để trống</small>
 
                       </div>
@@ -186,8 +195,9 @@
                             formControlName="contractTotal"
                           />
                         </div>
-                        <small class="error"  *ngIf="contractsForm.get('contractTotal')
-                        .hasError('required')&& contractsForm.get('contractTotal').touched">Tổng tiền không được để trống</small>
+                        <small class="error" *ngIf="contractsForm.get('contractTotal')
+                        .hasError('required')&& contractsForm.get('contractTotal').touched">Tổng tiền không được để
+                          trống</small>
 
                       </div>
 
@@ -198,10 +208,11 @@
                             <span
                               class="error"> (*)</span></label>
                           <input type="email" id="emailAddress1"
-                                 class="form-control form-control-lg"  formControlName="contractDeposit"/>
+                                 class="form-control form-control-lg" formControlName="contractDeposit"/>
                         </div>
-                        <small class="error"  *ngIf="contractsForm.get('contractDeposit')
-                        .hasError('required')&& contractsForm.get('contractDeposit').touched">Tiền cọc không được để trống</small>
+                        <small class="error" *ngIf="contractsForm.get('contractDeposit')
+                        .hasError('required')&& contractsForm.get('contractDeposit').touched">Tiền cọc không được để
+                          trống</small>
 
                       </div>
                     </div>
@@ -216,8 +227,9 @@
                           <input type="email" id="emailAddress2"
                                  class="form-control form-control-lg" formControlName="contractTaxCode"/>
                         </div>
-                        <small class="error"  *ngIf="contractsForm.get('contractTaxCode')
-                        .hasError('required')&& contractsForm.get('contractTaxCode').touched">Mã số thuế không được để trống</small>
+                        <small class="error" *ngIf="contractsForm.get('contractTaxCode')
+                        .hasError('required')&& contractsForm.get('contractTaxCode').touched">Mã số thuế không được để
+                          trống</small>
 
                       </div>
                       <div class="col-6">
@@ -240,10 +252,12 @@
                         <div class="form-group">
                           <label for="exampleFormControlTextarea1">Nội dung hợp đồng <span
                             class="error"> (*)</span></label>
-                          <textarea formControlName="contractContent" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          <textarea formControlName="contractContent" class="form-control"
+                                    id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
-                        <small class="error"  *ngIf="contractsForm.get('contractContent')
-                        .hasError('required')&& contractsForm.get('contractContent').touched">Nội dung không được để trống</small>
+                        <small class="error" *ngIf="contractsForm.get('contractContent')
+                        .hasError('required')&& contractsForm.get('contractContent').touched">Nội dung không được để
+                          trống</small>
 
                       </div>
 

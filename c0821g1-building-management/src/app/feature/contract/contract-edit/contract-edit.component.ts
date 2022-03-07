@@ -44,12 +44,23 @@ export class ContractEditComponent implements OnInit {
     this.employees = employeeService.employees;
     this.customers = customerService.customers;
 
+
   }
+
 
   getContract(id: number) {
     return this.contractService.findById(id).subscribe(contract => {
       this.dateStart = this.datepipe.transform(contract.contractDateStart, 'yyyy-MM-dd');
       this.dateEnd = this.datepipe.transform(contract.contractDateEnd, 'yyyy-MM-dd');
+
+      // @ts-ignore
+      const date1 = new Date(contract.contractDateStart);
+      // @ts-ignore
+      const date2 = new Date(contract.contractDateEnd);
+      const month = (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24 * 30);
+      // @ts-ignore
+      contract.contractExpired = Math.round(month) ;
+      console.log('Expired' + contract.contractExpired);
 
       this.contractForm = this.fb.group({
         contractId: contract.contractId,

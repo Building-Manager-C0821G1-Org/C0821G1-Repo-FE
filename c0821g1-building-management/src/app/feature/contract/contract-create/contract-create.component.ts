@@ -8,6 +8,7 @@ import {EmployeeService} from '../../../service/employee/employee.service';
 import {Employee} from '../../../model/employee';
 import {Customer} from '../../../model/customer';
 import {CustomerService} from '../../../service/customer/customer.service';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-contract-create',
@@ -25,8 +26,8 @@ export class ContractCreateComponent implements OnInit {
     price: ['', [Validators.required]],
     contractTotal: ['', [Validators.required]],
     contractContent: ['', [Validators.required]],
-    contractTaxCode: ['',[Validators.required]],
-    contractDeposit: ['',[Validators.required]],
+    contractTaxCode: ['', [Validators.required]],
+    contractDeposit: ['', [Validators.required]],
     contractDeleteFlag: false,
     employeeId: 1,
     customerId: ['', [Validators.required]],
@@ -37,13 +38,18 @@ export class ContractCreateComponent implements OnInit {
   employees: Employee[];
   customers: Customer[];
 
+  dateStart: string;
+  dateEnd: string;
+  expiredDate: string;
+
   constructor(private fb: FormBuilder,
               private contractService: ContractService,
               private spaceService: SpaceService,
               private employeeService: EmployeeService,
               private customerService: CustomerService,
               private router: Router,
-              ) {
+              private  datepipe: DatePipe
+  ) {
     this.spaces = spaceService.spaces;
     this.employees = employeeService.employees;
     this.customers = customerService.customers;
@@ -54,11 +60,16 @@ export class ContractCreateComponent implements OnInit {
 
   submit() {
     const contract = this.contractsForm.value;
-    console.log(contract.customerId);
-    console.log(contract.spaceId);
-    console.log(contract.employeeId);
-    // customer.id = parseInt(customer.id);
-    // console.log(customer.ngaySinh);
+
+    this.dateStart = contract.contractDateStart;
+    this.dateEnd = contract.contractDateEnd;
+    const date1 = new Date(contract.contractDateStart);
+    const date2 = new Date(contract.contractDateEnd);
+    const month = (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24 * 30);
+    // @ts-ignore
+    contract.contractExpired = Math.round(month) ;
+    console.log('Expired' + contract.contractExpired);
+
     this.contractService.saveContract(contract).subscribe(() => {
       this.contractsForm.reset();
       alert('Thêm mới thành công');
