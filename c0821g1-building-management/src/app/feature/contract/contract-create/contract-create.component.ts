@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ContractService} from '../../../service/contract/contract.service';
 import {Router} from '@angular/router';
 import {SpaceService} from '../../../service/space/space.service';
@@ -16,29 +16,34 @@ import {CustomerService} from '../../../service/customer/customer.service';
 })
 export class ContractCreateComponent implements OnInit {
 
+
   contractsForm: FormGroup = this.fb.group({
     contractId: '',
-    contractExpired: '',
-    contractDateStart: '',
-    contractDateEnd: '',
-    price: '',
-    contractTotal: '',
-    contractContent: '',
+    contractExpired: ['', [Validators.required]],
+    contractDateStart: ['', [Validators.required]],
+    contractDateEnd: ['', [Validators.required]],
+    price: ['', [Validators.required]],
+    contractTotal: ['', [Validators.required]],
+    contractContent: ['', [Validators.required]],
+    contractTaxCode: ['',[Validators.required]],
+    contractDeposit: ['',[Validators.required]],
     contractDeleteFlag: false,
-    employeeId: '',
-    customerId: '',
-    spaceId: ''
+    employeeId: 1,
+    customerId: ['', [Validators.required]],
+    spaceId: ['', [Validators.required]]
   });
 
   spaces: Space[];
   employees: Employee[];
   customers: Customer[];
+
   constructor(private fb: FormBuilder,
               private contractService: ContractService,
               private spaceService: SpaceService,
               private employeeService: EmployeeService,
               private customerService: CustomerService,
-              private router: Router) {
+              private router: Router,
+              ) {
     this.spaces = spaceService.spaces;
     this.employees = employeeService.employees;
     this.customers = customerService.customers;

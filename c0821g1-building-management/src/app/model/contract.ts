@@ -10,6 +10,9 @@ export interface Contract {
   price ?: string;
   contractTotal ?: string;
   contractContent ?: string;
+  contractDeposit ?: string;
+  contractTaxCode ?: string;
+  contractImageUrl?: string;
   contractDeleteFlag ?: boolean;
   employeeId ?: number;
   customerId ?: number;

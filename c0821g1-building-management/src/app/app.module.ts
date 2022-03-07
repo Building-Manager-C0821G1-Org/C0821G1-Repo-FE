@@ -7,6 +7,8 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { BodyComponent } from './shared/body/body.component';
 import {HttpClientModule} from '@angular/common/http';
+import { DatePipe } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -18,9 +20,9 @@ import {HttpClientModule} from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

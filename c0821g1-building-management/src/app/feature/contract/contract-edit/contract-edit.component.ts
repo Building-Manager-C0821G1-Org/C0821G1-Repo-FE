@@ -2,12 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {Space} from '../../../model/space';
 import {Employee} from '../../../model/employee';
 import {Customer} from '../../../model/customer';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ContractService} from '../../../service/contract/contract.service';
 import {SpaceService} from '../../../service/space/space.service';
 import {EmployeeService} from '../../../service/employee/employee.service';
 import {CustomerService} from '../../../service/customer/customer.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {DatePipe} from '@angular/common';
+
 
 @Component({
   selector: 'app-contract-edit',
@@ -21,6 +23,9 @@ export class ContractEditComponent implements OnInit {
   employees: Employee[];
   customers: Customer[];
   id: number;
+  dateStart: string;
+  dateEnd: string;
+
 
   constructor(private fb: FormBuilder,
               private contractService: ContractService,
@@ -28,7 +33,8 @@ export class ContractEditComponent implements OnInit {
               private employeeService: EmployeeService,
               private customerService: CustomerService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private  datepipe: DatePipe) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
       this.getContract(this.id);
@@ -37,25 +43,28 @@ export class ContractEditComponent implements OnInit {
     this.spaces = spaceService.spaces;
     this.employees = employeeService.employees;
     this.customers = customerService.customers;
+
   }
 
   getContract(id: number) {
     return this.contractService.findById(id).subscribe(contract => {
-      console.log(contract.customerId);
-      console.log(contract.employeeId);
-      console.log(contract.spaceId);
+      this.dateStart = this.datepipe.transform(contract.contractDateStart, 'yyyy-MM-dd');
+      this.dateEnd = this.datepipe.transform(contract.contractDateEnd, 'yyyy-MM-dd');
+
       this.contractForm = this.fb.group({
         contractId: contract.contractId,
-        contractExpired: contract.contractExpired,
-        contractDateStart: contract.contractDateStart,
-        contractDateEnd: contract.contractDateEnd,
-        price: contract.price,
-        contractTotal: contract.contractTotal,
-        contractContent: contract.contractContent,
+        contractExpired: [contract.contractExpired, [Validators.required]],
+        contractDateStart: [this.dateStart, [Validators.required]],
+        contractDateEnd: [this.dateEnd, [Validators.required]],
+        price: [contract.price, [Validators.required]],
+        contractTotal: [contract.contractTotal, [Validators.required]],
+        contractContent: [contract.contractContent, [Validators.required]],
         contractDeleteFlag: contract.contractDeleteFlag,
-        employeeId: contract.employeeId,
-        customerId: contract.customerId,
-        spaceId: contract.spaceId
+        employeeId: 1,
+        contractDeposit: [contract.contractDeposit, [Validators.required]],
+        contractTaxCode: [contract.contractTaxCode, [Validators.required]],
+        customerId: [contract.customerId, [Validators.required]],
+        spaceId: [contract.spaceId, [Validators.required]]
       });
     });
   }

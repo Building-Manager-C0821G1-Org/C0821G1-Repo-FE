@@ -80,20 +80,21 @@
                   <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center font-google-2">Thêm mới hợp đồng</h3>
                   <form  [formGroup]="contractsForm" (ngSubmit)="submit()">
                     <div class="row">
-                      <div class="col-md-4 mb-4">
+                      <div class="col-md-6 mb-6">
 
                         <div class="form-outline">
                           <label class="form-label" for="firstName">Mặt bằng<span
                             class="error"> (*)</span></label>
 <!--                          <input type="text" id="firstName" class="form-control form-control-lg"/>-->
                           <select id="firstName" class="form-select" aria-label="Default select example" formControlName="spaceId" >
-                            <option *ngFor="let space of spaces" [value]="space.id">{{space.name}}</option>
+<!--                            <option [ngValue]="null">&#45;&#45;Chọn&#45;&#45;</option>-->
+                            <option *ngFor="let space of spaces" [ngValue]="space.id">{{space.name}}</option>
                           </select>
                         </div>
-                        <small class="error">Mặt bằng không được để trống</small>
-
+                        <small class="error" *ngIf="contractsForm.get('spaceId').hasError('required')
+                        && contractsForm.get('spaceId').touched">Mặt bằng không được để trống</small>
                       </div>
-                      <div class="col-md-4 mb-4">
+                      <div class="col-md-6 mb-6">
 
                         <div class="form-outline">
                           <label class="form-label" for="customerName">Họ tên khách hàng<span
@@ -101,19 +102,20 @@
                           <select id="customerName" class="form-select" aria-label="Default select example" formControlName="customerId" >
                             <option *ngFor="let customer of customers" [value]="customer.id">{{customer.name}}</option>
                           </select>
-                          <small class="error">Họ tên không được để trống</small>
+                          <small class="error" *ngIf="contractsForm.get('customerId').hasError('required')
+                        && contractsForm.get('customerId').touched">Khách hàng phải được chọn</small>
 
                         </div>
                       </div>
-                      <div class="col-md-4 mb-4">
+<!--                      <div class="col-md-4 mb-4">-->
 
-                        <label for="select1" class="form-label select-label">Họ tên nhân viên<span
-                          class="error"> (*)</span></label>
-                        <br>
-                        <select id="select1" class="form-select" aria-label="Default select example" formControlName="employeeId" >
-                          <option *ngFor="let employee of employees" [value]="employee.id">{{employee.name}}</option>
-                        </select>
-                      </div>
+<!--                        <label for="select1" class="form-label select-label">Họ tên nhân viên<span-->
+<!--                          class="error"> (*)</span></label>-->
+<!--                        <br>-->
+<!--                        <select id="select1" class="form-select" aria-label="Default select example" formControlName="employeeId" >-->
+<!--                          <option *ngFor="let employee of employees" [value]="employee.id">{{employee.name}}</option>-->
+<!--                        </select>-->
+<!--                      </div>-->
                     </div>
 
                     <div class="row">
@@ -123,7 +125,8 @@
                             class="error"> (*)</span></label>
                           <input type="date" id="lastName2" class="form-control form-control-lg" formControlName="contractDateStart"/>
                         </div>
-                        <small class="error">Ngày phải lớn hơn ngày hiện tại</small>
+                        <small class="error"  *ngIf="contractsForm.get('contractDateStart')
+                        .hasError('required')&& contractsForm.get('contractDateStart').touched">Ngày bắt đầu không được để trống</small>
 
                       </div>
 
@@ -133,6 +136,9 @@
                             class="error"> (*)</span></label>
                           <input type="date" id="lastName3" class="form-control form-control-lg" formControlName="contractDateEnd"/>
                         </div>
+                        <small class="error"  *ngIf="contractsForm.get('contractDateEnd')
+                        .hasError('required')&& contractsForm.get('contractDateEnd').touched">Ngày kết thúc không được để trống</small>
+
                       </div>
                     </div>
 
@@ -148,6 +154,9 @@
                             formControlName="contractExpired"
                           />
                         </div>
+                        <small class="error"  *ngIf="contractsForm.get('contractExpired')
+                        .hasError('required')&& contractsForm.get('contractExpired').touched">Kì hạn không được để trống</small>
+
                       </div>
 
                       <div class="col-md-6 mb-4 pb-2">
@@ -159,6 +168,8 @@
                           <input type="text" id="emailAddress"
                                  class="form-control form-control-lg" formControlName="price"/>
                         </div>
+                        <small class="error"  *ngIf="contractsForm.get('price')
+                        .hasError('required')&& contractsForm.get('price').touched">Giá tiền không được để trống</small>
 
                       </div>
 
@@ -175,6 +186,9 @@
                             formControlName="contractTotal"
                           />
                         </div>
+                        <small class="error"  *ngIf="contractsForm.get('contractTotal')
+                        .hasError('required')&& contractsForm.get('contractTotal').touched">Tổng tiền không được để trống</small>
+
                       </div>
 
                       <div class="col-md-6 mb-4 pb-2">
@@ -184,8 +198,10 @@
                             <span
                               class="error"> (*)</span></label>
                           <input type="email" id="emailAddress1"
-                                 class="form-control form-control-lg" readonly/>
+                                 class="form-control form-control-lg"  formControlName="contractDeposit"/>
                         </div>
+                        <small class="error"  *ngIf="contractsForm.get('contractDeposit')
+                        .hasError('required')&& contractsForm.get('contractDeposit').touched">Tiền cọc không được để trống</small>
 
                       </div>
                     </div>
@@ -198,8 +214,11 @@
                             <span
                               class="error"> (*)</span></label>
                           <input type="email" id="emailAddress2"
-                                 class="form-control form-control-lg" readonly/>
+                                 class="form-control form-control-lg" formControlName="contractTaxCode"/>
                         </div>
+                        <small class="error"  *ngIf="contractsForm.get('contractTaxCode')
+                        .hasError('required')&& contractsForm.get('contractTaxCode').touched">Mã số thuế không được để trống</small>
+
                       </div>
                       <div class="col-6">
 
@@ -223,7 +242,11 @@
                             class="error"> (*)</span></label>
                           <textarea formControlName="contractContent" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
+                        <small class="error"  *ngIf="contractsForm.get('contractContent')
+                        .hasError('required')&& contractsForm.get('contractContent').touched">Nội dung không được để trống</small>
+
                       </div>
+
                     </div>
 
                     <div class="d-flex justify-content-end pt-3 mt-5">
