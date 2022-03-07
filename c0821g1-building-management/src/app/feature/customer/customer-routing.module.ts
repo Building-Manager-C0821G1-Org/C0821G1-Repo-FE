@@ -5,7 +5,7 @@ import {CustomerDeleteComponent} from './customer-delete/customer-delete.compone
 
 
 const routes: Routes = [
-  // {path: '', redirectTo: 'list', pathMatch: 'full'},
+  {path: '', redirectTo: 'list', pathMatch: 'full'},
   {path: 'list', component: CustomerListComponent},
   {path: 'delete/:id', component: CustomerDeleteComponent}
 ];

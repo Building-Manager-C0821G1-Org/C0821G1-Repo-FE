@@ -14,7 +14,7 @@ export class CustomerService {
   }
 
   // VyLTT - get by id
-  getCustomerById(customerId: number): Observable<Customer> {
+  getCustomerById(customerId: number): Observable<any> {
     return this.httpClient.get<Customer>(this.API_URL + '/' + customerId);
   }
 
@@ -24,15 +24,15 @@ export class CustomerService {
   }
 
   // VyLTT - search customer by name, identify number, email, phone
-  findCustomer(page, customerName, customerIdentifyNumber, customerPhone, customerEmail): Observable<any> {
-    return this.httpClient.get(this.API_URL + '/customer-list?page=' + page +
-      '&name=' + customerName +
-      '&identify=' + customerIdentifyNumber +
-      '&phone=' + customerPhone +
-      '&email=' + customerEmail);
+  search(page, customerName, customerIdentifyNumber, customerPhone, customerEmail): Observable<any> {
+    return this.httpClient.get(this.API_URL + '/search?page=' + page +
+      '&customer_name=' + customerName +
+      '&customer_identify_number=' + customerIdentifyNumber +
+      '&customer_phone=' + customerPhone +
+      '&customer_email=' + customerEmail);
   }
 
-  // VyLTT - get delete customer
+  // VyLTT - delete customer
   deleteCustomer(deleteId: number) {
     return this.httpClient.delete<void>(this.API_URL + '/' + deleteId);
   }

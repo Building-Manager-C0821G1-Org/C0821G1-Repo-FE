@@ -1,89 +1,139 @@
-<div class="col-lg-10">
-  <!--            <div class="content-container">-->
-  <!--                <div class="container-fluid">-->
-  <h4>
-    <button type="button" class="add-button btn-lg"><i class="fa-solid fa-plus me-2"></i>Tạo mới
-    </button>
-    <button type="button" class="delete-button btn-lg">Xóa tất cả</button>
-  </h4>
-  <table class="table table-hover bg-light">
-    <thead class="text-center font-google-1 fs-5 "
-           style="background-color: #efb578; white-space: nowrap; overflow: hidden;">
-    <tr style="color: #452d14">
-      <th scope="col">STT</th>
-      <th scope="col">Mã Khách Hàng</th>
-      <th scope="col">Họ Tên</th>
-      <th scope="col">CMND</th>
-      <th scope="col">Email</th>
-      <th scope="col">Số Điện Thoại</th>
-      <th scope="col">Ngày Sinh</th>
-      <th scope="col">Địa Chỉ</th>
-      <th scope="col">Tình trạng</th>
-      <th>Chức Năng</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let customerObj of customers; index as i">
-      <th scope="row" class="text-center">{{i + 1}}</th>
-      <td>{{customerObj.customerCode}}</td>
-      <td>{{customerObj.customerName}}</td>
-      <td>{{customerObj.customerIdentifyNumber}}</td>
-      <td>{{customerObj.customerEmail}}</td>
-      <td>{{customerObj.customerPhone}}</td>
-      <td>{{customerObj.customerDateOfBirth}}</td>
-      <td>{{customerObj.customerAddress}}</td>
-      <td>{{customerObj.customerStatus}}</td>
-      <td class="text-center">
-        <a type="button" class="btn btn-light me-3 edit-button">
-          <i class="fa-solid fa-pen"></i>
-        </a>
-        <a type="button" class="btn btn-light delete-button" data-bs-toggle="modal"
-                data-bs-target="#deleteModal" (click)="delete(customerObj.customerId)">
-          <i class="fa-solid fa-trash-can"></i>
-        </a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-  <!--PAGEABLE-->
-<!--  <nav aria-label="Page navigation example">-->
-<!--    <ul class="pagination justify-content-center">-->
-<!--      <li class="page-item">-->
-<!--        <a class="page-link"-->
-<!--           th:if="${employeePage.hasPrevious()}"-->
-<!--           th:href="@{/employee/list-page(page = ${employeePage.number - 1})}">-->
-<!--          Previous-->
-<!--        </a>-->
-<!--      </li>-->
-<!--      <li class="page-item" th:each="pageNo: ${#numbers.sequence(0,employeePage.totalPages - 1)}">-->
-<!--        <a class="page-link" th:href="@{/employee/list-page(page = ${pageNo})}" th:text="${pageNo}"></a>-->
-<!--      </li>-->
-<!--      <li class="page-item">-->
-<!--        <a class="page-link"-->
-<!--           th:if="${employeePage.hasNext()}" th:href="@{/employee/list-page(page = ${employeePage.number + 1})}">-->
-<!--          Next-->
-<!--        </a>-->
-<!--      </li>-->
-<!--    </ul>-->
-<!--  </nav>-->
-</div>
-<!--DELETE MODAL-->
-<div class="modal" tabindex="-1" id="deleteModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Are you sure to delete</h5>
-        <!--        <h5 class="text-danger modal-title ms-1" id="name-delete"></h5>-->
-        <!--        <h5 class="modal-title ms-1">from list ?</h5>-->
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!--                        <p>Modal body text goes here.</p>-->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <a id="link-delete" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteCustomer()">Delete</a>
-      </div>
+<h2 class="text-center m-5 font-google-2">Danh sách khách hàng</h2>
+<div class="container">
+
+  <!--  SEARCH-->
+
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-10">
+      <form #myNgForm="ngForm" (ngSubmit)="search()">
+        <div class=" search row d-flex justify-content-end mb-4">
+          <div class="form-group" style="text-align: center; width: 200px">
+            <input id="customerName" [(ngModel)]="customer_name" [ngModelOptions]="{standalone: true}"
+                   class="form-control" type="text" placeholder="Họ Tên">
+          </div>
+          <div class="form-group" style="text-align: right; width: 200px">
+            <div style="text-align: center">
+              <input [(ngModel)]="customer_email" [ngModelOptions]="{standalone: true}"
+                     type="text" class="form-control" placeholder="Email">
+            </div>
+          </div>
+          <div class="form-group" style="text-align: right; width: 200px">
+            <div style="text-align: center">
+            </div>
+            <div>
+              <input [(ngModel)]="customer_identify_number" [ngModelOptions]="{standalone: true}"
+                     type="text" class="form-control" placeholder="CMND">
+            </div>
+          </div>
+          <div class="form-group" style="text-align: right; width: 200px">
+            <input [(ngModel)]="customer_phone" [ngModelOptions]="{standalone: true}"
+                   type="text" class="form-control" placeholder="Số Điện Thoại">
+          </div>
+          <div class="form-group" style="text-align: right; width: 150px">
+            <button (click)="onSubmit()" class="btn btn-light btn-outline-success" style="border-radius: 5px"><i
+              class="fa-solid fa-magnifying-glass"></i>Tìm Kiếm
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!--<div class="container">-->
+  <div class="row">
+    <!--<div class="col-lg-10">-->
+    <!--            <div class="content-container">-->
+    <!--                <div class="container-fluid">-->
+    <h4>
+      <button type="button" class="add-button btn-lg"><i class="fa-solid fa-plus me-lg-2"></i>Tạo mới
+      </button>
+      <button type="button" class="delete-button btn-lg ms-lg-2">Xóa tất cả</button>
+    </h4>
+  </div>
+  <div class="row">
+    <table class="table table-hover bg-light">
+      <thead class="text-center font-google-1 fs-5 text-overflow"
+             style="background-color: #efb578">
+      <tr style="color: #452d14">
+        <th scope="col">STT</th>
+        <th scope="col">Mã Khách Hàng</th>
+        <th scope="col">Họ Tên</th>
+        <th scope="col">CMND</th>
+        <th scope="col">Email</th>
+        <th scope="col">Số Điện Thoại</th>
+        <th scope="col">Ngày Sinh</th>
+        <th scope="col">Địa Chỉ</th>
+        <th scope="col">Tình trạng</th>
+        <th>Chức Năng</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="text-overflow" *ngFor="let customerObj of customers; index as i">
+        <th scope="row" class="text-center">{{i + 1}}</th>
+        <td class="text-center">{{customerObj.customerCode}}</td>
+        <td>{{customerObj.customerName}}</td>
+        <td>{{customerObj.customerIdentifyNumber}}</td>
+        <td>{{customerObj.customerEmail}}</td>
+        <td>{{customerObj.customerPhone}}</td>
+        <td>{{customerObj.customerDateOfBirth}}</td>
+        <td>{{customerObj.customerAddress}}</td>
+        <td>{{customerObj.customerStatus}}</td>
+        <td class="text-center">
+          <a type="button" class="btn btn-light me-3 edit-button">
+            <i class="fa-solid fa-pen"></i>
+          </a>
+          <a type="button" class="btn btn-light delete-button" (click)="openDialog(customerObj.customerId)">
+            <i class="fa-solid fa-trash-can"></i>
+          </a>
+        </td>
+<!--        <p>{{message}}</p>-->
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!--PAGINATION-->
+
+  <div class="align-content-center">
+    <div class="me-5 pe-4 ">
+      <ul class="pagination pagination-sm justify-content-enter pagination-lg" style="margin:20px 0">
+        <div *ngIf="this.page > 0 then previous"></div>
+        <ng-template #previous>
+          <li class="page-item">
+            <button
+              (click)="previousClick(1)" class="page-link" type="button">Trang trước
+            </button>
+          </li>
+        </ng-template>
+
+        <li class="page-item">
+          <input class="page-link" type="number" value="1" min="1" [max]="totalPages"
+                 placeholder="{{totalPages}}" aria-label="Username" [value]="page + 1"
+                 aria-describedby="basic-addon1"
+                 (change)="findPagination($event.target.value)">
+        </li>
+        <li class="page-item ">
+          <span class="input-group-text page-link">{{page + 1}}/{{totalPages}}</span>
+        </li>
+
+        <div *ngIf="this.page  < this.totalPages-1 then nexts "></div>
+        <ng-template #nexts>
+          <li class="page-item">
+            <button (click)="nextClick(1)" class="page-link" type="button">Trang sau</button>
+          </li>
+        </ng-template>
+        <li>
+          <input type="text" class="form-control ms-lg-2" style="width: 100px"
+                 placeholder="Tới trang...">
+        </li>
+        <li>
+          <button class="btn btn-light btn-outline-success" style="border-radius: 5px">
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
+<!--</div>-->
