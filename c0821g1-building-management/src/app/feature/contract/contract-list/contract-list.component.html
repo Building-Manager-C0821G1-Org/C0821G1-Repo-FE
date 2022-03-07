@@ -1,0 +1,62 @@
+<div class="container">
+  <h1 style="text-align: center;margin-top: 20px"><a routerLink="/contract/list">Danh sách hợp đồng</a></h1>
+
+
+  <!--  <div style="margin-bottom: 20px">-->
+  <!--    <form class="form-inline my-2 my-lg-0">-->
+  <!--      <input type="search" (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel-->
+  <!--             name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search customer..." required>-->
+  <!--    </form>-->
+  <!--  </div>-->
+
+    <p><a routerLink="/contract/create">add</a></p>
+
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Họ tên</th>
+      <th>Tên nhóm</th>
+      <th>Tên đề tài</th>
+      <th>Giáo viên HD</th>
+      <th>Email</th>
+      <th>Số Điện Thoại</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let contract of contracts ">
+      <td>{{contract.contractId}}</td>
+      <td>{{contract.contractContent}}</td>
+      <td>{{contract.contractDateStart }}</td>
+      <td>{{contract.contractDateEnd}}</td>
+      <td>{{contract.contractExpired}}</td>
+      <td>{{contract.price}}</td>
+      <td>{{contract.contractTotal}}</td>
+
+
+      <td><a [routerLink]="['/contract/edit',contract.contractId]">
+       edit
+      </a></td>
+
+      <!--      </td>-->
+      <!--             <td><a [routerLink]="['/customer/delete',customer.id]" > <mat-icon>delete</mat-icon></a></td>-->
+
+<!--      <td>-->
+<!--        <a style="cursor: pointer" (click)="openDialog(student)">-->
+<!--          <mat-icon>delete</mat-icon>-->
+<!--        </a>-->
+<!--      </td>-->
+    </tr>
+
+
+    </tbody>
+  </table>
+  <!--  <p style="text-align: center">-->
+  <!--    <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>-->
+  <!--  </p>-->
+
+</div>
+
+
+
+

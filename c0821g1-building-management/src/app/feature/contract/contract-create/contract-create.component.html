@@ -1,0 +1,249 @@
+<div class="row">
+
+  <div class="col-3">
+    <div class="sidebar-container">
+      <div class="sidebar-logo">
+        Quản lý tòa nhà
+        <!--        <img src="../images/logo.png" style="height: 80px"/>-->
+      </div>
+      <ul class="sidebar-navigation">
+        <li class="header">Trang chủ</li>
+        <li>
+          <a href="#">
+            <i class="fa fa-home" aria-hidden="true"></i> Nhà đất
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-tachometer" aria-hidden="true"></i> Tìm mua
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-tachometer" aria-hidden="true"></i> Tìm thuê
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-tachometer" aria-hidden="true"></i> Giá nhà đất
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-tachometer" aria-hidden="true"></i> Môi giới
+          </a>
+        </li>
+        <li class="header">Xem thêm</li>
+        <li>
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                 class="bi bi-brightness-alt-high-fill" viewBox="0 0 16 16">
+              <path
+                d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4z"/>
+            </svg>
+            Phong thủy
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-tachometer" aria-hidden="true"></i> Nội thất
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-tachometer" aria-hidden="true"></i> Phong cách
+          </a>
+        </li>
+        <li class="header">Liên hệ</li>
+        <li>
+          <a href="#">
+            <i class="fa fa-users" aria-hidden="true"></i> Hỗ trợ
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-tachometer" aria-hidden="true"></i> Tự vấn
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-9">
+    <div class="container-fluid">
+      <div class=" gradient-custom ">
+        <div class="container py-5 h-100">
+          <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+              <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                <div class="card-body p-4 p-md-5 ">
+                  <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center font-google-2">Thêm mới hợp đồng</h3>
+                  <form  [formGroup]="contractsForm" (ngSubmit)="submit()">
+                    <div class="row">
+                      <div class="col-md-4 mb-4">
+
+                        <div class="form-outline">
+                          <label class="form-label" for="firstName">Mặt bằng<span
+                            class="error"> (*)</span></label>
+<!--                          <input type="text" id="firstName" class="form-control form-control-lg"/>-->
+                          <select id="firstName" class="form-select" aria-label="Default select example" formControlName="spaceId" >
+                            <option *ngFor="let space of spaces" [value]="space.id">{{space.name}}</option>
+                          </select>
+                        </div>
+                        <small class="error">Mặt bằng không được để trống</small>
+
+                      </div>
+                      <div class="col-md-4 mb-4">
+
+                        <div class="form-outline">
+                          <label class="form-label" for="customerName">Họ tên khách hàng<span
+                            class="error"> (*)</span></label>
+                          <select id="customerName" class="form-select" aria-label="Default select example" formControlName="customerId" >
+                            <option *ngFor="let customer of customers" [value]="customer.id">{{customer.name}}</option>
+                          </select>
+                          <small class="error">Họ tên không được để trống</small>
+
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-4">
+
+                        <label for="select1" class="form-label select-label">Họ tên nhân viên<span
+                          class="error"> (*)</span></label>
+                        <br>
+                        <select id="select1" class="form-select" aria-label="Default select example" formControlName="employeeId" >
+                          <option *ngFor="let employee of employees" [value]="employee.id">{{employee.name}}</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                          <label class="form-label" for="lastName2">Ngày bắt đầu thuê<span
+                            class="error"> (*)</span></label>
+                          <input type="date" id="lastName2" class="form-control form-control-lg" formControlName="contractDateStart"/>
+                        </div>
+                        <small class="error">Ngày phải lớn hơn ngày hiện tại</small>
+
+                      </div>
+
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                          <label class="form-label" for="lastName3">Ngày kết thúc thuê<span
+                            class="error"> (*)</span></label>
+                          <input type="date" id="lastName3" class="form-control form-control-lg" formControlName="contractDateEnd"/>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline datepicker w-100">
+                          <label for="birthdayDate" class="form-label">Kì hạn (tháng)</label>
+                          <input
+                            type="text"
+                            class="form-control form-control-lg"
+                            id="birthdayDate"
+                            formControlName="contractExpired"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-4 pb-2">
+
+                        <div class="form-outline">
+                          <label class="form-label" for="emailAddress">Giá tiền mỗi tháng(VND)
+                            <span
+                              class="error"> (*)</span></label>
+                          <input type="text" id="emailAddress"
+                                 class="form-control form-control-lg" formControlName="price"/>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline datepicker w-100">
+                          <label for="birthdayDate1" class="form-label">Tổng tiền(VND)</label>
+                          <input
+                            type="text"
+                            class="form-control form-control-lg"
+                            id="birthdayDate1"
+                            formControlName="contractTotal"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-4 pb-2">
+
+                        <div class="form-outline">
+                          <label class="form-label" for="emailAddress1">Tiền cọc(VND)
+                            <span
+                              class="error"> (*)</span></label>
+                          <input type="email" id="emailAddress1"
+                                 class="form-control form-control-lg" readonly/>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="row">
+
+                      <div class="col-6">
+
+                        <div class="form-outline">
+                          <label class="form-label" for="emailAddress2">Mã số thuế
+                            <span
+                              class="error"> (*)</span></label>
+                          <input type="email" id="emailAddress2"
+                                 class="form-control form-control-lg" readonly/>
+                        </div>
+                      </div>
+                      <div class="col-6">
+
+                        <div class="form-outline">
+                          <label class="form-label" for="emailAddress3">Hình ảnh hợp đồng
+                            <span
+                              class="error"> (*)</span></label>
+                          <input type="file" id="emailAddress3"
+                                 class="form-control form-control-lg" readonly/>
+                          <img class="img-fluid"
+                               src="https://vnn-imgs-f.vgcloud.vn/2021/04/12/18/can-ho-studio.jpg"
+                               alt="">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="exampleFormControlTextarea1">Nội dung hợp đồng <span
+                            class="error"> (*)</span></label>
+                          <textarea formControlName="contractContent" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end pt-3 mt-5">
+                      <button class="add-button button-radius btn-lg ms-2 me-3">Tạo
+                        mới
+                      </button>
+                      <button type="reset" class="reset-button button-radius btn-lg ms-2 me-3">
+                        Đặt lại
+                      </button>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
