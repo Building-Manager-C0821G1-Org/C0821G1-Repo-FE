@@ -1,0 +1,126 @@
+<!--    table list____________________________________________________________________________________________________________-->
+
+<div class="content-container">
+  <div class="container-fluid">
+    <h2 class="text-center  m-5 font-google-2 ">Danh Sách Tầng Lầu</h2>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+        </div>
+
+        <div class="col-9">
+          <form>
+            <div class=" search row d-flex justify-content-end align-items-center mb-4 text-right float-right">
+              <div class="col-lg-2 form-group" style="text-align: center">
+                <input id="#" class="form-control" type="text" placeholder="Tên tầng">
+              </div>
+              <div class="col-lg-2 form-group" style="text-align: right">
+                <div style="text-align: center">
+                  <input type="text" class="form-control" placeholder="Diện tích">
+                </div>
+              </div>
+              <div class="col-lg-2 form-group" style="text-align: right">
+                <div style="text-align: center">
+                </div>
+                <div>
+                  <input type="text" class="form-control" placeholder="Loại tầng">
+                </div>
+              </div>
+              <div class="col-lg-2 form-group" style="text-align: right">
+                <input type="text" id="" class="form-control" placeholder="Trạng thái">
+              </div>
+              <div class="col-lg-2 form-group" style="text-align: right">
+                <button class="btn btn-light mt-xl-1 btn-outline-success" style="border-radius: 5px"><i
+                  class="fa-solid fa-magnifying-glass"></i> Tìm Kiếm
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h4 class="text-start">
+            <button type="button" class="add-button btn-lg"><i class="fa-solid fa-plus me-2 "></i>Tạo mới
+            </button>
+            <button type="button" class="delete-button btn-lg ">Xóa tất cả</button>
+          </h4>
+        </div>
+        <table class="table table-hover">
+          <thead class="text-center font-google-1 fs-5 "
+                 style="background-color: #efb578; white-space: nowrap; overflow: hidden;">
+          <tr style="color: #452d14">
+            <th scope="col">Số thứ tự</th>
+            <th scope="col">Tên tầng lầu</th>
+            <th scope="col">Mã tầng lầu</th>
+            <th scope="col">Diện tích(m2)</th>
+            <th scope="col">Sức chứa</th>
+            <th scope="col">Trạng thái</th>
+            <th scope="col">Loại tầng</th>
+            <th colspan="2">Chức năng</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let floors of floorsList;index as i">
+            <td>
+                {{i + 1}}
+            </td>
+            <td>
+                {{floors.floorName}}
+            </td>
+            <td>
+                {{floors.floorCode}}
+            </td>
+            <td>
+                {{floors.floorArea}}
+            </td>
+            <td>
+                {{floors.floorCapacity}}
+            </td>
+            <td>
+                {{floors.floorsStatus.floorStatusName}}
+            </td>
+            <td>
+                {{floors.floorsType.floorTypeName}}
+            </td>
+            <td>
+                <button type="button" class="btn btn-light me-3 edit-button">
+                  <i class="fa-solid fa-pen"></i>
+                </button>
+
+                <button type="button" class="btn btn-light delete-button" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal" (click)="getFloors(floors.floorId,floors.floorName)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </td>
+
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xóa tầng lầu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn có muốn xóa {{floorName}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteFloors()">Xóa</button>
+      </div>
+    </div>
+  </div>
+</div>
