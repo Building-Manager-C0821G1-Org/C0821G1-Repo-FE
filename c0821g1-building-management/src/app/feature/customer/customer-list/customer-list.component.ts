@@ -36,8 +36,21 @@ export class CustomerListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.search();
-    // this.customerService.getAllCustomer().subscribe(value => {
+    this.customerService.search(this.page, this.customer_name, this.customer_identify_number, this.customer_phone, this.customer_email)
+      .subscribe(data => {
+          console.log(data);
+          if (data !== null) {
+            // console.log('content 0' + data.content);
+            this.customers = data.content;
+            this.totalPages = data.totalPages;
+            this.size = data.size;
+            this.page = data.pageable.pageNumber ;
+            this.message = '';
+          } else {
+            this.message = 'Không tìm thấy !!!';
+          }
+        }
+      );    // this.customerService.getAllCustomer().subscribe(value => {
     //   this.customers = value;
     //   console.log(value);
     // }, error => {
@@ -126,19 +139,6 @@ export class CustomerListComponent implements OnInit {
       data: customerData,
       disableClose: true
     });
-    // console.log(customerObjId);
-    // this.customerService.getCustomerById(customerObjId).subscribe( value => {
-    //   console.log(value);
-    //   this.dialogDelete.open(DeleteCustomerComponent, {
-    //     data: value,
-    //     width: '30%'
-    //   }).afterClosed().subscribe((value) => {
-    //     if (value === 'delete') {
-    //       this.ngOnInit();
-    //     }
-    //   });
-    // });
-
       dialogRef.afterClosed().subscribe(value => {
         console.log('Hộp thoại đã được đóng');
         this.ngOnInit();

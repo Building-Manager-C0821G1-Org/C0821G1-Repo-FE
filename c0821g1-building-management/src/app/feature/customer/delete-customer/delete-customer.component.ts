@@ -23,13 +23,11 @@ export class DeleteCustomerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
   deleteEmployee() {
     this.subscription = this.customerService.deleteCustomerById(this.customer.customerId).subscribe(data => {
       this.matDialogRef.close();
-
     });
 
   }
