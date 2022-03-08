@@ -54,17 +54,6 @@ export class CustomerListComponent implements OnInit {
     );
   }
 
-  // deleteCustomer() {
-  //   this.customerService.deleteCustomer(this.idDelete).subscribe(value => {
-  //     }, error => {
-  //     },
-  //     () => {
-  //       this.customerService.getAllCustomer().subscribe(value => {
-  //         this.customers = value;
-  //       });
-  //     });
-  // }
-
   // VyLTT - search customer
   search() {
     console.log(this.customer_name);
