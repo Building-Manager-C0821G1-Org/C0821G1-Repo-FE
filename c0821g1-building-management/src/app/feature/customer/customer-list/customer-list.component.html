@@ -40,25 +40,34 @@
     </div>
   </div>
 
+<!--  THÊM MỚI-->
+
   <!--<div class="container">-->
   <div class="row">
-    <!--<div class="col-lg-10">-->
-    <!--            <div class="content-container">-->
-    <!--                <div class="container-fluid">-->
-    <h4>
-      <button type="button" class="add-button btn-lg"><i class="fa-solid fa-plus me-lg-2"></i>Tạo mới
-      </button>
-      <!--      <button type="button" class="delete-button btn-lg ms-lg-2">Xóa tất cả</button>-->
-    </h4>
-  </div>
-  <ng-container *ngIf="message !== '';else elseBlock">
+  <!--<div class="col-lg-10">-->
+  <!--            <div class="content-container">-->
+  <!--                <div class="container-fluid">-->
+  <h4>
+    <button type="button" class="add-button btn-lg"><i class="fa-solid fa-plus me-lg-2"></i>Tạo mới
+    </button>
+    <!--      <button type="button" class="delete-button btn-lg ms-lg-2">Xóa tất cả</button>-->
+  </h4>
 
-    <h1 style="color: red; text-align: center; width: 100%; margin-top: 50px">{{message}}</h1>
+<!--    ERROR: TÌM KIẾM KO THẤY-->
+
+</div>
+  <ng-container *ngIf="message !== '';else elseBlock">
+    <div class="bg-light">
+      <h1 style="color: red; text-align: center; width: 100%; margin-top: 50px">{{message}}</h1>
+    </div>
   </ng-container>
   <ng-template #elseBlock>
+
+<!--    TABLE CUSTOMER-->
+
     <div class="row">
       <table class="table table-hover bg-light">
-        <thead class="text-center font-google-1 fs-5 text-overflow"
+        <thead class="text-center font-google-1 fs-5 text-overflow align-middle"
                style="background-color: #efb578">
         <tr style="color: #452d14">
           <th scope="col">STT</th>
@@ -74,7 +83,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="text-overflow" *ngFor="let customerObj of customers; index as i">
+        <tr class="text-overflow align-middle" *ngFor="let customerObj of customers; index as i">
           <th scope="row" class="text-center">{{i + 1}}</th>
           <td class="text-center">{{customerObj.customerCode}}</td>
           <td>{{customerObj.customerName}}</td>
@@ -83,7 +92,7 @@
           <td class="text-center">{{customerObj.customerPhone}}</td>
           <td>{{customerObj.customerDateOfBirth}}</td>
           <td>{{customerObj.customerAddress}}</td>
-          <td>{{customerObj.customerStatus}}</td>
+          <td class="text-center">{{customerObj.customerStatus}}</td>
           <td class="text-center">
             <a type="button" class="btn btn-light me-3 edit-button">
               <i class="fa-solid fa-pen"></i>
