@@ -1,12 +1,16 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {ChangePasswordComponent} from './feature/user/change-password/change-password.component';
+
 
 
 const routes: Routes = [
   {
-    path: 'user/:id',
-    component: ChangePasswordComponent
+  path: 'employee',
+  loadChildren: () => import('./feature/employee/employee.module').then(module => module.EmployeeModule)
+},
+  {
+    path: 'user',
+    loadChildren: () => import('./feature/user/user.module').then(module => module.UserModule)
   },
 
 ];
