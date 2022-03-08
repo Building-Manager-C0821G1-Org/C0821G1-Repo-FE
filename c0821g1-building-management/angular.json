@@ -122,6 +122,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "c0821g1-building-management"
+    }
+  },
+  "defaultProject": "c0821g1-building-management",
+  "cli": {
+    "analytics": false
+  }
 }
