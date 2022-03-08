@@ -7,16 +7,9 @@ import {Contract} from '../../model/contract/contract';
   providedIn: 'root'
 })
 export class ContractService {
-
-  API_URL = 'http://localhost:8080/api/contract/';
   private API = 'http://localhost:8080/api/contract';
 
   constructor(private httpClient: HttpClient) { }
-  // list
-  // findAllContract(): Observable<Contract[]> {
-  //   return this.httpClient.get<Contract[]>(this.API_URL + 'list');
-  // }
-
   // list-search-page
   findAllContract(page, name, code, start, end): Observable<any> {
     return this.httpClient.get(this.API + '/contract-list?page=' + page + '&name=' + name
@@ -30,4 +23,7 @@ export class ContractService {
   deleteContract(contractId): Observable<any> {
     return this.httpClient.delete(this.API + '/delete-contract/' + contractId);
   }
+  // errorContract(): Observable<any>{
+  //   return this.httpClient.get(this.API + '/error-contract/');
+  // }
 }

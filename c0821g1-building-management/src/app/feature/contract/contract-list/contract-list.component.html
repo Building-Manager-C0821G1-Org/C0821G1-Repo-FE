@@ -1,204 +1,143 @@
-<!--body-->
-<div class="row ">
-  <!--    sidebar-->
-  <div class="col-3">
-    <div class="sidebar-container">
-      <div class="sidebar-logo">
-        Quản lý tòa nhà
-        <!--        <img src="../images/logo.png" style="height: 80px"/>-->
-      </div>
-      <ul class="sidebar-navigation">
-        <li class="header">Trang chủ</li>
-        <li>
-          <a href="#">
-            <i class="fa fa-home" aria-hidden="true"></i> Nhà đất
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-tachometer" aria-hidden="true"></i> Tìm mua
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-tachometer" aria-hidden="true"></i> Tìm thuê
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-tachometer" aria-hidden="true"></i> Giá nhà đất
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-tachometer" aria-hidden="true"></i> Môi giới
-          </a>
-        </li>
-        <li class="header">Xem thêm</li>
-        <li>
-          <a href="#">
-            <svg xmlns="
-                        " width="25" height="25" fill="currentColor"
-                 class="bi bi-brightness-alt-high-fill" viewBox="0 0 16 16">
-              <path
-                d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4z"/>
-            </svg>
-            Phong thủy
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-tachometer" aria-hidden="true"></i> Nội thất
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-tachometer" aria-hidden="true"></i> Phong cách
-          </a>
-        </li>
-        <li class="header">Liên hệ</li>
-        <li>
-          <a href="#">
-            <i class="fa fa-users" aria-hidden="true"></i> Hỗ trợ
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-tachometer" aria-hidden="true"></i> Tự vấn
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!--    content-->
-  <div class="col-9">
-    <div class="row">
-      <div class="content">
-        <h2 class="text-center m-5 font-google-2">Danh Sách Hợp Đồng</h2>
-        <div class="container">
-          <div class="row">
-            <div class="col-3">
-            </div>
-            <div class="col-9">
-              <form #myNgForm="ngForm">
-                <div class=" search row d-flex justify-content-end align-items-center mb-4 text-right float-right">
-                  <div class="col-lg-2 form-group" style="text-align: center">
-                    <input [(ngModel)]="name" class="form-control" id="name" type="text" name="name" placeholder="Tên">
-                  </div>
-                  <div class="col-lg-2 form-group" style="text-align: right">
-                    <div style="text-align: center">
-                      <input [(ngModel)]="code" class="form-control" id="code" type="text" name="code" placeholder="Mã mặt bằng">
-                    </div>
-                  </div>
-                  <div class="col-lg-2 form-group" style="text-align: right">
-                    <div style="text-align: center">
-                      <input [(ngModel)]="start" class="form-control" id="start" type="text" name="start" placeholder="ngày bắt đầu">
-                    </div>
-                  </div>
-                  <div class="col-lg-2 form-group" style="text-align: right">
-                    <input [(ngModel)]="end" class="form-control" id="end" type="text" name="end" placeholder="Ngày kết thúc">
-                  </div>
-                  <div class="col-lg-2 form-group" style="text-align: right">
-                    <button (click)="onSubmit()" class="btn btn-light mt-xl-1 btn-outline-success"
-                            style="border-radius: 5px">
-                      <i class="fa-solid fa-magnifying-glass"></i> Tìm Kiếm
-                    </button>
-                  </div>
-                </div>
-              </form>
-              <div *ngIf="message!=='1'" class="text-left row col-2 fs-5">
-                <!-- /.feature title -->
-                <h4 class="text-danger fst-italic alert-danger">{{message}}</h4>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <h4>
-                <button type="button" class="add-button btn-lg"><i class="fa-solid fa-plus me-2"></i>Tạo
-                  mới
-                </button>
-              </h4>
-            </div>
+<h2 class="text-center m-5 font-google-2">Danh sách hợp đồng</h2>
+<div class="container">
 
-            <table class="table table-hover bg-light">
-              <thead class="text-center font-google-1 fs-5 "
-                     style="background-color: #efb578; white-space: nowrap; overflow: hidden;">
-              <tr style="color: #452d14">
-                <th scope="col">Stt</th>
-                <th scope="col" style="text-align: left">ID</th>
-                <th scope="col" style="text-align: left">Mã mặt bằng</th>
-                <th scope="col" style="text-align: left">Mã khách hàng</th>
-                <th scope="col" style="text-align: left">Tên khách hàng</th>
-                <th scope="col" style="text-align: left">CMND</th>
-                <th scope="col" style="text-align: left">Ngày bắt đầu</th>
-                <th scope="col" style="text-align: left">Ngày kết thúc</th>
-                <th scope="col" style="text-align: left">kỳ hạn</th>
-                <th scope="col" style="text-align: left">Đang thuê</th>
-                <th scope="col" style="text-align: left">Chức Năng</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let s of contract; index as i ">
-                <th scope="row">{{i + 1}}</th>
-                <td>{{s.contractId}}</td>
-                <td>{{s.spaces.spaceCode}}</td>
-                <td>{{s.customer.customerCode}}</td>
-                <td>{{s.customer.customerName}}</td>
-                <td>{{s.customer.customerIdentifyNumber}}</td>
-                <td>{{s.contractDateStart | date: 'dd/MM/yyyy'}}</td>
-                <td>{{s.contractDateEnd | date: 'dd/MM/yyyy'}}</td>
-                <td>{{s.contractExpred}}(tháng)</td>
-                <td *ngIf="s.checkFlag > 0; else blockContract ">
-                      <i class="fa-solid fa-square-check"></i>
-                </td>
-                <ng-template #blockContract>
-                  <td> <i class="fa-solid fa-square"></i></td>
-                </ng-template>
-                <td>
-                  <button type="button" class="btn btn-light me-3 edit-button">
-                    <i class="fa-solid fa-pen"></i>
-                  </button>
-                  <button type="submit" class="btn btn-light delete-button" (click)="openDialog(s.contractId)">
-                    <i class="fa-solid fa-trash-can"></i>
-                  </button>
-                </td>
-              </tr>
-              </tbody>
-            </table>
+  <!--  SEARCH-->
+
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-10">
+      <form #myNgForm="ngForm">
+        <div class=" search row d-flex justify-content-end align-items-center mb-4 text-right float-right">
+          <div class="col-lg-2 form-group" style="text-align: center">
+            <input [(ngModel)]="name" class="form-control" id="name" type="text" name="name" placeholder="Tên">
+          </div>
+          <div class="col-lg-2 form-group" style="text-align: right">
+            <div style="text-align: center">
+              <input [(ngModel)]="code" class="form-control" id="code" type="text" name="code"
+                     placeholder="Mã mặt bằng">
+            </div>
+          </div>
+          <div class="col-lg-2 form-group" style="text-align: right">
+            <div style="text-align: center">
+              <input [(ngModel)]="start" class="form-control" id="start" type="text" name="start"
+                     placeholder="ngày bắt đầu">
+            </div>
+          </div>
+          <div class="col-lg-2 form-group" style="text-align: right">
+            <input [(ngModel)]="end" class="form-control" id="end" type="text" name="end"
+                   placeholder="Ngày kết thúc">
+          </div>
+          <div class="col-lg-2 form-group" style="text-align: right">
+            <button (click)="onSubmit()" class="btn btn-light mt-xl-1 btn-outline-success"
+                    style="border-radius: 5px">
+              <i class="fa-solid fa-magnifying-glass"></i> Tìm Kiếm
+            </button>
           </div>
         </div>
-        <!--pagination-->
-        <div class="me-5 pe-4 ">
-          <ul class="pagination pagination-sm justify-content-end  pagination-lg" style="margin:20px 0">
-            <div *ngIf="this.page >0 then previous"></div>
-            <ng-template #previous>
-              <li class="page-item">
-                <button
-                  (click)="previousClick(1)" class="page-link" type="button">Trang trước
-                </button>
-              </li>
-            </ng-template>
-            <li class="page-item">
-              <input class="page-link" type="number" value="1" min="1" [max]="totalPages"
-                     placeholder="{{totalPages}}" aria-label="Username" [value]="page + 1"
-                     aria-describedby="basic-addon1"
-                     (change)="findPaginnation($event.target.value)">
-            </li>
-            <li class="page-item ">
-              <span class="input-group-text page-link">{{page + 1}}/{{totalPages}}</span>
-            </li>
-            <div *ngIf="this.page  < this.totalPages-1 then nexts "></div>
-            <ng-template #nexts>
-              <li class="page-item">
-                <button (click)="nextClick(1)" class="page-link" type="button">Trang sau</button>
-              </li>
-            </ng-template>
-          </ul>
-        </div>
-      </div>
+      </form>
     </div>
   </div>
+
+  <!--<div class="container">-->
+  <div class="row">
+    <!--<div class="col-lg-10">-->
+    <!--            <div class="content-container">-->
+    <!--                <div class="container-fluid">-->
+    <h4>
+      <button type="button" class="add-button btn-lg"><i class="fa-solid fa-plus me-lg-2"></i>Tạo mới
+      </button>
+      <!--      <button type="button" class="delete-button btn-lg ms-lg-2">Xóa tất cả</button>-->
+    </h4>
+  </div>
+  <ng-container *ngIf="message !== '';else elseBlock">
+
+    <h1 style="color: red; text-align: center; width: 100%; margin-top: 50px">{{message}}</h1>
+  </ng-container>
+  <ng-template #elseBlock>
+    <div class="row">
+      <table class="table table-hover bg-light">
+        <thead class="text-center font-google-1 fs-5 text-overflow align-middle"
+               style="background-color: #efb578">
+        <tr style="color: #452d14">
+          <th scope="col" style="text-align: center">Stt</th>
+          <th scope="col" style="text-align: center">Mã hợp đồng</th>
+          <th scope="col" style="text-align: center">Mã mặt bằng</th>
+          <th scope="col" style="text-align: left">Tên khách hàng</th>
+          <th scope="col" style="text-align: center">CMND</th>
+          <th scope="col" style="text-align: center">Ngày bắt đầu</th>
+          <th scope="col" style="text-align: center">Ngày kết thúc</th>
+          <th scope="col" style="text-align: left">kỳ hạn(tháng)</th>
+          <th scope="col" style="text-align: center">Đang thuê</th>
+          <th scope="col" style="text-align: center">Chức Năng</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="text-overflow align-middle" *ngFor="let s of contract; index as i ">
+          <th scope="row">{{i + 1}}</th>
+          <td style="text-align: center">{{s.contractCode}}</td>
+          <td style="text-align: center">{{s.spaces.spaceCode}}</td>
+          <td style="text-align: left">{{s.customer.customerName}}</td>
+          <td style="text-align: center">{{s.customer.customerIdentifyNumber}}</td>
+          <td style="text-align: center">{{s.contractDateStart | date: 'dd/MM/yyyy'}}</td>
+          <td style="text-align: center">{{s.contractDateEnd | date: 'dd/MM/yyyy'}}</td>
+          <td style="text-align: center">{{s.contractExpred}}</td>
+          <td style="text-align: center" *ngIf="s.checkFlag > 0; else blockContract ">
+            <i class="fa-solid fa-square-check"></i>
+          </td>
+          <ng-template #blockContract>
+            <td style="text-align: center"><i class="fa-solid fa-square"></i></td>
+          </ng-template>
+          <td>
+            <button type="button" class="btn btn-light me-3"
+                    style="background-color: #d6b915; border-radius: 10px">
+              <i class="fa-solid fa-pen"></i>
+            </button>
+            <button type="submit" class="btn btn-light"
+                    style="background-color: #de6666; color: white; border-radius: 10px"
+                    (click)="openDialog(s.contractId)">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!--PAGINATION-->
+
+    <!--pagination-->
+    <div class="align-content-center">
+      <div class="me-5 pe-4 ">
+        <ul class="pagination pagination-sm justify-content-end  pagination-lg" style="margin:20px 0">
+          <div *ngIf="this.page >0 then previous"></div>
+          <ng-template #previous>
+            <li class="page-item">
+              <button
+                (click)="previousClick(1)" class="page-link" type="button">Trang trước
+              </button>
+            </li>
+          </ng-template>
+          <li class="page-item">
+            <input class="page-link" type="number" value="1" min="1" [max]="totalPages"
+                   placeholder="{{totalPages}}" aria-label="Username" [value]="page + 1"
+                   aria-describedby="basic-addon1"
+                   (change)="findPaginnation($event.target.value)">
+          </li>
+          <li class="page-item ">
+            <span class="input-group-text page-link">{{page + 1}}/{{totalPages}}</span>
+          </li>
+          <div *ngIf="this.page  < this.totalPages-1 then nexts "></div>
+          <ng-template #nexts>
+            <li class="page-item">
+              <button (click)="nextClick(1)" class="page-link" type="button">Trang sau</button>
+            </li>
+          </ng-template>
+        </ul>
+      </div>
+    </div>
+    <!--pagination-->
+  </ng-template>
+
 </div>
+<!--</div>-->
+

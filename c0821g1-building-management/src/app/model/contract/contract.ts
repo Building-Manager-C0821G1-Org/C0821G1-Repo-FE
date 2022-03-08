@@ -4,6 +4,7 @@ import {Spaces} from './spaces';
 
 export interface Contract {
   contractId ?: number;
+  contractCode ?: string;
   contractExpred ?: string;
   contractDateStart ?: Date;
   contractDateEnd ?: Date;

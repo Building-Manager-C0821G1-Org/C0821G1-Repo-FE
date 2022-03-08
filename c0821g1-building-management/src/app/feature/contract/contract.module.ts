@@ -8,6 +8,7 @@ import { ContractDeleteComponent } from './contract-delete/contract-delete.compo
 import { ContractEditComponent } from './contract-edit/contract-edit.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     CommonModule,
     ContractRoutingModule,
     FormsModule,
+    RouterModule,
     ReactiveFormsModule,
     MatDialogModule
   ]

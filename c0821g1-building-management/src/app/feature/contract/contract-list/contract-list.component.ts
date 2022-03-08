@@ -4,7 +4,7 @@ import {ContractService} from '../../../service/contract/contract.service';
 import {Subscription} from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
 import {ContractDeleteComponent} from '../contract-delete/contract-delete.component';
-import DateTimeFormat = Intl.DateTimeFormat;
+import {Route} from '@angular/router';
 
 
 @Component({
@@ -43,16 +43,11 @@ export class ContractListComponent implements OnInit {
         console.log(this.message);
         for (const contract1 of this.contract){
           // @ts-ignore
-          const date1 = new Date(contract1.contractDateStart);
-          // @ts-ignore
-          const date2 = new Date(contract1.contractDateEnd);
-          const month = (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24 * 30);
-          // @ts-ignore
-          contract1.contractExpred = Math.round(month) ;
+          const dateEnd = new Date(contract1.contractDateEnd);
           // @ts-ignore
           const today = new Date().getTime() / (1000 * 3600 * 24 * 30);
           // @ts-ignore
-          const check = date2.getTime() / (1000 * 3600 * 24 * 30) - today;
+          const check = dateEnd.getTime() / (1000 * 3600 * 24 * 30) - today;
           contract1.checkFlag = Math.round(check) ;
           console.log('check' + check);
           console.log('today' + today);
@@ -135,7 +130,6 @@ export class ContractListComponent implements OnInit {
 
   openDialog(contractId) {
     this.contractService.getContractById(contractId).subscribe(contractData => {
-      // console.log('line1' + contractData)
       const dialogRef = this.dialog.open(ContractDeleteComponent, {
         width: '500px',
         data: {contractData},
