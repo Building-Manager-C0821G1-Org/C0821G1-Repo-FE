@@ -33,7 +33,7 @@ export class CustomerService {
   }
 
   // VyLTT - delete customer
-  deleteCustomer(deleteId: number) {
-    return this.httpClient.delete<void>(this.API_URL + '/' + deleteId);
+  deleteCustomerById(deleteId: number): Observable<any> {
+    return this.httpClient.delete<void>(this.API_URL + '/delete/' + deleteId);
   }
 }

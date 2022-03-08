@@ -4,9 +4,9 @@ import {Customer} from '../../../model/customer';
 import {CustomerService} from '../../../service/customer/customer.service';
 // @ts-ignore
 import {Subscription} from 'rxjs';
-import {CustomerDeleteComponent} from "../customer-delete/customer-delete.component";
 // @ts-ignore
 import {MatDialog} from "@angular/material/dialog";
+import {DeleteCustomerComponent} from "../delete-customer/delete-customer.component";
 
 
 // @ts-ignore
@@ -16,7 +16,7 @@ import {MatDialog} from "@angular/material/dialog";
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-  customers: Customer[];
+  customers: Customer[] = [];
   idDelete: number;
   customerDelete: Customer;
   private subscription: Subscription | undefined;
@@ -37,12 +37,12 @@ export class CustomerListComponent implements OnInit {
 
   ngOnInit(): void {
     this.search();
-    this.customerService.getAllCustomer().subscribe(value => {
-      this.customers = value;
-      // console.log(value);
-    }, error => {
-      this.message = 'Không tìm thấy.';
-    });
+    // this.customerService.getAllCustomer().subscribe(value => {
+    //   this.customers = value;
+    //   console.log(value);
+    // }, error => {
+    //   this.message = 'Không tìm thấy.';
+    // });
   }
 
 // VyLTT - delete customer
@@ -76,10 +76,9 @@ export class CustomerListComponent implements OnInit {
             if (data !== null) {
               // console.log('content 0' + data.content);
               this.customers = data.content;
-              // console.log('content 1' + this.customers);
               this.totalPages = data.totalPages;
               this.size = data.size;
-              this.page = data.pageable.pageNumber;
+              this.page = data.pageable.pageNumber ;
               this.message = '';
             } else {
               this.message = 'Không tìm thấy !!!';
@@ -131,29 +130,31 @@ export class CustomerListComponent implements OnInit {
   }
 
   openDialog(customerObjId: number) {
-    // this.customerService.getCustomerById(customerId).subscribe(customerData => {
-    //   console.log('!array' + customerData);
-    // const dialogRef = this.dialogDelete.open(CustomerDeleteComponent, {
-    //   width: '500px',
-    //   data: customerData,
-    //   disableClose: true
-    // });
-    console.log(customerObjId);
-    this.dialogDelete.open(CustomerDeleteComponent, {
-      data: customerObjId,
-      width: '30%'
-    }).afterClosed().subscribe((value) => {
-      if (value === 'delete') {
-        this.ngOnInit();
-      }
+    this.customerService.getCustomerById(customerObjId).subscribe(customerData => {
+      console.log('!array' + customerData);
+    const dialogRef = this.dialogDelete.open(DeleteCustomerComponent, {
+      width: '500px',
+      data: customerData,
+      disableClose: true
     });
-
-
-    //   dialogRef.afterClosed().subscribe(value => {
-    //     console.log('Hộp thoại đã được đóng');
-    //     this.ngOnInit();
+    // console.log(customerObjId);
+    // this.customerService.getCustomerById(customerObjId).subscribe( value => {
+    //   console.log(value);
+    //   this.dialogDelete.open(DeleteCustomerComponent, {
+    //     data: value,
+    //     width: '30%'
+    //   }).afterClosed().subscribe((value) => {
+    //     if (value === 'delete') {
+    //       this.ngOnInit();
+    //     }
     //   });
     // });
+
+      dialogRef.afterClosed().subscribe(value => {
+        console.log('Hộp thoại đã được đóng');
+        this.ngOnInit();
+      });
+    });
   }
 }
 

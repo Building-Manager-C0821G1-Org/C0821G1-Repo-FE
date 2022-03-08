@@ -75,7 +75,7 @@
         <td>{{customerObj.customerName}}</td>
         <td>{{customerObj.customerIdentifyNumber}}</td>
         <td>{{customerObj.customerEmail}}</td>
-        <td>{{customerObj.customerPhone}}</td>
+        <td class="text-center">{{customerObj.customerPhone}}</td>
         <td>{{customerObj.customerDateOfBirth}}</td>
         <td>{{customerObj.customerAddress}}</td>
         <td>{{customerObj.customerStatus}}</td>
@@ -87,7 +87,7 @@
             <i class="fa-solid fa-trash-can"></i>
           </a>
         </td>
-<!--        <p>{{message}}</p>-->
+        <!--        <p>{{message}}</p>-->
       </tr>
       </tbody>
     </table>
@@ -98,7 +98,7 @@
   <div class="align-content-center">
     <div class="me-5 pe-4 ">
       <ul class="pagination pagination-sm justify-content-enter pagination-lg" style="margin:20px 0">
-        <div *ngIf="this.page > 0 then previous"></div>
+        <div *ngIf="page > 0 then previous"></div>
         <ng-template #previous>
           <li class="page-item">
             <button
