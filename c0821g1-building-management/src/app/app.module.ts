@@ -8,6 +8,8 @@ import {FooterComponent} from './shared/footer/footer.component';
 import {BodyComponent} from './shared/body/body.component';
 import {HttpClientModule} from '@angular/common/http';
 import {DatePipe} from '@angular/common';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import {DatePipe} from '@angular/common';
   imports: [
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud')
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

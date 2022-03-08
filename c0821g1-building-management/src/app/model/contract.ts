@@ -4,13 +4,13 @@ import {Employee} from './employee';
 
 export interface Contract {
   contractId ?: number;
-  contractExpired ?: string;
-  contractDateStart ?: string;
-  contractDateEnd ?: string;
-  price ?: string;
-  contractTotal ?: string;
+  contractExpired ?: number;
+  contractDateStart ?: Date;
+  contractDateEnd ?: Date;
+  price ?: number;
+  contractTotal ?: number;
   contractContent ?: string;
-  contractDeposit ?: string;
+  contractDeposit ?: number;
   contractTaxCode ?: string;
   contractImageUrl?: string;
   contractDeleteFlag ?: boolean;

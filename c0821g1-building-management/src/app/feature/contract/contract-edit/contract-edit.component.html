@@ -167,12 +167,13 @@
                     <div class="row">
                       <div class="col-md-6 mb-4 pb-2">
                         <div class="form-outline datepicker w-100">
-                          <label for="birthdayDate" class="form-label">Kì hạn (tháng)</label>
+                          <label for="birthdayDate" class="form-label">Kì hạn (tháng)<span
+                            class="error"> (*)</span></label>
                           <input
-                            type="text"
+                            type="number"
                             class="form-control form-control-lg"
                             id="birthdayDate"
-                            formControlName="contractExpired" readonly
+                            formControlName="contractExpired"
                           />
                         </div>
                         <small class="error" *ngIf="contractForm.get('contractExpired')
@@ -188,7 +189,7 @@
                           <label class="form-label" for="emailAddress">Giá tiền mỗi tháng(VND)
                             <span
                               class="error">(*)</span></label>
-                          <input type="text" id="emailAddress" value="12.000.000"
+                          <input type="number" id="emailAddress" value="12.000.000"
                                  class="form-control form-control-lg" formControlName="price"/>
                         </div>
                         <small class="error"  *ngIf="contractForm.get('price')
@@ -201,9 +202,10 @@
                     <div class="row">
                       <div class="col-md-6 mb-4 pb-2">
                         <div class="form-outline datepicker w-100">
-                          <label for="birthdayDate1" class="form-label">Tổng tiền(VND)</label>
+                          <label for="birthdayDate1" class="form-label">Tổng tiền(VND)<span
+                            class="error"> (*)</span></label>
                           <input
-                            type="text"
+                            type="number"
                             value="30.000.000"
                             class="form-control form-control-lg"
                             id="birthdayDate1"
@@ -220,7 +222,7 @@
                           <label class="form-label" for="emailAddress1">Tiền cọc(VND)
                             <span
                               class="error">(*)</span></label>
-                          <input type="text" id="emailAddress1"
+                          <input type="number" id="emailAddress1"
                                  class="form-control form-control-lg" formControlName="contractDeposit"/>
                         </div>
                         <small class="error"  *ngIf="contractForm.get('contractDeposit')
@@ -251,10 +253,11 @@
                             <span
                               class="error">(*)</span></label>
                           <input type="file" id="emailAddress3"
-                                 class="form-control form-control-lg"/>
-                          <img class="img-fluid"
-                               src="https://vnn-imgs-f.vgcloud.vn/2021/04/12/18/can-ho-studio.jpg"
-                               alt="" readonly="">
+                                 class="form-control form-control-lg" formControlName="contractImageUrl"/>
+<!--                          <img class="img-fluid"-->
+<!--                               src="https://vnn-imgs-f.vgcloud.vn/2021/04/12/18/can-ho-studio.jpg"-->
+<!--                               alt="" readonly="">-->
+<!--                          <img [src]="contractForm.controls.contractImageUrl.value" alt=""  width="100%" height="150">-->
                         </div>
                       </div>
                     </div>
@@ -271,6 +274,9 @@
                         <small class="error"  *ngIf="contractForm.get('contractContent')
                         .hasError('required')&&
                          (contractForm.get('contractContent').touched ||contractForm.get('contractContent').dirty )">Nội dung  không được để trống</small>
+                        <small class="error" *ngIf="contractForm.get('contractContent')
+                        .hasError('minlength')&& contractForm.get('contractContent').dirty">Nội dung phải trên 10 kí tự</small>
+
                       </div>
                     </div>
 

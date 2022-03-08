@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {ContractListComponent} from './contract-list/contract-list.component';
 import {ContractEditComponent} from './contract-edit/contract-edit.component';
 import {ContractCreateComponent} from './contract-create/contract-create.component';
+import {UploadFileComponent} from './upload-file/upload-file.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,9 @@ const routes: Routes = [
   },
   {
     path: 'create', component: ContractCreateComponent
+  },
+  {
+    path: 'file', component: UploadFileComponent
   }
 ];
 

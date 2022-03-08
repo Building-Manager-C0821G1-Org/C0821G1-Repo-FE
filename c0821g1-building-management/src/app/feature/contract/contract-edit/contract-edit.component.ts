@@ -60,7 +60,10 @@ export class ContractEditComponent implements OnInit {
       const month = (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24 * 30);
       // @ts-ignore
       contract.contractExpired = Math.round(month) ;
-      console.log('Expired' + contract.contractExpired);
+      // console.log('Expired' + contract.contractExpired);
+
+      console.log('Image' + contract.contractImageUrl);
+
 
       this.contractForm = this.fb.group({
         contractId: contract.contractId,
@@ -69,8 +72,9 @@ export class ContractEditComponent implements OnInit {
         contractDateEnd: [this.dateEnd, [Validators.required]],
         price: [contract.price, [Validators.required]],
         contractTotal: [contract.contractTotal, [Validators.required]],
-        contractContent: [contract.contractContent, [Validators.required]],
+        contractContent: [contract.contractContent, [Validators.required, Validators.minLength(10)]],
         contractDeleteFlag: contract.contractDeleteFlag,
+        contractImageUrl: contract.contractImageUrl,
         employeeId: 1,
         contractDeposit: [contract.contractDeposit, [Validators.required]],
         contractTaxCode: [contract.contractTaxCode, [Validators.required]],

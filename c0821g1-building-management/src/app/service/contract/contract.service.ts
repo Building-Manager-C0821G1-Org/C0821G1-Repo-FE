@@ -19,6 +19,7 @@ export class ContractService {
   }
 
   saveContract(contract): Observable<Contract> {
+    console.log(contract);
     return this.http.post<Contract>(apiUrl + '/add', contract);
   }
 

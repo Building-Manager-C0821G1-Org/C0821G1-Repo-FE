@@ -134,6 +134,10 @@
                         .hasError('required')&& contractsForm.get('contractDateStart').touched">Ngày bắt đầu không được
                           để trống</small>
 
+<!--                        <small class="error"   *ngIf="contractsForm.get('contractDateStart').dirty || contractsForm.get('contractDateStart').touched-->
+<!--                        && contractsForm.get('contractDateStart').hasError('passwordnotmatch')">-->
+<!--                          Ngày bắt đầu phải lớn hơn ngày hiện tại-->
+<!--                        </small>-->
                       </div>
 
                       <div class="col-md-6 mb-4">
@@ -154,9 +158,10 @@
                     <div class="row">
                       <div class="col-md-6 mb-4 pb-2">
                         <div class="form-outline datepicker w-100">
-                          <label for="birthdayDate" class="form-label">Kì hạn (tháng)</label>
+                          <label for="birthdayDate" class="form-label">Kì hạn (tháng)<span
+                            class="error"> (*)</span></label>
                           <input
-                            type="text"
+                            type="number"
                             class="form-control form-control-lg"
                             id="birthdayDate"
                             formControlName="contractExpired"
@@ -174,7 +179,7 @@
                           <label class="form-label" for="emailAddress">Giá tiền mỗi tháng(VND)
                             <span
                               class="error"> (*)</span></label>
-                          <input type="text" id="emailAddress"
+                          <input type="number" id="emailAddress"
                                  class="form-control form-control-lg" formControlName="price"/>
                         </div>
                         <small class="error" *ngIf="contractsForm.get('price')
@@ -187,10 +192,11 @@
                     <div class="row">
                       <div class="col-md-6 mb-4 pb-2">
                         <div class="form-outline datepicker w-100">
-                          <label for="birthdayDate1" class="form-label">Tổng tiền(VND)</label>
+                          <label for="birthdayDate1" class="form-label">Tổng tiền(VND)<span
+                            class="error"> (*)</span></label>
                           <input
-                            type="text"
-                            class="form-control form-control-lg"
+                            type="number"
+                            class="form-control "
                             id="birthdayDate1"
                             formControlName="contractTotal"
                           />
@@ -207,7 +213,7 @@
                           <label class="form-label" for="emailAddress1">Tiền cọc(VND)
                             <span
                               class="error"> (*)</span></label>
-                          <input type="email" id="emailAddress1"
+                          <input type="number" id="emailAddress1"
                                  class="form-control form-control-lg" formControlName="contractDeposit"/>
                         </div>
                         <small class="error" *ngIf="contractsForm.get('contractDeposit')
@@ -235,15 +241,15 @@
                       <div class="col-6">
 
                         <div class="form-outline">
-                          <label class="form-label" for="emailAddress3">Hình ảnh hợp đồng
+                          <label class="form-label" for="image">Hình ảnh hợp đồng
                             <span
                               class="error"> (*)</span></label>
-                          <input type="file" id="emailAddress3"
-                                 class="form-control form-control-lg" readonly/>
-                          <img class="img-fluid"
-                               src="https://vnn-imgs-f.vgcloud.vn/2021/04/12/18/can-ho-studio.jpg"
-                               alt="">
+                          <input type="file" id="image" (change)="showPreview($event)" class="form-control" formControlName="contractImageUrl">
+                          <img [src]="url" width="100%" height="100">
                         </div>
+                        <small class="error" *ngIf="contractsForm.get('contractImageUrl')
+                        .hasError('required')&& contractsForm.get('contractImageUrl').touched">Hình ảnh không được để
+                          trống</small>
                       </div>
                     </div>
 
@@ -258,9 +264,10 @@
                         <small class="error" *ngIf="contractsForm.get('contractContent')
                         .hasError('required')&& contractsForm.get('contractContent').touched">Nội dung không được để
                           trống</small>
+                        <small class="error" *ngIf="contractsForm.get('contractContent')
+                        .hasError('minlength')&& contractsForm.get('contractContent').dirty">Nội dung phải trên 10 kí tự</small>
 
                       </div>
-
                     </div>
 
                     <div class="d-flex justify-content-end pt-3 mt-5">
@@ -284,5 +291,7 @@
 
 
 </div>
-  
-<p>Hello</p>
+
+
+
+
