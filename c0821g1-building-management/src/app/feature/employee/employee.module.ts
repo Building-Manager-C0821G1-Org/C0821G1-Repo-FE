@@ -11,11 +11,11 @@ import {EmployeeEditPasswordComponent} from './employee-edit-password/employee-e
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
-import { ErrorsEmployeeComponent } from './errors-employee/errors-employee.component';
+
 
 
 @NgModule({
-  declarations: [EmployeeListComponent, EmployeeDeleteComponent, EmployeeCreateComponent, EmployeeDetailComponent, EmployeeEditComponent, EmployeeEditPasswordComponent, ErrorsEmployeeComponent],
+  declarations: [EmployeeListComponent, EmployeeDeleteComponent, EmployeeCreateComponent, EmployeeDetailComponent, EmployeeEditComponent, EmployeeEditPasswordComponent],
   exports: [
     EmployeeListComponent,
     EmployeeDeleteComponent

@@ -1,4 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-image: url(https://i1-dulich.vnecdn.net/2021/03/04/1-1614826817.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=zoSoMv1tfcFUn5nDxYcW1A);
+  background-repeat: no-repeat;
+  background-position: center center;
+  object-fit: contain;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  flex: 1;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

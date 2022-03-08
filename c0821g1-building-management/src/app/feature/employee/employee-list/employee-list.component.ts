@@ -4,7 +4,7 @@ import {Subscription} from "rxjs";
 import {EmployeeService} from "../../../service/employee/employee.service";
 import {EmployeeDeleteComponent} from "../employee-delete/employee-delete.component";
 import {MatDialog} from "@angular/material/dialog";
-import {Router} from "@angular/router";
+
 
 
 @Component({
@@ -28,26 +28,52 @@ export class EmployeeListComponent implements OnInit {
 
   constructor(private employeeService: EmployeeService,
               private dialogDelete: MatDialog,
-              private router: Router) {
+              ) {
   }
 
   ngOnInit(): void {
     console.log("a");
-    this.employeeService.search(this.page, "", "", "","")
-      .subscribe(data => {
-          console.log(data);
-          if (data !== null) {
-            this.employees = data.content;
-            console.log(this.employees)
-            this.totalPages = data.totalPages;
-            this.size = data.size;
-            this.page = data.pageable.pageNumber;
-            this.message = '';
-          } else {
-            this.message = 'không tìm thấy !!!  '
+    if (this.employee_name === '' && this.employee_date_of_birth === '' && this.employee_email === '' && this.employee_address === '') {
+      this.flag = false;
+      this.employeeService.search(this.page, this.employee_name, this.employee_date_of_birth, this.employee_email, this.employee_address)
+        .subscribe(data => {
+            console.log(data);
+            if (data !== null) {
+              console.log("h1  " + data.content)
+              this.employees = data.content;
+              console.log(this.employees)
+              this.totalPages = data.totalPages;
+              this.size = data.size;
+              this.page = data.pageable.pageNumber;
+              this.message = '';
+            } else {
+              this.message = 'không tìm thấy !!!  '
+            }
           }
+        );
+    } else {
+      console.log("2");
+      console.log(this.employee_name)
+      if (this.flag === false) {
+        this.page = 0;
+        this.employeeService.search(this.page, this.employee_name, this.employee_date_of_birth, this.employee_email, this.employee_address)
+          .subscribe(data => {
+            if (data !== null) {
+              this.employees = data.content;
+              this.totalPages = data.totalPages;
+              this.size = data.size;
+              this.page = data.pageable.pageNumber;
+              this.message = '';
+            } else {
+              this.message = 'Không tìm thấy nhân viên đó. Yêu cầu bạn nhập lại !!!';
+              console.log('ggfghgfhghgfhg')
+
+            }
+            this.flag = true;
+          })
       }
-      );
+    }
+
   }
 
   search() {
@@ -87,7 +113,7 @@ export class EmployeeListComponent implements OnInit {
             } else {
               this.message = 'không tìm thấy nhân viên đó. Yêu cầu bạn nhập lại !!!';
               console.log('ggfghgfhghgfhg')
-              this.router.navigate(['/employee/error'])
+
             }
             this.flag = true;
           })
