@@ -1,30 +1,34 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
+import {Employee} from '../../model/user/employee';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
 
-  public API = 'http://localhost:8080/api/employee';
-
-  constructor(private http: HttpClient) {
+  API_URL = 'http://localhost:8080';
+  constructor(private httpClient: HttpClient) {
   }
 
   getEmployee(id: number): Observable<any> {
-    return this.http.get(this.API + '/detail/' + id);
+    return this.httpClient.get(this.API_URL + '/api/employee/detail/' + id);
   }
 
   search(page: number, employeeName: string, employeeDateOfBirth: string, employeeEmail: string,
          employeeAddress: string,): Observable<any> {
-    return this.http.get(this.API + '/search?employee_name=' + employeeName + '&employee_date_of_birth='
+    return this.httpClient.get(this.API_URL + '/api/employee/search?employee_name=' + employeeName + '&employee_date_of_birth='
       + employeeDateOfBirth + '&employee_email=' + employeeEmail + '&employee_address=' + employeeAddress
       + '&page=' + page);
   }
 
 
   deleteEmployeeById(id: any): Observable<any> {
-    return this.http.delete(this.API + '/delete/' + id);
+    return this.httpClient.delete(this.API_URL + '/api/employee/delete/' + id);
+  }
+
+  findById(id: number): Observable<Employee>{
+    return this.httpClient.get<Employee>(this.API_URL + '/api/employee/getById/' + id);
   }
 }

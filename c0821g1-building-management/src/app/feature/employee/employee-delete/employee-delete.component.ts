@@ -1,10 +1,10 @@
+
 import {Component, Inject, OnInit} from '@angular/core';
 import {Employee} from "../../../model/employee/employee";
 import {Subscription} from "rxjs";
 import {EmployeeService} from "../../../service/employee/employee.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import Swal from "sweetalert2";
-
 
 @Component({
   selector: 'app-employee-delete',
@@ -47,4 +47,5 @@ export class EmployeeDeleteComponent implements OnInit {
   onNoClick() {
     this.dialogRef.close();
   }
+
 }

@@ -1,12 +1,10 @@
+
 import {Component, OnInit} from '@angular/core';
 import {Employee} from "../../../model/employee/employee";
 import {Subscription} from "rxjs";
 import {EmployeeService} from "../../../service/employee/employee.service";
 import {EmployeeDeleteComponent} from "../employee-delete/employee-delete.component";
 import {MatDialog} from "@angular/material/dialog";
-
-
-
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
@@ -157,4 +155,7 @@ export class EmployeeListComponent implements OnInit {
       })
     })
   }
+
+
+
 }
