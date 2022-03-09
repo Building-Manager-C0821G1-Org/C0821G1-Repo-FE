@@ -1,23 +1,54 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Spaces} from "../../model/space/spaces";
-import {Observable} from "rxjs";
-import {environment} from "../../../environments/environment";
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {SpacesList} from '../../model/space/spaces-list';
+import {environment} from '../../../environments/environment';
+import {Spaces} from '../../model/space/spaces';
+
+const API_URL = `${environment.urlApi}`;
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpaceService {
-  API_URL = `${environment.urlApi}`;
-  constructor(private httpClient: HttpClient) { }
-  saveNewSpace(newSpace: Spaces): Observable<void>{
-  return this.httpClient.post<void>(this.API_URL + '/spaces/register', newSpace);
-  }
-  findByID(id: number): Observable<Spaces>{
-  return this.httpClient.get<Spaces>(this.API_URL + '/spaces/' + id);
+
+  constructor(private httpClient: HttpClient) {
   }
 
-  editSpace(spaceEdit: Spaces): Observable<void>{
-    return this.httpClient.patch<void>(this.API_URL + '/spaces/edit/' + spaceEdit.spaceId, spaceEdit);
+  saveNewSpace(newSpace: Spaces): Observable<void> {
+    return this.httpClient.post<void>(API_URL + '/spaces/register', newSpace);
   }
-}
+
+  findByID(id: number): Observable<Spaces> {
+    return this.httpClient.get<Spaces>(API_URL + '/spaces/' + id);
+  }
+
+
+  findAllSpace(): Observable<SpacesList[]> {
+    return this.httpClient.get<SpacesList[]>(API_URL + '/spaces/list');
+  }
+
+  searchSpace(floorName: string,
+              spaceCode: string,
+              spaceArea: string,
+              spaceTypeName: string,
+              spaceStatusName: string): Observable<SpacesList[]> {
+    return this.httpClient.get<SpacesList[]>(API_URL + '/spaces/search?floorName=' +
+      floorName + '&spaceCode=' +
+      spaceCode + '&spaceArea=' +
+      spaceArea + '&spaceTypeName=' +
+      spaceTypeName + '&spaceStatusName=' +
+      spaceStatusName);
+  }
+
+  deleteSpaceById(spaceId: number): Observable<SpacesList> {
+    return this.httpClient.get<SpacesList>(API_URL + `/spaces/${spaceId}`);
+  }
+
+  getSpaceById(spaceId: number): Observable<any> {
+    return this.httpClient.get(API_URL + `/spaces/detail/${spaceId}`);
+  }
+  editSpace(spaceEdit: Spaces): Observable < void > {
+      return this.httpClient.patch<void>(API_URL + '/spaces/edit/' + spaceEdit.spaceId, spaceEdit);
+  }
+  }

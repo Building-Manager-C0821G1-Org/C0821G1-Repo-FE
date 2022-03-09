@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Spaces} from "../../../model/space/spaces";
-import {SpaceService} from "../../../service/space/space.service";
-import {SpaceTypeService} from "../../../service/space/space-type.service";
-import {SpaceStatusService} from "../../../service/space/space-status.service";
-import {FloorService} from "../../../service/floor/floor.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {SpacesType} from "../../../model/space/spaces-type";
-import {SpacesStatus} from "../../../model/space/spaces-status";
-import {Floors} from "../../../model/floor/floors";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Spaces} from '../../../model/space/spaces';
+import {SpaceService} from '../../../service/space/space.service';
+import {SpaceTypeService} from '../../../service/space/space-type.service';
+import {SpaceStatusService} from '../../../service/space/space-status.service';
+import {FloorService} from '../../../service/floor/floor.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {SpacesType} from '../../../model/space/spaces-type';
+import {SpacesStatus} from '../../../model/space/spaces-status';
+import {Floors} from '../../../model/floor/floors';
 
 @Component({
   selector: 'app-space-edit',

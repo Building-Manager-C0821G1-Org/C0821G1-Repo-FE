@@ -8,7 +8,6 @@ export const environment = {
   firebaseConfig: {
     apiKey: 'AIzaSyBXBtR7I_or2AIrM1h90hPcym6mFZYXD3k',
     authDomain: 'building-manager-6262e.firebaseapp.com',
-    // databaseURL: 'gs://building-manager-6262e.appspot.com',
     projectId: 'building-manager-6262e',
     storageBucket: 'building-manager-6262e.appspot.com',
     messagingSenderId: '69101495380',
