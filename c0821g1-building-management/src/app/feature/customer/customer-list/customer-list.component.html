@@ -84,7 +84,7 @@
         </thead>
         <tbody>
         <tr class="text-overflow align-middle" *ngFor="let customerObj of customers; index as i">
-          <th scope="row" class="text-center">{{i + 1}}</th>
+          <th scope="row" class="text-center">{{customerObj.customerId}}</th>
           <td class="text-center">{{customerObj.customerCode}}</td>
           <td>{{customerObj.customerName}}</td>
           <td>{{customerObj.customerIdentifyNumber}}</td>

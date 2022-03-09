@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Customer} from "../../../model/customer";
 import {CustomerService} from "../../../service/customer/customer.service";
 import {Subscription} from "rxjs";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-delete-customer',
@@ -28,11 +29,21 @@ export class DeleteCustomerComponent implements OnInit {
   deleteEmployee() {
     this.subscription = this.customerService.deleteCustomerById(this.customer.customerId).subscribe(data => {
       this.matDialogRef.close();
+      this.callToast();
     });
 
   }
 
   onNoClick() {
     this.matDialogRef.close();
+  }
+  private callToast() {
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Xóa khách hàng thành công !' ,
+      showConfirmButton: false,
+      timer: 5000
+    });
   }
 }

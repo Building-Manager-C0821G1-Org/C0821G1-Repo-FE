@@ -83,7 +83,7 @@ export class CustomerListComponent implements OnInit {
               this.page = data.pageable.pageNumber ;
               this.message = '';
             } else {
-              this.message = 'Không tìm thấy !!!';
+              this.message = 'Không tìm thấy khách hàng cần tìm !!!';
             }
           }
         );
@@ -100,7 +100,7 @@ export class CustomerListComponent implements OnInit {
               this.page = data.pageable.pageNumber;
               this.message = '';
             } else {
-              this.message = 'Không tìm thấy !!!';
+              this.message = 'Không tìm thấy khách hàng cần tìm !!!';
             }
             this.flag = true;
           });
