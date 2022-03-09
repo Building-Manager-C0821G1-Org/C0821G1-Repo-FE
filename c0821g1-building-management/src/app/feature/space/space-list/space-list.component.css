@@ -185,3 +185,9 @@ body {
   /* fallback for old browsers */
   background: #a1764a;
 }
+
+table tr {
+  vertical-align: middle;
+}
+
+

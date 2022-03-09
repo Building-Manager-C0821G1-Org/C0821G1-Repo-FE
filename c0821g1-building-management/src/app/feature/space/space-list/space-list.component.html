@@ -1,151 +1,171 @@
-<div class="container-fluid">
-  <div class="col-9">
+<div>
+  <div class="container-fluid">
     <div class="row">
       <div class="content">
         <h2 class="text-center m-5 font-google-2">Danh Sách Mặt Bằng</h2>
         <div class="row">
-          <div class="col-12">
-            <form>
-              <div class="search row justify-content-around align-items-center mb-4 text-right float-right">
-                <div class="col-xl-2 col-md-3 form-group" style="text-align: center">
-                  <input id="#" class="form-control" type="text" placeholder="Theo tên tầng"
+          <div class="col-3">
+
+          </div>
+          <div class="col-9">
+            <div class="search row justify-content-around align-items-center mb-4 text-right float-right">
+              <div class="col-xl-2 col-md-3 form-group" style="text-align: center">
+                <input id="floorName" #floorName class="form-control" type="text" placeholder="Theo tên tầng"
+                       style="font-size: 15px">
+              </div>
+              <div class="col-xl-2 col-md-3 form-group" style="text-align: right">
+                <div style="text-align: center">
+                  <input id="spaceCode" #spaceCode type="text" class="form-control" placeholder="Theo mã mặt bằng"
                          style="font-size: 15px">
-                </div>
-                <div class="col-xl-2 col-md-3 form-group" style="text-align: right">
-                  <div style="text-align: center">
-                    <input type="text" class="form-control" placeholder="Theo mã mặt bằng"
-                           style="font-size: 15px">
-                  </div>
-                </div>
-                <div class="col-xl-2 col-md-3 form-group" style="text-align: right">
-                  <div style="text-align: center">
-                  </div>
-                  <div>
-                    <input type="text" class="form-control" placeholder="Theo diện tích"
-                           style="font-size: 15px">
-                  </div>
-                </div>
-                <div class="col-xl-2 col-md-3 form-group" style="text-align: right">
-                  <input type="text" id="" class="form-control" placeholder="Theo loại mặt bằng"
-                         style="font-size: 15px">
-                </div>
-                <div class="col-xl-2 col-md-3 form-group " style="text-align: -moz-right">
-                  <button class="btn btn-light mt-xl-1 btn-outline-success"
-                          style="border-radius: 5px"><i
-                    class="fa-solid fa-magnifying-glass" style="font-size: 12px"></i>Tìm Kiếm
-                  </button>
                 </div>
               </div>
-            </form>
+              <div class="col-xl-2 col-md-3 form-group" style="text-align: right">
+                <div style="text-align: center">
+                </div>
+                <div>
+                  <input id="spaceArea" #spaceArea type="text" class="form-control" placeholder="Theo diện tích"
+                         style="font-size: 15px">
+                </div>
+              </div>
+              <div class="col-xl-2 col-md-3 form-group" style="text-align: right">
+                <input type="text" id="spaceType" #spaceType class="form-control" placeholder="Theo loại mặt bằng"
+                       style="font-size: 15px">
+              </div>
+              <div class="col-xl-2 col-md-3 form-group " style="text-align: -moz-right">
+                <button class="btn btn-light mt-xl-1 btn-outline-success"
+                        style="border-radius: 5px"
+                        (click)="search(floorName.value, spaceCode.value, spaceArea.value, spaceType.value, spaceStatus.value)">
+                  <i
+                    class="fa-solid fa-magnifying-glass fa-2x" style="font-size: 12px"></i>Tìm Kiếm
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-12">
             <h4>
-              <button type="button" style="font-size: 15px" class="add-button btn-lg"><i
-                class="fa-solid fa-plus"></i>Tạo
-                mới
+              <button type="button"  class="add-button btn me-lg-1"><i
+                class="fa-solid fa-plus"></i>Tạo mới
               </button>
-              <select type="button" class=" btn btn-danger dropdown-toggle" data-toggle="dropdown"
+              <select id="spaceStatus" #spaceStatus type="button" class=" btn btn-danger dropdown-toggle me-lg-1"
+                      data-toggle="dropdown"
                       aria-haspopup="true" aria-expanded="false">
-                <option class="dropdown-item" href="#">Trạng thái</option>
-                <option class="dropdown-item" href="#">Chưa vào ở</option>
-                <option class="dropdown-item" href="#">Đã vào ở</option>
-                <option class="dropdown-item" href="#">Đang sửa</option>
+                <option class="dropdown-item" value="" href="">Tất cả trạng thái</option>
+                <option class="dropdown-item" value="Chưa vào ở">Chưa vào ở</option>
+                <option class="dropdown-item" value="Đã vào ở">Đã vào ở</option>
+                <option class="dropdown-item" value="Đang sửa">Đang sửa chữa</option>
               </select>
-              <select type="button" class="ground btn dropdown-toggle" data-toggle="dropdown"
+              <select type="button" #floorNameWithOption class="ground btn dropdown-toggle" data-toggle="dropdown"
                       aria-haspopup="true" aria-expanded="false">
-                <option class="dropdown-item" href="#">Tầng</option>
-                <option class="dropdown-item" href="#">Tầng 1</option>
-                <option class="dropdown-item" href="#">Tầng 2</option>
-                <option class="dropdown-item" href="#">Tầng 3</option>
+                <option class="dropdown-item" value="">Tất cả các tầng</option>
+                <option class="dropdown-item" value="Tầng 1">Tầng 1</option>
+                <option class="dropdown-item" value="Tầng 2">Tầng 2</option>
+                <option class="dropdown-item" value="Tầng 3">Tầng 3</option>
               </select>
             </h4>
           </div>
-          <table class=" table table-hover bg-light" style="text-align: center">
-            <thead class="text-center "
-                   style="background-color: #efb578; white-space: nowrap; overflow: hidden;">
-            <tr style="color: #452d14">
-              <th scope="col">STT</th>
-              <th scope="col">Mã mặt bằng</th>
-              <th scope="col">Loại mặt bằng</th>
-              <th scope="col">Diện tích</th>
-              <th scope="col">Trạng thái</th>
-              <th scope="col">Giá bán</th>
-              <th scope="col">Phí quản lý</th>
-              <th scope="col" style="">Chức năng</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let space of spaceList; index as i">
-              <th scope="row">{{ i + 1 }}</th>
-              <td>{{space.spaceCode}}</td>
-              <td>{{space.spaceArea}}</td>
-              <td>{{space.spaceArea}}</td>
-              <td>{{space.spacePrice}}</td>
-              <td>{{space.spacePrice}}</td>
-              <td>{{space.spaceManagerFee}}</td>
-              <td>
-                <button type="button" class="btn btn-light me-3 edit-button">
-                  <i class="fa-solid fa-pen"></i>
-                </button>
-                <button type="button" class="btn btn-light delete-button " data-toggle="modal" data-target="#exampleModal" (click)="passData(space.spaceId, space.spaceCode)">
-                  <i class="fa-solid fa-trash-can"></i>
-                </button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
+          <div class="content">
+            <ng-container *ngIf="messageError != ''; else elseBlock">
+              <h3 style="color: red; text-align: center; width: 100%; margin-top: 50px">{{messageError}}</h3>
+            </ng-container>
+            <ng-template #elseBlock>
+              <table class=" table table-hover bg-light" style="text-align: center">
+                <thead class="text-center "
+                       style="background-color: #efb578; white-space: nowrap; overflow: hidden;">
+                <tr style="color: #452d14">
+                  <th scope="col">STT</th>
+                  <th scope="col">Mã mặt bằng</th>
+                  <th scope="col">Loại mặt bằng</th>
+                  <th scope="col">Diện tích(m<sup>2</sup>)</th>
+                  <th scope="col">Trạng thái</th>
+                  <th scope="col">Giá bán(VND)</th>
+                  <th scope="col">Phí quản lý</th>
+                  <th scope="col" style="">Chức năng</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let space of spaceList | slice: (page-1) * pageSize : page * pageSize; index as i">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>{{space.spaceCode}}</td>
+                  <td>{{space.spaceTypeName}}</td>
+                  <td>{{space.spaceArea}}</td>
+                  <td>{{space.spaceStatusName}}</td>
+                  <td>{{space.spacePrice}}</td>
+                  <td>{{space.spaceManagerFee}}</td>
+                  <td>
+                    <button type="button" class="btn btn-light me-3 edit-button">
+                      <i routerLink="" class="fa-solid fa-pen"></i>
+                    </button>
+                    <button type="button" class="btn btn-light delete-button " data-toggle="modal"
+                            data-target="#exampleModal"
+                            (click)="openDialog(space.spaceId)">
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </ng-template>
+            <div class="clearfix">
+<!--              <ngb-pagination class="d-flex justify-content-end"-->
+<!--                              [(page)]="page"-->
+<!--                              [pageSize]="pageSize"-->
+<!--                              [collectionSize]="spaceList.length"-->
+<!--                              [maxSize]="5"-->
+<!--                              [rotate]="true"-->
+<!--                              [ellipses]="true"-->
+<!--                              [boundaryLinks]="true">-->
+<!--                <ng-template ngbPaginationFirst>Trang đầu</ng-template>-->
+<!--                <ng-template ngbPaginationLast>Trang cuối</ng-template>-->
+<!--                <ng-template ngbPaginationEllipsis>...</ng-template>-->
+<!--                <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>-->
+<!--              </ngb-pagination>-->
+            </div>
+          </div>
         </div>
       </div>
-      <div class="row pagination">
-        <nav aria-label="...">
-          <ul class="pagination">
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trước</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active" aria-current="page">
-              <a class="page-link" href="#">2</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">Sau</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
     </div>
   </div>
 </div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header bg-danger">
-        <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa!</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<ngb-pagination [collectionSize]="70" [(page)]="page" [boundaryLinks]="true">
+  <ng-template ngbPaginationPages let-page let-pages="pages">
+    <li class="ngb-custom-pages-item" *ngIf="pages.length > 0">
+      <div class="mb-3 d-flex flex-nowrap px-2">
+        <label
+          id="paginationInputLabel"
+          for="paginationInput"
+          class="col-form-label me-2 ms-1"
+        >Page</label>
+        <input #i
+               type="text"
+               inputmode="numeric"
+               pattern="[0-9]*"
+               class="form-control custom-pages-input"
+               id="paginationInput"
+               [value]="page"
+               (keyup.enter)="selectPage(i.value)"
+               (blur)="selectPage(i.value)"
+               (input)="formatInput($any($event).target)"
+               aria-labelledby="paginationInputLabel paginationDescription"
+               style="width: 2.5rem"
+        />
+        <span id="paginationDescription" class="col-form-label text-nowrap px-2">
+                  of {{pages.length}}</span>
       </div>
-      <div class="modal-body">
-        <ng-container *ngIf="checkDelete">
-          Bạn có muốn xóa mặt bằng khỏi danh sách không?
-          <br>
-          <br>
-          <table class="table">
-            <tr>
-              <td>Mã mặt bằng:</td>
-              <td>{{spaceCode}}</td>
-            </tr>
-          </table>
-        </ng-container>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-        <button type="button" class="btn btn-danger"  data-dismiss="modal" (click)="delete()">Xóa</button>
-      </div>
-    </div>
-  </div>
-</div>
+    </li>
+  </ng-template>
+</ngb-pagination>
+
+<ngx-bootstrap-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="default"
+  color="#fff"
+  type="border"
+  loadingText="Đang tải dữ liệu..."
+>
+</ngx-bootstrap-spinner>
+<!--<ngx-bootstrap-spinner-->
+<!--  bdColor="rgba(0, 0, 0, 1)">-->
+<!--  loaderTemplate="<img src='https://media.giphy.com/media/o8igknyuKs6aY/giphy.gif' />"-->
+<!--</ngx-bootstrap-spinner>-->
