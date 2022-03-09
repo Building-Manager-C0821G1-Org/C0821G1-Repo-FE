@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Floors} from '../../../model/floors/floors';
 import {FloorService} from '../../../service/floor/floor.service';
+import {FloorsDeleteComponent} from '../floors-delete/floors-delete.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-floors-list',
@@ -8,73 +10,30 @@ import {FloorService} from '../../../service/floor/floor.service';
   styleUrls: ['./floors-list.component.css']
 })
 export class FloorsListComponent implements OnInit {
-
-  floorId: number;
-  floorName: string;
   floorsList: Floors[] = [];
-  // floorsDeleteFlag: Floors;
-  // floorsDeleteFlagList: Floors[] = [];
 
-  constructor(private floorService: FloorService
-  ) {
-    this.floorService.findAll().subscribe(value => {
-      for (const floors of value) {
-        if (floors.floorDeleteFlag === 1) {
-          this.floorsList.push(floors);
-        }
-      }
-    }, error => {
-      console.log('error constructor');
-    }, () => {
-      console.log('complete constructor');
-    });
+  constructor(private floorService: FloorService, private dialogDelete: MatDialog) {
   }
 
   ngOnInit(): void {
-  }
-  /**
-   * Created: DuyNP
-   * Method get Floors
-   */
-  getFloors(id: number, name: string) {
-    this.floorId = Number(id);
-    this.floorName = name;
-  }
-
-  /**
-   * Created: DuyNP
-   * Method delete floors
-   */
-
-  deleteFloors() {
-    this.floorService.deleteFlagFloors(this.floorId).subscribe(value => {
-      //   this.floorService.deleteFloors(this.floorId).subscribe(value => {
+    this.floorService.findAll().subscribe(value => {
+      this.floorsList = value;
     }, error => {
+      console.log('error Init');
     }, () => {
-      this.floorService.findById(this.floorId).subscribe(value => {
-        // this.floorsList.splice(this.floorsList.indexOf(value), 1);
-        // @ts-ignore
-        this.floorsList.length = [];
-        this.floorService.findAll().subscribe(value1 => {
-          for (const floors of value1) {
-            if (floors.floorDeleteFlag === 1) {
-              this.floorsList.push(floors);
-            }
-          }
-        }, error => {
-          console.log('error delete');
-        }, () => {
-          console.log('complete delete');
-        });
-        console.log(value);
-        console.log(this.floorsList);
+      console.log('complete Init');
+    });
+  }
+  openDialog(floorId: number) {
+    this.floorService.findById(floorId).subscribe(value => {
+      const dialogRef = this.dialogDelete.open(FloorsDeleteComponent, {
+        width: '500px',
+        data: {value},
+        disableClose: true
+      });
+      dialogRef.afterClosed().subscribe(value1 => {
+        this.ngOnInit();
       });
     });
   }
-
-  // findFloorsById() {
-  //   this.floorService.findById(this.floorId).subscribe(value => {
-  //     this.floorsDeleteFlag = value;
-  //   });
-  // }
 }

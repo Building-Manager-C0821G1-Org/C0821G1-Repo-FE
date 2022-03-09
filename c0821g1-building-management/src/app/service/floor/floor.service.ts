@@ -15,9 +15,6 @@ export class FloorService {
   findById(floorId: number): Observable<Floors> {
     return this.httpClient.get<Floors>(this.API_URL + '/floors/find-by-id/' + floorId);
   }
-  deleteFloors(floorId: number): Observable<Floors> {
-    return this.httpClient.delete<Floors>(this.API_URL + '/floors/delete/' + floorId);
-  }
   deleteFlagFloors(floorId: number): Observable<Floors> {
     return this.httpClient.delete<Floors>(this.API_URL + '/floors/delete-flag/' + floorId);
   }

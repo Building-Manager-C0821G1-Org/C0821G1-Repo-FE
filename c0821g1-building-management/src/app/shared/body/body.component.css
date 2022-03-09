@@ -23,7 +23,7 @@ body {
   color: #334;
 }
 
-.container h5 {
+.container h3 {
   color: #eeb043;
 }
 
@@ -64,9 +64,9 @@ body {
   object-fit: cover;
 }
 
-.container .box-container .box:hover .image img {
-  transform: scale(1.1);
-}
+/*.container .box-container .box:hover .image img {*/
+/*  transform: scale(1.1);*/
+/*}*/
 
 .container .box-container .box .content h3 {
   font-size: 20px;

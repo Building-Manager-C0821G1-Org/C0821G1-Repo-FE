@@ -6,7 +6,6 @@ import {FloorsDeleteComponent} from './floors-delete/floors-delete.component';
 
 const routes: Routes = [
   {path: 'list', component: FloorsListComponent},
-  {path: 'delete/:id', component: FloorsDeleteComponent},
 ];
 
 
