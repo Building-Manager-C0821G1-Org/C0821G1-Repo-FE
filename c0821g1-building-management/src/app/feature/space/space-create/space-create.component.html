@@ -14,11 +14,12 @@
                     <div class="form-outline">
                       <label class="form-label select-label" for="floor">Tầng <span class="error">(*)</span></label><br>
                       <select class="select form-control-lg" style="width: 100%" id="floor" formControlName="floors">
+                        <option value=""></option>
                         <option *ngFor="let fl of floorList" [ngValue]="fl">{{fl.floorName}}</option>
                       </select>
                     </div>
 
-                    <small style="color: red" *ngIf="spaceForm.controls.floors.hasError('required') && spaceForm.controls.floors.dirty">
+                    <small style="color: red" *ngIf="spaceForm.controls.floors.hasError('required') && spaceForm.controls.floors.touched">
                       Tâng không được để trống.</small>
 
                   </div>
@@ -27,9 +28,10 @@
                     <div class="form-outline">
                       <label class="form-label select-label" for="type">Loại mặt bằng <span class="error">(*)</span></label><br>
                       <select class="select form-control-lg" style="width: 100%" id="type" formControlName="spacesType">
+                        <option value=""></option>
                         <option *ngFor="let st of spaceTypeList" [ngValue]="st">{{st.spaceTypeName}}</option>
                       </select>
-                      <small style="color: red" *ngIf="spaceForm.controls.spacesType.hasError('required') && spaceForm.controls.spacesType.dirty">
+                      <small style="color: red" *ngIf="spaceForm.controls.spacesType.hasError('required') && spaceForm.controls.spacesType.touched">
                         Loại mặt bằng không được để trống.</small>
                     </div>
 
@@ -42,7 +44,7 @@
                     <div class="form-outline datepicker w-100">
                       <label for="codeGround" class="form-label">Mã mặt bằng <span class="error">(*)</span></label>
                       <input type="text" id="codeGround" class="form-control form-control-lg" formControlName="spaceCode" />
-                      <small style="color: red" *ngIf="spaceForm.controls.spaceCode.hasError('required') && spaceForm.controls.spaceCode.dirty">
+                      <small style="color: red" *ngIf="spaceForm.controls.spaceCode.hasError('required') && spaceForm.controls.spaceCode.touched">
                         Mã mặt bằng không được để trống.</small>
                     </div>
 
@@ -51,9 +53,10 @@
                     <div class="form-outline datepicker w-100">
                       <label class="form-label select-label" for="status">Trạng thái <span class="error">(*)</span></label><br>
                       <select class="select form-control-lg" style="width: 100%" id="status" formControlName="spaceStatus">
+                        <option value=""></option>
                         <option *ngFor="let ss of spaceStatusList" [ngValue]="ss">{{ss.spacerStatusName}}</option>
                       </select>
-                      <small style="color: red" *ngIf="spaceForm.controls.spaceStatus.hasError('required') && spaceForm.controls.spaceStatus.dirty">
+                      <small style="color: red" *ngIf="spaceForm.controls.spaceStatus.hasError('required') && spaceForm.controls.spaceStatus.touched">
                         Trạng thái không được để trống.</small>
                     </div>
 
@@ -64,8 +67,10 @@
                     <div class="form-outline datepicker w-100">
                       <label for="area" class="form-label">Diện tích (m2) <span class="error">(*)</span></label>
                       <input type="text" id="area" class="form-control form-control-lg" formControlName="spaceArea"/>
-                      <small style="color: red" *ngIf="spaceForm.controls.spaceArea.hasError('required') && spaceForm.controls.spaceArea.dirty">
+                      <small style="color: red" *ngIf="spaceForm.controls.spaceArea.hasError('required') && spaceForm.controls.spaceArea.touched">
                         Diện tích không được để trống.</small>
+                      <small style="color: red" *ngIf="spaceForm.controls.spaceArea.hasError('pattern') && spaceForm.controls.spaceArea.dirty">
+                        Diện tích chỉ được nhập số.</small>
                     </div>
 
                   </div>
@@ -73,7 +78,7 @@
                     <div class="form-outline datepicker w-100">
                       <label for="price" class="form-label">Giá tiền (VND)</label>
                       <input type="text" id="price" class="form-control form-control-lg" formControlName="spacePrice"/>
-                      <small style="color: red" *ngIf="spaceForm.controls.spacePrice.hasError('required') && spaceForm.controls.spacePrice.dirty">
+                      <small style="color: red" *ngIf="spaceForm.controls.spacePrice.hasError('pattern') && spaceForm.controls.spacePrice.dirty">
                         Tiền chỉ được nhập số.</small>
                     </div>
 
@@ -85,7 +90,7 @@
                     <div class="form-outline">
                       <label class="form-label" for="fee">Phí quản lý (VND)</label>
                       <input type="email" id="fee" class="form-control form-control-lg" formControlName="spaceManagerFee"/>
-                      <small style="color: red" *ngIf="spaceForm.controls.spaceManagerFee.hasError('required') && spaceForm.controls.spaceManagerFee.dirty">
+                      <small style="color: red" *ngIf="spaceForm.controls.spaceManagerFee.hasError('pattern') && spaceForm.controls.spaceManagerFee.dirty">
                         Tiền chỉ được nhập số.</small>
                     </div>
 
@@ -102,12 +107,13 @@
                     <textarea id="note" class="form-control form-control-lg" formControlName="spaceNote"></textarea>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-6">
-                    <div class="form-outline align-middle" formControlName="spaceImage">
+                <div class="row" >
+                  <div class="col-6" >
+                    <div class="form-outline align-middle" >
                       <label class="form-label" for="image">Hình ảnh</label>
                       <input type="file" id="image" class="form-control form-control-lg"
-                              (change)="upload($event)" accept="*.png.jpg"/><br>
+                              (change)="upload($event)" accept="*.png.jpg" formControlName="spaceImage"/><br>
+                      <img [src]="url" width="100" height="100">
 <!--                      <button (click)="uploadImage()">Tải ảnh</button>-->
                     </div>
 
@@ -117,7 +123,7 @@
 
                 <div class="d-flex justify-content-end pt-3 mt-5">
                   <button type="submit" class="add-button button-radius btn-lg ms-2 me-3" [disabled]="spaceForm.invalid">Tạo mới</button>
-                  <button type="submit" class="reset-button button-radius btn-lg ms-2 me-3">Đặt lại</button>
+                  <button type="reset" class="reset-button button-radius btn-lg ms-2 me-3">Đặt lại</button>
                 </div>
 
               </form>
