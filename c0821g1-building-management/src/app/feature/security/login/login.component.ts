@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   isLoggedIn: boolean;
   urlImg: string;
   idCustomer: null;
+  role: string;
 
   constructor(private fb: FormBuilder,
               private tokenStorageService: TokenStorageService,
@@ -26,9 +27,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginFrom = this.fb.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      remember_me: false
+      username: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
+      password: ['', [Validators.required], Validators.minLength(1), Validators.maxLength(10)],
+      remember_me : ['']
     });
     console.log(this.loadRemberInfo());
     if (this.loadRemberInfo() !== null) {
@@ -40,14 +41,13 @@ export class LoginComponent implements OnInit {
     //   this.username = this.tokenStorageService.getUser().username;
     // }
   }
-
   onSubmit() {
     this.securityService.login(this.loginFrom.value).subscribe(data => {
       console.log(data.jwtToken);
-      if (this.loginFrom.value.remember_me === true) {
+      if (this.loginFrom.value.remember_me) {
         this.tokenStorageService.saveUserLocal(data);
         this.tokenStorageService.saveTokenLocal(data.jwtToken);
-      } else if (this.loginFrom.value.remember_me === false) {
+      } else  {
         this.tokenStorageService.saveUserSession(data);
         this.tokenStorageService.saveTokenSession(data.jwtToken);
         // this.username = this.loginFrom.controls.username.value;
@@ -65,14 +65,14 @@ export class LoginComponent implements OnInit {
 
       this.router.navigate(['/home']);
       }
-      // else {
-      //
-      //   this.router.navigate(['/home']);
-      //
-      // }
+      else {
+
+        this.router.navigate(['/home']);
+
+      }
     }, error => {
       console.log(error);
-      this.securityService.isLoggedIn = false;
+      this.isLoggedIn = false;
       this.errorMessage = 'Tài khoản hoặc mật khẩu không đúng';
     });
   }

@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {BodyComponent} from './shared/body/body.component';
+import {HeaderComponent} from './shared/header/header.component';
 
 
 const routes: Routes = [
@@ -9,8 +9,12 @@ const routes: Routes = [
     loadChildren: () => import('./feature/security/security.module').then(module => module.SecurityModule)
   },
   {
+    path: 'floor',
+    loadChildren: () => import('./feature/floor/floor.module').then(module => module.FloorModule)
+  },
+  {
     path: 'home',
-    component: BodyComponent
+    component: HeaderComponent
   }
 ];
 

@@ -27,6 +27,10 @@
                     Tên đăng nhập không được để trống
                   </div>
 
+                  <div style="color: red"
+                       *ngIf="loginFrom.get('username').errors?.maxlength && (loginFrom.get('username').dirty ||loginFrom.get('username').touched)">
+                    Tên đăng nhập nhỏ hơn 50 ký tự
+                  </div>
                   <div class="form-outline mb-4">
                     <label class="form-label" for="form2Example22">Mật Khẩu <span class="error">(*)</span></label>
                     <input type="password" id="form2Example22" class="form-control"  formControlName="password"
@@ -38,6 +42,11 @@
                     Mật khẩu không được để trống
                   </div>
 
+                  <div style="color: red"
+                       *ngIf="loginFrom.get('password').errors?.maxlength && (loginFrom.get('password').dirty ||loginFrom.get('password').touched)">
+                    Mật khẩu nhỏ hơn 10 ký tự
+                  </div>
+
                   <div class="form-outline mb-4">
                     <input formControlName="remember_me" type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1" >Ghi nhớ đăng nhập</label>
@@ -46,7 +55,7 @@
                   <p class="error" *ngIf="errorMessage">Tên Đăng nhập hoặc mật khẩu không đúng</p>
 
                   <div class="padding-button">
-                    <button [disabled]="this.loginFrom.invalid" class="btn btn-block fa-lg  mb-3  rounded-pill button-color"
+                    <button  class="btn btn-block fa-lg  mb-3  rounded-pill button-color"
                             type="submit">Đăng Nhập
                     </button>
                     &nbsp;
