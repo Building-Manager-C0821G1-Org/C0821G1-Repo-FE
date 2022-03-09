@@ -37,13 +37,14 @@ export class DeleteCustomerComponent implements OnInit {
   onNoClick() {
     this.matDialogRef.close();
   }
+
   private callToast() {
     Swal.fire({
       position: 'top',
       icon: 'success',
-      title: 'Xóa khách hàng thành công !' ,
+      title: 'Xóa khách hàng thành công !',
       showConfirmButton: false,
-      timer: 5000
+      timer: 2000
     });
   }
 }
