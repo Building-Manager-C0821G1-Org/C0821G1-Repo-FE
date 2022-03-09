@@ -6,8 +6,8 @@ export interface Contract {
   contractId ?: number;
   contractCode ?: string;
   contractExpred ?: string;
-  contractDateStart ?: Date;
-  contractDateEnd ?: Date;
+  contractDateStart ?: string;
+  contractDateEnd ?: string;
   contractTotal ?: string;
   contractContent ?: string;
   contractDeleteFlag ?: boolean;

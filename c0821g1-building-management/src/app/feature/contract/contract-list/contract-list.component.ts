@@ -40,17 +40,18 @@ export class ContractListComponent implements OnInit {
         this.size = data.size;
         this.page = data.pageable.pageNumber;
         this.message = '';
-        console.log(this.message);
         for (const contract1 of this.contract){
           // @ts-ignore
           const dateEnd = new Date(contract1.contractDateEnd);
           // @ts-ignore
-          const today = new Date().getTime() / (1000 * 3600 * 24 * 30);
+          const today = new Date()
           // @ts-ignore
-          const check = dateEnd.getTime() / (1000 * 3600 * 24 * 30) - today;
+          const  endDate1 = new Date(dateEnd.getFullYear(), dateEnd.getDate() - 1, dateEnd.getMonth());
+          const check = endDate1 - today;
           contract1.checkFlag = Math.round(check) ;
-          console.log('check' + check);
           console.log('today' + today);
+          console.log('end  ' + endDate1);
+          console.log('check ' + check);
         }
       } else {
         this.message = 'Not found !!!';

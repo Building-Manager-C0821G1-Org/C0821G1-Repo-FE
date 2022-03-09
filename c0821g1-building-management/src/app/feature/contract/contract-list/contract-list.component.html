@@ -66,7 +66,7 @@
           <th scope="col" style="text-align: center">CMND</th>
           <th scope="col" style="text-align: center">Ngày bắt đầu</th>
           <th scope="col" style="text-align: center">Ngày kết thúc</th>
-          <th scope="col" style="text-align: left">kỳ hạn(tháng)</th>
+          <th scope="col" style="text-align: left">Kỳ hạn (tháng)</th>
           <th scope="col" style="text-align: center">Đang thuê</th>
           <th scope="col" style="text-align: center">Chức Năng</th>
         </tr>
@@ -78,8 +78,8 @@
           <td style="text-align: center">{{s.spaces.spaceCode}}</td>
           <td style="text-align: left">{{s.customer.customerName}}</td>
           <td style="text-align: center">{{s.customer.customerIdentifyNumber}}</td>
-          <td style="text-align: center">{{s.contractDateStart | date: 'dd/MM/yyyy'}}</td>
-          <td style="text-align: center">{{s.contractDateEnd | date: 'dd/MM/yyyy'}}</td>
+          <td style="text-align: center">{{s.contractDateStart}}</td>
+          <td style="text-align: center">{{s.contractDateEnd}}</td>
           <td style="text-align: center">{{s.contractExpred}}</td>
           <td style="text-align: center" *ngIf="s.checkFlag > 0; else blockContract ">
             <i class="fa-solid fa-square-check"></i>

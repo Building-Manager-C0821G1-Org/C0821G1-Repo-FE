@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ContractService} from '../../../service/contract/contract.service';
 import {Contract} from '../../../model/contract/contract';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-contract-delete',
   templateUrl: './contract-delete.component.html',
@@ -23,6 +24,16 @@ export class ContractDeleteComponent implements OnInit {
     console.log(this.contract.contractId);
     this.contractService.deleteContract(this.contract.contractId).subscribe(date => {
       this.dialogRef.close();
+      this.callToast();
+    });
+  }
+  private callToast() {
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Xóa hợp đồng thành công!',
+      showConfirmButton: false,
+      timer: 5000
     });
   }
 }
