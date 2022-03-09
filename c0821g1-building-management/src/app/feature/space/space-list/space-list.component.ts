@@ -1,13 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {SpacesList} from '../spaces-list';
 import {SpaceService} from '../../../service/space/space.service';
-import Swal from 'sweetalert2';
 import {NgxSpinnerService} from 'ngx-bootstrap-spinner';
 import {MatDialog} from '@angular/material/dialog';
 import {SpaceDeleteComponent} from '../space-delete/space-delete.component';
 
 const FILTER_PAG_REGEX = /[^0-9]/g;
-
 
 @Component({
   selector: 'app-space-list',
@@ -34,8 +32,8 @@ export class SpaceListComponent implements OnInit {
     this.findAllSpace();
   }
 
-  formatInput(input: HTMLInputElement) {
-    input.value = input.value.replace(FILTER_PAG_REGEX, '');
+  selectPage(page: string) {
+    this.page = parseInt(page, 10) || 1;
   }
 
   findAllSpace() {
@@ -67,7 +65,6 @@ export class SpaceListComponent implements OnInit {
 
   delete() {
     this.spaceService.deleteSpaceById(this.spaceId).subscribe(() => {
-      this.callToast();
       this.findAllSpace();
       if (this.spaceList.length <= 1) {
         location.reload();
@@ -100,17 +97,25 @@ export class SpaceListComponent implements OnInit {
     }
   }
 
-  private callToast() {
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Xóa mặt bằng thành công!😍😍😍',
-      showConfirmButton: false,
-      timer: 2000
-    });
-  }
-
-
+  // previousClick(index) {
+  //   this.page = this.page - index;
+  //   this.ngOnInit();
+  // }
+  //
+  // findPagination(value: number) {
+  //   this.page = value - 1;
+  //   this.ngOnInit();
+  // }
+  //
+  // nextClick(index) {
+  //   this.page = this.page + index;
+  //   console.log('next pay ' + this.page);
+  //   this.ngOnInit();
+  // }
+  //
+  // formatInput(input: HTMLInputElement) {
+  //   input.value = input.value.replace(FILTER_PAG_REGEX, '');
+  // }
   openDialog(spaceId: number) {
     this.spaceService.getSpaceById(spaceId).subscribe(spaceData => {
       const dialogRef = this.dialogDelete.open(SpaceDeleteComponent, {
@@ -122,9 +127,5 @@ export class SpaceListComponent implements OnInit {
         this.ngOnInit();
       });
     });
-  }
-
-  selectPage(page: string) {
-    this.page = parseInt(page, 10) || 1;
   }
 }

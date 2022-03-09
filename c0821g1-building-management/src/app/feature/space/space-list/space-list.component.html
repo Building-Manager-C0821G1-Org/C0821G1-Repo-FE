@@ -56,13 +56,6 @@
                 <option class="dropdown-item" value="Đã vào ở">Đã vào ở</option>
                 <option class="dropdown-item" value="Đang sửa">Đang sửa chữa</option>
               </select>
-              <select type="button" #floorNameWithOption class="ground btn dropdown-toggle" data-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="false">
-                <option class="dropdown-item" value="">Tất cả các tầng</option>
-                <option class="dropdown-item" value="Tầng 1">Tầng 1</option>
-                <option class="dropdown-item" value="Tầng 2">Tầng 2</option>
-                <option class="dropdown-item" value="Tầng 3">Tầng 3</option>
-              </select>
             </h4>
           </div>
           <div class="content">
@@ -81,6 +74,7 @@
                   <th scope="col">Trạng thái</th>
                   <th scope="col">Giá bán(VND)</th>
                   <th scope="col">Phí quản lý</th>
+                  <th scope="col">Tên tầng</th>
                   <th scope="col" style="">Chức năng</th>
                 </tr>
                 </thead>
@@ -89,10 +83,11 @@
                   <th scope="row">{{ i + 1 }}</th>
                   <td>{{space.spaceCode}}</td>
                   <td>{{space.spaceTypeName}}</td>
-                  <td>{{space.spaceArea}}</td>
+                  <td>{{space.spaceArea}}(m<sup>2</sup>)</td>
                   <td>{{space.spaceStatusName}}</td>
                   <td>{{space.spacePrice}}</td>
                   <td>{{space.spaceManagerFee}}</td>
+                  <td>{{space.floorName}}</td>
                   <td>
                     <button type="button" class="btn btn-light me-3 edit-button">
                       <i routerLink="" class="fa-solid fa-pen"></i>
@@ -108,19 +103,19 @@
               </table>
             </ng-template>
             <div class="clearfix">
-<!--              <ngb-pagination class="d-flex justify-content-end"-->
-<!--                              [(page)]="page"-->
-<!--                              [pageSize]="pageSize"-->
-<!--                              [collectionSize]="spaceList.length"-->
-<!--                              [maxSize]="5"-->
-<!--                              [rotate]="true"-->
-<!--                              [ellipses]="true"-->
-<!--                              [boundaryLinks]="true">-->
-<!--                <ng-template ngbPaginationFirst>Trang đầu</ng-template>-->
-<!--                <ng-template ngbPaginationLast>Trang cuối</ng-template>-->
-<!--                <ng-template ngbPaginationEllipsis>...</ng-template>-->
-<!--                <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>-->
-<!--              </ngb-pagination>-->
+              <ngb-pagination class="d-flex justify-content-end"
+                              [(page)]="page"
+                              [pageSize]="pageSize"
+                              [collectionSize]="spaceList.length"
+                              [maxSize]="5"
+                              [rotate]="true"
+                              [ellipses]="true"
+                              [boundaryLinks]="true">
+                <ng-template ngbPaginationFirst>Trang đầu</ng-template>
+                <ng-template ngbPaginationLast>Trang cuối</ng-template>
+                <ng-template ngbPaginationEllipsis>...</ng-template>
+                <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+              </ngb-pagination>
             </div>
           </div>
         </div>
@@ -128,34 +123,6 @@
     </div>
   </div>
 </div>
-<ngb-pagination [collectionSize]="70" [(page)]="page" [boundaryLinks]="true">
-  <ng-template ngbPaginationPages let-page let-pages="pages">
-    <li class="ngb-custom-pages-item" *ngIf="pages.length > 0">
-      <div class="mb-3 d-flex flex-nowrap px-2">
-        <label
-          id="paginationInputLabel"
-          for="paginationInput"
-          class="col-form-label me-2 ms-1"
-        >Page</label>
-        <input #i
-               type="text"
-               inputmode="numeric"
-               pattern="[0-9]*"
-               class="form-control custom-pages-input"
-               id="paginationInput"
-               [value]="page"
-               (keyup.enter)="selectPage(i.value)"
-               (blur)="selectPage(i.value)"
-               (input)="formatInput($any($event).target)"
-               aria-labelledby="paginationInputLabel paginationDescription"
-               style="width: 2.5rem"
-        />
-        <span id="paginationDescription" class="col-form-label text-nowrap px-2">
-                  of {{pages.length}}</span>
-      </div>
-    </li>
-  </ng-template>
-</ngb-pagination>
 
 <ngx-bootstrap-spinner
   bdColor="rgba(51,51,51,0.8)"

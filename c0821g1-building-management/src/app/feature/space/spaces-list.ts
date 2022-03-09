@@ -6,4 +6,5 @@ export interface SpacesList {
   spaceStatusName?: string;
   spacePrice?: string;
   spaceManagerFee?: string;
+  floorName?: string;
 }

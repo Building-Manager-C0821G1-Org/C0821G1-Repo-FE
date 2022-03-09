@@ -27,19 +27,19 @@ export class SpaceDeleteComponent implements OnInit {
 
   deleteSpaceById() {
     this.subscription = this.spaceService.deleteSpaceById(this.spaceList.spaceId).subscribe(value => {
-      this.callToast();
-      this.dialogRef.close();
+        this.callToast();
+        this.dialogRef.close();
       }
     );
   }
 
-  onNoClick(){
+  onNoClick() {
     this.dialogRef.close();
   }
 
   private callToast() {
     Swal.fire({
-      position: 'top-end',
+      position: 'top',
       icon: 'success',
       title: 'Xóa mặt bằng thành công!😍😍😍',
       showConfirmButton: false,

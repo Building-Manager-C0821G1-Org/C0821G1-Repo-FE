@@ -8,24 +8,24 @@
         <tbody>
         <tr>
           <th scope="row">1</th>
-          <td>Mã mặt bằng: </td>
+          <td>Mã mặt bằng:</td>
           <td>{{spaceList.spaceCode}}</td>
         </tr>
         <tr>
           <th scope="row">2</th>
-          <td>Loại mặt bằng: </td>
+          <td>Loại mặt bằng:</td>
           <td>{{spaceList.spaceTypeName}}</td>
         </tr>
         <tr>
           <th scope="row">3</th>
-          <td>Trạng thái mặt bằng: </td>
+          <td>Trạng thái mặt bằng:</td>
           <td>{{spaceList.spaceStatusName}}</td>
         </tr>
         </tbody>
       </table>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-warning" (click)="onNoClick()">Hủy</button>
+    <div class="modal-footer text-black-50">
+      <button type="button" class="btn btn-warning " (click)="onNoClick()">Hủy</button>
       <button type="button" class="btn btn-danger" (click)="deleteSpaceById()">Xóa</button>
     </div>
   </div>
