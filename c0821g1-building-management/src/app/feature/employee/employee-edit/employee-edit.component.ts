@@ -12,49 +12,42 @@ import {Employee} from '../../../model/employee';
   styleUrls: ['./employee-edit.component.css']
 })
 export class EmployeeEditComponent implements OnInit {
-  employeeEditForm: FormGroup;
+  validateCode: string;
   employeePositionList: Array<EmployeePosition>;
   employeeEdit: Employee;
+  employeeEditForm = new FormGroup({
+    employeeCode: new FormControl('', [Validators.required, Validators.pattern('[N][V][-]\\d{4}')]),
+    employeeName: new FormControl(''),
+    employeeDateOfBirth: new FormControl('', [Validators.required, this.checkMinAge]),
+    employeeAddress: new FormControl('', [Validators.required, Validators.maxLength(40)]),
+    employeeEmail: new FormControl(''),
+    employeePhone: new FormControl('', [Validators.required, Validators.pattern('^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$')]),
+    employeeStartDate: new FormControl('', Validators.required),
+    employeeGender: new FormControl(),
+    employeePosition: new FormControl('', Validators.required),
+    employeeImage: new FormControl('')
+  });
 
   constructor(private employeeService: EmployeeService,
               private router: Router,
               private employeePositionService: EmployeePositionService,
               private activatedRoute: ActivatedRoute) {
-    this.employeeEditForm = new FormGroup({
-      employeeCode: new FormControl('', [Validators.required, Validators.pattern('[N][V][-]\\d{4}')]),
-      employeeName: new FormControl('', Validators.required),
-      employeeDateOfBirth: new FormControl('', [Validators.required, this.checkMinAge]),
-      employeeAddress: new FormControl('', Validators.required),
-      employeeEmail: new FormControl('', [Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_!#$%&\'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+.[a-z]{2,6}$')]),
-      employeePhone: new FormControl('', [Validators.required, Validators.pattern('^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$')]),
-      employeeStartDate: new FormControl('', Validators.required),
-      employeeGender: new FormControl(),
-      employeePosition: new FormControl('', Validators.required),
-      employeeImage: new FormControl('')
-    });
-    this.employeePositionService.findAllEmployeePosition().subscribe(value => {
-      this.employeePositionList = value;
-      console.log(this.employeePositionList);
-    });
+
   }
 
   ngOnInit(): void {
-    const employeeEditId = this.activatedRoute.snapshot.params.id;
-    console.log(employeeEditId);
-    this.employeeService.findEmployeeByID(employeeEditId).subscribe(value => {
-      this.employeeEdit = value;
-      this.employeeEditForm.patchValue({
-        employeeCode: this.employeeEdit.employeeCode,
-        employeeName: this.employeeEdit.employeeName,
-        employeeDateOfBirth: this.employeeEdit.employeeDateOfBirth,
-        employeeAddress: this.employeeEdit.employeeAddress,
-        employeeEmail: this.employeeEdit.employeeEmail,
-        employeePhone: this.employeeEdit.employeePhone,
-        employeeStartDate: this.employeeEdit.employeeStartDate,
-        employeeGender: this.employeeEdit.employeeGender,
-        employeePosition: this.employeeEdit.employeePosition.employeePositionName,
-        employeeImage: this.employeeEdit.employeeImage,
+
+    this.employeePositionService.findAllEmployeePosition().subscribe(value => {
+      this.employeePositionList = value;
+      console.log(this.employeePositionList);
+
+      const employeeEditId = this.activatedRoute.snapshot.params.id;
+      console.log(employeeEditId);
+      this.employeeService.findEmployeeByID(employeeEditId).subscribe(value2 => {
+        this.employeeEdit = value2;
+        this.employeeEditForm.patchValue(
+          this.employeeEdit
+        );
       });
     });
   }
@@ -68,6 +61,9 @@ export class EmployeeEditComponent implements OnInit {
         alert('Chỉnh sửa thành công');
       },
       error => {
+        console.log(error);
+        this.validateCode = error.error.code;
+        alert(this.validateCode);
       }, () => {
         this.router.navigateByUrl('/employee/list');
       });

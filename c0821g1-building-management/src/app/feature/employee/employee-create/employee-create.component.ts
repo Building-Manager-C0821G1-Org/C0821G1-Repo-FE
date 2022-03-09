@@ -24,7 +24,7 @@ export class EmployeeCreateComponent implements OnInit {
   id: string;
   file: string;
   employeeList: Array<Employee>;
-  emailList: string[];
+
 
   constructor(private employeeService: EmployeeService,
               private router: Router,
@@ -34,11 +34,12 @@ export class EmployeeCreateComponent implements OnInit {
   ) {
     this.employeeCreateForm = new FormGroup({
       employeeCode: new FormControl('', [Validators.required, Validators.pattern('[N][V][-]\\d{4}')]),
-      employeeName: new FormControl('', Validators.required),
+      employeeName: new FormControl('', [Validators.required, Validators.maxLength(40)]),
       employeeDateOfBirth: new FormControl('', [Validators.required, this.checkMinAge]),
-      employeeAddress: new FormControl('', Validators.required),
+      employeeAddress: new FormControl('', [Validators.required, Validators.maxLength(40)]),
       employeeEmail: new FormControl('', [Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_!#$%&\'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+.[a-z]{2,6}$')
+        Validators.pattern('^[a-zA-Z0-9_!#$%&\'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+.[a-z]{2,6}$'),
+        Validators.maxLength(40)
       ]),
       employeePhone: new FormControl('', [Validators.required, Validators.pattern('^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$')]),
       employeeStartDate: new FormControl('', Validators.required),
@@ -57,7 +58,7 @@ export class EmployeeCreateComponent implements OnInit {
 
   }
 
-  validateErrorEmail: string;
+  validateEmail: string;
 
   ngOnInit(): void {
     this.uploadFileService.getImageDetailList();
@@ -72,6 +73,9 @@ export class EmployeeCreateComponent implements OnInit {
       console.log(value);
       this.router.navigateByUrl('/employee/list');
     }, error => {
+      console.log(error);
+      this.validateEmail = error.error.code;
+      alert(this.validateEmail);
     });
   }
 
@@ -106,16 +110,6 @@ export class EmployeeCreateComponent implements OnInit {
     return currentYear - yearOfBirth >= 18 ? null : {under18: true};
   }
 
-  // checkUniqueEmail(abstractControl: AbstractControl): any {
-  //   const emailCreate = abstractControl.value;
-  //   // const employeeList=
-  //   // for (let i = 0; i <= this.employeeList.length; i++) {
-  //   //   if (emailCreate === this.employeeList[i].employeeEmail) {
-  //   //     return null;
-  //   //   } else {
-  //   //     return {exist: true};
-  //   //   }
-  //   }
 
 
 }

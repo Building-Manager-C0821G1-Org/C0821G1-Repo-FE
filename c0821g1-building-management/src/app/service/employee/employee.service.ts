@@ -22,7 +22,7 @@ export class EmployeeService {
   }
 
   editEmployee(employeeEdit: Employee): Observable<void> {
-    return this.httpClient.patch<void>(this.API_URL + '/edit/' + employeeEdit.employeeId, employeeEdit);
+    return this.httpClient.patch<void>(this.API_URL + '/update/' + employeeEdit.employeeId, employeeEdit);
   }
 
   findAllEmployee(): Observable<Employee[]> {

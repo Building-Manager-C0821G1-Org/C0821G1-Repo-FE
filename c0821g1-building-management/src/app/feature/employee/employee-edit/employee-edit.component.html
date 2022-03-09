@@ -202,16 +202,10 @@
                   <div class="col-md-6 mb-4">
 
                     <div class="form-outline">
-                      <label class="form-label" for="idEmployee">Mã Nhân viên <span class="error">(*)</span></label>
-                      <input type="text" id="idEmployee" class="form-control form-control-lg" formControlName="employeeCode" />
+                      <label class="form-label" for="idEmployee" disabled="">Mã Nhân viên <span class="error">(*)</span></label>
+                      <input type="text" id="idEmployee" class="form-control form-control-lg" formControlName="employeeCode" disabled />
                     </div>
 
-                    <small style="color: red"
-                           *ngIf="employeeEditForm.controls.employeeCode.hasError('required') && employeeEditForm.controls.employeeCode.touched">
-                      Mã nhân viên không được để trống.</small>
-                    <small style="color: red"
-                           *ngIf="employeeEditForm.controls.employeeCode.hasError('pattern')">
-                      Mã nhân viên phải có định dạng NV-XXXX.</small>
 
                   </div>
                   <div class="col-md-6 mb-4">
@@ -222,6 +216,8 @@
                     </div>
                     <small style="color: red" *ngIf="employeeEditForm.controls.employeeName.hasError('required') && employeeEditForm.controls.employeeName.dirty">
                       Tên nhân viên không được để trống.</small>
+                    <small style="color: red" *ngIf="employeeEditForm.controls.employeeName.hasError('maxlength')">
+                      Bạn đã nhập quá số kí tự cho phép(40 kí tự).</small>
 
                   </div>
                 </div>
@@ -255,6 +251,8 @@
                     <small style="color: red"
                            *ngIf="employeeEditForm.controls.employeeAddress.hasError('required') && employeeEditForm.controls.employeeCode.touched">
                       Địa chỉ không được để trống.</small>
+                    <small style="color: red" *ngIf="employeeEditForm.controls.employeeAddress.hasError('maxlength')">
+                      Bạn đã nhập quá số kí tự cho phép(40 kí tự).</small>
                   </div>
                 </div>
 
@@ -265,12 +263,6 @@
                       <label class="form-label" for="email">Email <span class="error">(*)</span></label>
                       <input type="email" id="email" class="form-control form-control-lg" formControlName="employeeEmail" disabled/>
                     </div>
-                    <small style="color: red"
-                           *ngIf="employeeEditForm.controls.employeeEmail.hasError('required') && employeeEditForm.controls.employeeEmail.touched">
-                      Email không được để trống.</small>
-                    <small style="color: red"
-                           *ngIf="employeeEditForm.controls.employeeEmail.hasError('pattern')">
-                      Email không đúng định dạng.</small>
 
                   </div>
                   <div class="col-md-6 mb-4 pb-2">
@@ -334,7 +326,7 @@
                     <label class="form-label select-label">Vị trí <span class="error">(*)</span></label>
                     <br>
                     <select class="select form-control-lg" formControlName="employeePosition">
-                      <option *ngFor="let positionObj of employeePositionList" [ngValue]="positionObj">{{positionObj.employeePositionName}}</option>
+                      <option *ngFor="let positionObj of employeePositionList" [ngValue]="positionObj" [selected]="positionObj.employeePositionId == employeeEditForm.controls.employeePosition.value.employeePositionId">{{positionObj.employeePositionName}}</option>
                     </select>
                     <small style="color: red" *ngIf="employeeEditForm.controls.employeePosition.hasError('required') && employeeEditForm.controls.employeePosition.dirty">
                       Vị trí không được để trống.</small>

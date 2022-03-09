@@ -243,6 +243,9 @@
                     <small style="color: red"
                            *ngIf="employeeCreateForm.controls.employeeName.hasError('required') && employeeCreateForm.controls.employeeName.touched">
                       Tên nhân viên không được để trống.</small>
+                    <small style="color: red"
+                           *ngIf="employeeCreateForm.controls.employeeName.hasError('maxlength')">
+                      Bạn đã nhập quá số kí tự cho phép(40 kí tự).</small>
 
                   </div>
                 </div>
@@ -278,6 +281,9 @@
                     <small style="color: red"
                            *ngIf="employeeCreateForm.controls.employeeAddress.hasError('required') && employeeCreateForm.controls.employeeCode.touched">
                       Địa chỉ không được để trống.</small>
+                    <small style="color: red"
+                           *ngIf="employeeCreateForm.controls.employeeAddress.hasError('maxlength')">
+                      Bạn đã nhập quá số kí tự cho phép(40 kí tự).</small>
                   </div>
                 </div>
 
@@ -296,8 +302,8 @@
                            *ngIf="employeeCreateForm.controls.employeeEmail.hasError('pattern')">
                       Email không đúng định dạng.</small>
                     <small style="color: red"
-                           *ngIf="employeeCreateForm.controls.employeeEmail.hasError('exist')">
-                      Email Đã tồn tại trong.</small>
+                           *ngIf="employeeCreateForm.controls.employeeEmail.hasError('maxlength')">
+                      Bạn đã nhập quá số kí tự cho phép(40 kí tự).</small>
 
                   </div>
                   <div class="col-md-6 mb-4 pb-2">
@@ -384,10 +390,7 @@
                       <input type="file" (change)="showPreview($event)" accept="*.png.jpg" id="image"
                              class="form-control form-control-lg" autocomplete="off"/>
                     </div>
-                    <h2>File View</h2>
 
-                    <!--                    <small style="color: red" *ngIf="employeeCreateForm.controls.employeeImage.hasError('required') && employeeCreateForm.controls.employeeImage.touched">-->
-                    <!--                      Ảnh không được để trống.</small>-->
                   </div>
 
                 </div>
