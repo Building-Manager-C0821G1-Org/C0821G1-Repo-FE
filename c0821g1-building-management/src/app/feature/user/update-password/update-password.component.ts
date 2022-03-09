@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserDTO} from '../../../model/user/user-dto';
 import {UserService} from '../../../service/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -20,9 +20,9 @@ export class UpdatePasswordComponent implements OnInit {
               private activatedRoute: ActivatedRoute) {
     this.changePasswordForm = new FormGroup({
       id: new FormControl(),
-      currentPassword: new FormControl(),
-      newPasswordCheck: new FormControl(),
-      newPassword: new FormControl()
+      currentPassword: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(10)]),
+      newPassword: new FormControl('', [ Validators.required, Validators.minLength(1), Validators.maxLength(10)]),
+      confirmPassword: new FormControl('', [ Validators.required, Validators.minLength(1), Validators.maxLength(10)])
     });
   }
 
@@ -49,10 +49,11 @@ export class UpdatePasswordComponent implements OnInit {
     userDTO.id = 1;
     this.userService.updateUser(userDTO).subscribe(value => {
       alert('cap nhap thanh cong');
-    }, error => {alert('khong cap nhap thanh cong');
+    }, error => {
+      alert('khong cap nhap thanh cong');
     }, () => {
     });
     console.log(userDTO);
   }
-
 }
+

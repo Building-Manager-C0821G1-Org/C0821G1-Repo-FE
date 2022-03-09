@@ -19,7 +19,12 @@ export class UserService {
   // PatchById(id: number): Observable<[]> {
   //   return this.httpClient.patch<[]>();
   // }
-  updateUser(userDTO: UserDTO): Observable<User> {
-    return this.httpClient.put<User>(this.API_URL + '/changePassword', userDTO);
+  updateUser(userDTO: UserDTO): Observable<any> {
+    return this.httpClient.put<any>(this.API_URL + '/changePassword', {
+      currentPassword: userDTO.currentPassword,
+      newPassword: userDTO.newPassword,
+      confirmPassword: userDTO.confirmPassword,
+      id: userDTO.id,
+    });
   }
 }
