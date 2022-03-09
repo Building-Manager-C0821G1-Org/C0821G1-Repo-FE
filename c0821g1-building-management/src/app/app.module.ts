@@ -8,6 +8,10 @@ import {FooterComponent} from './shared/footer/footer.component';
 import {BodyComponent} from './shared/body/body.component';
 import {SpaceModule} from './feature/space/space.module';
 import {HttpClientModule} from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgxSpinnerModule} from 'ngx-bootstrap-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     SpaceModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
