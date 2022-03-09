@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './shared/header/header.component';
@@ -12,6 +11,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgxSpinnerModule} from 'ngx-bootstrap-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     NgbModule,
     NgxSpinnerModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
+
   ],
   providers: [],
   bootstrap: [AppComponent]

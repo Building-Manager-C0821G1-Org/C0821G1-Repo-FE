@@ -1,5 +1,5 @@
 import {Component, Inject, Injectable, OnInit} from '@angular/core';
-import {SpacesList} from '../spaces-list';
+import {SpacesList} from '../../../model/space/spaces-list';
 import {Subscription} from 'rxjs';
 import {SpaceService} from '../../../service/space/space.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SpacesList} from '../spaces-list';
+import {SpacesList} from '../../../model/space/spaces-list';
 import {SpaceService} from '../../../service/space/space.service';
 import {NgxSpinnerService} from 'ngx-bootstrap-spinner';
 import {MatDialog} from '@angular/material/dialog';
