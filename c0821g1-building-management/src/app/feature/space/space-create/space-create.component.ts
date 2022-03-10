@@ -89,7 +89,7 @@ export class SpaceCreateComponent implements OnInit {
         alert(this.validateErrorCode);
       },
       () => {
-        this.router.navigateByUrl('/space/list');
+        this.router.navigateByUrl('/spaces/list');
       });
   }
 

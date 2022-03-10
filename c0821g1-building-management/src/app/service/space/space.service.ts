@@ -16,7 +16,7 @@ export class SpaceService {
   }
 
   saveNewSpace(newSpace: Spaces): Observable<void> {
-    return this.httpClient.post<void>(API_URL + '/spaces/register', newSpace);
+    return this.httpClient.post<void>(API_URL + '/spaces/create', newSpace);
   }
 
   findByID(id: number): Observable<Spaces> {

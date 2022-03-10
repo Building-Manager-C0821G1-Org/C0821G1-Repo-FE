@@ -7,8 +7,8 @@ import {SpaceStatusService} from '../../../service/space/space-status.service';
 import {FloorService} from '../../../service/floor/floor.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SpacesType} from '../../../model/space/spaces-type';
-import {SpacesStatus} from '../../../model/space/spaces-status';
 import {Floors} from '../../../model/floor/floors';
+import {SpacesStatus} from '../../../model/space/spaces-status';
 
 @Component({
   selector: 'app-space-edit',
@@ -69,7 +69,7 @@ export class SpaceEditComponent implements OnInit {
       },
       error => {
       }, () => {
-        this.router.navigateByUrl('/space/list');
+        this.router.navigateByUrl('/spaces/list');
       });
   }
 }

@@ -11,8 +11,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgxSpinnerModule} from 'ngx-bootstrap-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
-import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
+import {AngularFireModule} from '@angular/fire';
 
 @NgModule({
   declarations: [
