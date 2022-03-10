@@ -285,7 +285,7 @@
                             <span
                               class="error"> (*)</span></label>
                           <input type="file" id="image" (change)="showPreview($event)" class="form-control" >
-                          <img [src]="url" width="100%" height="100">
+                          <img [src]="url" width="100%" height="200">
                         </div>
                         <small class="error" *ngIf="contractsForm.get('contractImageUrl')
                         .hasError('required')&& contractsForm.get('contractImageUrl').touched">Hình ảnh phải được chọn</small>

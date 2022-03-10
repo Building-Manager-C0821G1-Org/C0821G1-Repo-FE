@@ -134,7 +134,7 @@
                       <!--                      </div>-->
                     </div>
 
-                    <div class="row">
+                    <div class="row mt-4">
                       <div class="col-md-6 mb-4">
                         <div class="form-outline">
                           <label class="form-label" for="lastName2">Ngày bắt đầu thuê<span
@@ -272,10 +272,10 @@
                       </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row mt-4">
                       <div class="col-12">
                         <div class="form-group">
-                          <label for="exampleFormControlTextarea1">Nội dung hợp đồng <span
+                          <label class="form-label" for="exampleFormControlTextarea1">Nội dung hợp đồng <span
                             class="error">(*)</span></label>
                           <textarea style="height: 133px" class="form-control"
                                     id="exampleFormControlTextarea1"
@@ -292,7 +292,7 @@
                       </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row mt-4">
                       <div class="col-6">
                         <!--                        <div class="form-outline">-->
                         <!--                          <label class="form-label" for="emailAddress3">Hình ảnh hợp đồng-->
@@ -312,9 +312,10 @@
                         <!--                        </div>-->
 
                         <div class="col-md-12 position-relative field">
-                          <label class="form-label">Hình ảnh </label>
-                          <input type="file" class="form-control" id="files"  (change)="showPreview($event)">
+                          <label class="form-label">Hình ảnh hợp đồng<span
+                            class="error">(*)</span></label>
                           <img class="form-control" [src]="contractForm.controls.contractImageUrl.value" alt="">
+                          <input type="file" class="form-control" id="files"  (change)="showPreview($event)">
                         </div>
                       </div>
                       <div class="col-6"></div>
