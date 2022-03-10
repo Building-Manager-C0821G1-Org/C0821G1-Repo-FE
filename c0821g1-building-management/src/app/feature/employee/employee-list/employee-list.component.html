@@ -7,13 +7,13 @@
       <form #myNgForm="ngForm" (ngSubmit)="search()">
         <div class=" search row d-flex justify-content-end mb-4">
           <div class="form-group" style="text-align: center; width: 200px">
-            <input id="customerName" [(ngModel)]="employee_name" [ngModelOptions]="{standalone: true}"
+            <input id="customerName" [(ngModel)]="employeeName" [ngModelOptions]="{standalone: true}"
                    class="form-control" type="text" placeholder="Họ Tên">
           </div>
           <div class="form-group" style="text-align: right; width: 200px">
             <div style="text-align: center">
               <input placeholder="Ngày Sinh" class="textbox-n form-control" type="text"
-                     [(ngModel)]="employee_date_of_birth" [ngModelOptions]="{standalone: true}"
+                     [(ngModel)]="employeeDateOfBirth" [ngModelOptions]="{standalone: true}"
                      onfocus="(this.type='date')"
                      onblur="(this.type='text')" id="startDate"
                      aria-describedby="passwordHelpInline"/>
@@ -23,12 +23,12 @@
             <div style="text-align: center">
             </div>
             <div>
-              <input [(ngModel)]="employee_email" [ngModelOptions]="{standalone: true}"
+              <input [(ngModel)]="employeeEmail" [ngModelOptions]="{standalone: true}"
                      type="text" class="form-control" placeholder="Email">
             </div>
           </div>
           <div class="form-group" style="text-align: right; width: 200px">
-            <input [(ngModel)]="employee_address" [ngModelOptions]="{standalone: true}"
+            <input [(ngModel)]="employeeAddress" [ngModelOptions]="{standalone: true}"
                    type="text" class="form-control" placeholder="Địa Chỉ">
           </div>
           <div class="form-group" style="text-align: right; width: 150px">
