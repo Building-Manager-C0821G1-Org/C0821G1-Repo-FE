@@ -31,12 +31,11 @@
                 <input type="text" id="spaceType" #spaceType class="form-control" placeholder="Theo loại mặt bằng"
                        style="font-size: 15px">
               </div>
-              <div class="col-xl-2 col-md-3 form-group " style="text-align: -moz-right">
-                <button class="btn btn-light mt-xl-1 btn-outline-success"
-                        style="border-radius: 5px"
+              <div class="col-xl-2 col-md-3 form-group form-control-lg" style="text-align: center">
+                <button class="btn btn-light btn-outline-success" style="border-radius: 5px"
                         (click)="search(floorName.value, spaceCode.value, spaceArea.value, spaceType.value, spaceStatus.value)">
                   <i
-                    class="fa-solid fa-magnifying-glass fa-2x" style="font-size: 12px"></i>Tìm Kiếm
+                    class="fa-solid fa-magnifying-glass fa-2x" style="font-size: 15px"></i>Tìm Kiếm
                 </button>
               </div>
             </div>
@@ -45,15 +44,18 @@
         <div class="row">
           <div class="col-lg-12">
             <h4>
-              <button type="button"  class="add-button btn me-lg-1"><i
-                class="fa-solid fa-plus" routerLink="/spaces/create"></i>Tạo mới
+              <button type="button" class="add-button btn me-lg-1"
+                      style="height: 34px!important;vertical-align: middle!important;" routerLink="/spaces/create"><i
+                class="fa-solid fa-plus"></i>Tạo mới
+
               </button>
-              <select id="spaceStatus" #spaceStatus type="button" class=" btn btn-danger dropdown-toggle me-lg-1"
+              <select id="spaceStatus" #spaceStatus type="button" class="btn btn-danger dropdown-toggle"
                       data-toggle="dropdown"
                       aria-haspopup="true" aria-expanded="false">
-                <option class="dropdown-item" value="" href="">Tất cả trạng thái</option>
+                <option class="dropdown-item" value="" style="height: 20px">Tất cả trạng thái</option>
                 <option class="dropdown-item" value="Chưa vào ở">Chưa vào ở</option>
                 <option class="dropdown-item" value="Đã vào ở">Đã vào ở</option>
+                <option class="dropdown-item" value="Chưa bàn giao">Chưa bàn giao</option>
                 <option class="dropdown-item" value="Đang sửa">Đang sửa chữa</option>
               </select>
             </h4>
@@ -68,29 +70,31 @@
                        style="background-color: #efb578; white-space: nowrap; overflow: hidden;">
                 <tr style="color: #452d14">
                   <th scope="col">STT</th>
+                  <th scope="col">Tên tầng</th>
                   <th scope="col">Mã mặt bằng</th>
                   <th scope="col">Loại mặt bằng</th>
                   <th scope="col">Diện tích(m<sup>2</sup>)</th>
                   <th scope="col">Trạng thái</th>
                   <th scope="col">Giá bán(VND)</th>
                   <th scope="col">Phí quản lý</th>
-                  <th scope="col">Tên tầng</th>
                   <th scope="col" style="">Chức năng</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let space of spaceList | slice: (page-1) * pageSize : page * pageSize; index as i">
+                <tr *ngFor="let space of spaceList | slice: (page-1) * pageSize : page * pageSize; let  i= index">
                   <th scope="row">{{ i + 1 }}</th>
+                  <td>{{space.floorName}}</td>
                   <td>{{space.spaceCode}}</td>
                   <td>{{space.spaceTypeName}}</td>
-                  <td>{{space.spaceArea}}(m<sup>2</sup>)</td>
+                  <td>{{space.spaceArea}}m<sup>2</sup></td>
                   <td>{{space.spaceStatusName}}</td>
-                  <td>{{space.spacePrice}}</td>
-                  <td>{{space.spaceManagerFee}}</td>
-                  <td>{{space.floorName}}</td>
+                  <td>{{space.spacePrice | number:'1.0':'en-US' }}</td>
+                  <td>{{space.spaceManagerFee | number:'1.0':'en-US' }}</td>
                   <td>
-                    <button type="button" class="btn btn-light me-3 edit-button">
-                      <i routerLink="/spaces/edit/{{space.spaceId}}" class="fa-solid fa-pen"></i>
+                    <button type="button" class="btn btn-light me-3 edit-button"
+                            [routerLink]="['/spaces/edit/',space.spaceId]">
+                      <i routerLink="" class="fa-solid fa-pen"></i>
+
                     </button>
                     <button type="button" class="btn btn-light delete-button " data-toggle="modal"
                             data-target="#exampleModal"
@@ -102,20 +106,63 @@
                 </tbody>
               </table>
             </ng-template>
-            <div class="clearfix">
-              <ngb-pagination class="d-flex justify-content-end"
-                              [(page)]="page"
-                              [pageSize]="pageSize"
-                              [collectionSize]="spaceList.length"
-                              [maxSize]="5"
-                              [rotate]="true"
-                              [ellipses]="true"
-                              [boundaryLinks]="true">
-                <ng-template ngbPaginationFirst>Trang đầu</ng-template>
-                <ng-template ngbPaginationLast>Trang cuối</ng-template>
-                <ng-template ngbPaginationEllipsis>...</ng-template>
-                <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
-              </ngb-pagination>
+            <div class="clearfix text-center">
+              <div class="align-content-center">
+                <div class="me-5 pe-4 ">
+                  <ul class="pagination pagination-sm justify-content-end pagination-lg" style="margin:20px 0">
+                    <div *ngIf="page > 1 then previous"></div>
+                    <ng-template #previous>
+                      <li class="page-item">
+                        <button
+                          (click)="previousClick()" class="page-link" type="button">Trang trước
+                        </button>
+                      </li>
+                    </ng-template>
+
+                    <li class="page-item">
+                      <input class="page-link" type="number" value="1" min="1" [max]="totalPages"
+                             placeholder="{{totalPages}}" aria-label="Username" [value]="page"
+                             aria-describedby="basic-addon1"
+                             (change)="selectPage($event)">
+                    </li>
+                    <li class="page-item">
+                      <span class="page-link">{{page}}/{{totalPages}}</span>
+                    </li>
+                    <div *ngIf="this.page  < this.totalPages then next"></div>
+                    <ng-template #next>
+                      <li class="page-item">
+                        <button (click)="nextClick()" class="page-link" type="button">Trang sau</button>
+                      </li>
+                    </ng-template>
+                  </ul>
+                </div>
+              </div>
+              <!--              <table>-->
+              <!--                <tr style="height: 18px;background: green; vertical-align: top">-->
+              <!--                  <td>-->
+              <!--                    <input type="number"  class="form-control-sm" id="input-jump-page" (input)="selectPage($event)" [value]="page">-->
+              <!--                  </td>-->
+              <!--                  <td style="vertical-align: middle">-->
+              <!--                    {{page}}/{{totalPages}}-->
+              <!--                  </td>-->
+              <!--                  <td>-->
+              <!--&lt;!&ndash;                    <ngb-pagination class="d-flex justify-content-end"&ndash;&gt;-->
+              <!--&lt;!&ndash;                                    [(page)]="page"&ndash;&gt;-->
+              <!--&lt;!&ndash;                                    [pageSize]="pageSize"&ndash;&gt;-->
+              <!--&lt;!&ndash;                                    [collectionSize]="spaceList.length"&ndash;&gt;-->
+              <!--&lt;!&ndash;                                    [maxSize]="5"&ndash;&gt;-->
+              <!--&lt;!&ndash;                                    [rotate]="true"&ndash;&gt;-->
+              <!--&lt;!&ndash;                                    [ellipses]="true"&ndash;&gt;-->
+              <!--&lt;!&ndash;                                    [boundaryLinks]="true">&ndash;&gt;-->
+              <!--&lt;!&ndash;                      <ng-template ngbPaginationFirst>Trang đầu</ng-template>&ndash;&gt;-->
+              <!--&lt;!&ndash;                      <ng-template ngbPaginationPrevious>Trang trước</ng-template>&ndash;&gt;-->
+              <!--&lt;!&ndash;                      <ng-template ngbPaginationLast>Trang cuối</ng-template>&ndash;&gt;-->
+              <!--&lt;!&ndash;                      <ng-template ngbPaginationNext>Trang sau</ng-template>&ndash;&gt;-->
+              <!--&lt;!&ndash;                      <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>&ndash;&gt;-->
+              <!--&lt;!&ndash;                    </ngb-pagination>&ndash;&gt;-->
+              <!--                  </td>-->
+              <!--                </tr>-->
+              <!--              </table>-->
             </div>
           </div>
         </div>

@@ -1,15 +1,15 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {SpacesType} from '../../../model/space/spaces-type';
-import {SpacesStatus} from '../../../model/space/spaces-status';
 import {SpaceService} from '../../../service/space/space.service';
 import {SpaceTypeService} from '../../../service/space/space-type.service';
 import {SpaceStatusService} from '../../../service/space/space-status.service';
 import {Router} from '@angular/router';
 import {FloorService} from '../../../service/floor/floor.service';
 import {Floors} from '../../../model/floor/floors';
-import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
+import {AngularFireStorage} from '@angular/fire/storage';
+import {SpacesStatus} from '../../../model/space/spaces-status';
 
 @Component({
   selector: 'app-space-create',

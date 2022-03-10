@@ -4,6 +4,11 @@
   font-size: 60px
 }
 
+#input-jump-page {
+  width: 54px;
+  height: 34px;
+}
+
 .pagination {
   display: flex;
   justify-content: center;

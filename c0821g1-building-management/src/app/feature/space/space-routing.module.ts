@@ -10,10 +10,9 @@ const routes: Routes = [
   {path: 'list', component: SpaceListComponent},
   {path: 'edit/:id', component: SpaceEditComponent}
 ];
-
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SpaceRoutingModule { }
+export class SpaceRoutingModule {
+}
