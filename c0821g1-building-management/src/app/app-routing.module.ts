@@ -12,13 +12,13 @@ const routes: Routes = [
   {
     path: 'security',
     loadChildren: () => import('./feature/security/security.module').then(module => module.SecurityModule)
+  },
+  {
+    path: 'spaces',
+    loadChildren: () => import('./feature/space/space.module').then(module => module.SpaceModule)
   }
 ];
 
-const routes: Routes = [{
-  path: 'spaces',
-  loadChildren: () => import('./feature/space/space.module').then(module => module.SpaceModule)
-}];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
