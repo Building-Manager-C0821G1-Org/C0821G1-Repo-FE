@@ -1,18 +1,8 @@
-<<<<<<< HEAD
-// import { Injectable } from '@angular/core';
-//
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class EmployeePositionService {
-//
-//   constructor() { }
-// }
-=======
+
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {EmployeePosition} from '../../model/employee-position';
+import {EmployeePosition} from '../../model/employee/employee-position';
 
 @Injectable({
   providedIn: 'root'
@@ -25,4 +15,4 @@ export class EmployeePositionService {
     return this.httpClient.get<EmployeePosition[]>(this.API_URL);
   }
 }
->>>>>>> employee-create-BaoNHG
+

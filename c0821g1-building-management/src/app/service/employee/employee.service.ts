@@ -1,55 +1,44 @@
 import {Injectable} from '@angular/core';
-<<<<<<< HEAD
-import {Observable} from 'rxjs';
-import {Employee} from '../../model/user/employee';
 import {HttpClient} from '@angular/common/http';
-=======
-import {HttpClient} from '@angular/common/http';
-import {Employee} from '../../model/employee';
+import {Employee} from '../../model/employee/employee';
 import {Observable} from 'rxjs';
-import {EmployeePosition} from '../../model/employee-position';
->>>>>>> employee-create-BaoNHG
+import {EmployeePosition} from '../../model/employee/employee-position';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
-<<<<<<< HEAD
 
-  API_URL = 'http://localhost:8080';
-=======
+
   API_URL = 'http://localhost:8080/employee';
->>>>>>> employee-create-BaoNHG
+
 
   constructor(private httpClient: HttpClient) {
   }
 
-<<<<<<< HEAD
+
   getEmployee(id: number): Observable<any> {
-    return this.httpClient.get(this.API_URL + '/api/employee/detail/' + id);
+    return this.httpClient.get(this.API_URL + '/detail/' + id);
   }
 
   search(page: number, employeeName: string, employeeDateOfBirth: string, employeeEmail: string,
          employeeAddress: string): Observable<any> {
-    return this.httpClient.get(this.API_URL + '/api/employee/search?employee_name=' + employeeName + '&employee_date_of_birth='
+    return this.httpClient.get(this.API_URL + '/search?employee_name=' + employeeName + '&employee_date_of_birth='
       + employeeDateOfBirth + '&employee_email=' + employeeEmail + '&employee_address=' + employeeAddress
       + '&page=' + page);
   }
 
 
   deleteEmployeeById(id: any): Observable<any> {
-    return this.httpClient.delete(this.API_URL + '/api/employee/delete/' + id);
+    return this.httpClient.delete(this.API_URL + '/delete/' + id);
   }
 
   findById(id: number): Observable<Employee> {
-    return this.httpClient.get<Employee>(this.API_URL + '/api/employee/getById/' + id);
-=======
-  saveNewEmployee(newEmployee: Employee): Observable<void> {
-    return this.httpClient.post<void>(this.API_URL + '/create', newEmployee);
+    return this.httpClient.get<Employee>(this.API_URL + '/getById/' + id);
   }
 
-  findEmployeeByID(id: number): Observable<Employee> {
-    return this.httpClient.get<Employee>(this.API_URL + '/' + id);
+  saveNewEmployee(newEmployee: Employee): Observable<void> {
+    return this.httpClient.post<void>(this.API_URL + '/create', newEmployee);
   }
 
   editEmployee(employeeEdit: Employee): Observable<void> {
@@ -58,6 +47,5 @@ export class EmployeeService {
 
   findAllEmployee(): Observable<Employee[]> {
     return this.httpClient.get<Employee[]>(this.API_URL + '/list');
->>>>>>> employee-create-BaoNHG
   }
 }

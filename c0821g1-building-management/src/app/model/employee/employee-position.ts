@@ -1,4 +1,4 @@
 export interface EmployeePosition {
-  employeePositionId?: number
-  employeePositionName?: string
+  employeePositionId: number;
+  employeePositionName: string;
 }

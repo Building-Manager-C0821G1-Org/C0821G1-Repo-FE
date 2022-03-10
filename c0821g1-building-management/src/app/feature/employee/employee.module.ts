@@ -1,9 +1,3 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-<<<<<<< HEAD
-=======
-
->>>>>>> employee-create-BaoNHG
 import {EmployeeRoutingModule} from './employee-routing.module';
 import {EmployeeListComponent} from './employee-list/employee-list.component';
 import {EmployeeDeleteComponent} from './employee-delete/employee-delete.component';
@@ -11,9 +5,10 @@ import {EmployeeCreateComponent} from './employee-create/employee-create.compone
 import {EmployeeDetailComponent} from './employee-detail/employee-detail.component';
 import {EmployeeEditComponent} from './employee-edit/employee-edit.component';
 import {EmployeeEditPasswordComponent} from './employee-edit-password/employee-edit-password.component';
-<<<<<<< HEAD
-import {FormsModule} from "@angular/forms";
-import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -32,22 +27,11 @@ import {MatDialog, MatDialogModule} from "@angular/material/dialog";
     EmployeeRoutingModule,
     MatDialogModule,
     FormsModule,
-  ]
-})
-
-=======
-import {ReactiveFormsModule} from '@angular/forms';
-
-
-
-@NgModule({
-  declarations: [EmployeeListComponent, EmployeeDeleteComponent, EmployeeCreateComponent, EmployeeDetailComponent, EmployeeEditComponent, EmployeeEditPasswordComponent],
-  imports: [
-    CommonModule,
-    EmployeeRoutingModule,
     ReactiveFormsModule,
   ]
 })
->>>>>>> employee-create-BaoNHG
+
+
+
 export class EmployeeModule {
 }

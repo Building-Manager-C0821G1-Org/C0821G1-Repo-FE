@@ -1,19 +1,15 @@
-<<<<<<< HEAD
-import { Component, OnInit } from '@angular/core';
-=======
 import {Component, Inject, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {EmployeeService} from '../../../service/employee/employee.service';
 import {Router} from '@angular/router';
 import {EmployeePositionService} from '../../../service/employee/employee-position.service';
-import {EmployeePosition} from '../../../model/employee-position';
+import {EmployeePosition} from '../../../model/employee/employee-position';
 import {Observable} from 'rxjs';
 import {finalize} from 'rxjs/operators';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {UploadFileService} from '../../../service/employee/upload-file.service';
-import {Employee} from '../../../model/employee';
+import {Employee} from '../../../model/employee/employee';
 
->>>>>>> employee-create-BaoNHG
 
 @Component({
   selector: 'app-employee-create',
@@ -21,14 +17,6 @@ import {Employee} from '../../../model/employee';
   styleUrls: ['./employee-create.component.css']
 })
 export class EmployeeCreateComponent implements OnInit {
-<<<<<<< HEAD
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-=======
   employeeCreateForm: FormGroup;
   employeePositionList: Array<EmployeePosition>;
   selectedImage: any = null;
@@ -122,7 +110,4 @@ export class EmployeeCreateComponent implements OnInit {
     const currentYear = new Date().getFullYear();
     return currentYear - yearOfBirth >= 18 ? null : {under18: true};
   }
-
-
->>>>>>> employee-create-BaoNHG
 }

@@ -1,14 +1,11 @@
-<<<<<<< HEAD
-import { Component, OnInit } from '@angular/core';
-=======
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
-import {EmployeePosition} from '../../../model/employee-position';
+import {EmployeePosition} from '../../../model/employee/employee-position';
 import {EmployeeService} from '../../../service/employee/employee.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EmployeePositionService} from '../../../service/employee/employee-position.service';
-import {Employee} from '../../../model/employee';
->>>>>>> employee-create-BaoNHG
+import {Employee} from '../../../model/employee/employee';
+
 
 @Component({
   selector: 'app-employee-edit',
@@ -16,14 +13,7 @@ import {Employee} from '../../../model/employee';
   styleUrls: ['./employee-edit.component.css']
 })
 export class EmployeeEditComponent implements OnInit {
-<<<<<<< HEAD
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-=======
   validateCode: string;
   employeePositionList: Array<EmployeePosition>;
   employeeEdit: Employee;
@@ -55,7 +45,7 @@ export class EmployeeEditComponent implements OnInit {
 
       const employeeEditId = this.activatedRoute.snapshot.params.id;
       console.log(employeeEditId);
-      this.employeeService.findEmployeeByID(employeeEditId).subscribe(value2 => {
+      this.employeeService.findById(employeeEditId).subscribe(value2 => {
         this.employeeEdit = value2;
         this.employeeEditForm.patchValue(
           this.employeeEdit
@@ -87,5 +77,4 @@ export class EmployeeEditComponent implements OnInit {
     const currentYear = new Date().getFullYear();
     return currentYear - yearOfBirth >= 18 ? null : {under18: true};
   }
->>>>>>> employee-create-BaoNHG
 }

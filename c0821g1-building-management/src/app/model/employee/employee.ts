@@ -1,17 +1,18 @@
-import {EmployeePosition} from "./employee-position";
+import {EmployeePosition} from './employee-position';
+import {AppUser} from '../app-user';
 
 export interface Employee {
-  employeeId?: number
-  employeeCode?: string
-  employeeName?: string
-  employeeDateOfBirth?: string
-  employeeGender?: string
-  employeeAddress?: string
-  employeePhone?: string
-  employeeEmail?: string
-  employeeStartDate?: string
-  employeeImage?: string
-  employeeDeleteFlag?: string
-  EmployeePosition?: EmployeePosition
+  employeeId: number;
+  employeeCode: string;
+  employeeAddress: string;
+  employeeDateOfBirth: string;
+  employeeDeleteFlag: boolean;
+  employeeEmail: string;
+  employeeGender: string;
+  employeeImage: string;
+  employeeName: string;
+  employeePhone: string;
+  employeeStartDate: string;
+  employeePosition: EmployeePosition;
+  appUser: AppUser;
 }
-
