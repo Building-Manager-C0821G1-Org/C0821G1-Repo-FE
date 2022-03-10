@@ -11,6 +11,7 @@ import {finalize} from 'rxjs/operators';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {SpacesStatus} from '../../../model/space/spaces-status';
 
+
 @Component({
   selector: 'app-space-create',
   templateUrl: './space-create.component.html',

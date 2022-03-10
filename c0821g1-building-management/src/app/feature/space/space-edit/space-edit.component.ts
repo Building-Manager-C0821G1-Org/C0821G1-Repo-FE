@@ -11,6 +11,8 @@ import {Floors} from '../../../model/floor/floors';
 import {SpacesStatus} from "../../../model/space/spaces-status";
 
 
+
+
 @Component({
   selector: 'app-space-edit',
   templateUrl: './space-edit.component.html',
