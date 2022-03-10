@@ -9,13 +9,13 @@ const routes: Routes = [
   {
     path: 'list', component: FloorsListComponent , canActivate: [AuthGuard],
     data: {
-      roles: ['ADMIN']
+      roles: {expectedRole: ['ADMIN', 'EMPLOYEE']}
     }
   },
   {
     path: 'delete', component: FloorsDeleteComponent , canActivate: [AuthGuard],
     data: {
-      roles: ['EMPLOYEE', 'ADMIN']
+      roles: {expectedRole: ['ADMIN']}
     }
   }
 ];
