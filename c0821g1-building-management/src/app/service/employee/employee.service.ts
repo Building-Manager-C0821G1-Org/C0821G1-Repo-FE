@@ -9,6 +9,7 @@ import {HttpClient} from '@angular/common/http';
 export class EmployeeService {
 
   API_URL = 'http://localhost:8080';
+
   constructor(private httpClient: HttpClient) {
   }
 
@@ -17,7 +18,7 @@ export class EmployeeService {
   }
 
   search(page: number, employeeName: string, employeeDateOfBirth: string, employeeEmail: string,
-         employeeAddress: string,): Observable<any> {
+         employeeAddress: string): Observable<any> {
     return this.httpClient.get(this.API_URL + '/api/employee/search?employee_name=' + employeeName + '&employee_date_of_birth='
       + employeeDateOfBirth + '&employee_email=' + employeeEmail + '&employee_address=' + employeeAddress
       + '&page=' + page);
@@ -28,7 +29,7 @@ export class EmployeeService {
     return this.httpClient.delete(this.API_URL + '/api/employee/delete/' + id);
   }
 
-  findById(id: number): Observable<Employee>{
+  findById(id: number): Observable<Employee> {
     return this.httpClient.get<Employee>(this.API_URL + '/api/employee/getById/' + id);
   }
 }
