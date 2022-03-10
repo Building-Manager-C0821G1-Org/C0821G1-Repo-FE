@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {SpacesList} from '../../../model/space/spaces-list';
 import {SpaceService} from '../../../service/space/space.service';
-import {NgxSpinnerService} from 'ngx-bootstrap-spinner';
 import {MatDialog} from '@angular/material/dialog';
 import {SpaceDeleteComponent} from '../space-delete/space-delete.component';
+import {NgxSpinnerService} from "ngx-bootstrap-spinner";
 
 const FILTER_PAG_REGEX = /[^0-9]/g;
 
@@ -25,8 +25,9 @@ export class SpaceListComponent implements OnInit {
   checkListSearchEmpty: any;
   messageError: string;
 
-  constructor(private spaceService: SpaceService, private spinner: NgxSpinnerService,
-              private dialogDelete: MatDialog) {
+  constructor(private spaceService: SpaceService,
+              private dialogDelete: MatDialog,
+              private snipper: NgxSpinnerService) {
   }
 
   ngOnInit(): void {
@@ -44,7 +45,7 @@ export class SpaceListComponent implements OnInit {
   findAllSpace() {
     this.spaceService.findAllSpace().subscribe(data => {
       this.messageError = '';
-      this.spinner.show();
+      this.snipper.show();
       if (data == null) {
         this.spaceList = [];
         this.collectionSize = 0;
@@ -62,7 +63,7 @@ export class SpaceListComponent implements OnInit {
     }, () => {
       setTimeout(() => {
         /** spinner ends after 5 seconds */
-        this.spinner.hide();
+        this.snipper.hide();
       }, 1000);
     });
   }
@@ -89,7 +90,7 @@ export class SpaceListComponent implements OnInit {
       this.page = 1;
       return this.spaceService.searchSpace(floorName, spaceCode, spaceArea, spaceTypeName, spaceStatusName).subscribe(result => {
         this.messageError = '';
-        this.spinner.show();
+        this.snipper.show();
         if (result == null) {
           this.spaceList = [];
           this.collectionSize = 0;
@@ -107,7 +108,7 @@ export class SpaceListComponent implements OnInit {
       }, () => {
         setTimeout(() => {
           /** spinner ends after 5 seconds */
-          this.spinner.hide();
+          this.snipper.hide();
         }, 1000);
       });
     }
