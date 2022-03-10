@@ -5,9 +5,9 @@ import {SpaceListComponent} from './space-list/space-list.component';
 import {SpaceCreateComponent} from './space-create/space-create.component';
 import {SpaceEditComponent} from './space-edit/space-edit.component';
 import {NgbDropdownModule, NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
-import {NgxSpinnerModule} from 'ngx-bootstrap-spinner';
 import { SpaceDeleteComponent } from './space-delete/space-delete.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {NgxSpinnerModule} from 'ngx-bootstrap-spinner';
 
 
 // @ts-ignore
@@ -20,10 +20,9 @@ import {ReactiveFormsModule} from '@angular/forms';
     CommonModule,
     SpaceRoutingModule,
     NgbPaginationModule,
-    NgxSpinnerModule,
     ReactiveFormsModule,
-    NgbDropdownModule
-
+    NgbDropdownModule,
+    NgxSpinnerModule
   ]
 })
 export class SpaceModule {
