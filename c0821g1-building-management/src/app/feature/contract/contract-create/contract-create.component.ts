@@ -118,7 +118,7 @@ export class ContractCreateComponent implements OnInit {
           const date2 = new Date(contract.contractDateEnd);
           const month = (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24 * 30);
           // @ts-ignore
-          contract.contractExpired = Math.round(month);
+          // contract.contractExpired = Math.round(month);
 
           this.contractService.saveContract(contract).subscribe(() => {
             this.contractsForm.reset();

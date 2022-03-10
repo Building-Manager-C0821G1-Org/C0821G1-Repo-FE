@@ -42,7 +42,7 @@ export class ContractEditComponent implements OnInit {
               private customerService: CustomerService,
               private router: Router,
               private activatedRoute: ActivatedRoute,
-              private  datepipe: DatePipe,
+              private datepipe: DatePipe,
               @Inject(AngularFireStorage) private storage: AngularFireStorage,) {
     this.checkCode = false;
 
@@ -67,7 +67,7 @@ export class ContractEditComponent implements OnInit {
       const date2 = new Date(contract.contractDateEnd);
       const month = (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24 * 30);
       // @ts-ignore
-      contract.contractExpired = Math.round(month);
+      // contract.contractExpired = Math.round(month);
       // console.log('Expired' + contract.contractExpired);
 
       console.log('Image' + contract.contractImageUrl);
