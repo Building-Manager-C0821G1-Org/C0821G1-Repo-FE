@@ -1,6 +1,6 @@
 .sidebar-container {
   /*clear: both;*/
-  margin-top: 105px;
+  margin-top: 100px;
   position: fixed;
   width: 220px;
   height: 100%;
@@ -97,15 +97,6 @@ th ,td{
   padding-top: 60px;
 }
 
-.font-google-1 {
-  font-family: 'Work Sans', cursive;
-}
-
-.font-google-2 {
-  font-family: 'Dancing Script', cursive;
-  color: #d6b915;
-  font-size: 60px
-}
 
 .pagination {
   display: flex;
@@ -128,6 +119,11 @@ th ,td{
 }
 
 .content-container .container-fluid .container .row table tbody tr td .delete-button{
+  background-color: #de6666;
+  border-radius: 5px;
+  color: white;
+}
+#delete-button{
   background-color: #de6666;
   border-radius: 5px;
   color: white;

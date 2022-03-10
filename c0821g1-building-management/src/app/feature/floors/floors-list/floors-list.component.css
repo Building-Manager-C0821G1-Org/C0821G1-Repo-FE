@@ -1,27 +1,27 @@
 /*Table list*/
 
-.content-container {
-  content: '';
-  /*clear: both;*/
-  padding-left: 220px;
-}
+/*.content-container {*/
+/*  content: '';*/
+/*  !*clear: both;*!*/
+/*  padding-left: 220px;*/
+/*}*/
 
-th ,td{
-  text-align: center;
-}
-.content-container .container-fluid h2{
-  padding-top: 60px;
-}
+/*th ,td{*/
+/*  text-align: center;*/
+/*}*/
+/*.content-container .container-fluid h2{*/
+/*  padding-top: 60px;*/
+/*}*/
 
-.font-google-1 {
-  font-family: 'Work Sans', cursive;
-}
+/*.font-google-1 {*/
+/*  font-family: 'Work Sans', cursive;*/
+/*}*/
 
-.font-google-2 {
-  font-family: 'Dancing Script', cursive;
-  color: #d6b915;
-  font-size: 60px
-}
+/*.font-google-2 {*/
+/*  font-family: 'Dancing Script', cursive;*/
+/*  color: #d6b915;*/
+/*  font-size: 60px*/
+/*}*/
 
 /*.pagination {*/
 /*  display: flex;*/

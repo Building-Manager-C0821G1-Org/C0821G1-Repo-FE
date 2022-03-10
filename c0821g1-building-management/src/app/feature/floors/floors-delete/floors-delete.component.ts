@@ -16,21 +16,16 @@ export class FloorsDeleteComponent implements OnInit {
   constructor(private floorService: FloorService,
               public dialogRef: MatDialogRef<FloorsDeleteComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) { }
-<<<<<<< Updated upstream
 
   ngOnInit(): void {
     this.floor = this.data.value;
   }
-=======
-  ngOnInit(): void {
-    this.floor = this.data.value;
-  }
-
->>>>>>> Stashed changes
   deleteFloorsById() {
     this.subscription = this.floorService.deleteFlagFloors(this.floor.floorId).subscribe(value => {
         this.callToast();
         this.dialogRef.close();
+      }, error => {
+      this.callToastFail();
       }
     );
   }
@@ -38,15 +33,21 @@ export class FloorsDeleteComponent implements OnInit {
   onNoClick(){
     this.dialogRef.close();
   }
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
   private callToast() {
     Swal.fire({
       position: 'top',
       icon: 'success',
       title: 'Xóa tầng lầu thành công!😍😍😍',
+      showConfirmButton: false,
+      timer: 2000
+    });
+  }
+  private callToastFail() {
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Thông tin tầng lầu cần xóa không chính xác!',
       showConfirmButton: false,
       timer: 2000
     });

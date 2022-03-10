@@ -28,17 +28,17 @@
   </div>
   <!--    header-bottom____________________________________________________________________________________________________________-->
   <div class="row header-bottom">
-    <div class="col-2 ">
-      <img src="../../../assets/images/logo.png" alt="" style="height: 80px" class="logo">
+    <div class="col-2 text-center">
+      <img src="../../../assets/images/logo.png" alt="" style="height: 80px" class="logo ">
     </div>
-    <div class="col-10 menu">
-      <div class="link me-2">
+    <div class="col-8 menu text-center">
+      <div class="link me-5">
         <a routerLink="/floors/list" >TRANG CHỦ</a>
       </div>
-      <div class=" link ">
+      <div class=" link me-5">
         <a href="#" >GIỚI THIỆU</a>
       </div>
-      <div class=" link">
+      <div class=" link me-5">
         <div class="dropdown">
           <a class="dropbtn dropdown-toggle dropdown-toggle-split">KHAI THÁC-VẬN HÀNH</a>
           <div class="dropdown-content">
@@ -50,28 +50,28 @@
           </div>
         </div>
       </div>
-      <div class="link">
+      <div class="link me-5">
         <a href="#">TIN TỨC</a>
-      </div>
-      <div class=" link ">
-        <!--<span style="color: red" *ngIf="user,admin có trong db"> {{Tên user}}</span>không(else) có sẽ hiện thẻ span bên dưới-->
-        <div class="dropdown">
-          <a class="dropbtn dropdown-toggle dropdown-toggle-split">ĐĂNG NHẬP</a>
-          <div class="dropdown-content">
-            <a class="dropdown-item" href="#">Thông tin cá nhân</a>
-            <a class="dropdown-item" href="#">Đăng xuất</a>
-          </div>
-        </div>
-        <!--            ảnh của user,admin sẽ ở đây-->
-        <!--            <img src="#" alt=""/>-->
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-             class="bi bi-person-circle" viewBox="0 0 16 16" style="color: #eeb043">
-          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-          <path fill-rule="evenodd"
-                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-        </svg>
       </div>
     </div>
 
+    <div class="col-2 link">
+      <!--<span style="color: red" *ngIf="user,admin có trong db"> {{Tên user}}</span>không(else) có sẽ hiện thẻ span bên dưới-->
+      <div class="dropdown">
+        <a class="dropbtn dropdown-toggle dropdown-toggle-split">ĐĂNG NHẬP</a>
+        <div class="dropdown-content">
+          <a class="dropdown-item" href="#">Thông tin cá nhân</a>
+          <a class="dropdown-item" href="#">Đăng xuất</a>
+        </div>
+      </div>
+      <!--            ảnh của user,admin sẽ ở đây-->
+      <!--            <img src="#" alt=""/>-->
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+           class="bi bi-person-circle" viewBox="0 0 16 16" style="color: #eeb043">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        <path fill-rule="evenodd"
+              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+      </svg>
+    </div>
   </div>
 </div>
