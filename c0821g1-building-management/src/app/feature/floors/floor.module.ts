@@ -8,10 +8,13 @@ import { FloorsEditComponent } from './floors-edit/floors-edit.component';
 
 
 @NgModule({
-  declarations: [FloorsListComponent, FloorsDeleteComponent, FloorsEditComponent],
-  imports: [
-    CommonModule,
-    FloorRoutingModule
-  ]
+    declarations: [FloorsListComponent, FloorsDeleteComponent, FloorsEditComponent],
+    exports: [
+        FloorsListComponent
+    ],
+    imports: [
+        CommonModule,
+        FloorRoutingModule
+    ]
 })
 export class FloorModule { }
