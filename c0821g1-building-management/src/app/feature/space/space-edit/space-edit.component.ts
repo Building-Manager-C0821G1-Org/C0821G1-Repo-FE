@@ -14,8 +14,6 @@ import {finalize} from "rxjs/operators";
 import {AngularFireStorage} from "@angular/fire/storage";
 
 
-
-
 @Component({
   selector: 'app-space-edit',
   templateUrl: './space-edit.component.html',
