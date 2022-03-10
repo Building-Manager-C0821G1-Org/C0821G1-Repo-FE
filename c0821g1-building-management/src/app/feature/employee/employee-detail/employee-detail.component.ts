@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Employee} from '../../../model/user/employee';
 import {EmployeeService} from '../../../service/employee/employee.service';
 import {ActivatedRoute} from '@angular/router';
+import {Employee} from '../../../model/employee/employee';
+
 
 @Component({
   selector: 'app-employee-detail',
@@ -21,8 +22,7 @@ export class EmployeeDetailComponent implements OnInit {
   id: any;
 
   constructor(private employeeService: EmployeeService,
-              private activatedRoute: ActivatedRoute
-              ) {
+              private activatedRoute: ActivatedRoute) {
     const employeeId = this.activatedRoute.snapshot.params.id;
     this.employeeService.findById(Number(employeeId)).subscribe(value => {
       this.employee = value;
@@ -39,6 +39,7 @@ export class EmployeeDetailComponent implements OnInit {
     // this.address = this.tokenStorageService.getUser().address;
     // this.gender = this.tokenStorageService.getUser().gender;
     // this.dateOfBirth = this.tokenStorageService.getUser().dayOfBirth;
+    throw new Error('Method not implemented.');
   }
 
 }
