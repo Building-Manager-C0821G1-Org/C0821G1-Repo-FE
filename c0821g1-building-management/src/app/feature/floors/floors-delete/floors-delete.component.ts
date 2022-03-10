@@ -16,10 +16,17 @@ export class FloorsDeleteComponent implements OnInit {
   constructor(private floorService: FloorService,
               public dialogRef: MatDialogRef<FloorsDeleteComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) { }
+<<<<<<< Updated upstream
 
   ngOnInit(): void {
     this.floor = this.data.value;
   }
+=======
+  ngOnInit(): void {
+    this.floor = this.data.value;
+  }
+
+>>>>>>> Stashed changes
   deleteFloorsById() {
     this.subscription = this.floorService.deleteFlagFloors(this.floor.floorId).subscribe(value => {
         this.callToast();
@@ -31,7 +38,10 @@ export class FloorsDeleteComponent implements OnInit {
   onNoClick(){
     this.dialogRef.close();
   }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
   private callToast() {
     Swal.fire({
       position: 'top',
