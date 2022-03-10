@@ -339,6 +339,7 @@
                     <h6 class="mb-2 pb-1">Giới tính: </h6>
 
                     <div class="form-check form-check-inline ">
+                      <label class="form-check-label" for="femaleGender">Nữ</label>
                       <input
                         class="form-check-input form-control"
                         type="radio"
@@ -348,7 +349,6 @@
                         checked
                         formControlName="employeeGender"
                       />
-                      <label class="form-check-label" for="femaleGender">Nữ</label>
                     </div>
 
                     <div class="form-check form-check-inline">
@@ -370,6 +370,7 @@
                     <label class="form-label select-label">Vị trí <span class="error">(*)</span></label>
                     <br>
                     <select class="select form-control-lg" formControlName="employeePosition">
+                      <option value=null></option>
                       <option *ngFor="let positionObj of employeePositionList"
                               [ngValue]="positionObj">{{positionObj.employeePositionName}}</option>
                     </select>

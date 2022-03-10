@@ -43,7 +43,7 @@ export class EmployeeCreateComponent implements OnInit {
       ]),
       employeePhone: new FormControl('', [Validators.required, Validators.pattern('^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$')]),
       employeeStartDate: new FormControl('', Validators.required),
-      employeeGender: new FormControl(),
+      employeeGender: new FormControl('1'),
       employeePosition: new FormControl('', Validators.required),
       employeeImage: new FormControl('')
     });
@@ -93,6 +93,7 @@ export class EmployeeCreateComponent implements OnInit {
           this.url = url;
           this.uploadFileService.insertImageDetails(this.id, this.url);
           alert('Upload Successful');
+          console.log(this.url);
         });
       })
     ).subscribe();
@@ -109,7 +110,6 @@ export class EmployeeCreateComponent implements OnInit {
     const currentYear = new Date().getFullYear();
     return currentYear - yearOfBirth >= 18 ? null : {under18: true};
   }
-
 
 
 }
