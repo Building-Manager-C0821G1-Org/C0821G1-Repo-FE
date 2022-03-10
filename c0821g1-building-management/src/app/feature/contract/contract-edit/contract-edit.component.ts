@@ -43,7 +43,7 @@ export class ContractEditComponent implements OnInit {
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private datepipe: DatePipe,
-              @Inject(AngularFireStorage) private storage: AngularFireStorage,) {
+              @Inject(AngularFireStorage) private storage: AngularFireStorage) {
     this.checkCode = false;
 
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {

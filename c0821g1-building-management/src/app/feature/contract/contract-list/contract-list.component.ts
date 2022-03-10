@@ -48,10 +48,10 @@ export class ContractListComponent implements OnInit {
           const today = new Date();
           // @ts-ignore
           const endDate1 = new Date(dateEnd.getFullYear(), dateEnd.getDate() - 1, dateEnd.getMonth());
-          const check = endDate1 - today;
+          const check = endDate1.getDate() - today.getMonth();
           contract1.checkFlag = Math.round(check);
           // console.log('today' + today);
-          // console.log('end  ' + endDate1);
+          console.log('end  ' + endDate1.getDate());
           // console.log('check ' + check);
         }
       } else {
@@ -120,7 +120,7 @@ export class ContractListComponent implements OnInit {
           // @ts-ignore
           const today = new Date();
           // @ts-ignore
-          const endDate1 = new Date(dateEnd.getFullYear(), dateEnd.getDate() - 1, dateEnd.getMonth());
+          const endDate1 = new Date(dateEnd.getFullYear(), dateEnd.getDate(), dateEnd.getMonth());
           const check = endDate1 - today;
           contract1.checkFlag = Math.round(check);
           console.log(this.message);
