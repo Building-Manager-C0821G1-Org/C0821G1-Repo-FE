@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Spaces} from '../../../model/space/spaces';
 import {SpaceService} from '../../../service/space/space.service';
@@ -10,6 +10,8 @@ import {SpacesType} from '../../../model/space/spaces-type';
 import {Floors} from '../../../model/floor/floors';
 import {SpacesStatus} from '../../../model/space/spaces-status';
 import Swal from 'sweetalert2';
+import {finalize} from "rxjs/operators";
+import {AngularFireStorage} from "@angular/fire/storage";
 
 
 @Component({
@@ -36,6 +38,7 @@ export class SpaceEditComponent implements OnInit {
   floorList: Array<Floors>;
   selectedImage: any = null;
   urlImage = '';
+  loading: boolean;
 
 
 
@@ -44,7 +47,8 @@ export class SpaceEditComponent implements OnInit {
               private spaceStatusService: SpaceStatusService,
               private floorService: FloorService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              @Inject(AngularFireStorage) private angularFireStorage: AngularFireStorage ) {
   }
 
   ngOnInit(): void {
@@ -77,16 +81,29 @@ export class SpaceEditComponent implements OnInit {
   }
 
   upload(event) {
+    // this.selectedImage = event.target.files[0];
+    // if (event.target.files) {
+    //   const reader = new FileReader();
+    //   reader.readAsDataURL(event.target.files[0]);
+    //   // tslint:disable-next-line:no-shadowed-variable
+    //   reader.onload = (event: any) => {
+    //     this.urlImage = event.target.result;
+    //     // console.log(event.target.files[0]);
+    //   };
+    // }
     this.selectedImage = event.target.files[0];
-    if (event.target.files) {
-      const reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0]);
-      // tslint:disable-next-line:no-shadowed-variable
-      reader.onload = (event: any) => {
-        this.urlImage = event.target.result;
-        // console.log(event.target.files[0]);
-      };
-    }
+    const nameImg = this.selectedImage.name;
+    const fileRef = this.angularFireStorage.ref(nameImg);
+    this.loading = true;
+    this.angularFireStorage.upload(nameImg, this.selectedImage).snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe((url) => {
+          this.spaceEditForm.patchValue({spaceImage: url});
+          this.spaceEdit.spaceImage = url;
+          this.loading = false;
+        });
+      })
+    ).subscribe();
   }
 
   compareFnSS(t1: any, t2: any): boolean {
