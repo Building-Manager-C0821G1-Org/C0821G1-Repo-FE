@@ -8,7 +8,7 @@ import {FloorService} from '../../../service/floor/floor.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SpacesType} from '../../../model/space/spaces-type';
 import {Floors} from '../../../model/floor/floors';
-import {SpacesStatus} from '../../../model/space/spaces-status';
+import {SpacesStatus} from '../spaces-status';
 
 
 

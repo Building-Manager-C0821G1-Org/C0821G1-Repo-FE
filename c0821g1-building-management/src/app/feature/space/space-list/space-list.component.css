@@ -194,5 +194,30 @@ body {
 table tr {
   vertical-align: middle;
 }
+.add-button {
+  background-color: mediumseagreen;
+  color: white;
+  border-radius: 5px;
+}
+.add-button:hover{
+  background-color: forestgreen;
+}
+
+.edit-button {
+  background-color: #d6b915;
+  border-radius: 5px;
+}
+.edit-button:hover{
+  background-color: #EED84A;
+}
+
+.delete-button {
+  background-color: #de6666;
+  border-radius: 5px;
+  color: white;
+}
+.delete-button:hover{
+  background-color: #DD2840;
+}
 
 

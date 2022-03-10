@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {SpacesStatus} from '../../model/space/spaces-status';
+import {SpacesStatus} from '../../feature/space/spaces-status';
 
 @Injectable({
   providedIn: 'root'
