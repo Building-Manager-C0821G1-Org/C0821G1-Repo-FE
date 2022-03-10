@@ -28,9 +28,9 @@ export class EmployeeDeleteComponent implements OnInit {
 
   deleteEmployee() {
     this.subscription = this.employeeService.deleteEmployeeById(this.employee.employeeId).subscribe(data => {
-      this.dialogRef.close();
+      this.dialogRef.close( false);
       this.callToast();
-
+      // window.location.reload()
     });
   }
 

@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 <h2 class="text-center m-5 font-google-2">Danh sách Nhân Viên</h2>
 <div class="container">
   <div class="row">
@@ -43,7 +41,7 @@
   </div>
   <div class="row">
     <h4>
-      <button type="button" class="add-button btn-lg"><i class="fa-solid fa-plus me-lg-2"></i>Tạo mới
+      <button type="button" routerLink="/employee/create"  class="add-button btn-lg"><i class="fa-solid fa-plus me-lg-2"></i>Tạo mới
       </button>
     </h4>
   </div>
@@ -78,7 +76,7 @@
           <td>{{employee.employeeAddress}}</td>
           <td>{{employee.employeeEmail}}</td>
           <td class="text-center">
-            <a type="button" class="btn btn-light me-3 edit-button">
+            <a type="button" class="btn btn-light me-3 edit-button" routerLink="/employee/update/{{employee.employeeId}}">
               <i class="fa-solid fa-pen"></i>
             </a>
             <a type="button" class="btn btn-light delete-button" (click)="openDialog(employee.employeeId)">

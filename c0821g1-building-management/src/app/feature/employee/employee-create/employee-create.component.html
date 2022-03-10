@@ -345,7 +345,7 @@
                         type="radio"
                         name="employeeGender"
                         id="femaleGender"
-                        value="1"
+                        value="Nữ"
                         checked
                         formControlName="employeeGender"
                       />
@@ -358,7 +358,7 @@
                         type="radio"
                         name="employeeGender"
                         id="maleGender"
-                        value="2"
+                        value="Nam"
                         formControlName="employeeGender"
                       />
                     </div>
@@ -398,7 +398,7 @@
 
 
                 <div class="d-flex justify-content-end pt-3 mt-5 ">
-                  <button type="submit" (click)="save()" [disabled]="!employeeCreateForm.valid"
+                  <button type="submit"  [disabled]="!employeeCreateForm.valid"
                           class="add-button button-radius btn-lg ms-2 me-3" style="background-color: #d17d0f">Tạo mới
                   </button>
                   <button type="reset" class="reset-button button-radius btn-lg ms-2 me-3">Đặt lại</button>

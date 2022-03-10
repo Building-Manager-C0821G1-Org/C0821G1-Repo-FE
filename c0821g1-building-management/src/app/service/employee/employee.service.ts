@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Employee} from '../../model/employee/employee';
 import {Observable} from 'rxjs';
-import {EmployeePosition} from '../../model/employee/employee-position';
+
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +23,8 @@ export class EmployeeService {
 
   search(page: number, employeeName: string, employeeDateOfBirth: string, employeeEmail: string,
          employeeAddress: string): Observable<any> {
-    return this.httpClient.get(this.API_URL + '/search?employee_name=' + employeeName + '&employee_date_of_birth='
-      + employeeDateOfBirth + '&employee_email=' + employeeEmail + '&employee_address=' + employeeAddress
+    return this.httpClient.get(this.API_URL + '/search?employeeName=' + employeeName + '&employeeDateOfBirth='
+      + employeeDateOfBirth + '&employeeEmail=' + employeeEmail + '&employeeAddress=' + employeeAddress
       + '&page=' + page);
   }
 

@@ -135,8 +135,11 @@ export class EmployeeListComponent implements OnInit {
   }
 
   findPaginnation(value: number) {
-    this.page = value - 1;
+    if(value = this.totalPages){
+      this.page = value - 1;
+    }
     this.ngOnInit();
+
   }
 
   nextClick(index) {
@@ -150,10 +153,16 @@ export class EmployeeListComponent implements OnInit {
       const dialogRef = this.dialogDelete.open(EmployeeDeleteComponent, {
         width: '500px',
         data: {employeeData},
-        disableClose: true
+        disableClose: true,
       });
       dialogRef.afterClosed().subscribe(value => {
-        console.log('Hộp thoại đã được đóng');
+        if(this.flag = true){
+          this.employeeName='';
+          this.employeeDateOfBirth='';
+          this.employeeEmail='';
+          this.employeeAddress='';
+          this.page = 0;
+        }
         this.ngOnInit();
       });
     });

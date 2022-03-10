@@ -84,20 +84,20 @@ export class EmployeeCreateComponent implements OnInit {
     this.selectedImage = event.target.files[0];
   }
 
-  save() {
-    const name = this.selectedImage.name;
-    const fileRef = this.storage.ref(name);
-    this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
-      finalize(() => {
-        fileRef.getDownloadURL().subscribe((url) => {
-          this.url = url;
-          this.uploadFileService.insertImageDetails(this.id, this.url);
-          alert('Upload Successful');
-          console.log(this.url);
-        });
-      })
-    ).subscribe();
-  }
+  // save() {
+  //   const name = this.selectedImage.name;
+  //   const fileRef = this.storage.ref(name);
+  //   this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
+  //     finalize(() => {
+  //       fileRef.getDownloadURL().subscribe((url) => {
+  //         this.url = url;
+  //         this.uploadFileService.insertImageDetails(this.id, this.url);
+  //         alert('Upload Successful');
+  //         console.log(this.url);
+  //       });
+  //     })
+  //   ).subscribe();
+  // }
 
   view() {
     this.uploadFileService.getImage(this.file);
