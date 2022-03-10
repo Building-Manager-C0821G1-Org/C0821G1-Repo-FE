@@ -8,7 +8,6 @@ import { ContractEditComponent } from './contract-edit/contract-edit.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {NgxSpinnerModule} from 'ngx-bootstrap-spinner';
 
 
 
@@ -24,8 +23,7 @@ import {NgxSpinnerModule} from 'ngx-bootstrap-spinner';
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    MatDialogModule,
-    NgxSpinnerModule
+    MatDialogModule
   ],
   providers: [],
 })

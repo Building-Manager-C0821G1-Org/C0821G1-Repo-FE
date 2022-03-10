@@ -47,12 +47,12 @@ export class ContractListComponent implements OnInit {
           // @ts-ignore
           const today = new Date();
           // @ts-ignore
-          const endDate1 = new Date(dateEnd.getFullYear(), dateEnd.getDate() - 1, dateEnd.getMonth());
+          const endDate1 = new Date(dateEnd.getFullYear(), dateEnd.getDate(), dateEnd.getMonth());
           const check = endDate1.getDate() - today.getMonth();
           contract1.checkFlag = Math.round(check);
           // console.log('today' + today);
-          console.log('end  ' + endDate1.getDate());
-          // console.log('check ' + check);
+          console.log('end  ' + endDate1);
+          console.log('check ' + check);
         }
       } else {
         this.message = 'Not found !!!';
@@ -174,12 +174,6 @@ export class ContractListComponent implements OnInit {
     this.page = value - 1;
     this.ngOnInit();
   }
-
-  // getAll(){
-  //   this.contractService.findAllContract().subscribe(c => {
-  //     this.contracts = c;
-  //   });
-  // }
   toCreateForm() {
     this.router.navigate(['contract/create']);
   }

@@ -113,10 +113,19 @@ export class ContractEditComponent implements OnInit {
   }
 
   cancel() {
-    alert('Thay đổi chưa được lưu !');
+    this.callToast1();
     this.router.navigate(['contract/list']);
   }
 
+  private callToast1() {
+    Swal.fire({
+      position: 'top',
+      icon: 'warning',
+      title: 'Đã hủy',
+      showConfirmButton: true,
+      timer: 2000
+    });
+  }
 
   private callToast() {
     Swal.fire({

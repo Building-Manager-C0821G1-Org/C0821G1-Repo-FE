@@ -82,16 +82,16 @@
           <td style="text-align: center" *ngIf="s.checkFlag >= 0; else blockContract ">
             <i class="fa-solid fa-square-check"></i>
           </td>
+
           <ng-template #blockContract>
             <td style="text-align: center"><i class="fa-solid fa-square"></i></td>
           </ng-template>
           <td>
-            <button (click)="editContract(s.contractId)" type="button" class="btn btn-light me-3"
-                    style="background-color: #d6b915; border-radius: 10px">
+            <button (click)="editContract(s.contractId)" type="button" class="btn btn-light me-3 edit-button"
+                   >
               <i class="fa-solid fa-pen"></i>
             </button>
-            <button type="submit" class="btn btn-light"
-                    style="background-color: #de6666; color: white; border-radius: 10px"
+            <button type="submit" class="btn btn-light delete-button"
                     (click)="openDialog(s.contractId)">
               <i class="fa-solid fa-trash-can"></i>
             </button>
