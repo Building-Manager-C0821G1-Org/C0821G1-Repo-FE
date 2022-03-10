@@ -42,7 +42,7 @@ export class SpaceService {
   }
 
   deleteSpaceById(spaceId: number): Observable<SpacesList> {
-    return this.httpClient.get<SpacesList>(API_URL + `/spaces/${spaceId}`);
+    return this.httpClient.get<SpacesList>(API_URL + `/spaces/delete/${spaceId}`);
   }
 
   getSpaceById(spaceId: number): Observable<any> {

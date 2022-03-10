@@ -8,8 +8,8 @@ import {SpaceStatusService} from '../../../service/space/space-status.service';
 import {Router} from '@angular/router';
 import {FloorService} from '../../../service/floor/floor.service';
 import {Floors} from '../../../model/floor/floors';
-import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
+import {AngularFireStorage} from '@angular/fire/storage';
 
 @Component({
   selector: 'app-space-create',

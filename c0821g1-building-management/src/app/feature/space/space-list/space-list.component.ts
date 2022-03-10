@@ -18,9 +18,10 @@ export class SpaceListComponent implements OnInit {
   spaceId: number;
   spaceCodeDelete: string;
   spaceList: SpacesList[];
-  page = 4;
+  page = 1;
   pageSize = 5;
   collectionSize = 0;
+  totalPages: number;
   checkListSearchEmpty: any;
   messageError: string;
 
@@ -32,8 +33,12 @@ export class SpaceListComponent implements OnInit {
     this.findAllSpace();
   }
 
-  selectPage(page: string) {
-    this.page = parseInt(page, 10) || 1;
+  selectPage(event: any) {
+    this.page = parseInt(event.target.value, 10) || 1;
+  }
+
+  counter(i: number) {
+    return new Array(i);
   }
 
   findAllSpace() {
@@ -47,6 +52,11 @@ export class SpaceListComponent implements OnInit {
       } else {
         this.spaceList = data['content'];
         this.collectionSize = data['totalElements'];
+        if (this.collectionSize % this.pageSize !== 0){
+          this.totalPages = Math.floor(this.collectionSize / this.pageSize) + 1;
+        } else {
+          this.totalPages = Math.floor(this.collectionSize / this.pageSize);
+        }
       }
     }, () => {
     }, () => {
@@ -76,6 +86,7 @@ export class SpaceListComponent implements OnInit {
     if (floorName === '' && spaceCode === '' && spaceArea === '' && spaceTypeName === '' && spaceStatusName === '') {
       return this.findAllSpace();
     } else {
+      this.page = 1;
       return this.spaceService.searchSpace(floorName, spaceCode, spaceArea, spaceTypeName, spaceStatusName).subscribe(result => {
         this.messageError = '';
         this.spinner.show();
@@ -86,6 +97,11 @@ export class SpaceListComponent implements OnInit {
         } else {
           this.spaceList = result['content'];
           this.collectionSize = result['totalElements'];
+          if (this.collectionSize % this.pageSize !== 0){
+            this.totalPages = Math.floor(this.collectionSize / this.pageSize) + 1;
+          } else {
+            this.totalPages = Math.floor(this.collectionSize / this.pageSize);
+          }
         }
       }, () => {
       }, () => {
@@ -97,25 +113,14 @@ export class SpaceListComponent implements OnInit {
     }
   }
 
-  // previousClick(index) {
-  //   this.page = this.page - index;
-  //   this.ngOnInit();
-  // }
-  //
-  // findPagination(value: number) {
-  //   this.page = value - 1;
-  //   this.ngOnInit();
-  // }
-  //
-  // nextClick(index) {
-  //   this.page = this.page + index;
-  //   console.log('next pay ' + this.page);
-  //   this.ngOnInit();
-  // }
-  //
-  // formatInput(input: HTMLInputElement) {
-  //   input.value = input.value.replace(FILTER_PAG_REGEX, '');
-  // }
+  previousClick() {
+    this.page = this.page - 1;
+  }
+
+  nextClick() {
+    this.page = this.page + 1;
+  }
+
   openDialog(spaceId: number) {
     this.spaceService.getSpaceById(spaceId).subscribe(spaceData => {
       const dialogRef = this.dialogDelete.open(SpaceDeleteComponent, {
