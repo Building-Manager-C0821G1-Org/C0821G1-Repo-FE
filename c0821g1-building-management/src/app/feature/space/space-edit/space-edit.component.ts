@@ -8,8 +8,7 @@ import {FloorService} from '../../../service/floor/floor.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SpacesType} from '../../../model/space/spaces-type';
 import {Floors} from '../../../model/floor/floors';
-import {SpacesStatus} from '../../../model/space/spaces-status';
-
+import {SpacesStatus} from "../../../model/space/spaces-status";
 
 
 
@@ -25,9 +24,9 @@ export class SpaceEditComponent implements OnInit {
     spaceArea: new FormControl('', [Validators.required, Validators.pattern('^(,|[0-9])*$')]),
     spacePrice: new FormControl('', [Validators.pattern('^(,|[0-9])*$')]),
     spaceManagerFee: new FormControl('', [Validators.pattern('^(,|[0-9])*$')]),
-    spaceNote: new FormControl(),
-    spaceImage: new FormControl(),
-    spaceDeleteFlag: new FormControl(),
+    spaceNote: new FormControl(''),
+    spaceImage: new FormControl(''),
+    spaceDeleteFlag: new FormControl(''),
     spacesType: new FormControl('', Validators.required),
     spaceStatus: new FormControl('', Validators.required),
     floors: new FormControl('', Validators.required)
@@ -36,6 +35,10 @@ export class SpaceEditComponent implements OnInit {
   spaceTypeList: Array<SpacesType>;
   spaceStatusList: Array<SpacesStatus>;
   floorList: Array<Floors>;
+  selectedImage: any = null;
+  urlImage = '';
+
+
 
   constructor(private spaceService: SpaceService,
               private spaceTypeService: SpaceTypeService,
@@ -46,34 +49,54 @@ export class SpaceEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.spaceStatusService.findAll().subscribe(value => {
-      this.spaceStatusList = value;
-      this.spaceTypeService.findAll().subscribe(value1 => {
-        this.spaceTypeList = value1;
-        this.floorService.findAll().subscribe(value2 => {
-          this.floorList = value2;
+    this.spaceTypeService.findAll().subscribe(value1 => {
+      this.spaceTypeList = value1;
+      this.floorService.findAll().subscribe(value2 => {
+        this.floorList = value2;
+        this.spaceStatusService.findAll().subscribe(value3 => {
+          this.spaceStatusList = value3;
           const spaceEditId = this.activatedRoute.snapshot.params.id;
-          this.spaceService.findByID(spaceEditId).subscribe(value3 => {
-            this.spaceEdit = value3;
-              // console.log(this.spaceEdit);
+          this.spaceService.findByID(spaceEditId).subscribe(value4 => {
+            this.spaceEdit = value4;
             this.spaceEditForm.patchValue(this.spaceEdit);
           });
         });
       });
     });
-
-
-
   }
 
   editSpace(): void {
     const editSpace = Object.assign({}, this.spaceEditForm.value);
     editSpace.spaceId = this.spaceEdit.spaceId;
-    this.spaceService.editSpace(editSpace).subscribe(value => {alert('Chỉnh sửa thành công');
+    this.spaceService.editSpace(editSpace).subscribe(value => {
+        alert('Chỉnh sửa thành công');
       },
       error => {
       }, () => {
         this.router.navigateByUrl('/spaces/list');
       });
+  }
+
+  upload(event) {
+    this.selectedImage = event.target.files[0];
+    if (event.target.files) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      // tslint:disable-next-line:no-shadowed-variable
+      reader.onload = (event: any) => {
+        this.urlImage = event.target.result;
+        // console.log(event.target.files[0]);
+      };
+    }
+  }
+
+  compareFnSS(t1: any, t2: any): boolean {
+    return t1 && t2 ? t1.spaceStatusId === t2.spaceStatusId : t1 === t2;
+  }
+  compareFnST(t1: any, t2: any): boolean {
+    return t1 && t2 ? t1.spaceTypeId === t2.spaceTypeId : t1 === t2;
+  }
+  compareFnFL(t1: any, t2: any): boolean {
+    return t1 && t2 ? t1.floorId === t2.floorId : t1 === t2;
   }
 }
