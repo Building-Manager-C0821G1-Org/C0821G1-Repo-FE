@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 import {Component, Inject, OnInit} from '@angular/core';
 import {Employee} from "../../../model/employee/employee";
@@ -5,6 +6,9 @@ import {Subscription} from "rxjs";
 import {EmployeeService} from "../../../service/employee/employee.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import Swal from "sweetalert2";
+=======
+import { Component, OnInit } from '@angular/core';
+>>>>>>> employee-create-BaoNHG
 
 @Component({
   selector: 'app-employee-delete',
@@ -12,6 +16,7 @@ import Swal from "sweetalert2";
   styleUrls: ['./employee-delete.component.css']
 })
 export class EmployeeDeleteComponent implements OnInit {
+<<<<<<< HEAD
   employee: Employee;
   private subscription: Subscription;
 
@@ -46,6 +51,12 @@ export class EmployeeDeleteComponent implements OnInit {
 
   onNoClick() {
     this.dialogRef.close();
+=======
+
+  constructor() { }
+
+  ngOnInit(): void {
+>>>>>>> employee-create-BaoNHG
   }
 
 }

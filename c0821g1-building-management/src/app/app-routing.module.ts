@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+<<<<<<< HEAD
 const routes: Routes = [
   {
   path: 'employee',
@@ -14,11 +15,22 @@ const routes: Routes = [
 ];
 
 
+=======
+
+const routes: Routes = [
+  {path: 'employee', loadChildren: () => import('./feature/employee/employee.module').then(module => module.EmployeeModule)}
+];
+
+>>>>>>> employee-create-BaoNHG
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+<<<<<<< HEAD
 
 export class AppRoutingModule {
 }
 
+=======
+export class AppRoutingModule { }
+>>>>>>> employee-create-BaoNHG

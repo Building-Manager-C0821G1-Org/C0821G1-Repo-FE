@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 import {Component, OnInit} from '@angular/core';
 import {Employee} from '../../../model/employee/employee';
 import {Subscription} from 'rxjs';
 import {EmployeeService} from '../../../service/employee/employee.service';
 import {EmployeeDeleteComponent} from '../employee-delete/employee-delete.component';
 import {MatDialog} from '@angular/material/dialog';
+=======
+import { Component, OnInit } from '@angular/core';
+>>>>>>> employee-create-BaoNHG
 
 @Component({
   selector: 'app-employee-list',
@@ -11,6 +15,7 @@ import {MatDialog} from '@angular/material/dialog';
   styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent implements OnInit {
+<<<<<<< HEAD
   employees: Employee[];
   private subscription: Subscription | undefined;
   page = 0;
@@ -158,4 +163,12 @@ export class EmployeeListComponent implements OnInit {
   }
 
 
+=======
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+>>>>>>> employee-create-BaoNHG
 }

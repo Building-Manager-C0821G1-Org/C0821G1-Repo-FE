@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import {Employee} from '../../../model/user/employee';
 import {EmployeeService} from '../../../service/employee/employee.service';
 import {ActivatedRoute} from '@angular/router';
+=======
+>>>>>>> employee-create-BaoNHG
 
 @Component({
   selector: 'app-employee-detail',
@@ -9,6 +12,7 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./employee-detail.component.css']
 })
 export class EmployeeDetailComponent implements OnInit {
+<<<<<<< HEAD
  employee: Employee ;
 
   constructor(private employeeService: EmployeeService,
@@ -18,6 +22,10 @@ export class EmployeeDetailComponent implements OnInit {
       this.employee = value;
     });
   }
+=======
+
+  constructor() { }
+>>>>>>> employee-create-BaoNHG
 
   ngOnInit(): void {
   }
