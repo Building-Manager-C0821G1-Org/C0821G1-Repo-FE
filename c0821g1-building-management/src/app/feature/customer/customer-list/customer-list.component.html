@@ -32,7 +32,7 @@
           </div>
           <div class="form-group" style="text-align: right; width: 150px">
             <button (click)="onSubmit()" class="btn btn-light btn-outline-success" style="border-radius: 5px"><i
-              class="fa-solid fa-magnifying-glass"></i>Tìm Kiếm
+              class="fa-solid fa-magnifying-glass me-lg-2"></i>Tìm Kiếm
             </button>
           </div>
         </div>
@@ -43,7 +43,7 @@
 <!--  THÊM MỚI-->
 
   <div class="row">
-    <button type="button" class="add-button btn-lg"><i class="fa-solid fa-plus me-lg-2"></i>Tạo mới
+    <button routerLink="/customer/create" type="button" class="add-button btn-lg"><i class="fa-solid fa-plus me-lg-2"></i>Tạo mới
     </button>
     <!--      <button type="button" class="delete-button btn-lg ms-lg-2">Xóa tất cả</button>-->
 
@@ -88,7 +88,7 @@
           <td>{{customerObj.customerAddress}}</td>
           <td class="text-center">{{customerObj.customerStatus}}</td>
           <td class="text-center">
-            <a type="button" class="btn btn-light me-3 edit-button">
+            <a [routerLink]="['/customer/edit',customerObj.customerId]" type="button" class="btn btn-light me-3 edit-button">
               <i class="fa-solid fa-pen"></i>
             </a>
             <a type="button" class="btn btn-light delete-button" (click)="openDialog(customerObj.customerId)">
