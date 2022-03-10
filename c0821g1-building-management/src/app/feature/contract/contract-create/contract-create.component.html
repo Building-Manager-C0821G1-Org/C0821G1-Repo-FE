@@ -89,7 +89,7 @@
                           <select id="firstName" class="form-select" aria-label="Default select example"
                                   formControlName="spaceId">
                             <!--                            <option [ngValue]="null">&#45;&#45;Chọn&#45;&#45;</option>-->
-                            <option *ngFor="let space of spaces" [ngValue]="space.id">{{space.name}}</option>
+                            <option *ngFor="let space of spaces" [ngValue]="space.spaceId">{{space.spaceType}}</option>
                           </select>
                         </div>
                         <small class="error" *ngIf="contractsForm.get('spaceId').hasError('required')
@@ -102,7 +102,7 @@
                             class="error"> (*)</span></label>
                           <select id="customerName" class="form-select" aria-label="Default select example"
                                   formControlName="customerId">
-                            <option *ngFor="let customer of customers" [value]="customer.id">{{customer.name}}</option>
+                            <option *ngFor="let customer of customers" [value]="customer.customerId">{{customer.customerName}}</option>
                           </select>
                           <small class="error" *ngIf="contractsForm.get('customerId').hasError('required')
                         && contractsForm.get('customerId').touched">Khách hàng phải được chọn</small>
@@ -284,7 +284,7 @@
                           <label class="form-label" for="image">Hình ảnh hợp đồng
                             <span
                               class="error"> (*)</span></label>
-                          <input type="file" id="image" (change)="showPreview($event)" class="form-control" formControlName="contractImageUrl">
+                          <input type="file" id="image" (change)="showPreview($event)" class="form-control" >
                           <img [src]="url" width="100%" height="100">
                         </div>
                         <small class="error" *ngIf="contractsForm.get('contractImageUrl')
@@ -296,7 +296,7 @@
 
 
                     <div class="d-flex justify-content-end pt-3 mt-5">
-                      <button  class="add-button button-radius btn-lg ms-2 me-3" [disabled]="contractsForm.invalid">Tạo
+                      <button  class="add-button button-radius btn-lg ms-2 me-3" >Tạo
                         mới
                       </button>
                       <button type="reset" class="reset-button button-radius btn-lg ms-2 me-3">
@@ -316,3 +316,4 @@
 
 
 </div>
+

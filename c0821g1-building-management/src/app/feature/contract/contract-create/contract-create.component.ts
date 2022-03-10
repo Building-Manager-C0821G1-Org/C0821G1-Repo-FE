@@ -15,6 +15,7 @@ import {Spaces} from '../../../model/contract/spaces';
 import {Employee} from '../../../model/contract/employee';
 import {Customer} from '../../../model/contract/customer';
 
+
 @Component({
   selector: 'app-contract-create',
   templateUrl: './contract-create.component.html',
@@ -100,29 +101,38 @@ export class ContractCreateComponent implements OnInit {
 
   submit() {
 
-    this.uploadFirebase();
+    const name = this.selectedImage.name;
+    const fileRef = this.storage.ref(name);
+    this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe((url) => {
+          console.log(url);
+          this.contractsForm.patchValue({contractImageUrl: url});
 
-    const contract = this.contractsForm.value;
-    this.dateStart = contract.contractDateStart;
-    this.dateEnd = contract.contractDateEnd;
-    // @ts-ignore
-    const date1 = new Date(contract.contractDateStart);
-    // @ts-ignore
-    const date2 = new Date(contract.contractDateEnd);
-    const month = (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24 * 30);
-    // @ts-ignore
-    contract.contractExpired = Math.round(month);
+          const contract = this.contractsForm.value;
+          this.dateStart = contract.contractDateStart;
+          this.dateEnd = contract.contractDateEnd;
+          // @ts-ignore
+          const date1 = new Date(contract.contractDateStart);
+          // @ts-ignore
+          const date2 = new Date(contract.contractDateEnd);
+          const month = (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24 * 30);
+          // @ts-ignore
+          contract.contractExpired = Math.round(month);
 
-    this.contractService.saveContract(contract).subscribe(() => {
-      this.contractsForm.reset();
-      this.callToast();
-      this.router.navigate(['contract/list']);
-    }, err => {
-      console.log(err);
-      // this.validateErrorCode = err.error.code;
-      // alert('Mã hợp đồng đã tồn tại');
-      this.checkCode  = true;
-    });
+          this.contractService.saveContract(contract).subscribe(() => {
+            this.contractsForm.reset();
+            this.callToast();
+            this.router.navigate(['contract/list']);
+          }, err => {
+            console.log(err);
+            // this.validateErrorCode = err.error.code;
+            // alert('Mã hợp đồng đã tồn tại');
+            this.checkCode = true;
+          });
+        });
+      })
+    ).subscribe();
   }
 
   showPreview(event: any) {

@@ -13,6 +13,7 @@ import {RouterModule} from '@angular/router';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {DatePipe} from '@angular/common';
+import {NgxSpinnerModule} from 'ngx-bootstrap-spinner';
 
 
 
@@ -34,8 +35,8 @@ import {DatePipe} from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule,
+    NgxSpinnerModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
-
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

@@ -1,11 +1,10 @@
-
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Contract} from '../../../model/contract/contract';
 import {ContractService} from '../../../service/contract/contract.service';
 import {Subscription} from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
 import {ContractDeleteComponent} from '../contract-delete/contract-delete.component';
-import {Route, Router} from '@angular/router';
+import {Route, Router} from '@angular/router';;
 
 @Component({
   selector: 'app-contract-list',
@@ -19,6 +18,7 @@ export class ContractListComponent implements OnInit {
     private router: Router
   ) {
   }
+
   contract: Contract[] = [];
   private subscription: Subscription | undefined;
   page = 0;
@@ -41,15 +41,15 @@ export class ContractListComponent implements OnInit {
         this.size = data.size;
         this.page = data.pageable.pageNumber;
         this.message = '';
-        for (const contract1 of this.contract){
+        for (const contract1 of this.contract) {
           // @ts-ignore
           const dateEnd = new Date(contract1.contractDateEnd);
           // @ts-ignore
-          const today = new Date()
+          const today = new Date();
           // @ts-ignore
-          const  endDate1 = new Date(dateEnd.getFullYear(), dateEnd.getDate() - 1, dateEnd.getMonth());
+          const endDate1 = new Date(dateEnd.getFullYear(), dateEnd.getDate() - 1, dateEnd.getMonth());
           const check = endDate1 - today;
-          contract1.checkFlag = Math.round(check) ;
+          contract1.checkFlag = Math.round(check);
           // console.log('today' + today);
           // console.log('end  ' + endDate1);
           // console.log('check ' + check);
@@ -58,6 +58,7 @@ export class ContractListComponent implements OnInit {
         this.message = 'Not found !!!';
         console.log(this.message);
       }
+    }, () => {
     });
   }
 
@@ -67,7 +68,7 @@ export class ContractListComponent implements OnInit {
   }
 
   showContract() {
-    if (this.name === '' && this.code === '' && this.start === ''  && this.end === '') {
+    if (this.name === '' && this.code === '' && this.start === '' && this.end === '') {
       this.flagSearch = false;
       this.getContract();
     } else if (this.name !== '' && this.code === '' && this.start === '' && this.end === '') {
@@ -105,7 +106,7 @@ export class ContractListComponent implements OnInit {
 
   getContract() {
     this.contractService.findAllContract(this.page, this.name, this.code, this.start, this.end).subscribe(data => {
-      console.log('data ====> ' + data)
+      console.log('data ====> ' + data);
       if (data !== null) {
         this.contract = data.content;
         this.totalPages = data.totalPages;
@@ -117,7 +118,7 @@ export class ContractListComponent implements OnInit {
           // @ts-ignore
           const dateEnd = new Date(contract1.contractDateEnd);
           // @ts-ignore
-          const today = new Date()
+          const today = new Date();
           // @ts-ignore
           const endDate1 = new Date(dateEnd.getFullYear(), dateEnd.getDate() - 1, dateEnd.getMonth());
           const check = endDate1 - today;
@@ -130,6 +131,7 @@ export class ContractListComponent implements OnInit {
       }
     });
   }
+
   searchContract() {
     if (this.flagSearch === false) {
       this.page = 0;
@@ -154,6 +156,7 @@ export class ContractListComponent implements OnInit {
       });
     });
   }
+
   previousClick(index) {
     this.page = this.page - index;
     console.log('pre pay ' + this.page + '/' + this.totalPages + 'search:' + this.flagSearch);
@@ -171,6 +174,7 @@ export class ContractListComponent implements OnInit {
     this.page = value - 1;
     this.ngOnInit();
   }
+
   // getAll(){
   //   this.contractService.findAllContract().subscribe(c => {
   //     this.contracts = c;

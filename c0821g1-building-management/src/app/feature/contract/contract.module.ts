@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import { ContractRoutingModule } from './contract-routing.module';
 import { ContractListComponent } from './contract-list/contract-list.component';
 import { ContractCreateComponent } from './contract-create/contract-create.component';
@@ -8,6 +8,8 @@ import { ContractEditComponent } from './contract-edit/contract-edit.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {NgxSpinnerModule} from 'ngx-bootstrap-spinner';
+
 
 
 
@@ -22,8 +24,10 @@ import {RouterModule} from '@angular/router';
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    MatDialogModule
-  ]
+    MatDialogModule,
+    NgxSpinnerModule
+  ],
+  providers: [],
 })
 export class ContractModule { }
 
