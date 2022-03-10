@@ -39,9 +39,9 @@ export class SpaceDeleteComponent implements OnInit {
 
   private callToast() {
     Swal.fire({
-      position: 'top',
+      position: 'center',
       icon: 'success',
-      title: 'Xóa mặt bằng thành công!😍😍😍',
+      title: 'Xóa mặt bằng thành công!',
       showConfirmButton: false,
       timer: 2000
     });
