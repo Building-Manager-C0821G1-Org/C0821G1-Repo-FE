@@ -7,6 +7,7 @@ import {CustomerEditComponent} from "./customer-edit/customer-edit.component";
 
 
 const routes: Routes = [
+  {path: '', redirectTo: 'list', pathMatch: 'full'},
   {path: 'list', component: CustomerListComponent},
   {path: 'delete/:id', component: DeleteCustomerComponent},
   {path: 'create', component: CustomerCreateComponent},
@@ -17,4 +18,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CustomerRoutingModule { }
+export class CustomerRoutingModule {
+}
