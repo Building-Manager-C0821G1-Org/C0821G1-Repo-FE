@@ -12,9 +12,9 @@
 
                   <div class="form-outline">
                     <label class="form-label select-label" for="floor" >Tầng <span class="error">(*)</span></label><br>
-                    <select class="select form-control-lg" style="width: 100%" id="floor" formControlName="floors">
+                    <select class="select form-control-lg" style="width: 100%" id="floor" formControlName="floors" [compareWith]="compareFnFL">
                       <option value=""></option>
-                      <option *ngFor="let fl of floorList" [ngValue]="fl" [selected]="fl.floorId == spaceEditForm.controls.floors.value.floorId">{{fl.floorName}}</option>
+                      <option *ngFor="let fl of floorList" [ngValue]="fl">{{fl.floorName}}</option>
                     </select>
                   </div>
 
@@ -25,10 +25,10 @@
                 <div class="col-md-6 mb-4">
 
                   <div class="form-outline">
-                    <label class="form-label select-label" for="type">Loại mặt bằng <span class="error">(*)</span></label><br>
-                    <select class="select form-control-lg" style="width: 100%" id="type" formControlName="spacesType">
+                    <label class="form-label select-label" for="type">Loại mặt bằng <span class="error" >(*)</span></label><br>
+                    <select class="select form-control-lg" style="width: 100%" id="type" formControlName="spacesType" [compareWith]="compareFnST">
                       <option value=""></option>
-                      <option *ngFor="let st of spaceTypeList" [ngValue]="st" [selected]="st.spaceTypeId == spaceEditForm.controls.spacesType.value.spaceTypeId">{{st.spaceTypeName}}</option>
+                      <option *ngFor="let st of spaceTypeList" [ngValue]="st">{{st.spaceTypeName}}</option>
                     </select>
                     <small style="color: red" *ngIf="spaceEditForm.controls.spacesType.hasError('required') && spaceEditForm.controls.spacesType.touched">
                       Loại mặt bằng không được để trống.</small>
@@ -49,9 +49,9 @@
                 <div class="col-md-6 mb-4">
                   <div class="form-outline datepicker w-100">
                     <label class="form-label select-label" for="status">Trạng thái <span class="error">(*)</span></label><br>
-                    <select class="select form-control-lg" style="width: 100%" id="status" formControlName="spaceStatus">
+                    <select class="select form-control-lg" style="width: 100%" id="status" formControlName="spaceStatus" [compareWith]="compareFnSS">
                       <option value=""></option>
-                      <option *ngFor="let ss of spaceStatusList" [ngValue]="ss" [selected]="ss.spaceStatusId == spaceEditForm.controls.spaceStatus.value.spaceStatusId">{{ss.spacerStatusName}}</option>
+                      <option *ngFor="let ss of spaceStatusList" [value]="ss">{{ss.spacerStatusName}}</option>
                     </select>
                     <small style="color: red" *ngIf="spaceEditForm.controls.spaceStatus.hasError('required') && spaceEditForm.controls.spaceStatus.touched">
                       Trạng thái không được để trống.</small>
@@ -110,8 +110,9 @@
                     <div class="col-6">
                       <div class="form-outline align-middle">
                         <label class="form-label" >Hình ảnh</label>
-                        <input type="file" id="image" class="form-control form-control-lg" formControlName="spaceImage" /><br>
-
+                        <input type="file" id="image" class="form-control form-control-lg"
+                               (change)="upload($event)" accept="*.png.jpg"/><br>
+                        <img class="form-control" id="files" src="{{spaceEdit.spaceImage}}" width="100" height="100">
                       </div>
 
                     </div>
