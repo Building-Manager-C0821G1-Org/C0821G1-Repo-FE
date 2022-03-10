@@ -18,5 +18,4 @@ export class FloorService {
   deleteFlagFloors(floorId: number): Observable<Floors> {
     return this.httpClient.delete<Floors>(this.API_URL + '/floors/delete-flag/' + floorId);
   }
-
 }
