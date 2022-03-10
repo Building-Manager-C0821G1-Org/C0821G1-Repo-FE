@@ -42,10 +42,8 @@ export class CustomerListComponent implements OnInit {
             this.customers = data.content;
             this.totalPages = data.totalPages;
             this.size = data.size;
-            this.page = data.pageable.pageNumber ;
+            this.page = data.pageable.pageNumber;
             this.message = '';
-          } else {
-            this.message = 'Không tìm thấy !!!';
           }
         }
       );
@@ -62,7 +60,7 @@ export class CustomerListComponent implements OnInit {
               this.customers = data.content;
               this.totalPages = data.totalPages;
               this.size = data.size;
-              this.page = data.pageable.pageNumber ;
+              this.page = data.pageable.pageNumber;
               this.message = '';
             } else {
               this.message = 'Không tìm thấy khách hàng cần tìm !!!';
@@ -101,8 +99,12 @@ export class CustomerListComponent implements OnInit {
   }
 
   findPagination(value: number) {
-    this.page = value - 1;
-    this.ngOnInit();
+    if (value > this.totalPages) {
+      this.message = 'Không tìm thấy trang bạn cần tìm !!!';
+    } else {
+      this.page = value - 1;
+      this.ngOnInit();
+    }
   }
 
   nextClick(index) {
@@ -112,11 +114,11 @@ export class CustomerListComponent implements OnInit {
 
   openDialog(customerObjId: number) {
     this.customerService.getCustomerById(customerObjId).subscribe(customerData => {
-    const dialogRef = this.dialogDelete.open(DeleteCustomerComponent, {
-      width: '500px',
-      data: customerData,
-      disableClose: true
-    });
+      const dialogRef = this.dialogDelete.open(DeleteCustomerComponent, {
+        width: '500px',
+        data: customerData,
+        disableClose: true
+      });
       dialogRef.afterClosed().subscribe(value => {
         this.ngOnInit();
       });

@@ -26,7 +26,7 @@ export class DeleteCustomerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  deleteEmployee() {
+  deleteCustomer() {
     this.subscription = this.customerService.deleteCustomerById(this.customer.customerId).subscribe(data => {
       this.matDialogRef.close();
       this.callToast();
