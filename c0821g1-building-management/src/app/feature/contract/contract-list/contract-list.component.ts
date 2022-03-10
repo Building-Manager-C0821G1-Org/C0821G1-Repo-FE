@@ -1,11 +1,11 @@
+
 import { Component, OnInit } from '@angular/core';
 import {Contract} from '../../../model/contract/contract';
 import {ContractService} from '../../../service/contract/contract.service';
 import {Subscription} from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
 import {ContractDeleteComponent} from '../contract-delete/contract-delete.component';
-import {Route} from '@angular/router';
-
+import {Route, Router} from '@angular/router';
 
 @Component({
   selector: 'app-contract-list',
@@ -16,6 +16,7 @@ export class ContractListComponent implements OnInit {
   constructor(
     private contractService: ContractService,
     private dialog: MatDialog,
+    private router: Router
   ) {
   }
   contract: Contract[] = [];
@@ -49,9 +50,9 @@ export class ContractListComponent implements OnInit {
           const  endDate1 = new Date(dateEnd.getFullYear(), dateEnd.getDate() - 1, dateEnd.getMonth());
           const check = endDate1 - today;
           contract1.checkFlag = Math.round(check) ;
-          console.log('today' + today);
-          console.log('end  ' + endDate1);
-          console.log('check ' + check);
+          // console.log('today' + today);
+          // console.log('end  ' + endDate1);
+          // console.log('check ' + check);
         }
       } else {
         this.message = 'Not found !!!';
@@ -104,6 +105,7 @@ export class ContractListComponent implements OnInit {
 
   getContract() {
     this.contractService.findAllContract(this.page, this.name, this.code, this.start, this.end).subscribe(data => {
+      console.log('data ====> ' + data)
       if (data !== null) {
         this.contract = data.content;
         this.totalPages = data.totalPages;
@@ -111,7 +113,17 @@ export class ContractListComponent implements OnInit {
         this.size = data.size;
         this.page = data.pageable.pageNumber;
         this.message = '';
-        console.log(this.message);
+        for (const contract1 of this.contract) {
+          // @ts-ignore
+          const dateEnd = new Date(contract1.contractDateEnd);
+          // @ts-ignore
+          const today = new Date()
+          // @ts-ignore
+          const endDate1 = new Date(dateEnd.getFullYear(), dateEnd.getDate() - 1, dateEnd.getMonth());
+          const check = endDate1 - today;
+          contract1.checkFlag = Math.round(check);
+          console.log(this.message);
+        }
       } else {
         this.message = 'Not found !!!';
         console.log(this.message);
@@ -158,5 +170,17 @@ export class ContractListComponent implements OnInit {
   findPaginnation(value: number) {
     this.page = value - 1;
     this.ngOnInit();
+  }
+  // getAll(){
+  //   this.contractService.findAllContract().subscribe(c => {
+  //     this.contracts = c;
+  //   });
+  // }
+  toCreateForm() {
+    this.router.navigate(['contract/create']);
+  }
+
+  editContract(contractId: number) {
+    this.router.navigate(['contract/edit/' + contractId]);
   }
 }

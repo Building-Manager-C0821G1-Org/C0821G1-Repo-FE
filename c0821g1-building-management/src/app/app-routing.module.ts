@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 
 
 const routes: Routes = [
   {
-    path: 'contract',
-    loadChildren: () => import('./feature/contract/contract.module').then(module => module.ContractModule)
+    path: 'contract', loadChildren: () =>
+      import('./feature/contract/contract.module').then(module => module.ContractModule)
   }
 ];
 
@@ -13,4 +13,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

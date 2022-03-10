@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+// import {Observable} from 'rxjs';
+// import {AngularFireStorage} from '@angular/fire/storage';
+// import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'c0821g1-building-management';
+
 }
+

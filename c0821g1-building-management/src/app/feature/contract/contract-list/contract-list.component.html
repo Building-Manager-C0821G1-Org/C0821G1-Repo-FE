@@ -1,3 +1,4 @@
+
 <h2 class="text-center m-5 font-google-2">Danh sách hợp đồng</h2>
 <div class="container">
 
@@ -9,7 +10,10 @@
       <form #myNgForm="ngForm">
         <div class=" search row d-flex justify-content-end align-items-center mb-4 text-right float-right">
           <div class="col-lg-2 form-group" style="text-align: center">
-            <input [(ngModel)]="name" class="form-control" id="name" type="text" name="name" placeholder="Tên">
+            <input [(ngModel)]="name" class="form-control" id="name" type="text" name="name" placeholder="Tên" required minlength="10" ngModel name="name" #namee="ngModel">
+            <div>
+<!--              <small class="alert alert-danger" *ngIf="!namee.valid && (namee!.dirty || namee!.touched)"> nhập tối đa 10 ký tự</small>-->
+            </div>
           </div>
           <div class="col-lg-2 form-group" style="text-align: right">
             <div style="text-align: center">
@@ -38,17 +42,11 @@
     </div>
   </div>
 
-  <!--<div class="container">-->
   <div class="row">
-    <!--<div class="col-lg-10">-->
-    <!--            <div class="content-container">-->
-    <!--                <div class="container-fluid">-->
-    <h4>
-      <button type="button" class="add-button btn-lg"><i class="fa-solid fa-plus me-lg-2"></i>Tạo mới
+      <button (click)="toCreateForm()" type="button" class="add-button btn-lg" style="width: 150px; margin-bottom: 8px"><i class="fa-solid fa-plus me-lg-2"></i>Tạo mới
       </button>
-      <!--      <button type="button" class="delete-button btn-lg ms-lg-2">Xóa tất cả</button>-->
-    </h4>
   </div>
+<!--  <a routerLink="/contract/create"><i class="fa-solid fa-plus me-lg-2"></i>Tạo mới</a>-->
   <ng-container *ngIf="message !== '';else elseBlock">
 
     <h1 style="color: red; text-align: center; width: 100%; margin-top: 50px">{{message}}</h1>
@@ -80,15 +78,15 @@
           <td style="text-align: center">{{s.customer.customerIdentifyNumber}}</td>
           <td style="text-align: center">{{s.contractDateStart}}</td>
           <td style="text-align: center">{{s.contractDateEnd}}</td>
-          <td style="text-align: center">{{s.contractExpred}}</td>
-          <td style="text-align: center" *ngIf="s.checkFlag > 0; else blockContract ">
+          <td style="text-align: center">{{s.contractExpired}}</td>
+          <td style="text-align: center" *ngIf="s.checkFlag >= 0; else blockContract ">
             <i class="fa-solid fa-square-check"></i>
           </td>
           <ng-template #blockContract>
             <td style="text-align: center"><i class="fa-solid fa-square"></i></td>
           </ng-template>
           <td>
-            <button type="button" class="btn btn-light me-3"
+            <button (click)="editContract(s.contractId)" type="button" class="btn btn-light me-3"
                     style="background-color: #d6b915; border-radius: 10px">
               <i class="fa-solid fa-pen"></i>
             </button>
@@ -140,4 +138,5 @@
 
 </div>
 <!--</div>-->
+
 

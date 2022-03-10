@@ -1,13 +1,15 @@
-import { Injectable } from '@angular/core';
+
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Contract} from '../../model/contract/contract';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContractService {
-  private API = 'http://localhost:8080/api/contract';
+  private API = 'http://localhost:9090/api/contract';
 
   constructor(private httpClient: HttpClient) { }
   // list-search-page
@@ -23,7 +25,15 @@ export class ContractService {
   deleteContract(contractId): Observable<any> {
     return this.httpClient.delete(this.API + '/delete-contract/' + contractId);
   }
-  // errorContract(): Observable<any>{
-  //   return this.httpClient.get(this.API + '/error-contract/');
-  // }
+
+
+  updateContract(id: number, contract: Contract): Observable<Contract> {
+    return this.httpClient.patch<Contract>(`${this.API}/update/${id}`, contract);
+  }
+
+  saveContract(contract): Observable<Contract> {
+    console.log(contract);
+    return this.httpClient.post<Contract>(this.API + '/add', contract);
+  }
 }
+
