@@ -12,11 +12,11 @@ export class CustomerService {
   customers: Customer[] = [
     {
       id: 1,
-      name: 'Tay'
+      name: 'Nguyen Van Dong'
     },
     {
       id: 2,
-      name: 'Name'
+      name: 'Nam'
     },
     {
       id: 3,

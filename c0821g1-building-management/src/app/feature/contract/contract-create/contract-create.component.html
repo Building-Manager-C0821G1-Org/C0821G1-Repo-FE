@@ -93,7 +93,7 @@
                           </select>
                         </div>
                         <small class="error" *ngIf="contractsForm.get('spaceId').hasError('required')
-                        && contractsForm.get('spaceId').touched">Mặt bằng không được để trống</small>
+                        && contractsForm.get('spaceId').touched">Mặt bằng phải được chọn</small>
                       </div>
                       <div class="col-md-6 mb-6">
 
@@ -236,20 +236,28 @@
                         <small class="error" *ngIf="contractsForm.get('contractTaxCode')
                         .hasError('required')&& contractsForm.get('contractTaxCode').touched">Mã số thuế không được để
                           trống</small>
-
+                        <small class="error" *ngIf="contractsForm.get('contractTaxCode')
+                        .hasError('pattern')&& contractsForm.get('contractTaxCode').dirty">Mã số thuế chỉ được chứa kí tự số</small>
                       </div>
                       <div class="col-6">
 
                         <div class="form-outline">
-                          <label class="form-label" for="image">Hình ảnh hợp đồng
+                          <label class="form-label" for="emailAddress12">Mã hợp đồng
                             <span
                               class="error"> (*)</span></label>
-                          <input type="file" id="image" (change)="showPreview($event)" class="form-control" formControlName="contractImageUrl">
-                          <img [src]="url" width="100%" height="100">
+                          <input type="text" id="emailAddress12"
+                                 class="form-control form-control-lg" formControlName="contractCode"/>
                         </div>
-                        <small class="error" *ngIf="contractsForm.get('contractImageUrl')
-                        .hasError('required')&& contractsForm.get('contractImageUrl').touched">Hình ảnh không được để
+                        <small class="error" *ngIf="contractsForm.get('contractCode')
+                        .hasError('required')&& contractsForm.get('contractCode').touched">Mã hợp đồng không được để
                           trống</small>
+
+                        <small class="error" *ngIf="contractsForm.get('contractCode')
+                        .hasError('pattern')&& contractsForm.get('contractCode').dirty">Mã hợp đồng không hợp lệ : KH-1233,KH-0123,...</small>
+
+                        <small class="error" *ngIf="checkCode == true">Mã hợp đồng đã tồn tại</small>
+
+
                       </div>
                     </div>
 
@@ -270,8 +278,25 @@
                       </div>
                     </div>
 
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-outline">
+                          <label class="form-label" for="image">Hình ảnh hợp đồng
+                            <span
+                              class="error"> (*)</span></label>
+                          <input type="file" id="image" (change)="showPreview($event)" class="form-control" formControlName="contractImageUrl">
+                          <img [src]="url" width="100%" height="100">
+                        </div>
+                        <small class="error" *ngIf="contractsForm.get('contractImageUrl')
+                        .hasError('required')&& contractsForm.get('contractImageUrl').touched">Hình ảnh phải được chọn</small>
+                      </div>
+                      <div class="col-6"></div>
+                    </div>
+
+
+
                     <div class="d-flex justify-content-end pt-3 mt-5">
-                      <button class="add-button button-radius btn-lg ms-2 me-3">Tạo
+                      <button  class="add-button button-radius btn-lg ms-2 me-3" [disabled]="contractsForm.invalid">Tạo
                         mới
                       </button>
                       <button type="reset" class="reset-button button-radius btn-lg ms-2 me-3">

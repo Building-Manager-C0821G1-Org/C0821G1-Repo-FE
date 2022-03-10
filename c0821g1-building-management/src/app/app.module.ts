@@ -24,7 +24,7 @@ import {environment} from '../environments/environment';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud')
+    AngularFireModule.initializeApp(environment.firebase, 'cloud')
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

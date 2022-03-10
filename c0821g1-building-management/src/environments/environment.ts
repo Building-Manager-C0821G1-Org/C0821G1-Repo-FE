@@ -4,15 +4,14 @@
 
 export const environment = {
   production: false,
-  firebaseConfig : {
-    apiKey: 'AIzaSyDrMCIzmfa5eadMK2qp52c97Lj6vv0vcJc',
-    authDomain: 'sprint1-angular.firebaseapp.com',
-    databaseURL: 'https://sprint1-angular-default-rtdb.firebaseio.com/',
-    projectId: 'sprint1-angular',
-    storageBucket: 'sprint1-angular.appspot.com',
-    messagingSenderId: '979548655353',
-    appId: '1:979548655353:web:5e1e61ba2e323f5fae1c28',
-    measurementId: 'G-8YX4CNKTHP'
+  firebase: {
+    apiKey: 'AIzaSyBGUsVMAmaPLnWjGZvXEshxgeYNCUs_6Yg',
+    authDomain: 'fir-upload-image-90214.firebaseapp.com',
+    projectId: 'fir-upload-image-90214',
+    storageBucket: 'fir-upload-image-90214.appspot.com',
+    messagingSenderId: '334322008872',
+    appId: '1:334322008872:web:1904ecb6abe9f9d9f9c61d',
+    measurementId: 'G-ZVRKWKQHEB'
   }
 };
 

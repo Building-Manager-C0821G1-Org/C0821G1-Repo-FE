@@ -152,7 +152,7 @@
                         <div class="form-outline">
                           <label class="form-label" for="lastName3">Ngày kết thúc thuê<span
                             class="error">(*)</span></label>
-                          <input  type="date" id="lastName3" name="date"
+                          <input type="date" id="lastName3" name="date"
                                  class="form-control form-control-lg" formControlName="contractDateEnd"/>
                         </div>
                         <small class="error" *ngIf="contractForm.get('contractDateEnd')
@@ -192,9 +192,10 @@
                           <input type="number" id="emailAddress" value="12.000.000"
                                  class="form-control form-control-lg" formControlName="price"/>
                         </div>
-                        <small class="error"  *ngIf="contractForm.get('price')
+                        <small class="error" *ngIf="contractForm.get('price')
                         .hasError('required')&&
-                         (contractForm.get('price').touched ||contractForm.get('price').dirty )">Giá tiền không được để trống</small>
+                         (contractForm.get('price').touched ||contractForm.get('price').dirty )">Giá tiền không được để
+                          trống</small>
 
                       </div>
                     </div>
@@ -212,9 +213,10 @@
                             formControlName="contractTotal"
                           />
                         </div>
-                        <small class="error"  *ngIf="contractForm.get('contractTotal')
+                        <small class="error" *ngIf="contractForm.get('contractTotal')
                         .hasError('required')&&
-                         (contractForm.get('contractTotal').touched ||contractForm.get('contractTotal').dirty )">Tổng tiền không được để trống</small>
+                         (contractForm.get('contractTotal').touched ||contractForm.get('contractTotal').dirty )">Tổng
+                          tiền không được để trống</small>
                       </div>
 
                       <div class="col-md-6 mb-4 pb-2">
@@ -225,9 +227,10 @@
                           <input type="number" id="emailAddress1"
                                  class="form-control form-control-lg" formControlName="contractDeposit"/>
                         </div>
-                        <small class="error"  *ngIf="contractForm.get('contractDeposit')
+                        <small class="error" *ngIf="contractForm.get('contractDeposit')
                         .hasError('required')&&
-                         (contractForm.get('contractDeposit').touched ||contractForm.get('contractDeposit').dirty )">Tiền cọc không được để trống</small>
+                         (contractForm.get('contractDeposit').touched ||contractForm.get('contractDeposit').dirty )">Tiền
+                          cọc không được để trống</small>
                       </div>
 
                     </div>
@@ -242,23 +245,30 @@
                           <input type="text" id="emailAddress2"
                                  class="form-control form-control-lg" formControlName="contractTaxCode"/>
                         </div>
-                        <small class="error"  *ngIf="contractForm.get('contractTaxCode')
+                        <small class="error" *ngIf="contractForm.get('contractTaxCode')
                         .hasError('required')&&
-                         (contractForm.get('contractTaxCode').touched ||contractForm.get('contractTaxCode').dirty )">Mã số thuế không được để trống</small>
+                         (contractForm.get('contractTaxCode').touched ||contractForm.get('contractTaxCode').dirty )">Mã
+                          số thuế không được để trống</small>
                       </div>
                       <div class="col-6">
 
                         <div class="form-outline">
-                          <label class="form-label" for="emailAddress3">Hình ảnh hợp đồng
+                          <label class="form-label" for="emailAddress12">Mã hợp đồng
                             <span
                               class="error">(*)</span></label>
-                          <input type="file" id="emailAddress3"
-                                 class="form-control form-control-lg" formControlName="contractImageUrl"/>
-<!--                          <img class="img-fluid"-->
-<!--                               src="https://vnn-imgs-f.vgcloud.vn/2021/04/12/18/can-ho-studio.jpg"-->
-<!--                               alt="" readonly="">-->
-<!--                          <img [src]="contractForm.controls.contractImageUrl.value" alt=""  width="100%" height="150">-->
+                          <input type="text" id="emailAddress12"
+                                 class="form-control form-control-lg" formControlName="contractCode"/>
                         </div>
+                        <small class="error" *ngIf="contractForm.get('contractCode')
+                        .hasError('required')&&
+                         (contractForm.get('contractCode').touched ||contractForm.get('contractCode').dirty )">Mã
+                          hợp đồng không được để trống</small>
+
+                        <small class="error" *ngIf="contractForm.get('contractCode')
+                        .hasError('pattern')&& contractForm.get('contractCode').dirty">Mã hợp đồng không hợp lệ : KH-1233,KH-0123,...</small>
+
+                        <small class="error" *ngIf="checkCode == true">Mã hợp đồng đã tồn tại</small>
+
                       </div>
                     </div>
 
@@ -271,13 +281,43 @@
                                     id="exampleFormControlTextarea1"
                                     rows="3" formControlName="contractContent"></textarea>
                         </div>
-                        <small class="error"  *ngIf="contractForm.get('contractContent')
-                        .hasError('required')&&
-                         (contractForm.get('contractContent').touched ||contractForm.get('contractContent').dirty )">Nội dung  không được để trống</small>
                         <small class="error" *ngIf="contractForm.get('contractContent')
-                        .hasError('minlength')&& contractForm.get('contractContent').dirty">Nội dung phải trên 10 kí tự</small>
+                        .hasError('required')&&
+                         (contractForm.get('contractContent').touched ||contractForm.get('contractContent').dirty )">Nội
+                          dung không được để trống</small>
+                        <small class="error" *ngIf="contractForm.get('contractContent')
+                        .hasError('minlength')&& contractForm.get('contractContent').dirty">Nội dung phải trên 10 kí
+                          tự</small>
 
                       </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-6">
+<!--                        <div class="form-outline">-->
+<!--                          <label class="form-label" for="emailAddress3">Hình ảnh hợp đồng-->
+<!--                            <span-->
+<!--                              class="error">(*)</span></label>-->
+<!--                          <input id="emailAddress3" type="text" class="form-control"   (change)="showPreview($event)"-->
+<!--                                 formControlName="contractImageUrl"  >-->
+
+<!--                          <img class="form-control" [src]="contractForm.controls.contractImageUrl.value" alt="">-->
+
+<!--                          &lt;!&ndash;                          <input type="text" id="emailAddress3"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 class="form-control form-control-lg" formControlName="contractImageUrl"/>&ndash;&gt;-->
+<!--                          &lt;!&ndash;                          <img class="img-fluid"&ndash;&gt;-->
+<!--                          &lt;!&ndash;                               src="https://vnn-imgs-f.vgcloud.vn/2021/04/12/18/can-ho-studio.jpg"&ndash;&gt;-->
+<!--                          &lt;!&ndash;                               alt="" readonly="">&ndash;&gt;-->
+<!--                          &lt;!&ndash;                          <img [src]="contractForm.controls.contractImageUrl.value" alt=""  width="100%" height="150">&ndash;&gt;-->
+<!--                        </div>-->
+
+                        <div class="col-md-12 position-relative field">
+                          <label class="form-label">Hình ảnh </label>
+                          <input type="file" class="form-control" id="files"  (change)="showPreview($event)">
+                          <img class="form-control" [src]="contractForm.controls.contractImageUrl.value" alt="">
+                        </div>
+                      </div>
+                      <div class="col-6"></div>
                     </div>
 
                     <!--                                    <div class="mt-4 pt-2">-->
@@ -286,7 +326,7 @@
                     <!--                                    </div>-->
 
                     <div class="d-flex justify-content-end pt-3 mt-5">
-                      <button class="edit-button button-radius btn-lg ms-2 me-3">
+                      <button class="edit-button button-radius btn-lg ms-2 me-3" [disabled]="contractForm.invalid">
                         Chỉnh sửa
                       </button>
                       <button (click)="cancel()" type="button" class="reset-button button-radius btn-lg ms-2 me-3">

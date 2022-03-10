@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ContractService} from '../../../service/contract/contract.service';
 import {Router} from '@angular/router';
 import {SpaceService} from '../../../service/space/space.service';
@@ -12,12 +12,7 @@ import {DatePipe} from '@angular/common';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
 import {UploadFileService} from '../../../service/upload-file.service';
-
-// export function confirmPassword(c: AbstractControl) {
-//   const today = new Date();
-//   const v = c.value;
-//   return (v.contractDateStart >= today) ? null : {passwordnotmatch: true};
-// }
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contract-create',
@@ -25,23 +20,24 @@ import {UploadFileService} from '../../../service/upload-file.service';
   styleUrls: ['./contract-create.component.css']
 })
 export class ContractCreateComponent implements OnInit {
-
   selectedImage: any = null;
-  url: string;
+  url: '';
   id: string;
   file: string;
+  checkCode: boolean;
 
   contractsForm: FormGroup = this.fb1.group({
     contractId: '',
+    contractCode: ['', [Validators.required, Validators.pattern('^[K][H]-[\\d]{4}$')]],
     contractExpired: ['', [Validators.required]],
     contractDateStart: ['', [Validators.required]],
     contractDateEnd: ['', [Validators.required]],
     price: ['', [Validators.required]],
     contractTotal: ['', [Validators.required]],
     contractContent: ['', [Validators.required, Validators.minLength(10)]],
-    contractTaxCode: ['', [Validators.required]],
+    contractTaxCode: ['', [Validators.required, Validators.pattern('^[\\d]+$')]],
     contractDeposit: ['', [Validators.required]],
-    contractImageUrl: [this.url, [Validators.required]],
+    contractImageUrl: ['', [Validators.required]],
     contractDeleteFlag: false,
     employeeId: 1,
     customerId: ['', [Validators.required]],
@@ -54,9 +50,7 @@ export class ContractCreateComponent implements OnInit {
 
   dateStart: string;
   dateEnd: string;
-  expiredDate: string;
 
-  total: number;
 
   constructor(private fb1: FormBuilder,
               private contractService: ContractService,
@@ -71,7 +65,7 @@ export class ContractCreateComponent implements OnInit {
     this.spaces = spaceService.spaces;
     this.employees = employeeService.employees;
     this.customers = customerService.customers;
-
+    this.checkCode = false;
 
   }
 
@@ -79,20 +73,32 @@ export class ContractCreateComponent implements OnInit {
     this.uploadFileService.getImageDetailList();
   }
 
-  submit() {
+   callToast() {
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Thêm mới thành công',
+      showConfirmButton: false,
+      timer: 2000
+    });
+  }
 
+  uploadFirebase() {
     const name = this.selectedImage.name;
     const fileRef = this.storage.ref(name);
     this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
       finalize(() => {
         fileRef.getDownloadURL().subscribe((url) => {
-          this.url = url;
-          console.log('image url ' + this.url);
-          this.uploadFileService.insertImageDetails(this.id, this.url);
-          alert('Upload Successful');
+          console.log(url);
+          this.contractsForm.patchValue({contractImageUrl: url});
         });
       })
     ).subscribe();
+  }
+
+  submit() {
+
+    this.uploadFirebase();
 
     const contract = this.contractsForm.value;
     this.dateStart = contract.contractDateStart;
@@ -101,14 +107,17 @@ export class ContractCreateComponent implements OnInit {
     const date2 = new Date(contract.contractDateEnd);
     const month = (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24 * 30);
     // @ts-ignore
-    // contract.contractExpired = Math.round(month);
+    contract.contractExpired = Math.round(month);
 
     this.contractService.saveContract(contract).subscribe(() => {
       this.contractsForm.reset();
-      alert('Thêm mới thành công');
+      this.callToast();
       this.router.navigate(['contract/list']);
     }, err => {
       console.log(err);
+      // this.validateErrorCode = err.error.code;
+      // alert('Mã hợp đồng đã tồn tại');
+      this.checkCode  = true;
     });
   }
 
@@ -123,25 +132,4 @@ export class ContractCreateComponent implements OnInit {
       };
     }
   }
-
-  save() {
-    // const name = this.selectedImage.name;
-    // const fileRef = this.storage.ref(name);
-    // this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
-    //   finalize(() => {
-    //     fileRef.getDownloadURL().subscribe((url) => {
-    //       this.url = url;
-    //       console.log('image url ' + this.url);
-    //       this.uploadFileService.insertImageDetails(this.id, this.url);
-    //       alert('Upload Successful');
-    //     });
-    //   })
-    // ).subscribe();
-  }
-
-  view() {
-    this.uploadFileService.getImage(this.file);
-  }
-
-
 }

@@ -4,6 +4,7 @@ import {Employee} from './employee';
 
 export interface Contract {
   contractId ?: number;
+  contractCode ?: string;
   contractExpired ?: number;
   contractDateStart ?: Date;
   contractDateEnd ?: Date;
@@ -17,4 +18,6 @@ export interface Contract {
   employeeId ?: number;
   customerId ?: number;
   spaceId ?: number;
+
+
 }

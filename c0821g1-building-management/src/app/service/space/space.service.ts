@@ -12,7 +12,7 @@ export class SpaceService {
   spaces: Space[] = [
     {
       id: 1,
-      name: 'MB-001'
+      name: 'MT-0001'
     },
     {
       id: 2,
