@@ -10,6 +10,7 @@ import {Floors} from '../../../model/floor/floors';
 import {finalize} from 'rxjs/operators';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {SpacesStatus} from '../spaces-status';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-space-create',
@@ -17,12 +18,28 @@ import {SpacesStatus} from '../spaces-status';
   styleUrls: ['./space-create.component.css']
 })
 export class SpaceCreateComponent implements OnInit {
-  spaceForm: FormGroup;
+  spaceForm = new FormGroup({
+    spaceCode: new FormControl('', Validators.required),
+    spaceArea: new FormControl('', [Validators.required, Validators.pattern('^(,|[0-9])*$')]),
+    spacePrice: new FormControl('', [Validators.pattern('^(,|[0-9])*$')]),
+    spaceManagerFee: new FormControl('', [Validators.pattern('^(,|[0-9])*$')]),
+    spaceNote: new FormControl(''),
+    spaceImage: new FormControl(''),
+    // spaceImage: new FormArray([
+    //   new FormGroup({
+    //     image: new FormControl()
+    //   })
+    // ]),
+    spaceDeleteFlag: new FormControl(),
+    spacesType: new FormControl('', Validators.required),
+    spaceStatus: new FormControl('', Validators.required),
+    floors: new FormControl('', Validators.required)
+  });
   spaceImage: FormArray;
   spaceTypeList: Array<SpacesType>;
   spaceStatusList: Array<SpacesStatus>;
   floorList: Array<Floors>;
-  url = '';
+  urlImage = '';
   selectedImage: any = null;
   validateErrorCode: string;
 
@@ -32,65 +49,44 @@ export class SpaceCreateComponent implements OnInit {
               private floorService: FloorService,
               private router: Router,
               @Inject(AngularFireStorage) private angularFireStorage: AngularFireStorage
-  ) {
-    this.spaceForm = new FormGroup({
-      spaceCode: new FormControl('', Validators.required),
-      spaceArea: new FormControl('', [Validators.required, Validators.pattern('^(,|[0-9])*$')]),
-      spacePrice: new FormControl('', [Validators.pattern('^(,|[0-9])*$')]),
-      spaceManagerFee: new FormControl('', [Validators.pattern('^(,|[0-9])*$')]),
-      spaceNote: new FormControl(),
-      spaceImage: new FormControl(),
-      // spaceImage: new FormArray([
-      //   new FormGroup({
-      //     image: new FormControl()
-      //   })
-      // ]),
-      spaceDeleteFlag: new FormControl(),
-      spacesType: new FormControl('', Validators.required),
-      spaceStatus: new FormControl('', Validators.required),
-      floors: new FormControl('', Validators.required)
-    });
-    this.spaceStatusService.findAll().subscribe(value => {
-      this.spaceStatusList = value;
-    });
-    this.spaceTypeService.findAll().subscribe(value => {
-      this.spaceTypeList = value;
-    });
-    this.floorService.findAll().subscribe(value => {
-      this.floorList = value;
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
+    this.spaceStatusService.findAll().subscribe(value => {
+      this.spaceStatusList = value;
+      this.spaceTypeService.findAll().subscribe(value1 => {
+        this.spaceTypeList = value1;
+        this.floorService.findAll().subscribe(value2 => {
+          this.floorList = value2;
+        });
+      });
+    });
   }
 
   saveNewSpace(): void {
-    const newSpace = Object.assign({}, this.spaceForm.value);
-    if (this.selectedImage !== null) {
-      const name = this.selectedImage.name;
-      const fileRef = this.angularFireStorage.ref(name);
-      this.angularFireStorage.upload(name, this.selectedImage).snapshotChanges()
-        .pipe(finalize(() => {
-          fileRef.getDownloadURL()
-            .subscribe(url => {
-              newSpace.spaceImage = url;
-              console.log(url);
-            });
-        }));
-    }
-    console.log(newSpace.spaceImage);
-    // this.angularFireStorage.upload('/images' + Math.random() + this.url, this.url);
-    this.spaceService.saveNewSpace(newSpace).subscribe(value => {
-        alert('Thêm mới thành công');
-      },
-      error => {
-        console.log(error);
-        this.validateErrorCode = error.error.code;
-        alert(this.validateErrorCode);
-      },
-      () => {
-        this.router.navigateByUrl('/spaces/list');
-      });
+    const name = this.selectedImage.name;
+    const fileRef = this.angularFireStorage.ref(name);
+    this.angularFireStorage.upload(name, this.selectedImage).snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL()
+          .subscribe((url) => {
+            console.log(url);
+            this.spaceForm.patchValue({spaceImage: url});
+            console.log(this.spaceForm.value);
+            const newSpace = Object.assign({}, this.spaceForm.value);
+            this.spaceService.saveNewSpace(newSpace).subscribe(value => {
+                this.callToast();
+              },
+              error => {
+                console.log(error);
+                this.validateErrorCode = error.error.code;
+                alert(this.validateErrorCode);
+              },
+              () => {
+                this.router.navigateByUrl('/spaces/list');
+              });
+          });
+      })).subscribe();
   }
 
   upload(event) {
@@ -100,7 +96,7 @@ export class SpaceCreateComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
       // tslint:disable-next-line:no-shadowed-variable
       reader.onload = (event: any) => {
-        this.url = event.target.result;
+        this.urlImage = event.target.result;
         // console.log(event.target.files[0]);
       };
     }
@@ -110,5 +106,14 @@ export class SpaceCreateComponent implements OnInit {
   }
 
   uploadImage() {
+  }
+  private callToast() {
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Thêm mới mặt bằng thành công!',
+      showConfirmButton: false,
+      timer: 2000
+    });
   }
 }
