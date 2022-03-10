@@ -8,7 +8,8 @@ import {FloorService} from '../../../service/floor/floor.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SpacesType} from '../../../model/space/spaces-type';
 import {Floors} from '../../../model/floor/floors';
-import {SpacesStatus} from "../../../model/space/spaces-status";
+import {SpacesStatus} from '../../../model/space/spaces-status';
+import Swal from 'sweetalert2';
 
 
 
@@ -69,7 +70,7 @@ export class SpaceEditComponent implements OnInit {
     const editSpace = Object.assign({}, this.spaceEditForm.value);
     editSpace.spaceId = this.spaceEdit.spaceId;
     this.spaceService.editSpace(editSpace).subscribe(value => {
-        alert('Chỉnh sửa thành công');
+       this.callToast();
       },
       error => {
       }, () => {
@@ -98,5 +99,14 @@ export class SpaceEditComponent implements OnInit {
   }
   compareFnFL(t1: any, t2: any): boolean {
     return t1 && t2 ? t1.floorId === t2.floorId : t1 === t2;
+  }
+  private callToast() {
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Chỉnh sửa mặt bằng thành công!',
+      showConfirmButton: false,
+      timer: 2000
+    });
   }
 }

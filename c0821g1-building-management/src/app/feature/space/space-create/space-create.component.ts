@@ -10,6 +10,7 @@ import {Floors} from '../../../model/floor/floors';
 import {finalize} from 'rxjs/operators';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {SpacesStatus} from '../../../model/space/spaces-status';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -75,7 +76,7 @@ export class SpaceCreateComponent implements OnInit {
             console.log(this.spaceForm.value);
             const newSpace = Object.assign({}, this.spaceForm.value);
             this.spaceService.saveNewSpace(newSpace).subscribe(value => {
-                alert('Thêm mới thành công');
+                this.callToast();
               },
               error => {
                 console.log(error);
@@ -106,5 +107,14 @@ export class SpaceCreateComponent implements OnInit {
   }
 
   uploadImage() {
+  }
+  private callToast() {
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Thêm mới mặt bằng thành công!',
+      showConfirmButton: false,
+      timer: 2000
+    });
   }
 }
