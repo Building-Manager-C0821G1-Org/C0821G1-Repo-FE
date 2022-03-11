@@ -42,9 +42,15 @@
 }
 
 .content {
-  /*background-image: url(https://i1-dulich.vnecdn.net/2021/03/04/1-1614826817.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=zoSoMv1tfcFUn5nDxYcW1A);*/
-  background-repeat: no-repeat;
-  background-size: 1800px 1100px;
+  background-image: url(https://i1-dulich.vnecdn.net/2021/03/04/1-1614826817.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=zoSoMv1tfcFUn5nDxYcW1A);
+    background-repeat: no-repeat;
+    background-position: center center;
+    object-fit: contain;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    flex: 1;
 }
 
 .header {
@@ -194,5 +200,29 @@ body {
 table tr {
   vertical-align: middle;
 }
+.add-button {
+  background-color: mediumseagreen;
+  color: white;
+  border-radius: 5px;
+}
+.add-button:hover{
+  background-color: forestgreen;
+}
 
+.edit-button {
+  background-color: #d6b915;
+  border-radius: 5px;
+}
+.edit-button:hover{
+  background-color: #EED84A;
+}
+
+.delete-button {
+  background-color: #de6666;
+  border-radius: 5px;
+  color: white;
+}
+.delete-button:hover{
+  background-color: #DD2840;
+}
 

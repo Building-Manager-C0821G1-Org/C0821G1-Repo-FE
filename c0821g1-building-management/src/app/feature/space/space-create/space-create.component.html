@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid form">
   <div class=" gradient-custom">
     <div class="container py-5 h-100">
       <div class="row justify-content-center align-items-center h-100">
@@ -46,6 +46,8 @@
                       <input type="text" id="codeGround" class="form-control form-control-lg" formControlName="spaceCode" />
                       <small style="color: red" *ngIf="spaceForm.controls.spaceCode.hasError('required') && spaceForm.controls.spaceCode.touched">
                         Mã mặt bằng không được để trống.</small>
+                      <small style="color: red" *ngIf="checkCode === true">
+                        Mã mặt bằng đã tồn tại.</small>
                     </div>
 
                   </div>
@@ -134,3 +136,5 @@
     </div>
   </div>
 </div>
+
+

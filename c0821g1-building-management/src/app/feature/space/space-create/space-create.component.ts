@@ -1,16 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
-import {SpacesType} from '../../../model/space/spaces-type';
-import {SpaceService} from '../../../service/space/space.service';
-import {SpaceTypeService} from '../../../service/space/space-type.service';
-import {SpaceStatusService} from '../../../service/space/space-status.service';
-import {Router} from '@angular/router';
-import {FloorService} from '../../../service/floor/floor.service';
-import {Floors} from '../../../model/floor/floors';
-import {finalize} from 'rxjs/operators';
-import {AngularFireStorage} from '@angular/fire/storage';
-import {SpacesStatus} from '../../../model/space/spaces-status';
-
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-space-create',
@@ -42,27 +30,19 @@ export class SpaceCreateComponent implements OnInit {
   urlImage = '';
   selectedImage: any = null;
   validateErrorCode: string;
-
+  checkCode: boolean;
   constructor(private spaceService: SpaceService,
               private spaceTypeService: SpaceTypeService,
               private spaceStatusService: SpaceStatusService,
               private floorService: FloorService,
               private router: Router,
               @Inject(AngularFireStorage) private angularFireStorage: AngularFireStorage
-  ) {}
+  ) {this.checkCode = false;}
+
+  constructor() { }
 
   ngOnInit(): void {
-    this.spaceStatusService.findAll().subscribe(value => {
-      this.spaceStatusList = value;
-      this.spaceTypeService.findAll().subscribe(value1 => {
-        this.spaceTypeList = value1;
-        this.floorService.findAll().subscribe(value2 => {
-          this.floorList = value2;
-        });
-      });
-    });
   }
-
   saveNewSpace(): void {
     const name = this.selectedImage.name;
     const fileRef = this.angularFireStorage.ref(name);
@@ -75,12 +55,13 @@ export class SpaceCreateComponent implements OnInit {
             console.log(this.spaceForm.value);
             const newSpace = Object.assign({}, this.spaceForm.value);
             this.spaceService.saveNewSpace(newSpace).subscribe(value => {
-                alert('Thêm mới thành công');
+                this.callToast();
               },
               error => {
-                console.log(error);
-                this.validateErrorCode = error.error.code;
-                alert(this.validateErrorCode);
+              this.checkCode = true;
+                // console.log(error);
+                // this.validateErrorCode = error.error.code;
+                // alert(this.validateErrorCode);
               },
               () => {
                 this.router.navigateByUrl('/spaces/list');
@@ -106,5 +87,14 @@ export class SpaceCreateComponent implements OnInit {
   }
 
   uploadImage() {
+  }
+  private callToast() {
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Thêm mới mặt bằng thành công!',
+      showConfirmButton: false,
+      timer: 2000
+    });
   }
 }
