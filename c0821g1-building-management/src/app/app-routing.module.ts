@@ -1,7 +1,5 @@
-
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
@@ -12,10 +10,6 @@ const routes: Routes = [
   {
     path: 'security',
     loadChildren: () => import('./feature/security/security.module').then(module => module.SecurityModule)
-  },
-  {
-    path: 'spaces',
-    loadChildren: () => import('./feature/space/space.module').then(module => module.SpaceModule)
   }
 ];
 
@@ -23,5 +17,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule { }

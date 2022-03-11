@@ -1,16 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
-import {SpacesType} from '../../../model/space/spaces-type';
-import {SpaceService} from '../../../service/space/space.service';
-import {SpaceTypeService} from '../../../service/space/space-type.service';
-import {SpaceStatusService} from '../../../service/space/space-status.service';
-import {Router} from '@angular/router';
-import {FloorService} from '../../../service/floor/floor.service';
-import {Floors} from '../../../model/floor/floors';
-import {finalize} from 'rxjs/operators';
-import {AngularFireStorage} from '@angular/fire/storage';
-import {SpacesStatus} from '../spaces-status';
-import Swal from 'sweetalert2';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-space-create',
@@ -51,18 +39,10 @@ export class SpaceCreateComponent implements OnInit {
               @Inject(AngularFireStorage) private angularFireStorage: AngularFireStorage
   ) {this.checkCode = false;}
 
-  ngOnInit(): void {
-    this.spaceStatusService.findAll().subscribe(value => {
-      this.spaceStatusList = value;
-      this.spaceTypeService.findAll().subscribe(value1 => {
-        this.spaceTypeList = value1;
-        this.floorService.findAll().subscribe(value2 => {
-          this.floorList = value2;
-        });
-      });
-    });
-  }
+  constructor() { }
 
+  ngOnInit(): void {
+  }
   saveNewSpace(): void {
     const name = this.selectedImage.name;
     const fileRef = this.angularFireStorage.ref(name);

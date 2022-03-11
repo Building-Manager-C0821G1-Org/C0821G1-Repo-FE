@@ -3,7 +3,7 @@ import {Floors} from '../../model/floors/floors';
 import {FloorService} from '../../service/floor/floor.service';
 import {MatDialog} from '@angular/material/dialog';
 import {FloorsDeleteComponent} from '../../feature/floors/floors-delete/floors-delete.component';
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-body',
