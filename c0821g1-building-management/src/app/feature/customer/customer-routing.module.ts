@@ -7,7 +7,6 @@ import {CustomerEditComponent} from "./customer-edit/customer-edit.component";
 
 
 const routes: Routes = [
-  {path: '', redirectTo: 'list', pathMatch: 'full'},
   {path: 'list', component: CustomerListComponent},
   {path: 'delete/:id', component: DeleteCustomerComponent},
   {path: 'create', component: CustomerCreateComponent},
