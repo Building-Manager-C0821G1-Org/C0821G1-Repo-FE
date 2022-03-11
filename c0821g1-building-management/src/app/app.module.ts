@@ -29,6 +29,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     AppRoutingModule,
     HttpClientModule,
     SecurityModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
   ],
   providers: [
     authInterceptorProviders,
