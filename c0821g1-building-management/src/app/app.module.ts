@@ -41,6 +41,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     HttpClientModule,
     SecurityModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
   ],
   providers: [
     authInterceptorProviders,
