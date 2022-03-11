@@ -8,13 +8,13 @@ import {HttpClientModule} from '@angular/common/http';
 // import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
-import { DeleteCustomerComponent } from './delete-customer/delete-customer.component';
 import { CustomerCreateComponent } from './customer-create/customer-create.component';
 import { CustomerEditComponent } from './customer-edit/customer-edit.component';
+import {CustomerDeleteComponent} from './customer-delete/customer-delete.component';
 
 
 @NgModule({
-  declarations: [CustomerListComponent, DeleteCustomerComponent, CustomerCreateComponent, CustomerEditComponent],
+  declarations: [CustomerListComponent, CustomerDeleteComponent, CustomerCreateComponent, CustomerEditComponent],
   imports: [
     CommonModule,
     CustomerRoutingModule,

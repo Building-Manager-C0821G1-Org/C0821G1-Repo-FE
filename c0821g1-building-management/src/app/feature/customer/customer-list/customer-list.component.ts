@@ -6,7 +6,7 @@ import {CustomerService} from '../../../service/customer/customer.service';
 import {Subscription} from 'rxjs';
 // @ts-ignore
 import {MatDialog} from "@angular/material/dialog";
-import {DeleteCustomerComponent} from "../delete-customer/delete-customer.component";
+import {CustomerDeleteComponent} from '../customer-delete/customer-delete.component';
 
 
 // @ts-ignore
@@ -114,7 +114,7 @@ export class CustomerListComponent implements OnInit {
 
   openDialog(customerObjId: number) {
     this.customerService.getCustomerById(customerObjId).subscribe(customerData => {
-      const dialogRef = this.dialogDelete.open(DeleteCustomerComponent, {
+      const dialogRef = this.dialogDelete.open(CustomerDeleteComponent, {
         width: '500px',
         data: customerData,
         disableClose: true
@@ -125,4 +125,3 @@ export class CustomerListComponent implements OnInit {
     });
   }
 }
-

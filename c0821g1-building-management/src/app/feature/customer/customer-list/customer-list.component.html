@@ -40,16 +40,16 @@
     </div>
   </div>
 
-<!--  THÊM MỚI-->
+  <!--  THÊM MỚI-->
 
   <div class="row">
     <button routerLink="/customer/create" type="button" class="add-button btn-lg"><i class="fa-solid fa-plus me-lg-2"></i>Tạo mới
     </button>
     <!--      <button type="button" class="delete-button btn-lg ms-lg-2">Xóa tất cả</button>-->
 
-<!--    ERROR: TÌM KIẾM KO THẤY-->
+    <!--    ERROR: TÌM KIẾM KO THẤY-->
 
-</div>
+  </div>
   <ng-container *ngIf="message !== '';else elseBlock">
     <div class="bg-light">
       <h1 style="color: red; text-align: center; width: 100%; margin-top: 50px">{{message}}</h1>
@@ -57,7 +57,7 @@
   </ng-container>
   <ng-template #elseBlock>
 
-<!--    TABLE CUSTOMER-->
+    <!--    TABLE CUSTOMER-->
 
     <div class="row">
       <table class="table table-hover bg-light">

@@ -1,25 +1,25 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {Customer} from "../../../model/customer";
-import {CustomerService} from "../../../service/customer/customer.service";
 import {Subscription} from "rxjs";
 import Swal from 'sweetalert2';
+import {Customer} from '../../../model/customer';
+import {CustomerService} from '../../../service/customer/customer.service';
 
 @Component({
-  selector: 'app-delete-customer',
-  templateUrl: './delete-customer.component.html',
-  styleUrls: ['./delete-customer.component.css']
+  selector: 'app-customer-delete',
+  templateUrl: './customer-delete.component.html',
+  styleUrls: ['./customer-delete.component.css']
 })
-export class DeleteCustomerComponent implements OnInit {
+export class CustomerDeleteComponent implements OnInit {
   customer: Customer;
   private subscription: Subscription;
 
   constructor(
     private customerService: CustomerService,
-    private matDialogRef: MatDialogRef<DeleteCustomerComponent>
+    private matDialogRef: MatDialogRef<CustomerDeleteComponent>
     , @Inject(MAT_DIALOG_DATA) public data: any) {
     this.customer = this.data;
-    console.log(this.customer.customerName)
+    console.log(this.customer.customerName);
 
   }
 
