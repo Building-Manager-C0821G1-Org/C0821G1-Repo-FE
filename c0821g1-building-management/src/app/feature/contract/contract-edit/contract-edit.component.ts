@@ -34,6 +34,7 @@ export class ContractEditComponent implements OnInit {
   private selectedImage: any;
   loading = false;
   contract: Contract;
+  checkDate: boolean;
 
   constructor(private fb: FormBuilder,
               private contractService: ContractService,
@@ -74,7 +75,7 @@ export class ContractEditComponent implements OnInit {
 
       this.contractForm = this.fb.group({
         contractId: contract.contractId,
-        contractCode: [contract.contractCode,[Validators.required, Validators.pattern('^[H][D]-[\\d]{4}$')]],
+        contractCode: [contract.contractCode, [Validators.required, Validators.pattern('^[H][D]-[\\d]{4}$')]],
         contractExpired: [contract.contractExpired, [Validators.required]],
         contractDateStart: [this.dateStart, [Validators.required]],
         contractDateEnd: [this.dateEnd, [Validators.required]],
@@ -88,7 +89,7 @@ export class ContractEditComponent implements OnInit {
         contractTaxCode: [contract.contractTaxCode, [Validators.required]],
         customerId: [1, [Validators.required]],
         spaceId: [1, [Validators.required]],
-        checkFlag:0
+        checkFlag: 0
       });
     });
   }
@@ -108,7 +109,7 @@ export class ContractEditComponent implements OnInit {
       this.router.navigate(['contract/list']);
     }, e => {
       console.log(e);
-      this.checkCode  = true;
+      this.checkCode = true;
     });
   }
 
@@ -138,7 +139,6 @@ export class ContractEditComponent implements OnInit {
   }
 
 
-
   showPreview(event: any) {
     this.selectedImage = event.target.files[0];
     const nameImg = this.selectedImage.name;
@@ -153,5 +153,19 @@ export class ContractEditComponent implements OnInit {
         });
       })
     ).subscribe();
+  }
+
+
+  checkDate1(date1, date2) {
+    this.contractService.checkDate(date1, date2).subscribe(result => {
+      console.log(result);
+      console.log(this.contractForm.controls.contractDateStart.value);
+      console.log(this.contractForm.controls.contractDateEnd.value);
+      if (result) {
+        this.checkDate = true;
+      } else {
+        this.checkDate = false;
+      }
+    });
   }
 }

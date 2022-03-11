@@ -144,13 +144,19 @@
                         <div class="form-outline">
                           <label class="form-label" for="lastName3">Ngày kết thúc thuê<span
                             class="error"> (*)</span></label>
+<!--                          <input type="date" id="lastName3" class="form-control form-control-lg"-->
+<!--                                 formControlName="contractDateEnd"-->
+<!--                          />-->
                           <input type="date" id="lastName3" class="form-control form-control-lg"
                                  formControlName="contractDateEnd"
+                                 (change)="checkDate1(contractsForm.controls.contractDateStart.value,contractsForm.controls.contractDateEnd.value)"
                           />
                         </div>
                         <small class="error" *ngIf="contractsForm.get('contractDateEnd')
                         .hasError('required')&& contractsForm.get('contractDateEnd').touched">Ngày kết thúc không được
                           để trống</small>
+
+                        <small class="error" *ngIf="checkDate == true">Ngày kết thúc phải sau ngày hiện tại</small>
                       </div>
                     </div>
 
@@ -295,7 +301,7 @@
 
 
                     <div class="d-flex justify-content-end pt-3 mt-5">
-                      <button  class="add-button button-radius btn-lg ms-2 me-3" >Tạo
+                      <button  class="add-button button-radius btn-lg ms-2 me-3" [disabled]="checkDate == true" >Tạo
                         mới
                       </button>
                       <button type="reset" class="reset-button button-radius btn-lg ms-2 me-3">

@@ -9,7 +9,7 @@ import {Contract} from '../../model/contract/contract';
   providedIn: 'root'
 })
 export class ContractService {
-  private API = 'http://localhost:9090/api/contract';
+  private API = 'http://localhost:8080/api/contract';
 
   constructor(private httpClient: HttpClient) { }
   // list-search-page
@@ -34,6 +34,10 @@ export class ContractService {
   saveContract(contract): Observable<Contract> {
     console.log(contract);
     return this.httpClient.post<Contract>(this.API + '/add', contract);
+  }
+
+  checkDate(date, date1): Observable<boolean> {
+    return this.httpClient.get<boolean>(this.API + '/check?date1=' + date + '&date2=' + date1);
   }
 }
 

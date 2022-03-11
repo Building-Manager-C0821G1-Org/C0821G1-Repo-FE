@@ -27,6 +27,7 @@ export class ContractCreateComponent implements OnInit {
   id: string;
   file: string;
   checkCode: boolean;
+  checkDate: boolean;
 
   contractsForm: FormGroup = this.fb1.group({
     contractId: '',
@@ -69,7 +70,7 @@ export class ContractCreateComponent implements OnInit {
     this.employees = employeeService.employees;
     this.customers = customerService.customers;
     this.checkCode = false;
-
+    this.checkCode = false;
   }
 
   ngOnInit(): void {
@@ -145,5 +146,18 @@ export class ContractCreateComponent implements OnInit {
         this.url = event.target.result;
       };
     }
+  }
+
+  checkDate1(date1, date2) {
+    this.contractService.checkDate(date1, date2).subscribe(result => {
+      console.log(result);
+      console.log(this.contractsForm.controls.contractDateStart.value);
+      console.log(this.contractsForm.controls.contractDateEnd.value);
+      if (result) {
+        this.checkDate = true;
+      } else {
+        this.checkDate = false;
+      }
+    });
   }
 }

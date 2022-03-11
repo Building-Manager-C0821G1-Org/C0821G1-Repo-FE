@@ -9,34 +9,44 @@
     <div class="col-lg-10">
       <form #myNgForm="ngForm">
         <div class=" search row d-flex justify-content-end align-items-center mb-4 text-right float-right">
-          <div class="col-lg-2 form-group" style="text-align: center">
-            <input [(ngModel)]="name" class="form-control" id="name" type="text" name="name" placeholder="Tên" required minlength="10" ngModel name="name" #namee="ngModel">
-            <div>
-<!--              <small class="alert alert-danger" *ngIf="!namee.valid && (namee!.dirty || namee!.touched)"> nhập tối đa 10 ký tự</small>-->
+            <div class="col-lg-2 form-group" style="text-align: center">
+              <input [(ngModel)]="name" class="form-control" type="text" name="name" placeholder="Tên" >
             </div>
-          </div>
-          <div class="col-lg-2 form-group" style="text-align: right">
-            <div style="text-align: center">
-              <input [(ngModel)]="code" class="form-control" id="code" type="text" name="code"
-                     placeholder="Mã mặt bằng">
+            <div class="col-lg-2 form-group" style="text-align: right">
+              <div style="text-align: center">
+                <input [(ngModel)]="code" class="form-control" id="code" type="text" name="code"
+                       placeholder="Mã mặt bằng">
+              </div>
             </div>
-          </div>
-          <div class="col-lg-2 form-group" style="text-align: right">
-            <div style="text-align: center">
-              <input [(ngModel)]="start" class="form-control" id="start" type="date" name="start"
-                     placeholder="ngày bắt đầu">
+
+            <div class="col-lg-2 form-group" style="text-align: right">
+              <div style="text-align: center">
+                <input [(ngModel)]="start" class="form-control" id="start" type="date" name="start"
+                       placeholder="ngày bắt đầu">
+              </div>
             </div>
-          </div>
-          <div class="col-lg-2 form-group" style="text-align: right">
-            <input [(ngModel)]="end" class="form-control" id="end" type="date" name="end"
-                   placeholder="Ngày kết thúc">
-          </div>
-          <div class="col-lg-2 form-group" style="text-align: right">
-            <button (click)="onSubmit()" class="btn btn-light mt-xl-1 btn-outline-success"
-                    style="border-radius: 5px">
-              <i class="fa-solid fa-magnifying-glass"></i> Tìm Kiếm
-            </button>
-          </div>
+            <!--          <div class="col-lg-2 form-group" style="text-align: right">-->
+            <!--            <input [(ngModel)]="start1" class="form-control" id="start1" type="date" name="end"-->
+            <!--                   placeholder="Ngày kết thúc">-->
+            <!--          </div>-->
+
+            <div class="col-lg-2 form-group" style="text-align: right">
+              <div style="text-align: center">
+                <input [(ngModel)]="end" class="form-control" id="end" type="date" name="start"
+                       placeholder="ngày bắt đầu">
+              </div>
+            </div>
+            <!--          <div class="col-lg-2 form-group" style="text-align: right">-->
+            <!--            <input [(ngModel)]="end1" class="form-control" id="end1" type="date" name="end"-->
+            <!--                   placeholder="Ngày kết thúc">-->
+            <!--          </div>-->
+
+            <div class="col-lg-2 form-group" style="text-align: right">
+              <button (click)="onSubmit()" class="btn btn-light mt-xl-1 btn-outline-success"
+                      style="border-radius: 5px">
+                <i class="fa-solid fa-magnifying-glass"></i> Tìm Kiếm
+              </button>
+            </div>
         </div>
       </form>
     </div>

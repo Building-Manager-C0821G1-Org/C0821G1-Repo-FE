@@ -4,7 +4,10 @@ import {ContractService} from '../../../service/contract/contract.service';
 import {Subscription} from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
 import {ContractDeleteComponent} from '../contract-delete/contract-delete.component';
-import {Route, Router} from '@angular/router';;
+import {Route, Router} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+
+;
 
 @Component({
   selector: 'app-contract-list',
@@ -15,12 +18,14 @@ export class ContractListComponent implements OnInit {
   constructor(
     private contractService: ContractService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder,
   ) {
   }
 
   contract: Contract[] = [];
   private subscription: Subscription | undefined;
+  contractForm: FormGroup;
   page = 0;
   name = '';
   code = '';
@@ -130,6 +135,9 @@ export class ContractListComponent implements OnInit {
         console.log(this.message);
       }
     });
+    // this.contractForm = this.formBuilder.group({
+    //   names: [1, [Validators.required, Validators.minLength (5)]],
+    // });
   }
 
   searchContract() {
