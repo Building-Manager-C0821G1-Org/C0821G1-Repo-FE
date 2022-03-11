@@ -1,15 +1,12 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
-import {SpacesType} from '../../../model/space/spaces-type';
-import {SpaceService} from '../../../service/space/space.service';
-import {SpaceTypeService} from '../../../service/space/space-type.service';
-import {SpaceStatusService} from '../../../service/space/space-status.service';
-import {Router} from '@angular/router';
-import {FloorService} from '../../../service/floor/floor.service';
-import {Floors} from '../../../model/floor/floors';
+import {Floors} from '../../../model/floors/floors';
 import {finalize} from 'rxjs/operators';
-import {AngularFireStorage} from '@angular/fire/storage';
-import {SpacesStatus} from '../spaces-status';
+import {Router} from '@angular/router';
+import {SpaceStatusService} from '../../../service/space/space-status.service';
+import {FloorService} from '../../../service/floor/floor.service';
+import {SpaceTypeService} from '../../../service/space/space-type.service';
+import {SpaceService} from '../../../service/space/space.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -36,8 +33,8 @@ export class SpaceCreateComponent implements OnInit {
     floors: new FormControl('', Validators.required)
   });
   spaceImage: FormArray;
-  spaceTypeList: Array<SpacesType>;
-  spaceStatusList: Array<SpacesStatus>;
+  // spaceTypeList: Array<SpacesType>;
+  // spaceStatusList: Array<SpacesStatus>;
   floorList: Array<Floors>;
   urlImage = '';
   selectedImage: any = null;
@@ -50,19 +47,6 @@ export class SpaceCreateComponent implements OnInit {
               private router: Router,
               @Inject(AngularFireStorage) private angularFireStorage: AngularFireStorage
   ) {this.checkCode = false;}
-
-  ngOnInit(): void {
-    this.spaceStatusService.findAll().subscribe(value => {
-      this.spaceStatusList = value;
-      this.spaceTypeService.findAll().subscribe(value1 => {
-        this.spaceTypeList = value1;
-        this.floorService.findAll().subscribe(value2 => {
-          this.floorList = value2;
-        });
-      });
-    });
-  }
-
   saveNewSpace(): void {
     const name = this.selectedImage.name;
     const fileRef = this.angularFireStorage.ref(name);
@@ -116,5 +100,8 @@ export class SpaceCreateComponent implements OnInit {
       showConfirmButton: false,
       timer: 2000
     });
+  }
+
+  ngOnInit(): void {
   }
 }

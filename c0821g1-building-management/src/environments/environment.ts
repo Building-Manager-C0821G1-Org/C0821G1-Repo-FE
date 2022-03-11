@@ -4,15 +4,14 @@
 
 export const environment = {
   production: false,
-  urlApi: 'http://localhost:8080',
   firebaseConfig: {
-    apiKey: 'AIzaSyBXBtR7I_or2AIrM1h90hPcym6mFZYXD3k',
-    authDomain: 'building-manager-6262e.firebaseapp.com',
-    projectId: 'building-manager-6262e',
-    storageBucket: 'building-manager-6262e.appspot.com',
-    messagingSenderId: '69101495380',
-    appId: '1:69101495380:web:38b92ff72f525953d0f9c1',
-    measurementId: 'G-8T0EPQGPM7'
+    apiKey: "AIzaSyCMCLLHxxG2dcPgLUmYvxCYo_EOO7BlPJM",
+    authDomain: "sprint1-employee.firebaseapp.com",
+    projectId: "sprint1-employee",
+    storageBucket: "sprint1-employee.appspot.com",
+    messagingSenderId: "91474852273",
+    appId: "1:91474852273:web:68e1e4ac0b217d096fa590",
+    measurementId: "G-4L382VES26"
   }
 };
 

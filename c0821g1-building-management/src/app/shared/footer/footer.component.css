@@ -5,6 +5,7 @@
   color: white;
   margin-top: 30px;
   padding-bottom: 1px;
+  z-index: 100;
 }
 .footer .container .row .contact{
   text-align: left;

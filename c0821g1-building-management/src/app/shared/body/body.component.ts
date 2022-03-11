@@ -1,3 +1,4 @@
+import {TokenStorageService} from '../../service/security/token-storage.service';
 import {Component, OnInit} from '@angular/core';
 import {Floors} from '../../model/floors/floors';
 import {FloorService} from '../../service/floor/floor.service';
@@ -11,9 +12,21 @@ import Swal from 'sweetalert2';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit {
+  // urlImg: any;
+  // username: string;
+  // email: string;
+  // name: string;
+  // phone: string;
+  // address: string;
+  // gender: string;
+  // dateOfBirth: string;
+  // id: any;
+
   floorsList: Floors[] = [];
+
   constructor(private floorService: FloorService, private dialogDelete: MatDialog) {
   }
+
   ngOnInit(): void {
     this.floorService.findAll().subscribe(value => {
       this.floorsList = value;
@@ -23,6 +36,7 @@ export class BodyComponent implements OnInit {
       // this.callToastFailList();
     });
   }
+
   openDialog(floorId: number) {
     this.floorService.findById(floorId).subscribe(value => {
         const dialogRef = this.dialogDelete.open(FloorsDeleteComponent, {
@@ -38,6 +52,7 @@ export class BodyComponent implements OnInit {
         this.callToastFail();
       });
   }
+
   private callToastFail() {
     Swal.fire({
       position: 'top',
@@ -47,6 +62,7 @@ export class BodyComponent implements OnInit {
       timer: 2000
     });
   }
+
   private callToastFailList() {
     Swal.fire({
       position: 'top',

@@ -3,7 +3,7 @@ import {Floors} from '../../../model/floors/floors';
 import {FloorService} from '../../../service/floor/floor.service';
 import {FloorsDeleteComponent} from '../floors-delete/floors-delete.component';
 import {MatDialog} from '@angular/material/dialog';
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-floors-list',
@@ -20,9 +20,8 @@ export class FloorsListComponent implements OnInit {
     this.floorService.findAll().subscribe(value => {
       this.floorsList = value;
     }, error => {
-      this.callToastFailList();
-    }, () => {
       // this.callToastFailList();
+    }, () => {
     });
   }
   openDialog(floorId: number) {
@@ -49,13 +48,13 @@ export class FloorsListComponent implements OnInit {
       timer: 2000
     });
   }
-  private callToastFailList() {
-    Swal.fire({
-      position: 'top',
-      icon: 'success',
-      title: 'Không tìm thấy dữ liệu 🤷‍♂️🤷‍♂️🤷‍♂ !',
-      showConfirmButton: false,
-      timer: 2000
-    });
-  }
+  // private callToastFailList() {
+  //   Swal.fire({
+  //     position: 'top',
+  //     icon: 'success',
+  //     title: 'Không tìm thấy dữ liệu 🤷‍♂️🤷‍♂️🤷‍♂ !',
+  //     showConfirmButton: false,
+  //     timer: 2000
+  //   });
+  // }
 }
