@@ -1,15 +1,11 @@
-// @ts-ignore
 import {Component, OnInit} from '@angular/core';
-import {Customer} from '../../../model/customer';
+import {Customer} from '../../../model/customer/customer';
 import {CustomerService} from '../../../service/customer/customer.service';
-// @ts-ignore
 import {Subscription} from 'rxjs';
-// @ts-ignore
-import {MatDialog} from "@angular/material/dialog";
 import {CustomerDeleteComponent} from '../customer-delete/customer-delete.component';
+import {MatDialog} from '@angular/material/dialog';
 
 
-// @ts-ignore
 @Component({
   selector: 'app-customer-list',
   templateUrl: './customer-list.component.html',

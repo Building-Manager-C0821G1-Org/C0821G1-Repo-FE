@@ -8,6 +8,10 @@ const routes: Routes = [
     loadChildren: () => import('./feature/floors/floor.module.js').then(module => module.FloorModule)
   },
   {
+    path: 'customer',
+    loadChildren: () => import('./feature/customer/customer.module').then(module => module.CustomerModule)
+  },
+  {
     path: 'security',
     loadChildren: () => import('./feature/security/security.module').then(module => module.SecurityModule)
   }
