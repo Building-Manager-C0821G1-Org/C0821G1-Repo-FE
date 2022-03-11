@@ -1,14 +1,33 @@
+.form {
+  margin-top: 100px;
+}
+/*body {*/
+/*  background-image: url(https://i1-dulich.vnecdn.net/2021/03/04/1-1614826817.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=zoSoMv1tfcFUn5nDxYcW1A);*/
+/*  background-repeat: no-repeat;*/
+/*  background-position: center center;*/
+/*  object-fit: contain;*/
+/*  -webkit-background-size: cover;*/
+/*  -moz-background-size: cover;*/
+/*  -o-background-size: cover;*/
+/*  background-size: cover;*/
+/*  flex: 1;*/
+/*}*/
+
+html, body { height: 100%; }
+body { font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 .sidebar-container {
   /*clear: both;*/
   margin-top: 100px;
   position: fixed;
-  width: 220px;
+  width: 300px;
   height: 100%;
   left: 0;
   overflow-x: hidden;
   overflow-y: auto;
   background: #3f3836;
   color: #fff;
+  margin-left: 11px;
 }
 
 .content-container {
@@ -133,8 +152,6 @@ th ,td{
   white-space: nowrap; overflow: hidden;
 }
 
-
-
 /*logo*/
 .logo {
   /*border-radius: 15px 50px 30px 5px;*/
@@ -143,4 +160,6 @@ th ,td{
 }
 
 html, body { height: 100%; }
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

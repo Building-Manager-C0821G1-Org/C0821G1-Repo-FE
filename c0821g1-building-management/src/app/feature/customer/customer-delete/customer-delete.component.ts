@@ -5,12 +5,17 @@ import Swal from 'sweetalert2';
 import {Customer} from '../../../model/customer/customer';
 import {CustomerService} from '../../../service/customer/customer.service';
 
+
 @Component({
   selector: 'app-customer-delete',
   templateUrl: './customer-delete.component.html',
   styleUrls: ['./customer-delete.component.css']
 })
 export class CustomerDeleteComponent implements OnInit {
+
+
+
+
   customer: Customer;
   private subscription: Subscription;
 
@@ -23,8 +28,11 @@ export class CustomerDeleteComponent implements OnInit {
 
   }
 
+
   ngOnInit(): void {
   }
+
+
 
   deleteCustomer() {
     this.subscription = this.customerService.deleteCustomerById(this.customer.customerId).subscribe(data => {
@@ -47,4 +55,5 @@ export class CustomerDeleteComponent implements OnInit {
       timer: 2000
     });
   }
+
 }

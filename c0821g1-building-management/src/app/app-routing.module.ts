@@ -1,5 +1,7 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {HeaderComponent} from './shared/header/header.component';
+import {BodyComponent} from './shared/body/body.component';
 
 
 const routes: Routes = [
@@ -14,6 +16,10 @@ const routes: Routes = [
   {
     path: 'security',
     loadChildren: () => import('./feature/security/security.module').then(module => module.SecurityModule)
+  },
+  {
+    path: 'home',
+    component: HeaderComponent
   }
 ];
 
@@ -21,4 +27,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
+

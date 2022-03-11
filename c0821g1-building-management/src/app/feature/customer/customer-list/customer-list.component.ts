@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+
+import { Component, OnInit } from '@angular/core';
 import {Customer} from '../../../model/customer/customer';
 import {CustomerService} from '../../../service/customer/customer.service';
 import {Subscription} from 'rxjs';
