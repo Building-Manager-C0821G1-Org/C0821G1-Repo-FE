@@ -9,7 +9,7 @@ import {Contract} from '../../model/contract/contract';
   providedIn: 'root'
 })
 export class ContractService {
-  private API = 'http://localhost:8080/api/contract';
+  private API = 'http://localhost:8081/api/contract';
 
   constructor(private httpClient: HttpClient) { }
   // list-search-page
