@@ -140,7 +140,8 @@
                           <label class="form-label" for="lastName2">Ngày bắt đầu thuê<span
                             class="error">(*)</span></label>
                           <input type="date" id="lastName2"
-                                 class="form-control form-control-lg" formControlName="contractDateStart"/>
+                                 class="form-control form-control-lg" formControlName="contractDateStart"
+                                 (change)="checkDate1(contractForm.controls.contractDateStart.value,contractForm.controls.contractDateEnd.value)"/>
                         </div>
                         <small class="error" *ngIf="contractForm.get('contractDateStart')
                         .hasError('required')&& contractForm.get('contractDateStart').touched">Ngày bắt đầu không được
