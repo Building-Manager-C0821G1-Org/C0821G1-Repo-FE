@@ -1,4 +1,4 @@
-<form >
+<form>
   <div class="container-fluid">
     <div class=" gradient-custom">
       <div class="container py-5 h-100">
@@ -17,8 +17,9 @@
                           <h6 class="mb-2 pb-1">Tài khoản </h6>
                         </label>
                         <input value="{{this.employee.employeeEmail}}" type="text" id="firstName"
-                               class="form-control form-control-lg" />
-<!--                        disabled/-->
+                               class="form-control form-control-lg"/>
+                        <!--                        disabled/-->
+
                       </div>
 
 
@@ -30,7 +31,8 @@
                           <h6 class="mb-2 pb-1">Họ và tên</h6>
                         </label>
                         <input value="{{this.employee.employeeName}}" type="text" id="name"
-                               class="form-control form-control-lg" />
+                               class="form-control form-control-lg"/>
+
                       </div>
                     </div>
                   </div>
@@ -44,7 +46,7 @@
                           <h6 class="mb-2 pb-1">Ngày sinh</h6>
                         </label>
                         <input value="{{this.employee.employeeDateOfBirth}}" type="text" id=""
-                               class="form-control form-control-lg" />
+                               class="form-control form-control-lg"/>
                       </div>
                     </div>
                     <div class="col-md-6 mb-4">
@@ -53,23 +55,24 @@
                           <h6 class="mb-2 pb-1">Địa chỉ</h6>
                         </label>
                         <input value="{{this.employee.employeeAddress}}" type="text" id="a"
-                               class="form-control form-control-lg" />
+                               class="form-control form-control-lg"/>
+
                       </div>
                     </div>
 
                   </div>
 
 
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label" for="phoneNumber"> </label>
+                        <h6 class="mb-2 pb-1">Số điện thoại </h6>
+                        <input value="{{this.employee.employeePhone}}" type="tel" id="phoneNumber"
+                               class="form-control form-control-lg"/>
+                      </div>
 
-                      <div class="row">
-                        <div class="col-md-6 mb-4">
 
-                          <div class="form-outline">
-                            <label class="form-label" for="phoneNumber"> </label>
-                            <h6 class="mb-2 pb-1">Số điện thoại </h6>
-                            <input value="{{this.employee.employeePhone}}" type="tel" id="phoneNumber"
-                                   class="form-control form-control-lg" />
-                          </div>
                     </div>
 
                     <div class="col-md-6 mb-4">
@@ -78,7 +81,10 @@
                         <label class="form-label" for="email"></label>
                         <h6 class="mb-2 pb-1">Email</h6>
                         <input value="{{this.employee.employeeEmail}}" type="text" id="email"
-                               class="form-control form-control-lg" />
+                               class="form-control form-control-lg"/>
+
+
+
                       </div>
 
                     </div>
@@ -104,8 +110,7 @@
                           class="form-check-input"
                           type="radio"
                           name="inlineRadioOptions"
-                          value="option2"
-                          />
+                          value="option2"/>
                       </div>
                     </div>
                   </div>
@@ -115,15 +120,16 @@
                     <div class="col-2">
 
                     </div>
-<!--                    <div class="col-8">-->
-<!--                      <div class="form-outline align-middle text-center">-->
-<!--                        <label class="form-label" for="phoneNumber"></label>-->
-<!--                        <h5 class="mb-2 pb-1">Ảnh đại diện </h5>-->
-<!--                        <input type="file" id="image" class="form-control form-control-lg"/>-->
-<!--                        <img src="{{this.employee.employeeImage}}" class="img-fluid" alt="">-->
-<!--                      </div>-->
 
-<!--                    </div>-->
+                    <div class="col-8">
+                      <div class="form-outline align-middle text-center">
+                        <label class="form-label" for="phoneNumber"></label>
+                        <h5 class="mb-2 pb-1">Ảnh đại diện </h5>
+                        <input type="file" id="image" class="form-control form-control-lg"/>
+                        <img src="{{this.employee.employeeImage}}" class="img-fluid" alt="">
+                      </div>
+
+                    </div>
                     <div class="col-2">
 
                     </div>
@@ -132,20 +138,27 @@
                   <div class="row">
                     <div class="col-12">
                       <div class="d-flex justify-content-start pt-3 mt-5">
-                        <!--                                            <button type="button" class="edit-button button-radius btn-lg ms-2 me-3" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
-                        <!--                                                Chỉnh sửa-->
-                        <!--                                            </button>-->
-                        <button routerLink="/employee/list" type="button" class="add-button button-radius btn-lg ms-2 me-3">
-                         Chỉnh Sửa
+                        <button routerLink="/employee/list" type="button"
+                                class="add-button button-radius btn-lg ms-2 me-3">
+                          Chỉnh Sửa
                         </button>
 
-                        <button routerLink="/user/update/2"  type="button" class="reset-button button-radius btn-lg ms-2 me-3">
+                        <button routerLink="/user/update/2" type="button"
+                                class="reset-button button-radius btn-lg ms-2 me-3">
                           Đổi mật khẩu
                         </button>
+                        <button type="button" class="add-button button-radius btn-lg ms-2 me-3">
+                          Thoát
+                        </button>
+<!--                        &lt;!&ndash;                        <a routerLink="user/update/1">update</a>&ndash;&gt;-->
+<!--                        <button routerLink="user/update/1" type="button"-->
+<!--                                class="reset-button button-radius btn-lg ms-2 me-3">-->
+<!--                          Đổi mật khẩu-->
+<!--                        </button>-->
+
                       </div>
                     </div>
                   </div>
-
                 </form>
               </div>
             </div>
