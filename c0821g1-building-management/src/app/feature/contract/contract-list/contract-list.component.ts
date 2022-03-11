@@ -39,6 +39,8 @@ export class ContractListComponent implements OnInit {
 
   ngOnInit(): void {
     this.contractService.findAllContract(this.page, '', '', '', '').subscribe(data => {
+      console.log('Giỡn mặt rồi');
+
       if (data !== null) {
         this.contract = data.content;
         this.totalPages = data.totalPages;

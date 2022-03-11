@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebaseConfig : {
+  firebaseConfig: {
     apiKey: 'AIzaSyDrMCIzmfa5eadMK2qp52c97Lj6vv0vcJc',
     authDomain: 'sprint1-angular.firebaseapp.com',
     databaseURL: 'https://sprint1-angular-default-rtdb.firebaseio.com/',
@@ -13,9 +13,19 @@ export const environment = {
     messagingSenderId: '979548655353',
     appId: '1:979548655353:web:5e1e61ba2e323f5fae1c28',
     measurementId: 'G-8YX4CNKTHP'
+
+    // Config của các bạn trong lớp
+    // firebaseConfig: {
+    //   apiKey: "AIzaSyCMCLLHxxG2dcPgLUmYvxCYo_EOO7BlPJM",
+    //   authDomain: "sprint1-employee.firebaseapp.com",
+    //   projectId: "sprint1-employee",
+    //   storageBucket: "sprint1-employee.appspot.com",
+    //   messagingSenderId: "91474852273",
+    //   appId: "1:91474852273:web:68e1e4ac0b217d096fa590",
+    //   measurementId: "G-4L382VES26"
+    // }
   }
 };
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

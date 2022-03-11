@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 import {finalize} from 'rxjs/operators';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {Spaces} from '../../../model/contract/spaces';
-import {Employee} from '../../../model/contract/employee';
+import {Employee} from '../../../model/employee/employee';
 import {Customer} from '../../../model/contract/customer';
 import {Contract} from '../../../model/contract/contract';
 
@@ -53,8 +53,13 @@ export class ContractEditComponent implements OnInit {
     });
 
     this.spaces = spaceService.spaces;
-    this.employees = employeeService.employees;
-    this.customers = customerService.customers;
+    this.employeeService.findAllEmployee().subscribe(data => {
+      this.employees = data;
+    });
+
+    this.customerService.getAllCustomer().subscribe(data => {
+      this.customers = data;
+    });
   }
 
   getContract(id: number) {

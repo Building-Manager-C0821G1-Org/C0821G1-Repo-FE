@@ -25,7 +25,7 @@ import {RouterModule} from '@angular/router';
     ReactiveFormsModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [DatePipe],
 })
 export class ContractModule { }
 

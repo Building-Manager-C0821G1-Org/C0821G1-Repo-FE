@@ -12,7 +12,7 @@ import {finalize} from 'rxjs/operators';
 import {UploadFileService} from '../../../service/upload-file.service';
 import Swal from 'sweetalert2';
 import {Spaces} from '../../../model/contract/spaces';
-import {Employee} from '../../../model/contract/employee';
+import {Employee} from '../../../model/employee/employee';
 import {Customer} from '../../../model/contract/customer';
 
 
@@ -67,8 +67,17 @@ export class ContractCreateComponent implements OnInit {
               @Inject(UploadFileService) private uploadFileService: UploadFileService
   ) {
     this.spaces = spaceService.spaces;
-    this.employees = employeeService.employees;
-    this.customers = customerService.customers;
+
+    this.employeeService.search(0,'',"","","").subscribe(data => {
+      console.log(data);
+      this.employees = data;
+    });
+
+
+    // this.customerService.getAllCustomer().subscribe(data => {
+    //   this.customers = data;
+    // });
+
     this.checkCode = false;
     this.checkCode = false;
   }

@@ -9,10 +9,11 @@ import {Contract} from '../../model/contract/contract';
   providedIn: 'root'
 })
 export class ContractService {
-  private API = 'http://localhost:8081/api/contract';
+  private API = 'http://localhost:9090/api/contract';
 
   constructor(private httpClient: HttpClient) { }
   // list-search-page
+  // Đông nguyễn
   findAllContract(page, name, code, start, end): Observable<any> {
     return this.httpClient.get(this.API + '/contract-list?page=' + page + '&name=' + name
       + '&code=' + code + '&start=' + start  + '&end=' + end);
