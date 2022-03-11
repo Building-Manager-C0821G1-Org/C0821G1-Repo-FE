@@ -11,7 +11,7 @@ import {Floors} from '../../../model/floor/floors';
 import {SpacesStatus} from '../spaces-status';
 import {AngularFireStorage} from '@angular/fire/storage';
 import Swal from 'sweetalert2';
-import {finalize} from "rxjs/operators";
+import {finalize} from 'rxjs/operators';
 
 
 

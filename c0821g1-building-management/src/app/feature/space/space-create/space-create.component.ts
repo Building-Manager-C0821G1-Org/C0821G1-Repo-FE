@@ -42,14 +42,14 @@ export class SpaceCreateComponent implements OnInit {
   urlImage = '';
   selectedImage: any = null;
   validateErrorCode: string;
-
+  checkCode: boolean;
   constructor(private spaceService: SpaceService,
               private spaceTypeService: SpaceTypeService,
               private spaceStatusService: SpaceStatusService,
               private floorService: FloorService,
               private router: Router,
               @Inject(AngularFireStorage) private angularFireStorage: AngularFireStorage
-  ) {}
+  ) {this.checkCode = false;}
 
   ngOnInit(): void {
     this.spaceStatusService.findAll().subscribe(value => {
@@ -78,9 +78,10 @@ export class SpaceCreateComponent implements OnInit {
                 this.callToast();
               },
               error => {
-                console.log(error);
-                this.validateErrorCode = error.error.code;
-                alert(this.validateErrorCode);
+              this.checkCode = true;
+                // console.log(error);
+                // this.validateErrorCode = error.error.code;
+                // alert(this.validateErrorCode);
               },
               () => {
                 this.router.navigateByUrl('/spaces/list');

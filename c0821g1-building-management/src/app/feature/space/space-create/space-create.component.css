@@ -10,6 +10,7 @@
 .gradient-custom {
   /* fallback for old browsers */
   background: #a1764a;
+  margin-right: 12px;
 
   /*/* Chrome 10-25, Safari 5.1-6 */
   /*background: -webkit-linear-gradient(to bottom right, rgb(161, 154, 63), rgb(161, 81, 34));*/
@@ -46,42 +47,3 @@
   border: 1px;
   border-color: black;
 }
-.header{
-  margin: 1px;
-  background-color: #3f3836;
-  font-size: 16px;
-  color: white;
-}
-.header .row .col-6 svg{
-  color: #eeb043;
-}
-.menu{
-  text-align: center;
-  margin: 1px;
-}
-.menu .row .link{
-  padding-top: 25px;
-  font-weight: bold;
-  font-size: 15px;
-}
-.menu .row .link a:hover{
-  color:#f9ca24;
-}
-.menu .row .link a{
-  text-decoration: none
-}
-.footer{
-  background-color: #3d3d3d;
-  color: white;
-}
-.footer .container .row .contact{
-  text-align: left;
-}
-.footer .container .row .contact a svg{
-  color: #eeb043;
-  border-style: solid ;
-  border-color: white;
-}
-
-
-
