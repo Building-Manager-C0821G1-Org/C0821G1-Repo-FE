@@ -122,7 +122,7 @@ export class ContractEditComponent implements OnInit {
     Swal.fire({
       position: 'top',
       icon: 'warning',
-      title: 'Đã hủy',
+      title: 'Thay đổi chưa được lưu !',
       showConfirmButton: true,
       timer: 2000
     });

@@ -10,7 +10,7 @@
 
 .gradient-custom {
   /* fallback for old browsers */
-  background: #a1764a;
+  background-color: white;
 
   /*!* Chrome 10-25, Safari 5.1-6 *!*/
   /*background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));*/
@@ -99,7 +99,16 @@
   border-color: white;
 }
 .gradient-custom {
-  background: #a1764a;
+  background-color: #a1764a;
+  /*background-image: url(https://i1-dulich.vnecdn.net/2021/03/04/1-1614826817.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=zoSoMv1tfcFUn5nDxYcW1A);*/
+  /*background-repeat: no-repeat;*/
+  /*background-position: center center;*/
+  /*object-fit: contain;*/
+  /*-webkit-background-size: cover;*/
+  /*-moz-background-size: cover;*/
+  /*-o-background-size: cover;*/
+  /*background-size: cover;*/
+  /*flex: 1;*/
 }
 
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
@@ -206,9 +215,9 @@
 .sidebar-navigation .header::before {
   background-color: transparent;
 }
-body{
-  position: relative;
-}
+/*body{*/
+/*  position: relative;*/
+/*}*/
 .main-header{
   margin-bottom: 10px;
   border-radius: 10px;
