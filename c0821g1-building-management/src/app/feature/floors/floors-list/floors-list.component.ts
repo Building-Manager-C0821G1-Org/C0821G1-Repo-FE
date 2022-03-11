@@ -19,8 +19,8 @@ export class FloorsListComponent implements OnInit {
   ngOnInit(): void {
     this.floorService.findAll().subscribe(value => {
       this.floorsList = value;
+      console.log(this.floorsList);
     }, error => {
-      // this.callToastFailList();
     }, () => {
     });
   }
@@ -48,13 +48,4 @@ export class FloorsListComponent implements OnInit {
       timer: 2000
     });
   }
-  // private callToastFailList() {
-  //   Swal.fire({
-  //     position: 'top',
-  //     icon: 'success',
-  //     title: 'Không tìm thấy dữ liệu 🤷‍♂️🤷‍♂️🤷‍♂ !',
-  //     showConfirmButton: false,
-  //     timer: 2000
-  //   });
-  // }
 }

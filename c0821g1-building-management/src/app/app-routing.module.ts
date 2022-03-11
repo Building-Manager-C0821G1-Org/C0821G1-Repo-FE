@@ -25,6 +25,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HeaderComponent
+  },
+  {
+    path: 'spaces',
+    loadChildren: () => import('./feature/space/space.module').then(module => module.SpaceModule)
   }
 
 ];
