@@ -1,11 +1,16 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {HeaderComponent} from './shared/header/header.component';
-import {BodyComponent} from './shared/body/body.component';
-
 
 const routes: Routes = [
   {
+    path: 'employee',
+    loadChildren: () => import('./feature/employee/employee.module').then(module => module.EmployeeModule)
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./feature/user/user.module').then(module => module.UserModule)
+  }, {
     path: 'floors',
     loadChildren: () => import('./feature/floors/floor.module.js').then(module => module.FloorModule)
   },
@@ -21,12 +26,18 @@ const routes: Routes = [
     path: 'home',
     component: HeaderComponent
   }
+
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule {
 }
+
+
+
 
