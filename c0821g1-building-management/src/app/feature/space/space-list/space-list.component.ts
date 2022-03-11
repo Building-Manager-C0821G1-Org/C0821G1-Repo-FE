@@ -3,7 +3,7 @@ import {SpacesList} from '../../../model/space/spaces-list';
 import {SpaceService} from '../../../service/space/space.service';
 import {MatDialog} from '@angular/material/dialog';
 import {SpaceDeleteComponent} from '../space-delete/space-delete.component';
-import {NgxSpinnerService} from "ngx-bootstrap-spinner";
+import {NgxSpinnerService} from 'ngx-bootstrap-spinner';
 
 const FILTER_PAG_REGEX = /[^0-9]/g;
 
