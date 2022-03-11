@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       remember_me: false
     });
     if (this.tokenStorageService.getUser()) {
-      console.log(this.tokenStorageService.getUser().username)
+      console.log(this.tokenStorageService.getUser().username);
       this.loginFrom.controls.username.setValue( this.tokenStorageService.getUser().username);
       // this.urlImg = this.tokenStorageService.getUser().urlImg;
       // // this.isLoggedIn = this.tokenStorageService.getUser().idEmployee;

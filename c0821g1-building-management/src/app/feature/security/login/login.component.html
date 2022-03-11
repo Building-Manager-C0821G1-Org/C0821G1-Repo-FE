@@ -39,14 +39,14 @@
 
                   <div class="form-outline mb-4">
                     <input formControlName="remember_me" type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1" >Ghi nhớ đăng nhập</label>
-                    <p class="fs-6" class="error" *ngIf="errorMessage">Tên Đăng nhập hoặc mật khẩu không đúng</p>
+                    <label class="form-check-label" for="exampleCheck1"  >Ghi nhớ đăng nhập</label>
+                    <p class="fs-6 error" *ngIf="errorMessage">Tên Đăng nhập hoặc mật khẩu không đúng</p>
                   </div>
 
 
 
                   <div class="padding-button">
-                    <button  class="btn btn-block fa-lg  mb-3  rounded-pill button-color"
+                    <button [disabled]="loginFrom.invalid" class="btn btn-block fa-lg  mb-3  rounded-pill button-color"
                             type="submit">Đăng Nhập
                     </button>
                     &nbsp;
