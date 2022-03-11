@@ -16,8 +16,9 @@
                         <label class="form-label" for="firstName">
                           <h6 class="mb-2 pb-1">Tài khoản </h6>
                         </label>
-                        <input value="{{this.username}}" type="text" id="firstName"
-                               class="form-control form-control-lg" disabled/>
+                        <input value="{{this.employee.employeeEmail}}" type="text" id="firstName"
+                               class="form-control form-control-lg" />
+<!--                        disabled/-->
                       </div>
 
 
@@ -26,10 +27,10 @@
 
                       <div class="form-outline">
                         <label class="form-label" for="Name">
-                          <h6 class="mb-2 pb-1">Tên</h6>
+                          <h6 class="mb-2 pb-1">Họ và tên</h6>
                         </label>
-                        <input value="{{this.name}}" type="text" id="name"
-                               class="form-control form-control-lg" disabled/>
+                        <input value="{{this.employee.employeeName}}" type="text" id="name"
+                               class="form-control form-control-lg" />
                       </div>
                     </div>
                   </div>
@@ -42,8 +43,8 @@
                         <label class="form-label" for="Name">
                           <h6 class="mb-2 pb-1">Ngày sinh</h6>
                         </label>
-                        <input value="{{this.dateOfBirth}}" type="text" id=""
-                               class="form-control form-control-lg" disabled/>
+                        <input value="{{this.employee.employeeDateOfBirth}}" type="text" id=""
+                               class="form-control form-control-lg" />
                       </div>
                     </div>
                     <div class="col-md-6 mb-4">
@@ -51,24 +52,24 @@
                         <label class="form-label" for="Name">
                           <h6 class="mb-2 pb-1">Địa chỉ</h6>
                         </label>
-                        <input value="{{this.address}}" type="text" id="a"
-                               class="form-control form-control-lg" disabled/>
+                        <input value="{{this.employee.employeeAddress}}" type="text" id="a"
+                               class="form-control form-control-lg" />
                       </div>
                     </div>
 
                   </div>
 
 
-                  <div class="row">
-                    <div class="col-md-6 mb-4">
 
-                      <div class="form-outline">
-                        <label class="form-label" for="phoneNumber"> </label>
-                        <h6 class="mb-2 pb-1">Số điện thoại </h6>
-                        <input value="{{this.phone}}" type="tel" id="phoneNumber"
-                               class="form-control form-control-lg" disabled/>
-                      </div>
+                      <div class="row">
+                        <div class="col-md-6 mb-4">
 
+                          <div class="form-outline">
+                            <label class="form-label" for="phoneNumber"> </label>
+                            <h6 class="mb-2 pb-1">Số điện thoại </h6>
+                            <input value="{{this.employee.employeePhone}}" type="tel" id="phoneNumber"
+                                   class="form-control form-control-lg" />
+                          </div>
                     </div>
 
                     <div class="col-md-6 mb-4">
@@ -76,8 +77,8 @@
                       <div class="form-outline">
                         <label class="form-label" for="email"></label>
                         <h6 class="mb-2 pb-1">Email</h6>
-                        <input value="{{this.email}}" type="text" id="email"
-                               class="form-control form-control-lg" disabled/>
+                        <input value="{{this.employee.employeeEmail}}" type="text" id="email"
+                               class="form-control form-control-lg" />
                       </div>
 
                     </div>
@@ -91,7 +92,7 @@
                           class="form-check-input"
                           type="radio"
                           name="inlineRadioOptions"
-                          value="{{this.gender}}"
+                          value="{{this.employee.employeeGender}}"
                           checked
                         />
                         <label class="form-check-label">Nam </label>
@@ -104,7 +105,7 @@
                           type="radio"
                           name="inlineRadioOptions"
                           value="option2"
-                          disabled/>
+                          />
                       </div>
                     </div>
                   </div>
@@ -114,15 +115,15 @@
                     <div class="col-2">
 
                     </div>
-                    <div class="col-8">
-                      <div class="form-outline align-middle text-center">
-                        <label class="form-label" for="phoneNumber"></label>
-                        <h5 class="mb-2 pb-1">Ảnh đại diện </h5>
-                        <input type="file" id="image" class="form-control form-control-lg"/>
-                        <img src="{{this.urlImg}}" class="img-fluid" alt="">
-                      </div>
+<!--                    <div class="col-8">-->
+<!--                      <div class="form-outline align-middle text-center">-->
+<!--                        <label class="form-label" for="phoneNumber"></label>-->
+<!--                        <h5 class="mb-2 pb-1">Ảnh đại diện </h5>-->
+<!--                        <input type="file" id="image" class="form-control form-control-lg"/>-->
+<!--                        <img src="{{this.employee.employeeImage}}" class="img-fluid" alt="">-->
+<!--                      </div>-->
 
-                    </div>
+<!--                    </div>-->
                     <div class="col-2">
 
                     </div>
@@ -134,11 +135,11 @@
                         <!--                                            <button type="button" class="edit-button button-radius btn-lg ms-2 me-3" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
                         <!--                                                Chỉnh sửa-->
                         <!--                                            </button>-->
-                        <button  routerLink="/employee/detail/{{this.id}}" type="button" class="add-button button-radius btn-lg ms-2 me-3">
-                          Thoát
+                        <button routerLink="/employee/list" type="button" class="add-button button-radius btn-lg ms-2 me-3">
+                         Chỉnh Sửa
                         </button>
 
-                        <button routerLink="/user/update/1"  type="button" class="reset-button button-radius btn-lg ms-2 me-3">
+                        <button routerLink="/user/update/2"  type="button" class="reset-button button-radius btn-lg ms-2 me-3">
                           Đổi mật khẩu
                         </button>
                       </div>
