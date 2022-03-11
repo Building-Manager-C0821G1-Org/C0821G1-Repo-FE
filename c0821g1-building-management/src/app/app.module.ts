@@ -12,6 +12,13 @@ import {AppRoutingModule} from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UserModule} from './feature/user/user.module';
+// @ts-ignore
+import {JWT_OPTIONS, JwtHelperService} from '@auth0/angular-jwt';
+import {authInterceptorProviders} from './helpers/auth.interceptor';
+import {APP_BASE_HREF} from '@angular/common';
+import {SecurityModule} from './feature/security/security.module';
+import {SidebarComponent} from './shared/sidebar/sidebar.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -19,7 +26,8 @@ import {UserModule} from './feature/user/user.module';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    BodyComponent
+    BodyComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -29,12 +37,22 @@ import {UserModule} from './feature/user/user.module';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    EmployeeModule,
     UserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    HttpClientModule,
+    SecurityModule,
   ],
-  providers: [],
+  providers: [
+    authInterceptorProviders,
+    JwtHelperService,
+    {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
+    { provide: APP_BASE_HREF, useValue: '/'}
+  ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }
+
+
+

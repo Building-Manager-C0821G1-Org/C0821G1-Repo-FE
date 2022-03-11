@@ -1,3 +1,4 @@
+
 import {EmployeeRoutingModule} from './employee-routing.module';
 import {EmployeeListComponent} from './employee-list/employee-list.component';
 import {EmployeeDeleteComponent} from './employee-delete/employee-delete.component';
@@ -9,6 +10,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+
+
+
 
 @NgModule({
   declarations: [
@@ -30,8 +34,5 @@ import {CommonModule} from '@angular/common';
     ReactiveFormsModule,
   ]
 })
-
-
-
 export class EmployeeModule {
 }
