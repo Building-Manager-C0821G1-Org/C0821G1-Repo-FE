@@ -1,34 +1,18 @@
-<<<<<<< HEAD
+
 import { Component, OnInit } from '@angular/core';
-
-=======
-// @ts-ignore
-import {Component, OnInit} from '@angular/core';
-import {Customer} from '../../../model/customer';
+import {Customer} from '../../../model/customer/customer';
 import {CustomerService} from '../../../service/customer/customer.service';
-// @ts-ignore
 import {Subscription} from 'rxjs';
-// @ts-ignore
-import {MatDialog} from "@angular/material/dialog";
 import {CustomerDeleteComponent} from '../customer-delete/customer-delete.component';
+import {MatDialog} from '@angular/material/dialog';
 
 
-// @ts-ignore
->>>>>>> b43654434cbd623089bc9fc54f831185e7789ea7
 @Component({
   selector: 'app-customer-list',
   templateUrl: './customer-list.component.html',
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-<<<<<<< HEAD
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-=======
   customers: Customer[] = [];
   customerDelete: Customer;
   private subscription: Subscription | undefined;
@@ -137,5 +121,4 @@ export class CustomerListComponent implements OnInit {
       });
     });
   }
->>>>>>> b43654434cbd623089bc9fc54f831185e7789ea7
 }
