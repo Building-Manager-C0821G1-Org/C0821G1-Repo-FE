@@ -8,6 +8,7 @@ const AUTH_API = 'http://localhost:8080/api/public/';
 export class SecurityService {
   httpOptions: any;
   isLoggedIn: boolean;
+
   constructor(private http: HttpClient) {
     this.httpOptions = {
       headers: new HttpHeaders({

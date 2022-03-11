@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
@@ -9,15 +8,21 @@ import { BodyComponent } from './shared/body/body.component';
 import {JWT_OPTIONS, JwtHelperService} from '@auth0/angular-jwt';
 import {authInterceptorProviders} from './helpers/auth.interceptor';
 import {APP_BASE_HREF} from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
 import {SecurityModule} from './feature/security/security.module';
+import {SidebarComponent} from './shared/sidebar/sidebar.component';
+import {FloorModule} from './feature/floors/floor.module';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    BodyComponent
+    BodyComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -33,4 +38,5 @@ import {SecurityModule} from './feature/security/security.module';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

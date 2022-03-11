@@ -6,13 +6,14 @@ import { LoginComponent } from './login/login.component';
 import { AccessDenyComponent } from './access-deny/access-deny.component';
 import {ReactiveFormsModule} from '@angular/forms';
 
-
 @NgModule({
   declarations: [LoginComponent, AccessDenyComponent],
   imports: [
     CommonModule,
     SecurityRoutingModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    SecurityRoutingModule
+
+]
 })
 export class SecurityModule { }

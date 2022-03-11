@@ -10,12 +10,12 @@ const routes: Routes = [
     loadChildren: () => import('./feature/security/security.module').then(module => module.SecurityModule)
   },
   {
-    path: 'floor',
-    loadChildren: () => import('./feature/floor/floor.module').then(module => module.FloorModule)
-  },
-  {
     path: 'home',
     component: HeaderComponent
+  },
+  {
+    path: 'floors',
+    loadChildren: () => import('./feature/floors/floor.module.js').then(module => module.FloorModule)
   }
 ];
 
@@ -25,3 +25,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule {
 }
+

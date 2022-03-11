@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {AuthGuard} from '../../helpers/auth.guard';
 import {FloorsListComponent} from './floors-list/floors-list.component';
 import {FloorsDeleteComponent} from './floors-delete/floors-delete.component';
+import {AuthGuard} from '../../helpers/auth.guard';
 
 
 const routes: Routes = [
@@ -11,14 +11,9 @@ const routes: Routes = [
     data: {
       roles: {expectedRole: ['ADMIN', 'EMPLOYEE']}
     }
-  },
-  {
-    path: 'delete', component: FloorsDeleteComponent , canActivate: [AuthGuard],
-    data: {
-      roles: {expectedRole: ['ADMIN']}
-    }
   }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

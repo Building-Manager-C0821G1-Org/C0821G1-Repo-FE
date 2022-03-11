@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
 import {TokenStorageService} from '../../service/security/token-storage.service';
+import {Component, OnInit} from '@angular/core';
+import {Floors} from '../../model/floors/floors';
+import {FloorService} from '../../service/floor/floor.service';
+import {MatDialog} from '@angular/material/dialog';
+import {FloorsDeleteComponent} from '../../feature/floors/floors-delete/floors-delete.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-body',
@@ -7,31 +12,64 @@ import {TokenStorageService} from '../../service/security/token-storage.service'
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit {
-  urlImg: any;
-  username: string;
-  email: string;
-  name: string;
-  phone: string;
-  address: string;
-  gender: string;
-  dateOfBirth: string;
-  id: any;
-  constructor( private tokenStorageService: TokenStorageService) { }
+  // urlImg: any;
+  // username: string;
+  // email: string;
+  // name: string;
+  // phone: string;
+  // address: string;
+  // gender: string;
+  // dateOfBirth: string;
+  // id: any;
 
-  ngOnInit(): void {
-   this.urlImg =  this.tokenStorageService.getUser().urlImg;
-   this.id =  this.tokenStorageService.getUser().idEmployee;
-   this.username = this.tokenStorageService.getUser().username;
-   this.email = this.tokenStorageService.getUser().email;
-   this.name = this.tokenStorageService.getUser().name;
-   this.phone = this.tokenStorageService.getUser().phone;
-   this.address = this.tokenStorageService.getUser().address;
-   this.gender = this.tokenStorageService.getUser().gender;
-   this.dateOfBirth = this.tokenStorageService.getUser().dayOfBirth;
-   console.log(this.dateOfBirth);
-   console.log(this.gender);
-   console.log(this.dateOfBirth);
-   console.log(this.address);
+  floorsList: Floors[] = [];
+
+  constructor(private floorService: FloorService, private dialogDelete: MatDialog) {
   }
 
+  ngOnInit(): void {
+    this.floorService.findAll().subscribe(value => {
+      this.floorsList = value;
+    }, error => {
+      this.callToastFailList();
+    }, () => {
+      // this.callToastFailList();
+    });
+  }
+
+  openDialog(floorId: number) {
+    this.floorService.findById(floorId).subscribe(value => {
+        const dialogRef = this.dialogDelete.open(FloorsDeleteComponent, {
+          width: '500px',
+          data: {value},
+          disableClose: true
+        });
+        dialogRef.afterClosed().subscribe(value1 => {
+          this.ngOnInit();
+        });
+      },
+      error => {
+        this.callToastFail();
+      });
+  }
+
+  private callToastFail() {
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Không tìm thấy tầng lầu hoặc tầng lầu đã bị xóa 🙄!',
+      showConfirmButton: false,
+      timer: 2000
+    });
+  }
+
+  private callToastFailList() {
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Không tìm thấy dữ liệu 🤷‍♂️🤷‍♂️🤷‍♂ !',
+      showConfirmButton: false,
+      timer: 2000
+    });
+  }
 }
