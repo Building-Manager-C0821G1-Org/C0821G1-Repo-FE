@@ -4,11 +4,11 @@ import {EmployeeService} from '../../../service/employee/employee.service';
 import {Router} from '@angular/router';
 import {EmployeePositionService} from '../../../service/employee/employee-position.service';
 import {EmployeePosition} from '../../../model/employee/employee-position';
-import {Observable} from 'rxjs';
-import {finalize} from 'rxjs/operators';
+import Swal from 'sweetalert2';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {UploadFileService} from '../../../service/employee/upload-file.service';
 import {Employee} from '../../../model/employee/employee';
+import {finalize} from "rxjs/operators";
 
 
 @Component({
@@ -43,7 +43,7 @@ export class EmployeeCreateComponent implements OnInit {
       ]),
       employeePhone: new FormControl('', [Validators.required, Validators.pattern('^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$')]),
       employeeStartDate: new FormControl('', Validators.required),
-      employeeGender: new FormControl('1'),
+      employeeGender: new FormControl('Nam'),
       employeePosition: new FormControl('', Validators.required),
       employeeImage: new FormControl('')
     });
@@ -64,44 +64,59 @@ export class EmployeeCreateComponent implements OnInit {
     this.uploadFileService.getImageDetailList();
   }
 
+  get employeeImage() {
+    return this.employeeCreateForm.get('employeeImage');
+  }
+
   saveNewEmployee() {
-    const newEmployee = Object.assign({}, this.employeeCreateForm.value);
-    console.log(newEmployee);
-    this.employeeService.saveNewEmployee(newEmployee).subscribe(value => {
-      alert('Thêm mới thành công');
-      console.log('them moi thanh cong');
-      console.log(value);
-      this.router.navigateByUrl('/employee/list');
-    }, error => {
-      console.log(error);
-      this.validateEmail = error.error.code;
-      alert(this.validateEmail);
+    const name = this.selectedImage.name;
+    const fileRef = this.storage.ref(name);
+    this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe((url) => {
+          console.log(url);
+          this.employeeCreateForm.patchValue({employeeImage: url});
+          const newEmployee = Object.assign({}, this.employeeCreateForm.value);
+          console.log(newEmployee);
+          this.employeeService.saveNewEmployee(newEmployee).subscribe(value => {
+            this.callToast()
+            console.log('them moi thanh cong');
+            console.log(value);
+
+          }, error => {
+            console.log(error);
+            this.validateEmail = error.error.code;
+            alert(this.validateEmail);
+          }, () => {
+            this.callToast(),
+              this.router.navigateByUrl('/employee/list');
+          });
+        });
+      })
+    ).subscribe();
+  }
+  private callToast() {
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Thêm mới thành công!',
+      showConfirmButton: false,
+      timer: 2000
     });
   }
-
-
   showPreview(event: any) {
     this.selectedImage = event.target.files[0];
+    if (event.target.files) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      // tslint:disable-next-line:no-shadowed-variable
+      reader.onload = (event: any) => {
+        this.url = event.target.result;
+      };
+    }
   }
 
-  // save() {
-  //   const name = this.selectedImage.name;
-  //   const fileRef = this.storage.ref(name);
-  //   this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
-  //     finalize(() => {
-  //       fileRef.getDownloadURL().subscribe((url) => {
-  //         this.url = url;
-  //         this.uploadFileService.insertImageDetails(this.id, this.url);
-  //         alert('Upload Successful');
-  //         console.log(this.url);
-  //       });
-  //     })
-  //   ).subscribe();
-  // }
 
-  view() {
-    this.uploadFileService.getImage(this.file);
-  }
 
 
   checkMinAge(abstractControl: AbstractControl): any {
@@ -110,4 +125,5 @@ export class EmployeeCreateComponent implements OnInit {
     const currentYear = new Date().getFullYear();
     return currentYear - yearOfBirth >= 18 ? null : {under18: true};
   }
+
 }

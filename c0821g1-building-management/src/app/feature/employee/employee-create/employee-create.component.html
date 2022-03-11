@@ -390,6 +390,7 @@
                       <label class="form-label" for="phoneNumber">Ảnh đại diện <span class="error">(*)</span></label>
                       <input type="file" (change)="showPreview($event)" accept="*.png.jpg" id="image"
                              class="form-control form-control-lg" autocomplete="off"/>
+                      <img class="form-control" [src]="url" alt="">
                     </div>
 
                   </div>

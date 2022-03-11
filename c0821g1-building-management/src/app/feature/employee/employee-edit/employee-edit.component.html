@@ -301,7 +301,7 @@
                         type="radio"
                         name="employeeGender"
                         id="femaleGender"
-                        value="1"
+                        value="Nữ"
                         checked
                         formControlName="employeeGender"
                       />
@@ -315,7 +315,7 @@
                         type="radio"
                         name="employeeGender"
                         id="maleGender"
-                        value="2"
+                        value="Nam"
                         formControlName="employeeGender"
                       />
                     </div>
@@ -342,8 +342,8 @@
                   <div class="col-6">
                     <div class="form-outline align-middle">
                       <label class="form-label" for="phoneNumber">Ảnh đại diện <span class="error">(*)</span></label>
-                      <input type="file" id="image" class="form-control form-control-lg" formControlName="employeeImage"/>
-                      <img src="bao.PNG" class="img-fluid" alt="...">
+                      <input type="file" class="form-control" id="files"  (change)="showPreview($event)">
+                      <img class="form-control" [src]="employeeEditForm.controls.employeeImage.value" alt="">
                     </div>
                     <small style="color: red" *ngIf="employeeEditForm.controls.employeeImage.hasError('required') && employeeEditForm.controls.employeeImage.dirty">
                       Ảnh không được để trống.</small>

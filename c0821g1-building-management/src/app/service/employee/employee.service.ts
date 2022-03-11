@@ -34,7 +34,7 @@ export class EmployeeService {
   }
 
   findById(id: number): Observable<Employee> {
-    return this.httpClient.get<Employee>(this.API_URL + '/getById/' + id);
+    return this.httpClient.get<Employee>(this.API_URL + '/detail/' + id);
   }
 
   saveNewEmployee(newEmployee: Employee): Observable<void> {

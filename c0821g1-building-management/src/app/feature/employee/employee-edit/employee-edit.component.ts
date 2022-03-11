@@ -1,10 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {EmployeePosition} from '../../../model/employee/employee-position';
 import {EmployeeService} from '../../../service/employee/employee.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EmployeePositionService} from '../../../service/employee/employee-position.service';
 import {Employee} from '../../../model/employee/employee';
+import Swal from "sweetalert2";
+import {AngularFireStorage} from "@angular/fire/storage";
+import {finalize} from "rxjs/operators";
 
 
 @Component({
@@ -17,6 +20,10 @@ export class EmployeeEditComponent implements OnInit {
   validateCode: string;
   employeePositionList: Array<EmployeePosition>;
   employeeEdit: Employee;
+  private selectedImage: any;
+  loading = false;
+  employee: Employee;
+
   employeeEditForm = new FormGroup({
     employeeCode: new FormControl('', [Validators.required, Validators.pattern('[N][V][-]\\d{4}')]),
     employeeName: new FormControl(''),
@@ -33,7 +40,8 @@ export class EmployeeEditComponent implements OnInit {
   constructor(private employeeService: EmployeeService,
               private router: Router,
               private employeePositionService: EmployeePositionService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              @Inject(AngularFireStorage) private storage: AngularFireStorage) {
 
   }
 
@@ -47,20 +55,23 @@ export class EmployeeEditComponent implements OnInit {
       console.log(employeeEditId);
       this.employeeService.findById(employeeEditId).subscribe(value2 => {
         this.employeeEdit = value2;
+        console.log(this.employeeEdit)
         this.employeeEditForm.patchValue(
           this.employeeEdit
         );
       });
     });
   }
-
+  get employeeImage() {
+    return this.employeeEditForm.get('employeeImage');
+  }
   editEmployee() {
     const editEmployee = Object.assign({}, this.employeeEditForm.value);
     editEmployee.employeeId = this.employeeEdit.employeeId;
     editEmployee.appUser = this.employeeEdit.appUser;
     editEmployee.employeeDeleteFlag = this.employeeEdit.employeeDeleteFlag;
     this.employeeService.editEmployee(editEmployee).subscribe(value => {
-        alert('Chỉnh sửa thành công');
+        this.callToast()
       },
       error => {
         console.log(error);
@@ -70,7 +81,31 @@ export class EmployeeEditComponent implements OnInit {
         this.router.navigateByUrl('/employee/list');
       });
   }
+  private callToast() {
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Sửa mới thành công!',
+      showConfirmButton: false,
+      timer: 2000
+    });
+  }
 
+  showPreview(event: any) {
+    this.selectedImage = event.target.files[0];
+    const nameImg = this.selectedImage.name;
+    const fileRef = this.storage.ref(nameImg);
+    this.loading = true;
+    this.storage.upload(nameImg, this.selectedImage).snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe((url) => {
+          this.employeeEditForm.patchValue({employeeImage: url});
+          this.employee.employeeImage = url;
+          this.loading = false;
+        });
+      })
+    ).subscribe();
+  }
   checkMinAge(abstractControl: AbstractControl): any {
     const dateOfBirth = abstractControl.value;
     const yearOfBirth = dateOfBirth.substr(0, 4);
