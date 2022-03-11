@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   isLoggedIn: boolean;
   urlImg: string;
-  idCustomer: null;
   role: string;
+  idEmployee: any;
 
   constructor(private fb: FormBuilder,
               private tokenStorageService: TokenStorageService,
@@ -27,68 +27,67 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginFrom = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
-      password: ['', [Validators.required], Validators.minLength(1), Validators.maxLength(10)],
-      remember_me : ['']
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      remember_me: false
     });
-    console.log(this.loadRemberInfo());
-    if (this.loadRemberInfo() !== null) {
-      this.loginFrom.controls.username.setValue(this.tokenStorageService.getUser().username);
-      console.log(this.loginFrom.controls.username.value);
+    if (this.tokenStorageService.getUser()) {
+      console.log(this.tokenStorageService.getUser().username);
+      this.loginFrom.controls.username.setValue( this.tokenStorageService.getUser().username);
+      // this.urlImg = this.tokenStorageService.getUser().urlImg;
+      // // this.isLoggedIn = this.tokenStorageService.getUser().idEmployee;
+      // this.isLoggedIn = true;
+      // this.role = this.tokenStorageService.getUser().roles[0];
     }
-    // if (this.tokenStorageService.getUser()) {
-    //   this.roles = this.tokenStorageService.getUser().roles;
-    //   this.username = this.tokenStorageService.getUser().username;
-    // }
   }
+
   onSubmit() {
     this.securityService.login(this.loginFrom.value).subscribe(data => {
-      console.log(data.jwtToken);
-      if (this.loginFrom.value.remember_me) {
-        this.tokenStorageService.saveUserLocal(data);
-        this.tokenStorageService.saveTokenLocal(data.jwtToken);
-      } else  {
-        this.tokenStorageService.saveUserSession(data);
-        this.tokenStorageService.saveTokenSession(data.jwtToken);
-        // this.username = this.loginFrom.controls.username.value;
+        console.log(data);
+        if (this.loginFrom.value.remember_me === true) {
+          this.tokenStorageService.saveUserLocal(data);
+          this.tokenStorageService.saveTokenLocal(data.jwtToken);
+        } else if (this.loginFrom.value.remember_me === false) {
+          this.tokenStorageService.saveUserSession(data);
+          this.tokenStorageService.saveTokenSession(data.jwtToken);
+          // this.username = this.loginFrom.controls.username.value;
+        }
+        this.isLoggedIn = true;
+        this.username = this.tokenStorageService.getUser().username;
+        this.role = this.tokenStorageService.getUser().roles[0];
+        console.log('username: ' + this.tokenStorageService.getUser().username);
+        console.log('role: ' + this.tokenStorageService.getUser().roles);
+        console.log('token: ' + this.tokenStorageService.getUser().jwtToken);
+
+        this.loginFrom.reset();
+        if (this.role.indexOf('ADMIN') !== -1) {
+
+          this.router.navigate(['/home']);
+        } else {
+
+          this.router.navigate(['/home']);
+
+        }
       }
-
-      this.isLoggedIn = true;
-      this.username = this.tokenStorageService.getUser().username;
-      this.roles = this.tokenStorageService.getUser().roles;
-      console.log('username: ' + this.tokenStorageService.getUser().username);
-      console.log('role: ' + this.tokenStorageService.getUser().roles);
-      console.log('token: ' + this.tokenStorageService.getUser().jwtToken);
-
-      this.loginFrom.reset();
-      if (this.roles.indexOf('ADMIN') !== -1) {
-
-      this.router.navigate(['/home']);
-      }
-      else {
-
-        this.router.navigate(['/home']);
-
-      }
-    }, error => {
-      console.log(error);
-      this.isLoggedIn = false;
-      this.errorMessage = 'Tài khoản hoặc mật khẩu không đúng';
-    });
+      , error => {
+        console.log(error);
+        this.isLoggedIn = false;
+        this.errorMessage = 'Tài khoản hoặc mật khẩu không đúng';
+      });
   }
 
   private loadRemberInfo() {
-    if (this.tokenStorageService.isAuthenticated()) {
-      this.roles = this.tokenStorageService.getUser().roles[0];
-      // console.log(this.roles);
+    if (this.tokenStorageService.getUser()) {
+      this.role = this.tokenStorageService.getUser().roles[0];
+      console.log(this.role);
       this.username = this.tokenStorageService.getUser().username;
-      // console.log(this.username);
+      console.log(this.username);
       this.urlImg = this.tokenStorageService.getUser().urlImg;
     } else {
-      this.roles = null;
+      this.role = null;
       this.username = null;
       this.urlImg = null;
-      this.idCustomer = null;
+      this.idEmployee = null;
     }
     this.isLoggedIn = this.username != null;
   }

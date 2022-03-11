@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   urlImg: string;
   isLoggedIn: boolean;
   idCustomer: string;
-  roles: string [] = [];
+
 
   constructor(
     private tokenStorageService: TokenStorageService,
@@ -25,17 +25,13 @@ export class HeaderComponent implements OnInit {
     this.loadHeader();
   }
 
-  loadHeader(): void{
-    if(this.tokenStorageService.getUser()){
+  loadHeader(): void {
+    if (this.tokenStorageService.getUser()) {
       this.username = this.tokenStorageService.getUser().username;
       this.urlImg = this.tokenStorageService.getUser().urlImg;
-      this.isLoggedIn = this.tokenStorageService.getUser().idEmployee;
-      this.roles = this.tokenStorageService.getUser().roles;
-      if (this.roles.indexOf('ADMIN') !== -1){
-        this.role = 'ADMIN';
-      }else {
-        this.role = 'EMPLOYEE';
-      }
+      // this.isLoggedIn = this.tokenStorageService.getUser().idEmployee;
+      this.isLoggedIn = true;
+      this.role = this.tokenStorageService.getUser().roles[0];
     } else {
       this.role = null;
       this.username = null;
