@@ -1,3 +1,4 @@
+
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
@@ -26,3 +27,4 @@ import {CustomerDeleteComponent} from './customer-delete/customer-delete.compone
   ]})
 export class CustomerModule {
 }
+
