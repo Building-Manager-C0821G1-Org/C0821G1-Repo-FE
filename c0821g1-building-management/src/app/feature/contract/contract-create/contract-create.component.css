@@ -226,3 +226,6 @@ body{
 .image-content{
 
 }
+label{
+  font-weight: bold;
+}
