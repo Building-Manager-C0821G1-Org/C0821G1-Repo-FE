@@ -97,7 +97,7 @@
                           </select>
                         </div>
                         <small class="error" *ngIf="contractForm.get('spaceId').hasError('required')
-                        && contractForm.get('spaceId').touched">Mặt bằng không được để trống</small>
+                        && contractForm.get('spaceId').touched">Mặt bằng không được để trống!</small>
                         <!--                                        <p class="error">Mặt bằng không được để trống</p>-->
 
                       </div>
@@ -115,7 +115,7 @@
                           </select>
                         </div>
                         <small class="error" *ngIf="contractForm.get('customerId').hasError('required')
-                        && contractForm.get('customerId').touched">Khách hàng phải được chọn</small>
+                        && contractForm.get('customerId').touched">Khách hàng phải được chọn!</small>
 
                       </div>
                       <!--                      <div class="col-md-6 mb-6">-->
@@ -145,7 +145,7 @@
                         </div>
                         <small class="error" *ngIf="contractForm.get('contractDateStart')
                         .hasError('required')&& contractForm.get('contractDateStart').touched">Ngày bắt đầu không được
-                          để trống</small>
+                          để trống!</small>
 
                       </div>
 
@@ -159,8 +159,8 @@
                         </div>
                         <small class="error" *ngIf="contractForm.get('contractDateEnd')
                         .hasError('required')&& contractForm.get('contractDateEnd').touched">Ngày kết thúc không được
-                          để trống</small>
-                        <small class="error" *ngIf="checkDate == true">Ngày kết thúc phải sau ngày hiện tại</small>
+                          để trống!</small>
+                        <small class="error" *ngIf="checkDate == true">Ngày kết thúc phải sau ngày hiện tại!</small>
                       </div>
 
                     </div>
@@ -181,7 +181,7 @@
                         <small class="error" *ngIf="contractForm.get('contractExpired')
                         .hasError('required')&&
                         (contractForm.get('contractExpired').touched ||contractForm.get('contractExpired').dirty )">Kì
-                          hạn không được để trống</small>
+                          hạn không được để trống!</small>
 
                       </div>
 
@@ -197,7 +197,7 @@
                         <small class="error" *ngIf="contractForm.get('price')
                         .hasError('required')&&
                          (contractForm.get('price').touched ||contractForm.get('price').dirty )">Giá tiền không được để
-                          trống</small>
+                          trống!</small>
 
                       </div>
                     </div>
@@ -218,7 +218,7 @@
                         <small class="error" *ngIf="contractForm.get('contractTotal')
                         .hasError('required')&&
                          (contractForm.get('contractTotal').touched ||contractForm.get('contractTotal').dirty )">Tổng
-                          tiền không được để trống</small>
+                          tiền không được để trống!</small>
                       </div>
 
                       <div class="col-md-6 mb-4 pb-2">
@@ -232,7 +232,7 @@
                         <small class="error" *ngIf="contractForm.get('contractDeposit')
                         .hasError('required')&&
                          (contractForm.get('contractDeposit').touched ||contractForm.get('contractDeposit').dirty )">Tiền
-                          cọc không được để trống</small>
+                          cọc không được để trống!</small>
                       </div>
 
                     </div>
@@ -250,7 +250,7 @@
                         <small class="error" *ngIf="contractForm.get('contractTaxCode')
                         .hasError('required')&&
                          (contractForm.get('contractTaxCode').touched ||contractForm.get('contractTaxCode').dirty )">Mã
-                          số thuế không được để trống</small>
+                          số thuế không được để trống!</small>
                       </div>
                       <div class="col-6">
 
@@ -264,12 +264,12 @@
                         <small class="error" *ngIf="contractForm.get('contractCode')
                         .hasError('required')&&
                          (contractForm.get('contractCode').touched ||contractForm.get('contractCode').dirty )">Mã
-                          hợp đồng không được để trống</small>
+                          hợp đồng không được để trống!</small>
 
                         <small class="error" *ngIf="contractForm.get('contractCode')
-                        .hasError('pattern')&& contractForm.get('contractCode').dirty">Mã hợp đồng không hợp lệ : KH-1233,KH-0123,...</small>
+                        .hasError('pattern')&& contractForm.get('contractCode').dirty">Mã hợp đồng không hợp lệ : KH-1233,KH-0123,...!</small>
 
-                        <small class="error" *ngIf="checkCode == true">Mã hợp đồng đã tồn tại</small>
+                        <small class="error" *ngIf="checkCode == true">Mã hợp đồng đã tồn tại!</small>
 
                       </div>
                     </div>
@@ -286,10 +286,10 @@
                         <small class="error" *ngIf="contractForm.get('contractContent')
                         .hasError('required')&&
                          (contractForm.get('contractContent').touched ||contractForm.get('contractContent').dirty )">Nội
-                          dung không được để trống</small>
+                          dung không được để trống!</small>
                         <small class="error" *ngIf="contractForm.get('contractContent')
                         .hasError('minlength')&& contractForm.get('contractContent').dirty">Nội dung phải trên 10 kí
-                          tự</small>
+                          tự!</small>
 
                       </div>
                     </div>

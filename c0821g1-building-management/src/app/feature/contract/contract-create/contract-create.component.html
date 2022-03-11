@@ -93,7 +93,7 @@
                           </select>
                         </div>
                         <small class="error" *ngIf="contractsForm.get('spaceId').hasError('required')
-                        && contractsForm.get('spaceId').touched">Mặt bằng phải được chọn</small>
+                        && contractsForm.get('spaceId').touched">Mặt bằng phải được chọn!</small>
                       </div>
                       <div class="col-md-6 mb-6">
 
@@ -105,7 +105,7 @@
                             <option *ngFor="let customer of customers" [value]="customer.customerId">{{customer.customerName}}</option>
                           </select>
                           <small class="error" *ngIf="contractsForm.get('customerId').hasError('required')
-                        && contractsForm.get('customerId').touched">Khách hàng phải được chọn</small>
+                        && contractsForm.get('customerId').touched">Khách hàng phải được chọn!</small>
 
                         </div>
                       </div>
@@ -128,11 +128,13 @@
                           <input type="date"
                                  id="lastName2"
                                  class="form-control form-control-lg"
-                                 formControlName="contractDateStart" [(ngModel)]="dateStart"/>
+                                 formControlName="contractDateStart"
+                                 [(ngModel)]="dateStart"
+                                 (change)="checkDate1(contractsForm.controls.contractDateStart.value,contractsForm.controls.contractDateEnd.value)"/>
                         </div>
                         <small class="error" *ngIf="contractsForm.get('contractDateStart')
                         .hasError('required')&& contractsForm.get('contractDateStart').touched">Ngày bắt đầu không được
-                          để trống</small>
+                          để trống!</small>
 
                         <!--                        <small class="error"   *ngIf="contractsForm.get('contractDateStart').dirty || contractsForm.get('contractDateStart').touched-->
                         <!--                        && contractsForm.get('contractDateStart').hasError('passwordnotmatch')">-->
@@ -154,9 +156,9 @@
                         </div>
                         <small class="error" *ngIf="contractsForm.get('contractDateEnd')
                         .hasError('required')&& contractsForm.get('contractDateEnd').touched">Ngày kết thúc không được
-                          để trống</small>
+                          để trống!</small>
 
-                        <small class="error" *ngIf="checkDate == true">Ngày kết thúc phải sau ngày hiện tại</small>
+                        <small class="error" *ngIf="checkDate == true">Ngày kết thúc phải sau ngày hiện tại!</small>
                       </div>
                     </div>
 
@@ -175,7 +177,7 @@
                         </div>
                         <small class="error" *ngIf="contractsForm.get('contractExpired')
                         .hasError('required')&& contractsForm.get('contractExpired').touched">Kì hạn không được để
-                          trống</small>
+                          trống!</small>
 
                       </div>
 
@@ -189,7 +191,7 @@
                                  class="form-control form-control-lg" formControlName="price"/>
                         </div>
                         <small class="error" *ngIf="contractsForm.get('price')
-                        .hasError('required')&& contractsForm.get('price').touched">Giá tiền không được để trống</small>
+                        .hasError('required')&& contractsForm.get('price').touched">Giá tiền không được để trống!</small>
 
                       </div>
 
@@ -209,8 +211,7 @@
                         </div>
                         <small class="error" *ngIf="contractsForm.get('contractTotal')
                         .hasError('required')&& contractsForm.get('contractTotal').touched">Tổng tiền không được để
-                          trống</small>
-
+                          trống!</small>
                       </div>
 
                       <div class="col-md-6 mb-4 pb-2">
@@ -224,7 +225,7 @@
                         </div>
                         <small class="error" *ngIf="contractsForm.get('contractDeposit')
                         .hasError('required')&& contractsForm.get('contractDeposit').touched">Tiền cọc không được để
-                          trống</small>
+                          trống!</small>
                       </div>
                     </div>
                     <div class="row">
@@ -240,9 +241,9 @@
                         </div>
                         <small class="error" *ngIf="contractsForm.get('contractTaxCode')
                         .hasError('required')&& contractsForm.get('contractTaxCode').touched">Mã số thuế không được để
-                          trống</small>
+                          trống!</small>
                         <small class="error" *ngIf="contractsForm.get('contractTaxCode')
-                        .hasError('pattern')&& contractsForm.get('contractTaxCode').dirty">Mã số thuế chỉ được chứa kí tự số</small>
+                        .hasError('pattern')&& contractsForm.get('contractTaxCode').dirty">Mã số thuế chỉ được chứa kí tự số!</small>
                       </div>
                       <div class="col-6">
 
@@ -255,12 +256,12 @@
                         </div>
                         <small class="error" *ngIf="contractsForm.get('contractCode')
                         .hasError('required')&& contractsForm.get('contractCode').touched">Mã hợp đồng không được để
-                          trống</small>
+                          trống!</small>
 
                         <small class="error" *ngIf="contractsForm.get('contractCode')
-                        .hasError('pattern')&& contractsForm.get('contractCode').dirty">Mã hợp đồng không hợp lệ : KH-1233,KH-0123,...</small>
+                        .hasError('pattern')&& contractsForm.get('contractCode').dirty">Mã hợp đồng không hợp lệ : KH-1233,KH-0123,...!</small>
 
-                        <small class="error" *ngIf="checkCode == true">Mã hợp đồng đã tồn tại</small>
+                        <small class="error" *ngIf="checkCode == true">Mã hợp đồng đã tồn tại!</small>
 
 
                       </div>
@@ -276,9 +277,9 @@
                         </div>
                         <small class="error" *ngIf="contractsForm.get('contractContent')
                         .hasError('required')&& contractsForm.get('contractContent').touched">Nội dung không được để
-                          trống</small>
+                          trống!</small>
                         <small class="error" *ngIf="contractsForm.get('contractContent')
-                        .hasError('minlength')&& contractsForm.get('contractContent').dirty">Nội dung phải trên 10 kí tự</small>
+                        .hasError('minlength')&& contractsForm.get('contractContent').dirty">Nội dung phải trên 10 kí tự!</small>
 
                       </div>
                     </div>
@@ -293,7 +294,7 @@
                           <img [src]="url" width="100%" height="200">
                         </div>
                         <small class="error" *ngIf="contractsForm.get('contractImageUrl')
-                        .hasError('required')&& contractsForm.get('contractImageUrl').touched">Hình ảnh phải được chọn</small>
+                        .hasError('required')&& contractsForm.get('contractImageUrl').touched">Hình ảnh phải được chọn!</small>
                       </div>
                       <div class="col-6"></div>
                     </div>
