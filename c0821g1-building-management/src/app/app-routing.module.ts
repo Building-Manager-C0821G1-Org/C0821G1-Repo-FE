@@ -28,7 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'spaces',
-    loadChildren: () => import('./feature/space/space.module').then(module => module.SpaceModule)
+    loadChildren: () => import('./feature/spaces/spaces.module').then(module => module.SpacesModule)
   }
 
 ];
