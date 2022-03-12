@@ -12,6 +12,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UserModule} from './feature/user/user.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 // @ts-ignore
 import {JWT_OPTIONS, JwtHelperService} from '@auth0/angular-jwt';
 import {authInterceptorProviders} from './helpers/auth.interceptor';
@@ -19,6 +21,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import {SecurityModule} from './feature/security/security.module';
 import {SidebarComponent} from './shared/sidebar/sidebar.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { NgxSpinnerModule } from 'ngx-bootstrap-spinner';
 
 
 @NgModule({
@@ -43,6 +46,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     SecurityModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    NgbModule,
+    NgxSpinnerModule,
+    JwtHelperService
   ],
   providers: [
     authInterceptorProviders,
