@@ -6,9 +6,10 @@ import {EmployeePositionService} from '../../../service/employee/employee-positi
 import {EmployeePosition} from '../../../model/employee/employee-position';
 import Swal from 'sweetalert2';
 import {AngularFireStorage} from '@angular/fire/storage';
-import {UploadFileService} from '../../../service/employee/upload-file.service';
 import {Employee} from '../../../model/employee/employee';
-import {finalize} from "rxjs/operators";
+import {UploadFileService} from '../../../service/upload-file-image/upload-file.service';
+import {finalize} from 'rxjs/operators';
+
 
 
 @Component({
@@ -85,7 +86,7 @@ export class EmployeeCreateComponent implements OnInit {
 
           }, error => {
             console.log(error);
-            this.validateEmail = error.error.code;
+            // this.validateEmail = error.error.code;
             alert(this.validateEmail);
           }, () => {
             this.callToast(),

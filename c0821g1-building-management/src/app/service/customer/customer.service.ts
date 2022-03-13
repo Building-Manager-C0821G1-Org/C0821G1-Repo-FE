@@ -8,7 +8,7 @@ import {Customer} from '../../model/customer/customer';
 })
 export class CustomerService {
   // VyLTT
-  private API_URL = 'http://localhost:8080/customer';
+  private API_URL = 'http://localhost:8080/api/customer';
 
   constructor(private httpClient: HttpClient) {
   }
@@ -20,7 +20,7 @@ export class CustomerService {
 
   // VyLTT - get list customer
   getAllCustomer(): Observable<Customer[]> {
-    return this.httpClient.get<Customer[]>(this.API_URL + '/list');
+    return this.httpClient.get<Customer[]>(this.API_URL + '/list-select');
   }
 
   // VyLTT - search customer by name, identify number, email, phone

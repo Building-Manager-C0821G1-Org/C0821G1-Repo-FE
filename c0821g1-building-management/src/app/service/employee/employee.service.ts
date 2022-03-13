@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
 export class EmployeeService {
 
 
-  API_URL = 'http://localhost:8080/employee';
+  API_URL = 'http://localhost:8080/api/employee';
 
 
   constructor(private http: HttpClient) {

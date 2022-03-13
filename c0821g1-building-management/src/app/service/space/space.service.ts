@@ -5,7 +5,7 @@ import {SpacesList} from '../../model/space/spaces-list';
 import {environment} from '../../../environments/environment';
 import {Spaces} from '../../model/space/spaces';
 
-const API_URL = `${environment.urlApi}`;
+const API_URL = 'http://localhost:8080/api';
 
 @Injectable({
   providedIn: 'root'

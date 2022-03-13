@@ -1,23 +1,10 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {HeaderComponent} from './shared/header/header.component';
+import {BodyComponent} from './shared/body/body.component';
+
 
 const routes: Routes = [
-  {
-    path: 'employee',
-    loadChildren: () => import('./feature/employee/employee.module').then(module => module.EmployeeModule)
-  },
-  {
-    path: 'user',
-    loadChildren: () => import('./feature/user/user.module').then(module => module.UserModule)
-  }, {
-    path: 'floors',
-    loadChildren: () => import('./feature/floors/floor.module.js').then(module => module.FloorModule)
-  },
-  {
-    path: 'customer',
-    loadChildren: () => import('./feature/customer/customer.module').then(module => module.CustomerModule)
-  },
   {
     path: 'security',
     loadChildren: () => import('./feature/security/security.module').then(module => module.SecurityModule)
@@ -27,21 +14,31 @@ const routes: Routes = [
     component: HeaderComponent
   },
   {
-    path: 'spaces',
-    loadChildren: () => import('./feature/spaces/spaces.module').then(module => module.SpacesModule)
+    path: 'employee',
+    loadChildren: () => import('./feature/employee/employee.module').then(module => module.EmployeeModule)
+  },
+  {
+    path: 'customer',
+    loadChildren: () => import('./feature/customer/customer.module').then(module => module.CustomerModule)
+  },
+  {
+    path: 'contract', loadChildren: () =>
+      import('./feature/contract/contract.module').then(module => module.ContractModule)
   }
-
+  ,
+  {
+    path: 'floors',
+    loadChildren: () => import('./feature/floor/floor.module').then(module => module.FloorModule)
+  },
+  {
+    path: 'spaces',
+    loadChildren: () => import('./feature/space/space.module').then(module => module.SpaceModule)
+  }
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-
 export class AppRoutingModule {
 }
-
-
-
-

@@ -7,7 +7,7 @@ import {SpacesType} from '../../model/space/spaces-type';
   providedIn: 'root'
 })
 export class SpaceTypeService {
-  API_URL = 'http://localhost:8080/spaceType/list';
+  API_URL = 'http://localhost:8080/api/spaceType/list';
 
   constructor(private httpClient: HttpClient) { }
   findAll(): Observable<SpacesType[]>{

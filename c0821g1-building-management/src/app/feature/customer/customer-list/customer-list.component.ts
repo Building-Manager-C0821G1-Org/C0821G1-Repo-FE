@@ -16,9 +16,13 @@ export class CustomerListComponent implements OnInit {
   customerDelete: Customer;
   private subscription: Subscription | undefined;
   page = 0;
+  // tslint:disable-next-line:variable-name
   customer_name = '';
+  // tslint:disable-next-line:variable-name
   customer_email = '';
+  // tslint:disable-next-line:variable-name
   customer_identify_number = '';
+  // tslint:disable-next-line:variable-name
   customer_phone = '';
   totalPages: number;
   pageNumber: number;

@@ -1,4 +1,3 @@
-
 <!--<p>login works!</p>-->
 
 <section class=" gradient-form" style="background-color: #eee;">
@@ -40,19 +39,19 @@
 
                   <div class="form-outline mb-4">
                     <input formControlName="remember_me" type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1"  >Ghi nhớ đăng nhập</label>
-                    <p class="fs-6 error" *ngIf="errorMessage">Tên Đăng nhập hoặc mật khẩu không đúng</p>
+                    <label class="form-check-label" for="exampleCheck1" >Ghi nhớ đăng nhập</label>
+                    <p class="fs-6" class="error" *ngIf="errorMessage">Tên Đăng nhập hoặc mật khẩu không đúng</p>
                   </div>
 
 
 
                   <div class="padding-button">
-                    <button [disabled]="loginFrom.invalid" class="btn btn-block  rounded-pill button-color"
+                    <button  class="btn btn-block fa-lg  mb-3  rounded-pill button-color"
                             type="submit">Đăng Nhập
                     </button>
                     &nbsp;
                     &nbsp;
-                    <button routerLink="/home" class="btn btn-block  rounded-pill button-color"
+                    <button routerLink="" class="btn  btn-block fa-lg  mb-3  rounded-pill button-color"
                             type="button">Hủy
                     </button>
 
@@ -66,7 +65,7 @@
 
             <div class="col-lg-6">
               <div class="row align-items-center">
-                <img class="px-3 py-4 p-md-5 align-items-center4" src="../../../../assets/images/you.png" alt="">
+                <img class="px-3 py-4 p-md-5 align-items-center4" src="../../../../assets/image.png" alt="">
               </div>
             </div>
           </div>

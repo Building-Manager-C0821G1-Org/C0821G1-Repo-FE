@@ -1,7 +1,6 @@
 import {SpacesType} from './spaces-type';
 import {SpacesStatus} from './spaces-status';
 import {Floors} from '../floors/floors';
-
 export interface Spaces {
   spaceId: number;
   spaceCode: string;

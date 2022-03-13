@@ -7,7 +7,7 @@ import {Floors} from '../../model/floors/floors';
   providedIn: 'root'
 })
 export class FloorService {
-  API_URL = 'http://localhost:8080';
+  API_URL = 'http://localhost:8080/api';
   constructor(private httpClient: HttpClient) { }
   findAll(): Observable<Floors[]> {
     return this.httpClient.get<Floors[]>(this.API_URL + '/floors/list');

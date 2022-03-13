@@ -1,5 +1,5 @@
-import {FloorsType} from './floors-type';
-import {FloorsStatus} from './floors-status';
+import {Floorsstatus} from './floorsstatus';
+import {Floorstype} from './floorstype';
 
 export interface Floors {
   floorId: number;
@@ -8,6 +8,6 @@ export interface Floors {
   floorArea: number;
   floorCapacity: number;
   floorDeleteFlag: number;
-  floorsType: FloorsType;
-  floorsStatus: FloorsStatus;
+  floorsStatus: Floorsstatus;
+  floorsType: Floorstype;
 }

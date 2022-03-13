@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {EmployeeService} from '../../../service/employee/employee.service';
 import {ActivatedRoute} from '@angular/router';
 import {Employee} from '../../../model/employee/employee';
+import {TokenStorageService} from '../../../service/security/token-storage.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 
 @Component({
@@ -10,22 +12,34 @@ import {Employee} from '../../../model/employee/employee';
   styleUrls: ['./employee-detail.component.css']
 })
 export class EmployeeDetailComponent implements OnInit {
- employee: Employee ;
-  urlImg: any;
-  username: string;
-  email: string;
-  name: string;
-  phone: string;
-  address: string;
+  employee: Employee ;
   gender: string;
   dateOfBirth: string;
   id: any;
 
+
+  employeeForm = new FormGroup({
+    employeeId: new FormControl(''),
+    employeeCode: new FormControl(''),
+    employeeName: new FormControl(''),
+    employeeDateOfBirth: new FormControl(''),
+    employeeAddress: new FormControl(''),
+    employeeEmail: new FormControl(''),
+    employeePhone: new FormControl(''),
+    employeeGender: new FormControl(),
+  });
+
   constructor(private employeeService: EmployeeService,
-              private activatedRoute: ActivatedRoute) {
-    const employeeId = this.activatedRoute.snapshot.params.id;
-    this.employeeService.findById(Number(employeeId)).subscribe(value => {
+              private activatedRoute: ActivatedRoute,
+              private tokenStorageService: TokenStorageService ) {
+    this.id =  this.tokenStorageService.getUser().idEmployee;
+    // const employeeId = this.activatedRoute.snapshot.params.id;
+    this.employeeService.findById(Number(this.id)).subscribe(value => {
+      console.log(value);
       this.employee = value;
+      this.employeeForm.patchValue(
+        this.employee
+      );
     });
   }
 
@@ -33,13 +47,13 @@ export class EmployeeDetailComponent implements OnInit {
     // this.urlImg =  this.tokenStorageService.getUser().urlImg;
     // this.id =  this.tokenStorageService.getUser().idEmployee;
     // this.username = this.tokenStorageService.getUser().username;
-    // this.email = this.tokenStorageService.getUser().email;
+    // this.employeeEmail = this.tokenStorageService.getUser().employeeEmail;
     // this.name = this.tokenStorageService.getUser().name;
-    // this.phone = this.tokenStorageService.getUser().phone;
+    // this.employeePhone = this.tokenStorageService.getUser().employeePhone;
     // this.address = this.tokenStorageService.getUser().address;
     // this.gender = this.tokenStorageService.getUser().gender;
     // this.dateOfBirth = this.tokenStorageService.getUser().dayOfBirth;
-    throw new Error('Method not implemented.');
+    // throw new Error('Method not implemented.');
   }
 
 }

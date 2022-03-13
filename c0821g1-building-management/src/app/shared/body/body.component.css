@@ -42,14 +42,14 @@ body {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-  display: none;
-}
-
-.container .box-container .box:nth-child(1),
-.container .box-container .box:nth-child(2),
-.container .box-container .box:nth-child(3) {
   display: inline-block;
 }
+
+/*.container .box-container .box:nth-child(1),*/
+/*.container .box-container .box:nth-child(2),*/
+/*.container .box-container .box:nth-child(3) {*/
+/*  display: inline-block;*/
+/*}*/
 
 .container .box-container .box .image {
   margin-bottom: 20px;

@@ -1,5 +1,7 @@
+<!--<p>employee-list works!</p>-->
 
-<a routerLink="/employee/detail/2">detail</a>
+
+<a routerLink="/home">Trang chủ</a>
 
 <h2 class="text-center m-5 font-google-2">Danh sách Nhân Viên</h2>
 <div class="container">
@@ -82,9 +84,13 @@
             <a type="button" class="btn btn-light me-3 edit-button" routerLink="/employee/update/{{employee.employeeId}}">
               <i class="fa-solid fa-pen"></i>
             </a>
-            <a type="button" class="btn btn-light delete-button" (click)="openDialog(employee.employeeId)">
+<!--            <a type="button" *ngIf="checkDeleteFlag == false" class="btn btn-light delete-button" (click)="openDialog(employee.employeeId)">-->
+<!--              <i class="fa-solid fa-trash-can"></i>-->
+<!--            </a>-->
+            <button [disabled]="checkDeleteFlag == true" type="submit" class="btn btn-light delete-button"
+                    (click)="openDialog(employee.employeeId)">
               <i class="fa-solid fa-trash-can"></i>
-            </a>
+            </button>
           </td>
         </tr>
         </tbody>
@@ -120,4 +126,3 @@
     </div>
   </ng-template>
 </div>
-

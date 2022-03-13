@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs';
 import {EmployeeService} from '../../../service/employee/employee.service';
 import {EmployeeDeleteComponent} from '../employee-delete/employee-delete.component';
 import {MatDialog} from '@angular/material/dialog';
+import {TokenStorageService} from '../../../service/security/token-storage.service';
 
 
 @Component({
@@ -24,11 +25,20 @@ export class EmployeeListComponent implements OnInit {
   pageNumber: number;
   size = 0;
   flag = false;
+  checkDeleteFlag = false;
   message: string;
+
 
   constructor(private employeeService: EmployeeService,
               private dialogDelete: MatDialog,
+              private tokenStorageService: TokenStorageService
   ) {
+    const user1 = this.tokenStorageService.getUser().roles[0];
+    console.log(user1);
+    if (user1 === 'ROLE_EMPLOYEE') {
+      this.checkDeleteFlag = true;
+      console.log(this.checkDeleteFlag);
+    }
   }
 
   ngOnInit(): void {
@@ -37,7 +47,7 @@ export class EmployeeListComponent implements OnInit {
       this.flag = false;
       this.employeeService.search(this.page, this.employeeName, this.employeeDateOfBirth, this.employeeEmail, this.employeeAddress)
         .subscribe(data => {
-            console.log(data);
+            console.log('ok' + data);
             if (data !== null) {
               console.log('h1  ' + data.content);
               this.employees = data.content;
@@ -135,7 +145,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   findPaginnation(value: number) {
-    if(value = this.totalPages){
+    if (value === this.totalPages) {
       this.page = value - 1;
     }
     this.ngOnInit();
@@ -156,17 +166,15 @@ export class EmployeeListComponent implements OnInit {
         disableClose: true,
       });
       dialogRef.afterClosed().subscribe(value => {
-        if(this.flag = true){
-          this.employeeName='';
-          this.employeeDateOfBirth='';
-          this.employeeEmail='';
-          this.employeeAddress='';
+        if (this.flag = true) {
+          this.employeeName = '';
+          this.employeeDateOfBirth = '';
+          this.employeeEmail = '';
+          this.employeeAddress = '';
           this.page = 0;
         }
         this.ngOnInit();
       });
     });
   }
-
-
 }

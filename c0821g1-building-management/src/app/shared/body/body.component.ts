@@ -1,9 +1,9 @@
+import { Component, OnInit } from '@angular/core';
 import {TokenStorageService} from '../../service/security/token-storage.service';
-import {Component, OnInit} from '@angular/core';
 import {Floors} from '../../model/floors/floors';
-import {FloorService} from '../../service/floor/floor.service';
 import {MatDialog} from '@angular/material/dialog';
-import {FloorsDeleteComponent} from '../../feature/floors/floors-delete/floors-delete.component';
+import {FloorService} from '../../service/floor/floor.service';
+import {FloorsDeleteComponent} from '../../feature/floor/floors-delete/floors-delete.component';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,31 +12,40 @@ import Swal from 'sweetalert2';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit {
-  // urlImg: any;
-  // username: string;
-  // email: string;
-  // name: string;
-  // phone: string;
-  // address: string;
-  // gender: string;
-  // dateOfBirth: string;
-  // id: any;
-
+  urlImg: any;
+  username: string;
+  email: string;
+  name: string;
+  phone: string;
+  address: string;
+  gender: string;
+  dateOfBirth: string;
+  id: any;
   floorsList: Floors[] = [];
-
-  constructor(private floorService: FloorService, private dialogDelete: MatDialog) {
-  }
-
-  ngOnInit(): void {
+  constructor( private tokenStorageService: TokenStorageService, private floorService: FloorService, private dialogDelete: MatDialog) {
     this.floorService.findAll().subscribe(value => {
       this.floorsList = value;
     }, error => {
-      this.callToastFailList();
     }, () => {
-      // this.callToastFailList();
     });
   }
 
+  ngOnInit(): void {
+   this.urlImg =  this.tokenStorageService.getUser().urlImg;
+   this.id =  this.tokenStorageService.getUser().idEmployee;
+   this.username = this.tokenStorageService.getUser().username;
+   this.email = this.tokenStorageService.getUser().email;
+   this.name = this.tokenStorageService.getUser().name;
+   this.phone = this.tokenStorageService.getUser().phone;
+   this.address = this.tokenStorageService.getUser().address;
+   this.gender = this.tokenStorageService.getUser().gender;
+   this.dateOfBirth = this.tokenStorageService.getUser().dayOfBirth;
+   console.log(this.dateOfBirth);
+   console.log(this.gender);
+   console.log(this.dateOfBirth);
+   console.log(this.address);
+
+  }
   openDialog(floorId: number) {
     this.floorService.findById(floorId).subscribe(value => {
         const dialogRef = this.dialogDelete.open(FloorsDeleteComponent, {

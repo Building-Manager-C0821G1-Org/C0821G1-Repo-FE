@@ -1,12 +1,12 @@
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/*html, body { height: 100%; }*/
+/*body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }*/
 
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-.form {
-  margin-top: 100px;
-}
+/*html, body { height: 100%; }*/
+/*body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }*/
+/*.form {*/
+/*  margin-top: 100px;*/
+/*}*/
 
 
 .sidebar-container {
@@ -147,11 +147,10 @@ th ,td{
 
 /*logo*/
 .logo {
-  /*border-radius: 15px 50px 30px 5px;*/
-  /*border-radius: 15px 50px;*/
   border-radius: 20px;
 }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 

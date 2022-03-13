@@ -1,28 +1,24 @@
-import {EmployeeModule} from './feature/employee/employee.module';
-import {HttpClientModule} from '@angular/common/http';
-import {environment} from '../environments/environment';
-import {AngularFireModule} from '@angular/fire';
-import {NgModule} from '@angular/core';
-import {AppComponent} from './app.component';
-import {FooterComponent} from './shared/footer/footer.component';
-import {BodyComponent} from './shared/body/body.component';
-import {HeaderComponent} from './shared/header/header.component';
-import {BrowserModule} from '@angular/platform-browser';
-import {AppRoutingModule} from './app-routing.module';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {UserModule} from './feature/user/user.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-// @ts-ignore
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { BodyComponent } from './shared/body/body.component';
 import {JWT_OPTIONS, JwtHelperService} from '@auth0/angular-jwt';
 import {authInterceptorProviders} from './helpers/auth.interceptor';
 import {APP_BASE_HREF} from '@angular/common';
+import {HttpClientModule} from '@angular/common/http';
 import {SecurityModule} from './feature/security/security.module';
-import {SidebarComponent} from './shared/sidebar/sidebar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {NgxSpinnerModule} from 'ngx-bootstrap-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
-import { NgxSpinnerModule } from 'ngx-bootstrap-spinner';
-
+import {FormsModule} from '@angular/forms';
+import {FloorModule} from './feature/floor/floor.module';
+import {SidebarComponent} from './shared/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -30,25 +26,24 @@ import { NgxSpinnerModule } from 'ngx-bootstrap-spinner';
     HeaderComponent,
     FooterComponent,
     BodyComponent,
-    SidebarComponent
+    SidebarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    EmployeeModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    FormsModule,
-    UserModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
     HttpClientModule,
     SecurityModule,
     BrowserAnimationsModule,
-    MatDialogModule,
-    NgbModule,
     NgxSpinnerModule,
-    JwtHelperService
+    MatDialogModule,
+    BrowserModule,
+    AppRoutingModule,
+    FloorModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [
     authInterceptorProviders,
@@ -58,9 +53,4 @@ import { NgxSpinnerModule } from 'ngx-bootstrap-spinner';
   ],
   bootstrap: [AppComponent]
 })
-
-export class AppModule {
-}
-
-
-
+export class AppModule { }

@@ -5,9 +5,9 @@ import {EmployeeService} from '../../../service/employee/employee.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EmployeePositionService} from '../../../service/employee/employee-position.service';
 import {Employee} from '../../../model/employee/employee';
-import Swal from "sweetalert2";
-import {AngularFireStorage} from "@angular/fire/storage";
-import {finalize} from "rxjs/operators";
+import Swal from 'sweetalert2';
+import {AngularFireStorage} from '@angular/fire/storage';
+import {finalize} from 'rxjs/operators';
 
 
 @Component({
@@ -55,7 +55,7 @@ export class EmployeeEditComponent implements OnInit {
       console.log(employeeEditId);
       this.employeeService.findById(employeeEditId).subscribe(value2 => {
         this.employeeEdit = value2;
-        console.log(this.employeeEdit)
+        console.log(this.employeeEdit);
         this.employeeEditForm.patchValue(
           this.employeeEdit
         );
@@ -71,7 +71,7 @@ export class EmployeeEditComponent implements OnInit {
     editEmployee.appUser = this.employeeEdit.appUser;
     editEmployee.employeeDeleteFlag = this.employeeEdit.employeeDeleteFlag;
     this.employeeService.editEmployee(editEmployee).subscribe(value => {
-        this.callToast()
+        this.callToast();
       },
       error => {
         console.log(error);
