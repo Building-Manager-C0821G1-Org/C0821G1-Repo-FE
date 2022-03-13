@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Floors} from '../../model/floors/floors';
+import {FloorsDTO} from '../../model/floors/floors-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -19,4 +20,7 @@ export class FloorService {
     return this.httpClient.delete<Floors>(this.API_URL + '/floors/delete-flag/' + floorId);
   }
 
+  findFloorsDTO() {
+    return this.httpClient.get<FloorsDTO>(this.API_URL + '/floors/area');
+  }
 }

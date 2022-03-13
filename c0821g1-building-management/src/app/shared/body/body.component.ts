@@ -5,6 +5,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {FloorService} from '../../service/floor/floor.service';
 import {FloorsDeleteComponent} from '../../feature/floor/floors-delete/floors-delete.component';
 import Swal from 'sweetalert2';
+import {FloorsDTO} from '../../model/floors/floors-dto';
 
 @Component({
   selector: 'app-body',
@@ -22,9 +23,15 @@ export class BodyComponent implements OnInit {
   dateOfBirth: string;
   id: any;
   floorsList: Floors[] = [];
+  floorsDTO: FloorsDTO;
   constructor( private tokenStorageService: TokenStorageService, private floorService: FloorService, private dialogDelete: MatDialog) {
     this.floorService.findAll().subscribe(value => {
       this.floorsList = value;
+    }, error => {
+    }, () => {
+    });
+    this.floorService.findFloorsDTO().subscribe(value => {
+      this.floorsDTO = value;
     }, error => {
     }, () => {
     });
