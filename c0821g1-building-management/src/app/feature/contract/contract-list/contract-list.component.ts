@@ -133,11 +133,12 @@ export class ContractListComponent implements OnInit {
             // @ts-ignore
             const today = new Date();
             // @ts-ignore
-            const endDate1 = new Date(dateEnd.getFullYear(), dateEnd.getDate() - 1, dateEnd.getMonth());
+            const endDate1 = new Date(dateEnd.getFullYear(), dateEnd.getDate(), dateEnd.getMonth());
             // @ts-ignore
             const check = endDate1 - today;
             contract1.checkFlag = Math.round(check);
             console.log(this.message);
+            console.log('check ' + check);
           }
         } else {
           this.message = 'Not found !!!';

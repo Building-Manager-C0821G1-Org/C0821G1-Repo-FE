@@ -7,10 +7,12 @@ import {FloorsDeleteComponent} from './floors-delete/floors-delete.component';
 
 const routes: Routes = [
   {
-    path: 'list', component: FloorsListComponent
+    path: 'list', component: FloorsListComponent, canActivate: [AuthGuard],
+    data: {expectedRole: ['ROLE_ADMIN', 'ROLE_EMPLOYEE']}
   },
   {
-    path: 'delete', component: FloorsDeleteComponent
+    path: 'delete', component: FloorsDeleteComponent, canActivate: [AuthGuard],
+    data: {expectedRole: ['ROLE_ADMIN', 'ROLE_EMPLOYEE']}
   }
 ];
 

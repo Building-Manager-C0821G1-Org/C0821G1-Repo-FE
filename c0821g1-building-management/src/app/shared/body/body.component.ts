@@ -23,7 +23,15 @@ export class BodyComponent implements OnInit {
   id: any;
   floorsList: Floors[] = [];
   floorsDTO: string;
-  constructor( private tokenStorageService: TokenStorageService, private floorService: FloorService, private dialogDelete: MatDialog) {
+  checkDeleteFlag = false;
+  constructor( private tokenStorageService: TokenStorageService, private floorService: FloorService,
+               private dialogDelete: MatDialog) {
+    // const user1 = this.tokenStorageService.getUser().roles[0];
+    // console.log(user1);
+    // if (user1 === 'ROLE_EMPLOYEE') {
+    //   this.checkDeleteFlag = true;
+    //   console.log(this.checkDeleteFlag);
+    // }
     this.floorService.findAll().subscribe(value => {
       this.floorsList = value;
       console.log(this.floorsList);
@@ -36,6 +44,7 @@ export class BodyComponent implements OnInit {
     }, error => {
     }, () => {
     });
+
   }
 
   ngOnInit(): void {

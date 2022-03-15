@@ -1,12 +1,12 @@
-.font-google-1 {
-  font-family: 'Work Sans', cursive;
-}
+/*.font-google-1 {*/
+/*  font-family: 'Work Sans', cursive;*/
+/*}*/
 
-.font-google-2 {
-  font-family: 'Dancing Script', cursive;
-  color: #d6b915;
-  font-size: 60px
-}
+/*.font-google-2 {*/
+/*  font-family: 'Dancing Script', cursive;*/
+/*  color: #d6b915;*/
+/*  font-size: 60px*/
+/*}*/
 
 .gradient-custom {
   /* fallback for old browsers */
@@ -66,4 +66,14 @@
   color: #eeb043;
   border-style: solid;
   border-color: white;
+}
+.add-button {
+  background-color: #d17d0f;
+  color: white;
+}
+.add-button:hover{
+  /*background-color: #d17d0f;*/
+  /*color: white;*/
+  border: 1px solid;
+  border-color: black ;
 }

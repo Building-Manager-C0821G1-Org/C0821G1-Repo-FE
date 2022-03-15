@@ -5,7 +5,7 @@
 <div class="content-container" style="padding-top: 120px">
   <div class="container-fluid">
     <div class="container">
-      <h3>CẬP NHẬT NHỮNG THÔNG TIN MỚI NHẤT</h3>
+      <h1 style="color: #3f3836;font-weight: bold">CẬP NHẬT NHỮNG THÔNG TIN MỚI NHẤT</h1>
       <h1>TIN TỨC – SỰ KIỆN</h1>
       <div class="box-container">
         <div class="box">
@@ -56,7 +56,7 @@
               tiêu cực
               đến năng suất làm việc hơn sự khó chịu, bí bách. Vì vậy, hãy đảm bảo rằng sự lựa chọn của
               bạn là một
-              nơi mà bạn có thể thể hiện trọn vẹn con người mình .Hãy tới với chúng tôi</p>
+              nơi mà bạn có thể thể hiện trọn vẹn con người mình .Hãy tới với chúng tôi,Hãy tới với chúng tôi</p>
             <div class="icons">
               <span> <i class="fas fa-calendar"></i> 25/02/2022 </span>
               <span> <i class="fas fa-user"></i> by Admin </span>
@@ -216,7 +216,8 @@
 
               – Cung cấp đầy đủ trang thiết bị tiện nghi: điều hoà, nội thất, tủ lạnh, giường ngủ, bếp,
               bàn ghế,
-              hệ thống nước… và các dịch vụ dọn phòng, giặt ủi, an ninh 24/24</p>
+              hệ thống nước… và các dịch vụ dọn phòng, giặt ủi, an ninh 24/24,
+              an ninh 24/24</p>
             <div class="icons">
               <span> <i class="fas fa-calendar"></i> 05/03/2022 </span>
               <span> <i class="fas fa-user"></i> by Admin </span>
@@ -312,7 +313,7 @@
                   <path
                     d="M5 1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1a1 1 0 0 1 1 1v4h3a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h3V3a1 1 0 0 1 1-1V1Zm2 14h2v-3H7v3Zm3 0h1V3H5v12h1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3Zm0-14H6v1h4V1Zm2 7v7h3V8h-3Zm-8 7V8H1v7h3Z"/>
                 </svg>
-                {{this.floorsDTO}}(m<sup>2</sup>)
+                {{this.floorsDTO}}.0(m<sup>2</sup>)
               </h1>
               <p>Tổng diện tích sử dụng</p>
             </div>
@@ -328,13 +329,13 @@
                     {{floors.floorName}}:
                   </strong> Tổng diện tích là : {{floors.floorArea}} (m<sup>2</sup>)
                 </div>
-                <div class="col-2 text-end mb-2">
-                  <button id="delete-button" type="button" class="btn btn-light " data-toggle="modal"
-                          data-target="#exampleModal"
-                          (click)="openDialog(floors.floorId)">
-                    <i class="fa-solid fa-trash-can"></i>
-                  </button>
-                </div>
+<!--                <div class="col-2 text-end mb-2">-->
+<!--                  <button [disabled]="checkDeleteFlag == true" id="delete-button" type="button" class="btn btn-light " data-toggle="modal"-->
+<!--                          data-target="#exampleModal"-->
+<!--                          (click)="openDialog(floors.floorId)">-->
+<!--                    <i class="fa-solid fa-trash-can"></i>-->
+<!--                  </button>-->
+<!--                </div>-->
               </div>
 
             </div>

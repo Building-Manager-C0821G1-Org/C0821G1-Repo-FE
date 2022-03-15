@@ -23,7 +23,7 @@
 
 /* Kiểu nút Dropdown */
 .dropbtn {
-  color: #eeb043;
+  color: #ffd11a;
   font-weight: bold;
   font-size: 16px;
   border: none;
@@ -47,7 +47,7 @@
 
 /*/ * Liên kết bên trong danh sách thả xuống * /*/
 .dropdown-content a {
-  color: #eeb043;
+  color: #ffd11a;
   text-align: start;
   text-decoration: none;
   display: block;
@@ -81,7 +81,7 @@
 }
 
 .container-fluid .header-bottom .link a{
-  color: #eeb043;
+  color: #ffd11a;
   text-decoration: none
 }
 .container-fluid .header-bottom .link a:hover{

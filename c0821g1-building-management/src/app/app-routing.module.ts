@@ -2,6 +2,8 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {HeaderComponent} from './shared/header/header.component';
 import {BodyComponent} from './shared/body/body.component';
+import {FloorsDeleteComponent} from './feature/floor/floors-delete/floors-delete.component';
+import {AuthGuard} from './helpers/auth.guard';
 
 
 const routes: Routes = [
@@ -9,14 +11,10 @@ const routes: Routes = [
     path: 'security',
     loadChildren: () => import('./feature/security/security.module').then(module => module.SecurityModule)
   },
-  {
-    path: 'floor',
-    loadChildren: () => import('./feature/floor/floor.module').then(module => module.FloorModule)
-  },
-  {
-    path: 'home',
-    component: HeaderComponent
-  },
+  // {
+  //   path: 'home',
+  //   component: HeaderComponent
+  // },
   {
     path: 'employee',
     loadChildren: () => import('./feature/employee/employee.module').then(module => module.EmployeeModule)
