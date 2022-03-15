@@ -75,15 +75,15 @@
   text-align: right;
 }
 
-.container-fluid .header-bottom .menu .link{
+ .header-bottom .menu .link{
   display: inline;
   text-align: right;
 }
 
-.container-fluid .header-bottom .link a{
+.header-bottom .link a{
   color: #ffd11a;
   text-decoration: none
 }
-.container-fluid .header-bottom .link a:hover{
+.header-bottom .link a:hover{
   color: #eb4d4b;
 }

@@ -26,21 +26,13 @@ export class BodyComponent implements OnInit {
   checkDeleteFlag = false;
   constructor( private tokenStorageService: TokenStorageService, private floorService: FloorService,
                private dialogDelete: MatDialog) {
-    // const user1 = this.tokenStorageService.getUser().roles[0];
-    // console.log(user1);
-    // if (user1 === 'ROLE_EMPLOYEE') {
-    //   this.checkDeleteFlag = true;
-    //   console.log(this.checkDeleteFlag);
-    // }
     this.floorService.findAll().subscribe(value => {
       this.floorsList = value;
-      console.log(this.floorsList);
     }, error => {
     }, () => {
     });
     this.floorService.findFloorsDTO().subscribe(value => {
       this.floorsDTO = value;
-      console.log(this.floorsList);
     }, error => {
     }, () => {
     });
@@ -57,11 +49,11 @@ export class BodyComponent implements OnInit {
    this.address = this.tokenStorageService.getUser().address;
    this.gender = this.tokenStorageService.getUser().gender;
    this.dateOfBirth = this.tokenStorageService.getUser().dayOfBirth;
-   console.log(this.dateOfBirth);
-   console.log(this.gender);
-   console.log(this.dateOfBirth);
-   console.log(this.address);
-
+   if (this.email !== null) {
+      this.checkDeleteFlag = true;
+      // console.log(this.checkDeleteFlag);
+      // console.log(this.email);
+    }
   }
   openDialog(floorId: number) {
     this.floorService.findById(floorId).subscribe(value => {

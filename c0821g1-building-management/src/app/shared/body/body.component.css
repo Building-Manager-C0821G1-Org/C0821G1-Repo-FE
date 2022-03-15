@@ -229,7 +229,7 @@ body {
 /*Quảng cáo 3*/
 
 .row .footer-top {
-  margin-top: 30px;
+  margin: 30px;
   background-image: url("../../../assets/images/3.jpg");
   height: 500px;
   background-position: center;

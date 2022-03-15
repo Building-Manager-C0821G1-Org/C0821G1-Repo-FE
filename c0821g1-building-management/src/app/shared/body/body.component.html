@@ -1,255 +1,258 @@
-
-
 <!--   LoadMore____________________________________________________________________________________________________________&ndash;&gt;&ndash;&gt;-->
+<span *ngIf="checkDeleteFlag==true;else elseBlock" style="color: white">
+  hello
+</span>
+<ng-template #elseBlock>
+<div class="content-container" style="padding-top: 120px" >
 
-<div class="content-container" style="padding-top: 120px">
   <div class="container-fluid">
     <div class="container">
-      <h1 style="color: #3f3836;font-weight: bold">CẬP NHẬT NHỮNG THÔNG TIN MỚI NHẤT</h1>
-      <h1>TIN TỨC – SỰ KIỆN</h1>
-      <div class="box-container">
-        <div class="box">
-          <div class="image">
-            <img src="../../../assets/images/1.jpg" alt="">
-          </div>
-          <div class="content">
-            <h3>Sự kiện “Frohes Fest” tại Tiktak Coworking Space</h3>
-            <p>Kính gửi Quý khách hàng,
-              Nhằm tri ân và hòa mình cùng không khí lễ hội mùa cuối năm, Ban quản lý tòa nhà xin gửi đến
-              Quý
-              khách hàng thông tin về sự kiện “ Frohes Fest” ngày 24 tháng 12 năm 2021 này tại Tiktak
-              Coworking
-              Space của chúng ta:Nhằm tri ân và hòa mình cùng không khí lễ hội mùa cuối năm</p>
-            <div class="icons">
-              <span> <i class="fas fa-calendar"></i> 23/02/2022 </span>
-              <span> <i class="fas fa-user"></i> by Admin </span>
+      <h1  style="color: #3f3836;font-weight: bold">CẬP NHẬT NHỮNG THÔNG TIN MỚI NHẤT</h1>
+
+      <h1 >TIN TỨC – SỰ KIỆN</h1>
+        <div class="box-container">
+          <div class="box">
+            <div class="image">
+              <img src="../../../assets/images/1.jpg" alt="">
+            </div>
+            <div class="content">
+              <h3>Sự kiện “Frohes Fest” tại Tiktak Coworking Space</h3>
+              <p>Kính gửi Quý khách hàng,
+                Nhằm tri ân và hòa mình cùng không khí lễ hội mùa cuối năm, Ban quản lý tòa nhà xin gửi đến
+                Quý
+                khách hàng thông tin về sự kiện “ Frohes Fest” ngày 24 tháng 12 năm 2021 này tại Tiktak
+                Coworking
+                Space của chúng ta:Nhằm tri ân và hòa mình cùng không khí lễ hội mùa cuối năm</p>
+              <div class="icons">
+                <span> <i class="fas fa-calendar"></i> 23/02/2022 </span>
+                <span> <i class="fas fa-user"></i> by Admin </span>
+              </div>
             </div>
           </div>
+
+      <div class="box">
+        <div class="image">
+          <img src="../../../assets/images/2.jpg" alt="">
         </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="../../../assets/images/2.jpg" alt="">
-          </div>
-          <div class="content">
-            <h3>Mừng Giáng sinh, tưng bừng ưu đãi lớn chưa từng có</h3>
-            <p>Nhân dịp Giáng sinh, Tiktak dành tặng bạn chương trình ưu đãi lớn chưa từng có dành riêng cho
-              chỗ
-              ngồi linh hoạt:
-              – Tặng ngay 1 chỗ ngồi linh hoạt khi đăng ký nhóm 3 người
-              – Tặng ngay 1 tuần sử dụng khi ký hợp đồng 2 tháng
-              – Tặng ngay 2 tuần sử dụng khi ký hợp đồng 3 tháng</p>
-            <div class="icons">
-              <span> <i class="fas fa-calendar"></i> 24/02/2022 </span>
-              <span> <i class="fas fa-user"></i> by Admin </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="../../../assets/images/3.jpg" alt="">
-          </div>
-          <div class="content">
-            <h3>Không khí ngày đầu tuần tại Tiktak Coworking Space </h3>
-            <p>Không gian làm việc giống như ngôi nhà thứ hai của chúng ta và hầu như không có gì tác động
-              tiêu cực
-              đến năng suất làm việc hơn sự khó chịu, bí bách. Vì vậy, hãy đảm bảo rằng sự lựa chọn của
-              bạn là một
-              nơi mà bạn có thể thể hiện trọn vẹn con người mình .Hãy tới với chúng tôi,Hãy tới với chúng tôi</p>
-            <div class="icons">
-              <span> <i class="fas fa-calendar"></i> 25/02/2022 </span>
-              <span> <i class="fas fa-user"></i> by Admin </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="../../../assets/images/4.jpg" alt="">
-          </div>
-          <div class="content">
-            <h3>Đón nhận “mùa Đông Hà Nội” bằng cả một sự chân tình</h3>
-            <p>Chúng tôi cảm ơn Quý khách hàng đã lựac chọn đến làm việc, sử dụng dịch vụ, hòa nhập vào cộng
-              đồng
-              Diamond Time và xây dựng văn hóa Cộng đồng chung ngày càng tốt và đẹp; Càng trân quý hơn
-              tình cảm
-              của Quý khách hàng dành cho Diamond Time trong suốt thời gian vừa qua.</p>
-            <div class="icons">
-              <span> <i class="fas fa-calendar"></i> 26/02/2022 </span>
-              <span> <i class="fas fa-user"></i> by Admin </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="../../../assets/images/5.jpg" alt="">
-          </div>
-          <div class="content">
-            <h3>Ưu đãi 50% căn hộ chuẩn hạng A – Diamond Time Complex</h3>
-            <p>Tại sao nên chọn căn hộ dịch vụ tại Diamond Time để lưu trú và làm việc?
-
-              – Không gian sống – làm việc chuẩn hạng A
-
-              – Tận hưởng không gian riêng tư, yên tĩnh tuyệt đối
-
-              – Cung cấp đầy đủ trang thiết bị tiện nghi: điều hoà, nội thất, tủ lạnh, giường ngủ, bếp,
-              bàn ghế,
-              hệ thống nước… và các dịch vụ dọn phòng</p>
-            <div class="icons">
-              <span> <i class="fas fa-calendar"></i> 27/02/2022 </span>
-              <span> <i class="fas fa-user"></i> by Admin </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="../../../assets/images/6.jpg" alt="">
-          </div>
-          <div class="content">
-            <h3>Dịch vụ tiêu chuẩn 5 sao ngay tại Trung tâm thành phố Đà Nẵng</h3>
-            <p>Toàn bộ nội thất đều sử dụng gỗ tần bì và gỗ xà cừ – những loại gỗ chuyên dùng trong thiết kế
-              nội
-              thất.
-
-              Thiết kế gác lửng phân chia không gian rõ ràng nhưng vẫn tạo sự liên kết cần thiết, giúp gia
-              chủ có
-              được sự riêng tư, linh hoạt và ấn tượng trong quá trình sử dụng.linh hoạt và ấn tượng trong
-              quá
-              trình sử dụng.</p>
-            <div class="icons">
-              <span> <i class="fas fa-calendar"></i> 28/01/2022 </span>
-              <span> <i class="fas fa-user"></i> by Admin </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="../../../assets/images/7.jpg" alt="">
-          </div>
-          <div class="content">
-            <h3>Sự kiện “Frohes Fest” tại Tiktak Coworking Space</h3>
-            <p>Kính gửi Quý khách hàng,
-              Nhằm tri ân và hòa mình cùng không khí lễ hội mùa cuối năm, Ban quản lý tòa nhà xin gửi đến
-              Quý
-              khách hàng thông tin về sự kiện “ Frohes Fest” ngày 24 tháng 12 năm 2021 này tại Tiktak
-              Coworking
-              Space của chúng ta:Nhằm tri ân và hòa mình cùng không khí lễ hội mùa cuối năm</p>
-            <div class="icons">
-              <span> <i class="fas fa-calendar"></i> 01/03/2022 </span>
-              <span> <i class="fas fa-user"></i> by Admin </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="../../../assets/images/8.jpg" alt="">
-          </div>
-          <div class="content">
-            <h3>Mừng Giáng sinh, tưng bừng ưu đãi lớn chưa từng có</h3>
-            <p>Nhân dịp Giáng sinh, Tiktak dành tặng bạn chương trình ưu đãi lớn chưa từng có dành riêng cho
-              chỗ
-              ngồi linh hoạt:
-              – Tặng ngay 1 chỗ ngồi linh hoạt khi đăng ký nhóm 3 người
-              – Tặng ngay 1 tuần sử dụng khi ký hợp đồng 2 tháng
-              – Tặng ngay 2 tuần sử dụng khi ký hợp đồng 3 tháng</p>
-            <div class="icons">
-              <span> <i class="fas fa-calendar"></i> 02/03/2022 </span>
-              <span> <i class="fas fa-user"></i> by Admin </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="../../../assets/images/9.jpg" alt="">
-          </div>
-          <div class="content">
-            <h3>Không khí ngày cuối tuần tại Tiktak Coworking Space</h3>
-            <p>hãy đảm bảo rằng sự lựa chọn của bạn là một nơi mà bạn có thể thể hiện trọn vẹn con người
-              mình và kích hoạt sự sáng tạo của bạn với đầy đủ các yếu tố như có không khí trong lành để
-              thở trang thiết bị chất lượng, ánh sáng lành mạnh văn hóa cộng đồng lành mạnh và thuận tiện
-              di chuyển, trao đổi công việc…
-
-            </p>
-            <div class="icons">
-              <span> <i class="fas fa-calendar"></i> 03/03/2022 </span>
-              <span> <i class="fas fa-user"></i> by Admin </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="../../../assets/images/10.jpg" alt="">
-          </div>
-          <div class="content">
-            <h3>Đón nhận “mùa Đông Hà Nội” bằng cả một sự chân tình</h3>
-            <p>Chúng tôi cảm ơn Quý khách hàng đã lựac chọn đến làm việc, sử dụng dịch vụ, hòa nhập vào cộng
-              đồng
-              Diamond Time và xây dựng văn hóa Cộng đồng chung ngày càng tốt và đẹp; Càng trân quý hơn
-              tình cảm
-              của Quý khách hàng dành cho Diamond Time trong suốt thời gian vừa qua.Tiktak Coworking Space
-              nằm tại vị trí trung tâm quận Hải Châu </p>
-            <div class="icons">
-              <span> <i class="fas fa-calendar"></i> 04/03/2022 </span>
-              <span> <i class="fas fa-user"></i> by Admin </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="../../../assets/images/11.jpg" alt="">
-          </div>
-          <div class="content">
-            <h3>Ưu đãi 50% căn hộ chuẩn hạng A – Diamond Time Complex</h3>
-            <p>Tại sao nên chọn căn hộ dịch vụ tại Diamond Time để lưu trú và làm việc?
-
-              – Không gian sống – làm việc chuẩn hạng A
-
-              – Tận hưởng không gian riêng tư, yên tĩnh tuyệt đối
-
-              – Cung cấp đầy đủ trang thiết bị tiện nghi: điều hoà, nội thất, tủ lạnh, giường ngủ, bếp,
-              bàn ghế,
-              hệ thống nước… và các dịch vụ dọn phòng, giặt ủi, an ninh 24/24,
-              an ninh 24/24</p>
-            <div class="icons">
-              <span> <i class="fas fa-calendar"></i> 05/03/2022 </span>
-              <span> <i class="fas fa-user"></i> by Admin </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="../../../assets/images/12.jpg" alt="">
-          </div>
-          <div class="content">
-            <h3>Dịch vụ tiêu chuẩn 5 sao ngay tại Trung tâm thành phố Đà Nẵng</h3>
-            <p>Toàn bộ nội thất đều sử dụng gỗ tần bì và gỗ xà cừ – những loại gỗ chuyên dùng trong thiết kế
-              nội
-              thất.
-
-              Thiết kế gác lửng phân chia không gian rõ ràng nhưng vẫn tạo sự liên kết cần thiết, giúp gia
-              chủ có
-              được sự riêng tư, linh hoạt và ấn tượng trong quá trình sử dụng.linh hoạt và ấn tượng trong
-              quá
-              trình sử dụng.Nhiều dịch vụ tiện ích MIỄN PHÍ</p>
-            <div class="icons">
-              <span> <i class="fas fa-calendar"></i> 06/03/2022 </span>
-              <span> <i class="fas fa-user"></i> by Admin </span>
-            </div>
+        <div class="content">
+          <h3>Mừng Giáng sinh, tưng bừng ưu đãi lớn chưa từng có</h3>
+          <p>Nhân dịp Giáng sinh, Tiktak dành tặng bạn chương trình ưu đãi lớn chưa từng có dành riêng cho
+            chỗ
+            ngồi linh hoạt:
+            – Tặng ngay 1 chỗ ngồi linh hoạt khi đăng ký nhóm 3 người
+            – Tặng ngay 1 tuần sử dụng khi ký hợp đồng 2 tháng
+            – Tặng ngay 2 tuần sử dụng khi ký hợp đồng 3 tháng</p>
+          <div class="icons">
+            <span> <i class="fas fa-calendar"></i> 24/02/2022 </span>
+            <span> <i class="fas fa-user"></i> by Admin </span>
           </div>
         </div>
       </div>
-      <div id="load-more"> Xem thêm</div>
+
+      <div class="box">
+        <div class="image">
+          <img src="../../../assets/images/3.jpg" alt="">
+        </div>
+        <div class="content">
+          <h3>Không khí ngày đầu tuần tại Tiktak Coworking Space </h3>
+          <p>Không gian làm việc giống như ngôi nhà thứ hai của chúng ta và hầu như không có gì tác động
+            tiêu cực
+            đến năng suất làm việc hơn sự khó chịu, bí bách. Vì vậy, hãy đảm bảo rằng sự lựa chọn của
+            bạn là một
+            nơi mà bạn có thể thể hiện trọn vẹn con người mình .Hãy tới với chúng tôi,Hãy tới với chúng tôi</p>
+          <div class="icons">
+            <span> <i class="fas fa-calendar"></i> 25/02/2022 </span>
+            <span> <i class="fas fa-user"></i> by Admin </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="image">
+          <img src="../../../assets/images/4.jpg" alt="">
+        </div>
+        <div class="content">
+          <h3>Đón nhận “mùa Đông Hà Nội” bằng cả một sự chân tình</h3>
+          <p>Chúng tôi cảm ơn Quý khách hàng đã lựac chọn đến làm việc, sử dụng dịch vụ, hòa nhập vào cộng
+            đồng
+            Diamond Time và xây dựng văn hóa Cộng đồng chung ngày càng tốt và đẹp; Càng trân quý hơn
+            tình cảm
+            của Quý khách hàng dành cho Diamond Time trong suốt thời gian vừa qua.</p>
+          <div class="icons">
+            <span> <i class="fas fa-calendar"></i> 26/02/2022 </span>
+            <span> <i class="fas fa-user"></i> by Admin </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="image">
+          <img src="../../../assets/images/5.jpg" alt="">
+        </div>
+        <div class="content">
+          <h3>Ưu đãi 50% căn hộ chuẩn hạng A – Diamond Time Complex</h3>
+          <p>Tại sao nên chọn căn hộ dịch vụ tại Diamond Time để lưu trú và làm việc?
+
+            – Không gian sống – làm việc chuẩn hạng A
+
+            – Tận hưởng không gian riêng tư, yên tĩnh tuyệt đối
+
+            – Cung cấp đầy đủ trang thiết bị tiện nghi: điều hoà, nội thất, tủ lạnh, giường ngủ, bếp,
+            bàn ghế,
+            hệ thống nước… và các dịch vụ dọn phòng</p>
+          <div class="icons">
+            <span> <i class="fas fa-calendar"></i> 27/02/2022 </span>
+            <span> <i class="fas fa-user"></i> by Admin </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="image">
+          <img src="../../../assets/images/6.jpg" alt="">
+        </div>
+        <div class="content">
+          <h3>Dịch vụ tiêu chuẩn 5 sao ngay tại Trung tâm thành phố Đà Nẵng</h3>
+          <p>Toàn bộ nội thất đều sử dụng gỗ tần bì và gỗ xà cừ – những loại gỗ chuyên dùng trong thiết kế
+            nội
+            thất.
+
+            Thiết kế gác lửng phân chia không gian rõ ràng nhưng vẫn tạo sự liên kết cần thiết, giúp gia
+            chủ có
+            được sự riêng tư, linh hoạt và ấn tượng trong quá trình sử dụng.linh hoạt và ấn tượng trong
+            quá
+            trình sử dụng.</p>
+          <div class="icons">
+            <span> <i class="fas fa-calendar"></i> 28/01/2022 </span>
+            <span> <i class="fas fa-user"></i> by Admin </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="image">
+          <img src="../../../assets/images/7.jpg" alt="">
+        </div>
+        <div class="content">
+          <h3>Sự kiện “Frohes Fest” tại Tiktak Coworking Space</h3>
+          <p>Kính gửi Quý khách hàng,
+            Nhằm tri ân và hòa mình cùng không khí lễ hội mùa cuối năm, Ban quản lý tòa nhà xin gửi đến
+            Quý
+            khách hàng thông tin về sự kiện “ Frohes Fest” ngày 24 tháng 12 năm 2021 này tại Tiktak
+            Coworking
+            Space của chúng ta:Nhằm tri ân và hòa mình cùng không khí lễ hội mùa cuối năm</p>
+          <div class="icons">
+            <span> <i class="fas fa-calendar"></i> 01/03/2022 </span>
+            <span> <i class="fas fa-user"></i> by Admin </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="image">
+          <img src="../../../assets/images/8.jpg" alt="">
+        </div>
+        <div class="content">
+          <h3>Mừng Giáng sinh, tưng bừng ưu đãi lớn chưa từng có</h3>
+          <p>Nhân dịp Giáng sinh, Tiktak dành tặng bạn chương trình ưu đãi lớn chưa từng có dành riêng cho
+            chỗ
+            ngồi linh hoạt:
+            – Tặng ngay 1 chỗ ngồi linh hoạt khi đăng ký nhóm 3 người
+            – Tặng ngay 1 tuần sử dụng khi ký hợp đồng 2 tháng
+            – Tặng ngay 2 tuần sử dụng khi ký hợp đồng 3 tháng</p>
+          <div class="icons">
+            <span> <i class="fas fa-calendar"></i> 02/03/2022 </span>
+            <span> <i class="fas fa-user"></i> by Admin </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="image">
+          <img src="../../../assets/images/9.jpg" alt="">
+        </div>
+        <div class="content">
+          <h3>Không khí ngày cuối tuần tại Tiktak Coworking Space</h3>
+          <p>hãy đảm bảo rằng sự lựa chọn của bạn là một nơi mà bạn có thể thể hiện trọn vẹn con người
+            mình và kích hoạt sự sáng tạo của bạn với đầy đủ các yếu tố như có không khí trong lành để
+            thở trang thiết bị chất lượng, ánh sáng lành mạnh văn hóa cộng đồng lành mạnh và thuận tiện
+            di chuyển, trao đổi công việc…
+
+          </p>
+          <div class="icons">
+            <span> <i class="fas fa-calendar"></i> 03/03/2022 </span>
+            <span> <i class="fas fa-user"></i> by Admin </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="image">
+          <img src="../../../assets/images/10.jpg" alt="">
+        </div>
+        <div class="content">
+          <h3>Đón nhận “mùa Đông Hà Nội” bằng cả một sự chân tình</h3>
+          <p>Chúng tôi cảm ơn Quý khách hàng đã lựac chọn đến làm việc, sử dụng dịch vụ, hòa nhập vào cộng
+            đồng
+            Diamond Time và xây dựng văn hóa Cộng đồng chung ngày càng tốt và đẹp; Càng trân quý hơn
+            tình cảm
+            của Quý khách hàng dành cho Diamond Time trong suốt thời gian vừa qua.Tiktak Coworking Space
+            nằm tại vị trí trung tâm quận Hải Châu </p>
+          <div class="icons">
+            <span> <i class="fas fa-calendar"></i> 04/03/2022 </span>
+            <span> <i class="fas fa-user"></i> by Admin </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="image">
+          <img src="../../../assets/images/11.jpg" alt="">
+        </div>
+        <div class="content">
+          <h3>Ưu đãi 50% căn hộ chuẩn hạng A – Diamond Time Complex</h3>
+          <p>Tại sao nên chọn căn hộ dịch vụ tại Diamond Time để lưu trú và làm việc?
+
+            – Không gian sống – làm việc chuẩn hạng A
+
+            – Tận hưởng không gian riêng tư, yên tĩnh tuyệt đối
+
+            – Cung cấp đầy đủ trang thiết bị tiện nghi: điều hoà, nội thất, tủ lạnh, giường ngủ, bếp,
+            bàn ghế,
+            hệ thống nước… và các dịch vụ dọn phòng, giặt ủi, an ninh 24/24,
+            an ninh 24/24</p>
+          <div class="icons">
+            <span> <i class="fas fa-calendar"></i> 05/03/2022 </span>
+            <span> <i class="fas fa-user"></i> by Admin </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="image">
+          <img src="../../../assets/images/12.jpg" alt="">
+        </div>
+        <div class="content">
+          <h3>Dịch vụ tiêu chuẩn 5 sao ngay tại Trung tâm thành phố Đà Nẵng</h3>
+          <p>Toàn bộ nội thất đều sử dụng gỗ tần bì và gỗ xà cừ – những loại gỗ chuyên dùng trong thiết kế
+            nội
+            thất.
+
+            Thiết kế gác lửng phân chia không gian rõ ràng nhưng vẫn tạo sự liên kết cần thiết, giúp gia
+            chủ có
+            được sự riêng tư, linh hoạt và ấn tượng trong quá trình sử dụng.linh hoạt và ấn tượng trong
+            quá
+            trình sử dụng.Nhiều dịch vụ tiện ích MIỄN PHÍ</p>
+          <div class="icons">
+            <span> <i class="fas fa-calendar"></i> 06/03/2022 </span>
+            <span> <i class="fas fa-user"></i> by Admin </span>
+          </div>
+        </div>
+      </div>
     </div>
+    <div id="load-more"> Xem thêm</div>
   </div>
+</div>
 </div>
 
 
@@ -320,7 +323,7 @@
             <div class="info-right-bottom " *ngFor="let floors of floorsList;index as i">
               <div class="row ">
                 <div class="col-10 text-start mb-0">
-                  <strong >
+                  <strong>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                          class="bi bi-check-lg " viewBox="0 0 16 16">
                       <path
@@ -329,13 +332,14 @@
                     {{floors.floorName}}:
                   </strong> Tổng diện tích là : {{floors.floorArea}} (m<sup>2</sup>)
                 </div>
-<!--                <div class="col-2 text-end mb-2">-->
-<!--                  <button [disabled]="checkDeleteFlag == true" id="delete-button" type="button" class="btn btn-light " data-toggle="modal"-->
-<!--                          data-target="#exampleModal"-->
-<!--                          (click)="openDialog(floors.floorId)">-->
-<!--                    <i class="fa-solid fa-trash-can"></i>-->
-<!--                  </button>-->
-<!--                </div>-->
+                <div class="col-2 text-end mb-2">
+                  <button [disabled]="this.checkDeleteFlag == false" id="delete-button" type="button"
+                          class="btn btn-light " data-toggle="modal"
+                          data-target="#exampleModal"
+                          (click)="openDialog(floors.floorId)">
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </div>
               </div>
 
             </div>
@@ -420,4 +424,4 @@
     </div>
   </div>
 </div>
-
+</ng-template>
