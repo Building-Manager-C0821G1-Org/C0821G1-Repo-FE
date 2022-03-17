@@ -8,6 +8,7 @@ import {Employee} from '../../../model/employee/employee';
 import Swal from 'sweetalert2';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
+import {TokenStorageService} from '../../../service/security/token-storage.service';
 
 
 @Component({
@@ -23,10 +24,12 @@ export class EmployeeEditComponent implements OnInit {
   private selectedImage: any;
   loading = false;
   employee: Employee;
+  id: any;
 
   employeeEditForm = new FormGroup({
     employeeCode: new FormControl('', [Validators.required, Validators.pattern('[N][V][-]\\d{4}')]),
-    employeeName: new FormControl(''),
+    employeeName: new FormControl('', [Validators.required, Validators.maxLength(40),
+      Validators.pattern('^[a-zA-ZàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]+(\\s[a-zA-ZàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]+)*$')]),
     employeeDateOfBirth: new FormControl('', [Validators.required, this.checkMinAge]),
     employeeAddress: new FormControl('', [Validators.required, Validators.maxLength(40)]),
     employeeEmail: new FormControl(''),
@@ -38,10 +41,21 @@ export class EmployeeEditComponent implements OnInit {
   });
 
   constructor(private employeeService: EmployeeService,
+              private tokenStorageService: TokenStorageService,
               private router: Router,
               private employeePositionService: EmployeePositionService,
               private activatedRoute: ActivatedRoute,
               @Inject(AngularFireStorage) private storage: AngularFireStorage) {
+    // this.id =  this.tokenStorageService.getUser().idEmployee;
+    // console.log('------------------' + this.id);
+    // // const employeeId = this.activatedRoute.snapshot.params.id;
+    // this.employeeService.findById(Number(this.id)).subscribe(value => {
+    //   console.log(value);
+    //   this.employee = value;
+    //   this.employeeEditForm.patchValue(
+    //     this.employee
+    //   );
+    // });
 
   }
 
@@ -52,6 +66,7 @@ export class EmployeeEditComponent implements OnInit {
       console.log(this.employeePositionList);
 
       const employeeEditId = this.activatedRoute.snapshot.params.id;
+      this.id = employeeEditId;
       console.log(employeeEditId);
       this.employeeService.findById(employeeEditId).subscribe(value2 => {
         this.employeeEdit = value2;

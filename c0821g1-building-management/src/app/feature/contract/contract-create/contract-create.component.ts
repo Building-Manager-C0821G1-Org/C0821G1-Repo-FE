@@ -30,6 +30,7 @@ export class ContractCreateComponent implements OnInit {
   file: string;
   checkCode: boolean;
   checkDate: boolean;
+  spaceCode: string;
 
   contractsForm: FormGroup = this.fb1.group({
     contractId: '',
@@ -57,6 +58,11 @@ export class ContractCreateComponent implements OnInit {
   dateStart: string;
   dateEnd: string;
    employeeId: number;
+   price: any;
+   totalPrice: number;
+   deposit: any;
+   name1: string;
+   code1: string;
 
 
   constructor(private fb1: FormBuilder,
@@ -108,6 +114,8 @@ export class ContractCreateComponent implements OnInit {
 
     console.log('contract/list' + this.contractsForm.controls.customerId.value);
 
+
+
     const name = this.selectedImage.name;
     const fileRef = this.storage.ref(name);
     this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
@@ -125,6 +133,7 @@ export class ContractCreateComponent implements OnInit {
           const month = (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24 * 30);
           // @ts-ignore
           // contract.contractExpired = Math.round(month);
+          this.changeId();
           this.contractService.saveContract(contract).subscribe(() => {
             this.contractsForm.reset();
             this.callToast();
@@ -140,6 +149,10 @@ export class ContractCreateComponent implements OnInit {
     ).subscribe();
   }
 
+  changeId(id){
+      this.contractsForm.controls.customerId.patchValue(id);
+  }
+
   showPreview(event: any) {
     this.selectedImage = event.target.files[0];
     if (event.target.files) {
@@ -152,16 +165,97 @@ export class ContractCreateComponent implements OnInit {
     }
   }
 
-  checkDate1(date1, date2) {
-    this.contractService.checkDate(date1, date2).subscribe(result => {
-      console.log(result);
-      console.log(this.contractsForm.controls.contractDateStart.value);
-      console.log(this.contractsForm.controls.contractDateEnd.value);
-      if (result) {
-        this.checkDate = true;
-      } else {
-        this.checkDate = false;
+  // checkDate1(date1, date2) {
+  //   this.contractService.checkDate(date1, date2).subscribe(result => {
+  //     console.log(result);
+  //     console.log(this.contractsForm.controls.contractDateStart.value);
+  //     console.log(this.contractsForm.controls.contractDateEnd.value);
+  //     if (result) {
+  //       this.checkDate = true;
+  //     } else {
+  //       this.checkDate = false;
+  //     }
+  //   });
+  // }
+
+  checkDate1(date1, date2, price) {
+
+    console.log('dateStart : ' + date1);
+    console.log('dateEnd : ' + date2);
+    console.log('price : ' + price);
+
+    this.price = price;
+
+    if (date1 !== '' && date2 !== '' && price === '') {
+      this.contractService.checkDate(date1, date2).subscribe(result => {
+        // console.log(result);
+        // console.log(this.contractsForm.controls.contractDateStart.value);
+        // console.log(this.contractsForm.controls.contractDateEnd.value);
+        const dateStart = new Date(date1);
+        // @ts-ignore
+        const dateEnd = new Date(date2);
+        const month = (dateEnd.getTime() - dateStart.getTime()) / (1000 * 3600 * 24 * 30);
+        // @ts-ignore
+        // contract.contractExpired = Math.round(month);
+        this.contractsForm.controls.contractExpired.patchValue(Math.round(month));
+
+        if (result) {
+          this.checkDate = true;
+        } else {
+          this.checkDate = false;
+        }
+      });
+    }
+
+    if (date1 !== '' && date2 !== '' && price !== '') {
+
+      const dateStart = new Date(date1);
+      // @ts-ignore
+      const dateEnd = new Date(date2);
+      const month = (dateEnd.getTime() - dateStart.getTime()) / (1000 * 3600 * 24 * 30);
+      // @ts-ignore
+      // contract.contractExpired = Math.round(month);
+      this.contractsForm.controls.contractExpired.patchValue(Math.round(month));
+
+      // tslint:disable-next-line:radix
+      this.totalPrice = parseInt(this.contractsForm.controls.contractExpired.value)  * parseInt(price);
+      this.contractsForm.controls.contractTotal.patchValue(this.totalPrice);
+    }
+  }
+
+  changeDeposit() {
+    this.deposit = this.contractsForm.controls.contractDeposit.value;
+  }
+
+  name(){
+
+     // this.contractsForm.controls.customerId.value;
+     for (let i = 0 ; i < this.customers.length - 1 ; i ++){
+       //
+       // console.log( parseInt(this.contractsForm.controls.customerId.value + 'id'));
+       // console.log(this.customers[i].customerId);
+
+       if ( parseInt(this.contractsForm.controls.customerId.value) === this.customers[i].customerId){
+         console.log('name' + this.customers[i].customerName);
+        // tslint:disable-next-line:no-unused-expression
+         this.name1 = this.customers[i].customerName;
+         this.code1 = this.customers[i].customerIdentifyNumber;
       }
-    });
+    }
+  }
+
+  code(){
+    for (let i = 0 ; i < this.spaces.length - 1 ; i ++){
+      //
+      // console.log( parseInt(this.contractsForm.controls.customerId.value + 'id'));
+      // console.log(this.customers[i].customerId);
+
+      if ( parseInt(this.contractsForm.controls.spaceId.value) === this.spaces[i].spaceId){
+        console.log('name' + this.customers[i].customerName);
+        // tslint:disable-next-line:no-unused-expression
+        this.spaceCode = this.spaces[i].spaceCode;
+
+      }
+    }
   }
 }

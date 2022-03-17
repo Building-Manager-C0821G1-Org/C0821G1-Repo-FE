@@ -48,10 +48,13 @@ export class HeaderComponent implements OnInit {
     }
     this.isLoggedIn = this.username != null;
   }
-
+  logout1() {
+    window.location.reload();
+  }
   logout() {
     this.tokenStorageService.signOut();
     this.loadHeader();
     this.router.navigate(['']);
+    window.location.reload();
   }
 }

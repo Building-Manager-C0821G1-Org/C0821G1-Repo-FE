@@ -10,6 +10,7 @@ import {finalize} from 'rxjs/operators';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {SpacesStatus} from '../../../model/space/spaces-status';
 import {Floors} from 'src/app/model/floors/floors';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -26,6 +27,8 @@ export class SpaceCreateComponent implements OnInit {
   url = '';
   selectedImage: any = null;
   validateErrorCode: string;
+  price: any;
+  fee: any;
 
   constructor(private spaceService: SpaceService,
               private spaceTypeService: SpaceTypeService,
@@ -52,10 +55,10 @@ export class SpaceCreateComponent implements OnInit {
     //   floors: new FormControl('', Validators.required)
     // });
     this.spaceForm = new FormGroup({
-      spaceCode: new FormControl(),
-      spaceArea: new FormControl(),
-      spacePrice: new FormControl(),
-      spaceManagerFee: new FormControl(''),
+      spaceCode: new FormControl('', [Validators.required, Validators.pattern('^MB\\-[0-9]{3}$')]),
+      spaceArea: new FormControl('', [Validators.required, Validators.pattern('^(\\.|,|[0-9])*$')]),
+      spacePrice: new FormControl('', [Validators.pattern('^(\\.|,|[0-9])*$')]),
+      spaceManagerFee: new FormControl('', [Validators.pattern('^(\\.|,|[0-9])*$')]),
       spaceNote: new FormControl(),
       spaceImage: new FormControl(),
       // spaceImage: new FormArray([
@@ -64,16 +67,14 @@ export class SpaceCreateComponent implements OnInit {
       //   })
       // ]),
       spaceDeleteFlag: new FormControl(),
-      spacesType: new FormControl(''),
-      spaceStatus: new FormControl(''),
-      floors: new FormControl('')
+      spacesType: new FormControl('', Validators.required),
+      spaceStatus: new FormControl('', Validators.required),
+      floors: new FormControl('', Validators.required)
     });
     this.spaceStatusService.findAll().subscribe(value => {
-      console.log(value);
       this.spaceStatusList = value;
     });
     this.spaceTypeService.findAll().subscribe(value => {
-      console.log(value);
       this.spaceTypeList = value;
     });
     this.floorService.findAll().subscribe(value => {
@@ -84,72 +85,33 @@ export class SpaceCreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // saveNewSpace(): void {
-  //   const newSpace = Object.assign({}, this.spaceForm.value);
-  //   if (this.selectedImage !== null) {
-  //     const name = this.selectedImage.name;
-  //     const fileRef = this.angularFireStorage.ref(name);
-  //     this.angularFireStorage.upload(name, this.selectedImage).snapshotChanges()
-  //       .pipe(finalize(() => {
-  //         fileRef.getDownloadURL()
-  //           .subscribe(url => {
-  //             // newSpace.spaceImage = url;
-  //             this.spaceForm.patchValue({spaceImage: url});
-  //             console.log(url);
-  //
-  //             this.spaceService.saveNewSpace(newSpace).subscribe(value => {
-  //                 alert('Thêm mới thành công');
-  //               },
-  //               error => {
-  //                 console.log(error);
-  //                 this.validateErrorCode = error.error.code;
-  //                 alert(this.validateErrorCode);
-  //               },
-  //               () => {
-  //                 this.router.navigateByUrl('/spaces/list');
-  //               });
-  //           });
-  //       }));
-  //   }
-  //   console.log(newSpace.spaceImage);
-  //   // this.angularFireStorage.upload('/images' + Math.random() + this.url, this.url);
-  //   // this.spaceService.saveNewSpace(newSpace).subscribe(value => {
-  //   //     alert('Thêm mới thành công');
-  //   //   },
-  //   //   error => {
-  //   //     console.log(error);
-  //   //     this.validateErrorCode = error.error.code;
-  //   //     alert(this.validateErrorCode);
-  //   //   },
-  //   //   () => {
-  //   //     this.router.navigateByUrl('/spaces/list');
-  //   //   });
-  // }
-
   saveNewSpace(): void {
-    const name = this.selectedImage.name;
-    const fileRef = this.angularFireStorage.ref(name);
-    this.angularFireStorage.upload(name, this.selectedImage).snapshotChanges().pipe(
-      finalize(() => {
-        fileRef.getDownloadURL()
-          .subscribe((url) => {
-            console.log(url);
-            this.spaceForm.patchValue({spaceImage: url});
-            console.log(this.spaceForm.value);
-            const newSpace = Object.assign({}, this.spaceForm.value);
-            this.spaceService.saveNewSpace(newSpace).subscribe(value => {
-                alert('Thêm mới thành công');
-              },
-              error => {
-                console.log(error);
-                this.validateErrorCode = error.error.code;
-                alert(this.validateErrorCode);
-              },
-              () => {
-                this.router.navigateByUrl('/spaces/list');
-              });
-          });
-      })).subscribe();
+    const newSpace = Object.assign({}, this.spaceForm.value);
+    if (this.selectedImage !== null) {
+      const name = this.selectedImage.name;
+      const fileRef = this.angularFireStorage.ref(name);
+      this.angularFireStorage.upload(name, this.selectedImage).snapshotChanges()
+        .pipe(finalize(() => {
+          fileRef.getDownloadURL()
+            .subscribe(url => {
+              newSpace.spaceImage = url;
+              console.log(url);
+            });
+        }));
+    }
+    console.log(newSpace.spaceImage);
+    // this.angularFireStorage.upload('/images' + Math.random() + this.url, this.url);
+    this.spaceService.saveNewSpace(newSpace).subscribe(value => {
+        this.callToast();
+      },
+      error => {
+        console.log(error);
+        this.validateErrorCode = error.error.code;
+        alert(this.validateErrorCode);
+      },
+      () => {
+        this.router.navigateByUrl('/spaces/list');
+      });
   }
 
   upload(event) {
@@ -169,5 +131,14 @@ export class SpaceCreateComponent implements OnInit {
   }
 
   uploadImage() {
+  }
+  private callToast() {
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Thêm mới mặt bằng thành công!',
+      showConfirmButton: false,
+      timer: 2000
+    });
   }
 }

@@ -35,7 +35,8 @@ export class EmployeeCreateComponent implements OnInit {
   ) {
     this.employeeCreateForm = new FormGroup({
       employeeCode: new FormControl('', [Validators.required, Validators.pattern('[N][V][-]\\d{4}')]),
-      employeeName: new FormControl('', [Validators.required, Validators.maxLength(40)]),
+      employeeName: new FormControl('', [Validators.required, Validators.maxLength(40),
+        Validators.pattern('^[a-zA-ZàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]+(\\s[a-zA-ZàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]+)*$')]),
       employeeDateOfBirth: new FormControl('', [Validators.required, this.checkMinAge]),
       employeeAddress: new FormControl('', [Validators.required, Validators.maxLength(40)]),
       employeeEmail: new FormControl('', [Validators.required,

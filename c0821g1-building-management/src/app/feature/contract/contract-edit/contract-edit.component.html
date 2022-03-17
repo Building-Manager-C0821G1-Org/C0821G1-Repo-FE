@@ -7,7 +7,7 @@
             <div class="col-12 col-lg-9 col-xl-7">
               <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                 <div class="card-body p-4 p-md-5 ">
-                  <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center font-google-2">Chỉnh sửa hợp đồng</h3>
+                  <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center " style="font-size: 50px;font-weight: bold;color: #452D14;padding-top: 60px"> Chỉnh sửa hợp đồng</h3>
                   <form [formGroup]="contractForm" (ngSubmit)="updateContract(contractForm.controls.contractId.value)"
                         *ngIf="contractForm">
                     <div class="row">
@@ -20,7 +20,7 @@
                           <label for="select2" class="form-label select-label">Mặt bằng<span
                             class="error">(*)</span></label>
                           <br>
-                          <select id="select2" class="form-select" aria-label="Default select example"
+                          <select id="select2" class="form-control form-control-lg" aria-label="Default select example"
                                   formControlName="spaceId">
                             <option *ngFor="let space of spaces" [value]="space.spaceId">{{space.spaceCode}}</option>
                           </select>
@@ -37,7 +37,7 @@
                             class="error">(*)</span></label>
                           <!--                          <input value="Văn Đông" type="text" id="lastName"-->
                           <!--                                 class="form-control form-control-lg"/>-->
-                          <select id="select4" class="form-select" aria-label="Default select example"
+                          <select id="select4" class="form-control form-control-lg" aria-label="Default select example"
                                   formControlName="customerId">
                             <option *ngFor="let customer of customers"
                                     [value]="customer.customerId">{{customer.customerName}}</option>
@@ -88,7 +88,7 @@
                             type="number"
                             class="form-control form-control-lg"
                             id="birthdayDate"
-                            formControlName="contractExpired"
+                            formControlName="contractExpired" readonly
                           />
                         </div>
                         <small class="error" *ngIf="contractForm.get('contractExpired')
@@ -125,7 +125,7 @@
                             value="30.000.000"
                             class="form-control form-control-lg"
                             id="birthdayDate1"
-                            formControlName="contractTotal"
+                            formControlName="contractTotal" readonly
                           />
                         </div>
                         <small class="error" *ngIf="contractForm.get('contractTotal')

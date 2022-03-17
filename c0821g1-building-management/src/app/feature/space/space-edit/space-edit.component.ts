@@ -9,9 +9,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {SpacesType} from '../../../model/space/spaces-type';
 import {SpacesStatus} from '../../../model/space/spaces-status';
 import { Floors } from 'src/app/model/floors/floors';
-import Swal from "sweetalert2";
 import {finalize} from 'rxjs/operators';
 import {AngularFireStorage} from '@angular/fire/storage';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-space-edit',
@@ -20,10 +20,10 @@ import {AngularFireStorage} from '@angular/fire/storage';
 })
 export class SpaceEditComponent implements OnInit {
   spaceEditForm = new FormGroup({
-    spaceCode: new FormControl('', Validators.required),
-    spaceArea: new FormControl('', [Validators.required, Validators.pattern('^(,|[0-9])*$')]),
-    spacePrice: new FormControl('', [Validators.pattern('^(,|[0-9])*$')]),
-    spaceManagerFee: new FormControl('', [Validators.pattern('^(,|[0-9])*$')]),
+    spaceCode: new FormControl('', [Validators.required, Validators.pattern('^MB\\-[0-9]{3}$')]),
+    spaceArea: new FormControl('', [Validators.required, Validators.pattern('^(\\.|,|[0-9])*$')]),
+    spacePrice: new FormControl('', [Validators.pattern('^(\\.|,|[0-9])*$')]),
+    spaceManagerFee: new FormControl('', [Validators.pattern('^(\\.|,|[0-9])*$')]),
     spaceNote: new FormControl(),
     spaceImage: new FormControl(),
     spaceDeleteFlag: new FormControl(),
@@ -35,8 +35,10 @@ export class SpaceEditComponent implements OnInit {
   spaceTypeList: Array<SpacesType>;
   spaceStatusList: Array<SpacesStatus>;
   floorList: Array<Floors>;
-  private selectedImage: any;
-  loading = false;
+  selectedImage: any = null;
+  loading: boolean;
+  price: any;
+  fee: any;
 
   constructor(private spaceService: SpaceService,
               private spaceTypeService: SpaceTypeService,
@@ -44,7 +46,7 @@ export class SpaceEditComponent implements OnInit {
               private floorService: FloorService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
-              @Inject(AngularFireStorage) private storage: AngularFireStorage) {
+              @Inject(AngularFireStorage) private angularFireStorage: AngularFireStorage ) {
   }
 
   ngOnInit(): void {
@@ -67,40 +69,31 @@ export class SpaceEditComponent implements OnInit {
 
 
   }
-  private callToast() {
-    Swal.fire({
-      position: 'top',
-      icon: 'success',
-      title: 'Sửa mới thành công!',
-      showConfirmButton: false,
-      timer: 2000
-    });
-  }
 
-  upload(event: any) {
-    this.selectedImage = event.target.files[0];
-    const nameImg = this.selectedImage.name;
-    const fileRef = this.storage.ref(nameImg);
-    this.loading = true;
-    this.storage.upload(nameImg, this.selectedImage).snapshotChanges().pipe(
-      finalize(() => {
-        fileRef.getDownloadURL().subscribe((url) => {
-          this.spaceEditForm.patchValue({employeeImage: url});
-          this.spaceEdit.spaceImage = url;
-          this.loading = false;
-        });
-      })
-    ).subscribe();
-  }
   editSpace(): void {
     const editSpace = Object.assign({}, this.spaceEditForm.value);
     editSpace.spaceId = this.spaceEdit.spaceId;
-    this.spaceService.editSpace(editSpace).subscribe(value => {alert('Chỉnh sửa thành công');
+    this.spaceService.editSpace(editSpace).subscribe(value => {this.callToast();
       },
       error => {
       }, () => {
         this.router.navigateByUrl('/spaces/list');
       });
+  }
+  upload(event) {
+    this.selectedImage = event.target.files[0];
+    const nameImg = this.selectedImage.name;
+    const fileRef = this.angularFireStorage.ref(nameImg);
+    this.loading = true;
+    this.angularFireStorage.upload(nameImg, this.selectedImage).snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe((url) => {
+          this.spaceEditForm.patchValue({spaceImage: url});
+          this.spaceEdit.spaceImage = url;
+          this.loading = false;
+        });
+      })
+    ).subscribe();
   }
   compareFnSS(t1: any, t2: any): boolean {
     return t1 && t2 ? t1.spaceStatusId === t2.spaceStatusId : t1 === t2;
@@ -110,5 +103,14 @@ export class SpaceEditComponent implements OnInit {
   }
   compareFnFL(t1: any, t2: any): boolean {
     return t1 && t2 ? t1.floorId === t2.floorId : t1 === t2;
+  }
+  private callToast() {
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Chỉnh sửa mặt bằng thành công!',
+      showConfirmButton: false,
+      timer: 2000
+    });
   }
 }
