@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TokenStorageService} from '../../../service/security/token-storage.service';
 import {Router} from '@angular/router';
 import {SecurityService} from '../../../service/security/security.service';
+import {ShareService} from '../../../service/security/share.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private tokenStorageService: TokenStorageService,
               private securityService: SecurityService,
-              private router: Router) {
+              private router: Router,
+              private shareService: ShareService) {
   }
 
   ngOnInit(): void {
@@ -32,12 +34,11 @@ export class LoginComponent implements OnInit {
       remember_me: false
     });
     if (this.tokenStorageService.getUser()) {
-      console.log(this.tokenStorageService.getUser().username);
-      this.loginFrom.controls.username.setValue( this.tokenStorageService.getUser().username);
-      // this.urlImg = this.tokenStorageService.getUser().urlImg;
-      // // this.isLoggedIn = this.tokenStorageService.getUser().idEmployee;
-      // this.isLoggedIn = true;
-      // this.role = this.tokenStorageService.getUser().roles[0];
+      this.securityService.isLoggedIn = true;
+      this.role = this.tokenStorageService.getUser().roles[0];
+      this.username = this.tokenStorageService.getUser().username;
+      this.router.navigate(['']);
+
     }
   }
 
@@ -60,12 +61,13 @@ export class LoginComponent implements OnInit {
         console.log('token: ' + this.tokenStorageService.getUser().jwtToken);
 
         this.loginFrom.reset();
-        if (this.role.indexOf('ADMIN') !== -1) {
+        if (this.role.indexOf('ROLE_ADMIN') !== -1) {
+          this.router.navigate(['/employee/list']);
+          this.shareService.sendClickEvent();
 
-          this.router.navigate(['/home']);
         } else {
-
-          this.router.navigate(['/home']);
+          this.router.navigate(['/customer/list']);
+          this.shareService.sendClickEvent();
 
         }
       }

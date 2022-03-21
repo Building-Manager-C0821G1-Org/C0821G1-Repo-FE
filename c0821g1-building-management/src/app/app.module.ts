@@ -11,20 +11,40 @@ import {authInterceptorProviders} from './helpers/auth.interceptor';
 import {APP_BASE_HREF} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {SecurityModule} from './feature/security/security.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {NgxSpinnerModule} from 'ngx-bootstrap-spinner';
+import {MatDialogModule} from '@angular/material/dialog';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FloorModule} from './feature/floor/floor.module';
+import {SidebarComponent} from './shared/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    BodyComponent
+    BodyComponent,
+    SidebarComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    SecurityModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        SecurityModule,
+        BrowserAnimationsModule,
+        NgxSpinnerModule,
+        MatDialogModule,
+        BrowserModule,
+        AppRoutingModule,
+        FloorModule,
+        HttpClientModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        ReactiveFormsModule,
+    ],
   providers: [
     authInterceptorProviders,
     JwtHelperService,
