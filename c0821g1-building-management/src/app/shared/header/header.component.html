@@ -28,14 +28,14 @@
   <!--    header-bottom____________________________________________________________________________________________________________-->
   <div class="row header-bottom">
     <div class="col-2 text-center">
-      <img src="../../../assets/images/logo header (1).PNG" alt="" style="height: 80px; width: 100px" class="logo ">
+      <a routerLink=""> <img src="../../../assets/images/logo header (1).PNG" alt="" style="height: 80px; width: 100px" class="logo "></a>
     </div>
     <div class="col-8 menu text-center">
       <div class="link me-5">
         <a (click)="logout1()" >TRANG CHỦ</a>
       </div>
       <div class=" link me-5">
-        <a href="#" >GIỚI THIỆU</a>
+        <a routerLink="/floors/introduce" >GIỚI THIỆU</a>
       </div>
       <div class=" link me-5">
         <div class="dropdown">
@@ -50,7 +50,7 @@
         </div>
       </div>
       <div class="link me-5">
-        <a href="#" >TIN TỨC</a>
+        <a routerLink="/floors/news"  >TIN TỨC</a>
       </div>
     </div>
 

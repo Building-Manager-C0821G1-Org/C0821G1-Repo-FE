@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Floors} from '../../model/floors/floors';
-import {FloorsDTO} from '../../model/floors-dto';
+import {RequestMail} from '../../model/RequestMail';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +21,8 @@ export class FloorService {
   }
   findFloorsDTO() {
     return this.httpClient.get<string>(this.API_URL + '/floors/area');
+  }
+  sendEmail(requestMail: RequestMail): Observable<void> {
+    return this.httpClient.post<void>(this.API_URL + '/floors/send-email' , requestMail);
   }
 }

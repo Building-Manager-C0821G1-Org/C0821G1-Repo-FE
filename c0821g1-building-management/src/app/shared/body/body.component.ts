@@ -5,6 +5,8 @@ import {MatDialog} from '@angular/material/dialog';
 import {FloorService} from '../../service/floor/floor.service';
 import {FloorsDeleteComponent} from '../../feature/floor/floors-delete/floors-delete.component';
 import Swal from 'sweetalert2';
+import {RequestMail} from '../../model/RequestMail';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-body',
@@ -24,8 +26,15 @@ export class BodyComponent implements OnInit {
   floorsList: Floors[] = [];
   floorsDTO: string;
   checkDeleteFlag = false;
+  requestMail: RequestMail;
+  requestForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+    content: new FormControl('', Validators.required)
+  });
   constructor( private tokenStorageService: TokenStorageService, private floorService: FloorService,
-               private dialogDelete: MatDialog) {
+               private dialogDelete: MatDialog,
+               private requestMailService: FloorService) {
     this.floorService.findAll().subscribe(value => {
       this.floorsList = value;
     }, error => {
@@ -86,6 +95,24 @@ export class BodyComponent implements OnInit {
       position: 'top',
       icon: 'success',
       title: 'Không tìm thấy dữ liệu 🤷‍♂️🤷‍♂️🤷‍♂ !',
+      showConfirmButton: false,
+      timer: 2000
+    });
+  }
+  sendMail() {
+    this.requestMail = this.requestForm.value;
+    this.requestMailService.sendEmail(this.requestMail).subscribe(
+      next => {
+        this.callToastEmail();
+      }
+    );
+    this.requestForm.reset();
+  }
+  private callToastEmail() {
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Đã gửi yêu cầu thành công. Vui lòng kiểm tra email.',
       showConfirmButton: false,
       timer: 2000
     });

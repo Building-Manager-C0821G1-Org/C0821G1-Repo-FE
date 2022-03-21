@@ -16,7 +16,7 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {NgxSpinnerModule} from 'ngx-bootstrap-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FloorModule} from './feature/floor/floor.module';
 import {SidebarComponent} from './shared/sidebar/sidebar.component';
 
@@ -28,22 +28,23 @@ import {SidebarComponent} from './shared/sidebar/sidebar.component';
     BodyComponent,
     SidebarComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    SecurityModule,
-    BrowserAnimationsModule,
-    NgxSpinnerModule,
-    MatDialogModule,
-    BrowserModule,
-    AppRoutingModule,
-    FloorModule,
-    HttpClientModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        SecurityModule,
+        BrowserAnimationsModule,
+        NgxSpinnerModule,
+        MatDialogModule,
+        BrowserModule,
+        AppRoutingModule,
+        FloorModule,
+        HttpClientModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        ReactiveFormsModule,
+    ],
   providers: [
     authInterceptorProviders,
     JwtHelperService,
