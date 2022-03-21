@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6ac2af4c-8f5f-4b02-b705-07ba1cdb88ff" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/feature/floor/contact/contact.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/feature/floor/contact/contact.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/feature/floor/contact/contact.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/feature/floor/introduce/introduce.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/feature/floor/introduce/introduce.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/feature/floor/introduce/introduce.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/feature/floor/new3/new3.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/feature/floor/new3/new3.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/feature/floor/new3/new3.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/feature/floor/news/news.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/feature/floor/news/news.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/feature/floor/news/news.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/feature/floor/news2/news2.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/feature/floor/news2/news2.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/feature/floor/news2/news2.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/model/RequestMail.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/feature/contract/contract-create/contract-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/feature/contract/contract-create/contract-create.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/feature/floor/floor-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/feature/floor/floor-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/feature/floor/floor.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/feature/floor/floor.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/service/floor/floor.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/floor/floor.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/body/body.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/body/body.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/body/body.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/body/body.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/header/header.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/sidebar/sidebar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/sidebar/sidebar.component.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="25jMsOcGdCCN8yZdioCpWU2d1Wl" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/app/model" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="ts.external.directory.path" value="E:\Duy Win\Java- Fullstack\Github\front-end\C0821G1-Repo-FE\c0821g1-building-management\node_modules\typescript\lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Duy Win\Java- Fullstack\Github\front-end\C0821G1-Repo-FE\c0821g1-building-management\src\app\model" />
+      <recent name="E:\Duy Win\Java- Fullstack\Github\front-end\C0821G1-Repo-FE\c0821g1-building-management\src\assets\images" />
+      <recent name="D:\first\my_project_sprint_one\coding\c0821g1-building-management\src\app\model\floors" />
+      <recent name="D:\first\my_project_sprint_one\coding\c0821g1-building-management\src\app\feature\floor" />
+      <recent name="D:\first\my_project_sprint_one\coding\c0821g1-building-management\src\app\model" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\first\C0821G1-Repo-FE\c0821g1-building-management\src\app\model" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.Angular CLI Server">
+    <configuration name="Tests (c0821g1-building-management)" type="JavaScriptTestRunnerKarma">
+      <config-file value="$PROJECT_DIR$/karma.conf.js" />
+      <working-directory value="$PROJECT_DIR$" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="E2E Tests (c0821g1-building-management)" type="JavaScriptTestRunnerProtractor">
+      <config-file value="$PROJECT_DIR$/e2e/protractor.conf.js" />
+      <node-interpreter value="project" />
+      <protractor-options value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular CLI Server" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6ac2af4c-8f5f-4b02-b705-07ba1cdb88ff" name="Default Changelist" comment="" />
+      <created>1646036247182</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1646036247182</updated>
+      <workItem from="1646036251286" duration="15444000" />
+      <workItem from="1646067271787" duration="762000" />
+      <workItem from="1646095402672" duration="11535000" />
+      <workItem from="1646116285349" duration="4094000" />
+      <workItem from="1646130752304" duration="4924000" />
+      <workItem from="1646136222720" duration="3981000" />
+      <workItem from="1646147680852" duration="1362000" />
+      <workItem from="1646182016726" duration="6701000" />
+      <workItem from="1646225968463" duration="1676000" />
+      <workItem from="1646228104678" duration="320000" />
+      <workItem from="1646268683824" duration="4766000" />
+      <workItem from="1646362703749" duration="10269000" />
+      <workItem from="1646439655479" duration="8928000" />
+      <workItem from="1646616284483" duration="6358000" />
+      <workItem from="1646636169859" duration="5804000" />
+      <workItem from="1646703418330" duration="10564000" />
+      <workItem from="1646746055822" duration="4110000" />
+      <workItem from="1646750360563" duration="5285000" />
+      <workItem from="1646789796813" duration="17779000" />
+      <workItem from="1646831634482" duration="6090000" />
+      <workItem from="1646875276697" duration="561000" />
+      <workItem from="1646878998975" duration="16845000" />
+      <workItem from="1646970408562" duration="4762000" />
+      <workItem from="1646986882209" duration="59000" />
+      <workItem from="1647002213826" duration="5769000" />
+      <workItem from="1647039673919" duration="4047000" />
+      <workItem from="1647048322277" duration="11162000" />
+      <workItem from="1647066414742" duration="687000" />
+      <workItem from="1647067174525" duration="110000" />
+      <workItem from="1647067543657" duration="357000" />
+      <workItem from="1647067934642" duration="19485000" />
+      <workItem from="1647093252005" duration="863000" />
+      <workItem from="1647095139640" duration="4134000" />
+      <workItem from="1647140677424" duration="16258000" />
+      <workItem from="1647157692078" duration="2506000" />
+      <workItem from="1647160298585" duration="456000" />
+      <workItem from="1647160867234" duration="688000" />
+      <workItem from="1647161648963" duration="67000" />
+      <workItem from="1647161763043" duration="520000" />
+      <workItem from="1647162445216" duration="1153000" />
+      <workItem from="1647164079339" duration="3357000" />
+      <workItem from="1647167868598" duration="9711000" />
+      <workItem from="1647184246105" duration="10081000" />
+      <workItem from="1647220621520" duration="9114000" />
+      <workItem from="1647234013366" duration="34000" />
+      <workItem from="1647234051220" duration="38000" />
+      <workItem from="1647240673115" duration="419000" />
+      <workItem from="1647250939276" duration="628000" />
+      <workItem from="1647328806289" duration="10391000" />
+      <workItem from="1647349635057" duration="5796000" />
+      <workItem from="1647424205935" duration="268000" />
+      <workItem from="1647479024947" duration="7253000" />
+      <workItem from="1647827471619" duration="1141000" />
+      <workItem from="1647866438791" duration="8704000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1647157392897">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1647157392897" />
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1647167659508">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1647167659508" />
+    <state x="521" y="135" key="FileChooserDialogImpl" timestamp="1647356606249">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1647234031934" />
+    <state x="521" y="135" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1647356606249" />
+    <state width="1515" height="178" key="GridCell.Tab.0.bottom" timestamp="1647875274383">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1259" height="264" key="GridCell.Tab.0.bottom/0.0.1280.728@0.0.1280.728" timestamp="1647095445945" />
+    <state width="1345" height="244" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1647233967265" />
+    <state width="1515" height="178" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1647875274383" />
+    <state width="1515" height="178" key="GridCell.Tab.0.center" timestamp="1647875274383">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1259" height="264" key="GridCell.Tab.0.center/0.0.1280.728@0.0.1280.728" timestamp="1647095445944" />
+    <state width="1345" height="244" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1647233967265" />
+    <state width="1515" height="178" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1647875274383" />
+    <state width="1515" height="178" key="GridCell.Tab.0.left" timestamp="1647875274383">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1259" height="264" key="GridCell.Tab.0.left/0.0.1280.728@0.0.1280.728" timestamp="1647095445944" />
+    <state width="1345" height="244" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1647233967265" />
+    <state width="1515" height="178" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1647875274383" />
+    <state width="1515" height="178" key="GridCell.Tab.0.right" timestamp="1647875274383">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1259" height="264" key="GridCell.Tab.0.right/0.0.1280.728@0.0.1280.728" timestamp="1647095445945" />
+    <state width="1345" height="244" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1647233967265" />
+    <state width="1515" height="178" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1647875274383" />
+    <state x="184" y="7" key="SettingsEditor" timestamp="1647067948447">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="7" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1647067948447" />
+    <state width="520" height="446" key="SwitcherDM" timestamp="1647073503744">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="520" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1647073503744" />
+    <state x="92" y="43" width="1182" height="593" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1647167659508">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="43" width="1182" height="593" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1647167659508" />
+    <state x="21" y="102" width="646" height="544" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1647167072297">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="21" y="102" width="646" height="544" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1647167072297" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1647191022038">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1647191022038" />
+  </component>
+</project>
